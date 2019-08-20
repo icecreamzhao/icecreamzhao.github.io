@@ -17,7 +17,7 @@
 <meta property="og:description" content="前言原本只是想在vim上装几个插件玩玩, 然后发现了YCM这款插件, 之后, 就有了今天的这篇博客。经历了连续一个星期的战斗, 终于还是被我安装上了llvm, 更新了gcc的版本和vim的版本, 特此记录一下战斗的过程。">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://icecreamzhao.github.io/images/linux/computer-operation/llvm.jpg">
-<meta property="og:updated_time" content="2019-08-18T07:11:36.258Z">
+<meta property="og:updated_time" content="2019-08-20T02:46:33.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在centos下安装llvm和vim的ycm插件">
 <meta name="twitter:description" content="前言原本只是想在vim上装几个插件玩玩, 然后发现了YCM这款插件, 之后, 就有了今天的这篇博客。经历了连续一个星期的战斗, 终于还是被我安装上了llvm, 更新了gcc的版本和vim的版本, 特此记录一下战斗的过程。">
@@ -355,14 +355,21 @@
 <p>这里我整整编译了一晚上才编译好, 期间遇到了 <code>- version GLIBCXX_3.4.20&#39; not found</code> 的问题, 就是gcc的版本太低, 或者是和配置的gcc的版本不一致。</p>
 <h3 id="编译ycm-core"><a href="#编译ycm-core" class="headerlink" title="编译ycm_core"></a>编译ycm_core</h3><p>现在准备工作算是完成了, 现在开始正式开始编译ycm_core</p>
 <p>生成makefile文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir ycm_build</span><br><span class="line">cd ycm_build</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里PATH_TO_LLVM_ROOT的路径应该是你的llvm的build的路径</span></span><br><span class="line">cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/ycm_temp/llvm_root_dir ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir ycm_build</span><br><span class="line">cd ycm_build</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里PATH_TO_LLVM_ROOT的路径应该是你的llvm的build的路径</span></span><br><span class="line">cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/ycm_temp/llvm_root_dir . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp</span><br></pre></td></tr></table></figure>
+
+<p>这里我遇到了无法找到Boost路径的问题, 直接安装一下就好了:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libboost-all-dev</span><br></pre></td></tr></table></figure>
 
 <p>编译makefile</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将clang-c复制到ycm插件中</span></span><br><span class="line">cp -r  ~/programmingTools/llvm/llvm/tools/clang/include/clang-c ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/ClangCompleter/</span><br><span class="line">cmake --build . --target ycm_core --config Release</span><br></pre></td></tr></table></figure>
 
 <h3 id="编辑ycm的配置文件"><a href="#编辑ycm的配置文件" class="headerlink" title="编辑ycm的配置文件"></a>编辑ycm的配置文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~/</span><br></pre></td></tr></table></figure>
 
-<h1 id="配置-ycm-的补全库"><a href="#配置-ycm-的补全库" class="headerlink" title="配置 ycm 的补全库"></a>配置 ycm 的补全库</h1><h1 id="以下是我参考的所有博客和帖子"><a href="#以下是我参考的所有博客和帖子" class="headerlink" title="以下是我参考的所有博客和帖子:"></a>以下是我参考的所有博客和帖子:</h1><p><a href="https://www.cnblogs.com/zzqcn/p/4660615.html">【vim】插件管理及代码智能提示与补全环境的配置</a><br><a href="https://www.zybuluo.com/searcher2xiao/note/136156">CentOS 7 + vim + ycm (clang) + NERDTree</a><br><a href="https://www.jianshu.com/p/c24f919097b3">VIM、YouCompleteMe折腾配置以及clang+llvm编译安装</a><br><a href="https://www.cnblogs.com/lavezhang/p/7227777.html">centos升级vim</a><br><a href="https://blog.csdn.net/uu203/article/details/82621523">CentOS7解决YouCompleteMe对Python的依赖</a><br><a href="https://blog.csdn.net/l2563898960/article/details/82871826">安装LLVM+Clang教程</a><br><a href="https://blog.csdn.net/jiang_xinxing/article/details/77945478">Centos7安装高版本Cmake</a><br><a href="https://www.jianshu.com/p/8ac4e50d182d">Centos升级gcc至5.4.0</a><br><a href="https://blog.csdn.net/zhaojianting/article/details/81095120">centOS系统gcc升级步骤(亲自测试成功)</a><br><a href="https://www.jianshu.com/p/f0b28fb4661d">CentOS下gcc4.9编译安装教程</a><br><a href="https://superuser.com/questions/927512/how-to-set-path-for-sudo-commands">How to set path for sudo commands</a><br><a href="https://blog.csdn.net/haohaibo031113/article/details/72833327">CMake 指定gcc编译版本</a><br><a href="https://blog.csdn.net/qq_36416904/article/details/79316972">关于在centos下安装python3.7.0以上版本时报错ModuleNotFoundError: No module named ‘_ctypes’的解决办法</a><br><a href="https://blog.csdn.net/leaf5022/article/details/21290509#comments">Vim智能补全插件YouCompleteMe安装</a><br><a href="http://www.nagain.com/activity/article/4/">llvm之旅第一站 － 编译及简单使用</a><br><a href="https://blog.csdn.net/zhang14916/article/details/89288196">Getting Started with the LLVM System</a><br><a href="https://www.cnblogs.com/wx7217242/articles/4684530.html">gRPC编译- version <code>GLIBCXX_3.4.20&#39; not found 问题](https://blog.csdn.net/weixin_34365417/article/details/86870934)
+<h1 id="配置-ycm-的补全库"><a href="#配置-ycm-的补全库" class="headerlink" title="配置 ycm 的补全库"></a>配置 ycm 的补全库</h1><p>编写vimrc中指定的.ycm_extra_conf.py, 添加需要显示的库:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flags = [</span><br><span class="line">`-isystem`,</span><br><span class="line">`/usr/include/c++/8`</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p><code>-isystem</code>代表自己添加的库。</p>
+<h1 id="以下是我参考的所有博客和帖子"><a href="#以下是我参考的所有博客和帖子" class="headerlink" title="以下是我参考的所有博客和帖子:"></a>以下是我参考的所有博客和帖子:</h1><p><a href="https://www.cnblogs.com/zzqcn/p/4660615.html">【vim】插件管理及代码智能提示与补全环境的配置</a><br><a href="https://www.zybuluo.com/searcher2xiao/note/136156">CentOS 7 + vim + ycm (clang) + NERDTree</a><br><a href="https://www.jianshu.com/p/c24f919097b3">VIM、YouCompleteMe折腾配置以及clang+llvm编译安装</a><br><a href="https://www.cnblogs.com/lavezhang/p/7227777.html">centos升级vim</a><br><a href="https://blog.csdn.net/uu203/article/details/82621523">CentOS7解决YouCompleteMe对Python的依赖</a><br><a href="https://blog.csdn.net/l2563898960/article/details/82871826">安装LLVM+Clang教程</a><br><a href="https://blog.csdn.net/jiang_xinxing/article/details/77945478">Centos7安装高版本Cmake</a><br><a href="https://www.jianshu.com/p/8ac4e50d182d">Centos升级gcc至5.4.0</a><br><a href="https://blog.csdn.net/zhaojianting/article/details/81095120">centOS系统gcc升级步骤(亲自测试成功)</a><br><a href="https://www.jianshu.com/p/f0b28fb4661d">CentOS下gcc4.9编译安装教程</a><br><a href="https://superuser.com/questions/927512/how-to-set-path-for-sudo-commands">How to set path for sudo commands</a><br><a href="https://blog.csdn.net/haohaibo031113/article/details/72833327">CMake 指定gcc编译版本</a><br><a href="https://blog.csdn.net/qq_36416904/article/details/79316972">关于在centos下安装python3.7.0以上版本时报错ModuleNotFoundError: No module named ‘_ctypes’的解决办法</a><br><a href="https://blog.csdn.net/leaf5022/article/details/21290509#comments">Vim智能补全插件YouCompleteMe安装</a><br><a href="http://www.nagain.com/activity/article/4/">llvm之旅第一站 － 编译及简单使用</a><br><a href="https://blog.csdn.net/zhang14916/article/details/89288196">Getting Started with the LLVM System</a><br><a href="https://www.cnblogs.com/wx7217242/articles/4684530.html">gRPC编译- version <code>GLIBCXX_3.4.20&#39; not found 问题](https://blog.csdn.net/weixin_34365417/article/details/86870934)
 [CentOS 6.4(64位)上安装错误libstdc++.so.6(GLIBCXX_3.4.14)解决办法](https://blog.csdn.net/lqzixi/article/details/24738337)
 [linux下提示/usr/lib64/libstdc++.so.6: version</code>GLIBCXX_3.4.14’ not found 解决办法</a><br><a href="http://www.bubuko.com/infodetail-1978493.html">Linux C/C++程序员CentOS 6.5安装YouCompleteMe使用vim语法自动补全</a> 这个比较全!<br><a href="https://www.cnblogs.com/linuxprobe/p/5926821.html">10款优秀Vim插件帮你打造完美IDE</a></p>
 
@@ -738,6 +745,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -747,10 +758,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -798,10 +805,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
@@ -810,7 +813,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -822,11 +837,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -835,14 +850,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
