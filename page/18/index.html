@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-java/tomcat/java-tomcat-http-400" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-c_plus_plus_primer/tips/make/edit-makefile" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/java/tomcat/java-tomcat-http-400.html" class="article-date">
-		<time datetime="2019-05-16T15:45:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-16</time>
+	<a href="/c_plus_plus_primer/tips/make/edit-makefile.html" class="article-date">
+		<time datetime="2019-05-26T11:19:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-26</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/java/tomcat/java-tomcat-http-400.html">Invalid character found in the request target.The valid characters are defined in RFC 7230 and RFC3986</a>
+      <a class="article-title" href="/c_plus_plus_primer/tips/make/edit-makefile.html">c++的Makefile文件的编写</a>
     </h1>
   
 
@@ -186,9 +186,12 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>当在通过tomcat传递url时, 后台会报Invalid character found in the request target.The valid characters are defined in RFC 7230 and RFC3986。</p>
+        <h1 id="什么是Makefile"><a href="#什么是Makefile" class="headerlink" title="什么是Makefile"></a>什么是Makefile</h1><p>Makefile文件描述了整个工程的编译, 连接等规则。其中包括: 工程中的那些源文件需要编译以及如何编译, 需要创建那些库文件以及如何创建这些库文件, 如何最后产生可执行文件。为工程编写Makefile的好处是能够使用一行命令来完成自动化编译, 一旦提供正确的Makefile, 编译整个工程所要做的唯一的一件事就是在shell下输入make命令, 整个工程会根据Makefile文件自动编译。</p>
+<h1 id="编译与链接"><a href="#编译与链接" class="headerlink" title="编译与链接"></a>编译与链接</h1><p>C或C++, 首先要把源文件编译成中间代码文件, 在Windows下后缀名为.obj, UNIX下为.o, 即Object file, 这个工作叫做编译(compile), 然后再把大量的Object file合成可执行文件, 这个动作叫做链接。</p>
+<p>编译时, 编译器会检查语法, 函数与变量的声明, 对于后者, 通常需要指定头文件的所在位置, 一般来说, 每个源文件都应该对应一个中间目标文件(Object file)。</p>
+<p>链接时, 主要是连接函数和全局变量, 可以直接使用中间目标文件进行链接, 在大多数时候, 由于中间目标文件太多, 而在链接时需要指出中间目标文件名, 在编写Makefile时很不方便, 所以可以将中间目标文件打包, 在Windows下叫做”库文件”(.lib文件), 在UNIX下是”Archive File”(.a文件)。</p>
         
-          <a class="article-more-a" href="/java/tomcat/java-tomcat-http-400.html#more">more >></a>
+          <a class="article-more-a" href="/c_plus_plus_primer/tips/make/edit-makefile.html#more">more >></a>
         
       
 
@@ -202,7 +205,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">踩坑</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">makefile</a>
         		</li>
       		
 		</ul>
@@ -214,15 +221,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/pit//" class="article-tag-list-link color3">踩坑</a>
+        			<a href="/categories/C/C//" class="article-tag-list-link color1">C/C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/pit/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/C/C/C//" class="article-tag-list-link color4">C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/pit/Java/tomcat//" class="article-tag-list-link color2">tomcat</a>
+        			<a href="/categories/C/C/C/tips//" class="article-tag-list-link color3">积累</a>
         		</li>
       		
 		</ul>
@@ -256,11 +263,11 @@
 
 
   
-    <article id="post-java/javaBased/java-linux-mkdir" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java/spring/spring-family-meals/springboot-jpa-intruduction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/java/javaBased/java-linux-mkdir.html" class="article-date">
-		<time datetime="2019-05-16T15:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-16</time>
+	<a href="/java/spring/spring-family-meals/springboot-jpa-intruduction.html" class="article-date">
+		<time datetime="2019-05-21T12:18:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-21</time>
 	</a>
 </div>
   
@@ -270,7 +277,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/java/javaBased/java-linux-mkdir.html">java在linux系统上创建目录遇到的问题</a>
+      <a class="article-title" href="/java/spring/spring-family-meals/springboot-jpa-intruduction.html">springboot jpa</a>
     </h1>
   
 
@@ -286,9 +293,9 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>如何在linux系统中创建多级目录, 比如<code>/home/usr/programTools/test.sh</code>?</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天让我们来接触一下SpringBoot的JPA。</p>
         
-          <a class="article-more-a" href="/java/javaBased/java-linux-mkdir.html#more">more >></a>
+          <a class="article-more-a" href="/java/spring/spring-family-meals/springboot-jpa-intruduction.html#more">more >></a>
         
       
 
@@ -302,7 +309,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">踩坑</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
         		</li>
       		
 		</ul>
@@ -314,15 +325,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/pit//" class="article-tag-list-link color3">踩坑</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/pit/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/Java/spring//" class="article-tag-list-link color2">spring</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/pit/Java/linux//" class="article-tag-list-link color1">linux</a>
+        			<a href="/categories/Java/spring/learn//" class="article-tag-list-link color3">学习</a>
         		</li>
       		
 		</ul>
@@ -358,7 +369,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/17/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/53/">53</a><a class="extend next" rel="next" href="/page/19/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/17/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/19/">Next &raquo;</a>
     </nav>
   
 
@@ -480,6 +491,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitBook</a>
               </li>
              
@@ -489,10 +504,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,19 +523,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,7 +539,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dns</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dhcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,15 +571,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">io</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,15 +611,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,7 +635,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,6 +648,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,11 +679,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,23 +703,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">小知识点</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">软件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,6 +724,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ycm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">软件</a>
               </li>
              
               <li class="article-tag-list-item">

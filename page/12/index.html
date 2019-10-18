@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-linux/pit/linux-backspace" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-operation_system/linux/linux_ssh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/linux/pit/linux-backspace.html" class="article-date">
-		<time datetime="2019-06-02T07:36:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
+	<a href="/operation_system/linux/linux_ssh.html" class="article-date">
+		<time datetime="2019-06-21T11:17:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-21</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/linux/pit/linux-backspace.html">Linux关于backspace不好用的问题</a>
+      <a class="article-title" href="/operation_system/linux/linux_ssh.html">CentOS的ssh远程连接遇到的问题</a>
     </h1>
   
 
@@ -186,9 +186,9 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>当我在centos中使用vim编辑器时, 按下退格键(backspace)时, 并不能删掉字符。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前由于在我的surface book 2 上开虚拟机, 然后一直都是本地连接, 所以一直都没啥问题。后来因为我要在另一台电脑上搞点东西, 然后还用到了linux, 所以想着直接局域网下远程访问这台虚拟机应该也是没啥问题的吧, 但是也还是遇到了一些坑, 故此记录一下。</p>
         
-          <a class="article-more-a" href="/linux/pit/linux-backspace.html#more">more >></a>
+          <a class="article-more-a" href="/operation_system/linux/linux_ssh.html#more">more >></a>
         
       
 
@@ -202,7 +202,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">踩坑</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centos</a>
         		</li>
       		
 		</ul>
@@ -214,11 +222,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/pit//" class="article-tag-list-link color3">踩坑</a>
+        			<a href="/categories/computer-operation//" class="article-tag-list-link color5">操作系统</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/pit/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/computer-operation/linux//" class="article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -252,11 +260,11 @@
 
 
   
-    <article id="post-c_plus_plus_primer/tips/make/edit-makefile-one" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-c_plus_plus_primer/tips/make/edit-makefile-six" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/c_plus_plus_primer/tips/make/edit-makefile-one.html" class="article-date">
-		<time datetime="2019-06-02T00:16:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-02</time>
+	<a href="/c_plus_plus_primer/tips/make/edit-makefile-six.html" class="article-date">
+		<time datetime="2019-06-11T07:46:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-11</time>
 	</a>
 </div>
   
@@ -266,7 +274,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/c_plus_plus_primer/tips/make/edit-makefile-one.html">《跟我一起写makefile (一)》摘抄</a>
+      <a class="article-title" href="/c_plus_plus_primer/tips/make/edit-makefile-six.html">《跟我一起写Makefile (六)》摘抄</a>
     </h1>
   
 
@@ -282,9 +290,10 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前转载了一篇关于<a href="/c_plus_plus_primer/tips/make/edit-makefile.html">Makefile</a>的文章, 但是总感觉还是有一些东西没有搞明白, 偶然间看到了陈浩大神的专栏, 其中就有<a href="https://blog.csdn.net/haoel/article/details/2886">关于Makefile的一系列的文章</a>, 遂决定对这一系列的文章进行摘抄。</p>
+        <h1 id="书写命令"><a href="#书写命令" class="headerlink" title="书写命令"></a>书写命令</h1><p>&emsp;&emsp;每条规则中的命令和操作系统Shell的命令行是一致的。make 会按顺序一条条执行命令, 每条命令的开头必须以 Tab 键开头, 除非, 命令是紧跟在依赖规则后面的分好后的。在命令行之间的空格或是空行会被忽略, 但是如果该空格或空行是以 Tab 键开头的, 那么 make 会认为其是一个空命令。</p>
+<p>&emsp;&emsp;我们再 UNIX 下可能会使用不同的Shell, 但是 make 的命令默认是被 <code>/bin/sh</code> —— UNIX的标准Shell解释执行的。除非你特别指定一个其他的Shell。Makefile 中, <code>#</code> 是注释符, 很像 C/C++ 中的 “\“, 其后的本行字符都被注释。</p>
         
-          <a class="article-more-a" href="/c_plus_plus_primer/tips/make/edit-makefile-one.html#more">more >></a>
+          <a class="article-more-a" href="/c_plus_plus_primer/tips/make/edit-makefile-six.html#more">more >></a>
         
       
 
@@ -358,7 +367,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/53/">53</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
     </nav>
   
 
@@ -480,6 +489,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitBook</a>
               </li>
              
@@ -489,10 +502,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,19 +521,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,7 +537,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dns</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dhcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,15 +569,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">io</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,15 +609,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,7 +633,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,6 +646,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,11 +677,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,23 +701,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">小知识点</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">软件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,6 +722,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ycm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">软件</a>
               </li>
              
               <li class="article-tag-list-item">

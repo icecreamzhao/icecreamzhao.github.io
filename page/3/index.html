@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-java/fastdfs/fastdfs-java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-operation_and_maintenance/ngrok/enable-own-server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/java/fastdfs/fastdfs-java.html" class="article-date">
-		<time datetime="2019-07-25T09:37:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+	<a href="/operation_and_maintenance/ngrok/enable-own-server.html" class="article-date">
+		<time datetime="2019-09-22T09:02:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/java/fastdfs/fastdfs-java.html">fastDFS和java</a>
+      <a class="article-title" href="/operation_and_maintenance/ngrok/enable-own-server.html">开启属于自己的服务器</a>
     </h1>
   
 
@@ -186,9 +186,18 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近一直再用fastDFS, <a href="/java/fastdfs/nginx-fastdfs-config.html">上一篇</a>讲了fastDFS如何配置, 那么这一篇我们来讲一讲如何使用Java来上传和下载文件。</p>
+        <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>将 22 端口开放到外网, 可以远程连接自己的虚拟机或者服务器。</p>
+<h1 id="物料"><a href="#物料" class="headerlink" title="物料"></a>物料</h1><ul>
+<li>一台服务器(或者虚拟机, 或者树莓派等)</li>
+<li>ngrok 账号</li>
+</ul>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>ngrok 的账号可以去<a href="https://www.ngrok.cc/login/register">这里</a>注册。注册好之后, 找到隧道管理下的开通隧道, 选择最下面的香港 ngrok 免费服务器。</p>
+<p>如果开通服务器端口使用 ssh 连接的话, 那么请选择 tcp 协议; 如果想开通网站请选择 http 协议。</p>
+<blockquote>
+<p>注意, 如果选择 http 协议会有填写前置域名的选项。比如你想让你的域名看起来像这样: <code>blog.ngrok.cc</code>, 那么只需要填写 <code>blog</code> 就可以了。</p>
+</blockquote>
         
-          <a class="article-more-a" href="/java/fastdfs/fastdfs-java.html#more">more >></a>
+          <a class="article-more-a" href="/operation_and_maintenance/ngrok/enable-own-server.html#more">more >></a>
         
       
 
@@ -202,32 +211,13 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">fastdfs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ngrok</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java/fastdfs//" class="article-tag-list-link color3">fastdfs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java/fastdfs/develop//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -256,11 +246,11 @@
 
 
   
-    <article id="post-passwd_encode/sha256-java-js" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-web/dns-dhcp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/passwd_encode/sha256-java-js.html" class="article-date">
-		<time datetime="2019-07-24T08:54:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
+	<a href="/web/dns-dhcp.html" class="article-date">
+		<time datetime="2019-09-14T10:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-14</time>
 	</a>
 </div>
   
@@ -270,7 +260,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/passwd_encode/sha256-java-js.html">js和java自带sha密码加密</a>
+      <a class="article-title" href="/web/dns-dhcp.html">DNS 和 DHCP 的区别以及原理</a>
     </h1>
   
 
@@ -286,9 +276,9 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>用到了对数据库密码进行一个简单的加密的功能, 顺便总结一下。</p>
+        <p>DHCP 是一种能够将 ip 地址和 相关的 ip 信息分配给网络中计算机的协议; 而 DNS 技术可以将域名转换成 ip 地址。这都是为了确保计算机可以找到合适的站点。虽然上面一句话概括了 DNS 和 DHCP 的定义, 但是他们具体的工作原理是怎么样的? 它们又有什么区别? 下面将逐一介绍。</p>
         
-          <a class="article-more-a" href="/passwd_encode/sha256-java-js.html#more">more >></a>
+          <a class="article-more-a" href="/web/dns-dhcp.html#more">more >></a>
         
       
 
@@ -302,7 +292,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">加密</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dns</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">dhcp</a>
         		</li>
       		
 		</ul>
@@ -314,7 +312,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/encode//" class="article-tag-list-link color3">加密</a>
+        			<a href="/categories/operation-and-maintenance//" class="article-tag-list-link color3">运维</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/operation-and-maintenance/net//" class="article-tag-list-link color4">net</a>
         		</li>
       		
 		</ul>
@@ -350,7 +352,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/53/">53</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -472,6 +474,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitBook</a>
               </li>
              
@@ -481,10 +487,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,19 +506,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,7 +522,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dns</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dhcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,15 +554,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">io</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,15 +594,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,7 +618,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,6 +631,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,11 +662,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,23 +686,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">小知识点</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">软件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -689,6 +707,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ycm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">软件</a>
               </li>
              
               <li class="article-tag-list-item">
