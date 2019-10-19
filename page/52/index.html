@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-service-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html" class="article-date">
-		<time datetime="2018-11-26T11:39:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+	<a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-service-config.html" class="article-date">
+		<time datetime="2018-11-26T11:46:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html">商城开发笔记-web依赖</a>
+      <a class="article-title" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-service-config.html">商城开发笔记-service的配置</a>
     </h1>
   
 
@@ -186,14 +186,9 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="web的依赖"><a href="#web的依赖" class="headerlink" title="web的依赖"></a>web的依赖</h1><p>不同于其他的工程, 它的打包方式是web工程的打包方式, 所以应该是:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<p>由于是表现层, 所以依赖中应该包括SpringMVC, 下面是它的所有依赖:</p>
+        <h1 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h1><p>如果把配置写到xml配置文件中会显得很乱, 而且不好改, 如果有多个数据库的话, 会非常不方便, 那么可以单独写到一个配置文件中, 这样如果有多个数据库配置的话, 就可以直接切换配置文件了。</p>
         
-          <a class="article-more-a" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html#more">more >></a>
+          <a class="article-more-a" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-service-config.html#more">more >></a>
         
       
 
@@ -261,11 +256,11 @@
 
 
   
-    <article id="post-my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html" class="article-date">
-		<time datetime="2018-11-21T11:37:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-21</time>
+	<a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html" class="article-date">
+		<time datetime="2018-11-26T11:39:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
 	</a>
 </div>
   
@@ -275,7 +270,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html">商城开发笔记-pojo,dao,interface,service的依赖</a>
+      <a class="article-title" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html">商城开发笔记-web依赖</a>
     </h1>
   
 
@@ -291,12 +286,14 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="pojo的依赖"><a href="#pojo的依赖" class="headerlink" title="pojo的依赖"></a>pojo的依赖</h1><p>pojo是用来存放实体类的工程, 它什么依赖也不需要, 只需要将打包方式改成jar就可以。</p>
+        <h1 id="web的依赖"><a href="#web的依赖" class="headerlink" title="web的依赖"></a>web的依赖</h1><p>不同于其他的工程, 它的打包方式是web工程的打包方式, 所以应该是:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <br>
 
-<h1 id="dao的依赖"><a href="#dao的依赖" class="headerlink" title="dao的依赖"></a>dao的依赖</h1><p>他的打包方式同样是jar, 而且因为和数据库打交道, 所以需要将mybatis的依赖添加进来</p>
+<p>由于是表现层, 所以依赖中应该包括SpringMVC, 下面是它的所有依赖:</p>
         
-          <a class="article-more-a" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html#more">more >></a>
+          <a class="article-more-a" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html#more">more >></a>
         
       
 
@@ -488,7 +485,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,6 +498,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,19 +521,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,6 +530,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,11 +561,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,11 +573,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
+                <a href="javascript:void(0)" class="js-tag color3">io</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">io</a>
+                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,15 +613,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,11 +637,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,10 +650,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,15 +677,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,15 +697,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">小知识点</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">软件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -721,14 +726,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ycm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">软件</a>
               </li>
              
               <li class="article-tag-list-item">
