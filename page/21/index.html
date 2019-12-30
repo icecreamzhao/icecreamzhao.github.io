@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-java/spring/spring-family-meals/springboot-datasource-introduction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-c_plus_plus/tips/make/edit-makefile-three" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/java/spring/spring-family-meals/springboot-datasource-introduction.html" class="article-date">
-		<time datetime="2019-05-19T09:46:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-19</time>
+	<a href="/c_plus_plus/tips/make/edit-makefile-three.html" class="article-date">
+		<time datetime="2019-06-03T05:36:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/java/spring/spring-family-meals/springboot-datasource-introduction.html">连接池介绍</a>
+      <a class="article-title" href="/c_plus_plus/tips/make/edit-makefile-three.html">《跟我一起写makefile (三)》摘抄</a>
     </h1>
   
 
@@ -186,14 +186,17 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本编博客介绍了两个SpringBoot的数据源。</p>
-<p>SpringBoot各个版本使用的数据源:</p>
-<ul>
-<li>1.0 使用的是tomcat的dataSource</li>
-<li>2.0 使用的是HikariCP</li>
-</ul>
+        <h1 id="Makefile-总述"><a href="#Makefile-总述" class="headerlink" title="Makefile 总述"></a>Makefile 总述</h1><h2 id="一、Makefile-里有什么"><a href="#一、Makefile-里有什么" class="headerlink" title="一、Makefile 里有什么?"></a>一、Makefile 里有什么?</h2><p>Makefile 里主要包含了五个东西, 显式规则, 隐式规则, 变量定义, 文件指示和注释。</p>
+<ol>
+<li>显式规则。显式规则说明了, 如何生成一个或多个目标文件。这是由 Makefile 的书写者明显指出, 要生成的文件, 文件的依赖文件, 生成的命令。</li>
+<li>隐式规则。由于我们的 make 有自动推导功能, 所以隐式的规则可以让我们比较粗糙地简略地书写 Makefile, 这是由 make 所支持的。</li>
+<li>变量的定义。在 Makefile 中我们要定义一系列的变量, 变量一般都是字符串, 这个有点像 C 的宏, 当 Makefile 被执行时, 其中的变量都会被扩展到相应的引用位置上。</li>
+<li>文件指示。其中包括了三个部分, 一个是在一个 Makefile 中引用另一个 Makefile, 就像 C 的 include 一样; 另一个是指根据某些情况指定 Makefile 中的有效部分, 就像 C 的 <code>#if</code> 一样; 还有就是定义一个多行的命令。</li>
+<li>注释。Makefile 中只有行注释, 和 UNIX 的 shell 脚本一样, 其注释用 <code>#</code> 字符, 如果想要在 Makefile 中使用这个字符, 可以: <code>\#</code>。</li>
+</ol>
+<p>最后值得一提的是, 在 Makefile 中的命令, 必须以 tab 键开头。</p>
         
-          <a class="article-more-a" href="/java/spring/spring-family-meals/springboot-datasource-introduction.html#more">more >></a>
+          <a class="article-more-a" href="/c_plus_plus/tips/make/edit-makefile-three.html#more">more >></a>
         
       
 
@@ -207,11 +210,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">makefile</a>
         		</li>
       		
 		</ul>
@@ -223,15 +226,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/C/C//" class="article-tag-list-link color1">C/C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java/spring//" class="article-tag-list-link color2">spring</a>
+        			<a href="/categories/C/C/C//" class="article-tag-list-link color4">C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java/spring/learn//" class="article-tag-list-link color3">学习</a>
+        			<a href="/categories/C/C/C/tips//" class="article-tag-list-link color3">积累</a>
         		</li>
       		
 		</ul>
@@ -265,11 +268,11 @@
 
 
   
-    <article id="post-java/spring/spring-family-meals/springboot-datasource-multi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-c_plus_plus/tips/make/edit-makefile-two" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/java/spring/spring-family-meals/springboot-datasource-multi.html" class="article-date">
-		<time datetime="2019-05-19T09:05:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-19</time>
+	<a href="/c_plus_plus/tips/make/edit-makefile-two.html" class="article-date">
+		<time datetime="2019-06-03T01:26:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
 	</a>
 </div>
   
@@ -279,7 +282,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/java/spring/spring-family-meals/springboot-datasource-multi.html">springboot配置多数据源</a>
+      <a class="article-title" href="/c_plus_plus/tips/make/edit-makefile-two.html">《跟我一起写makefile (二)》摘抄</a>
     </h1>
   
 
@@ -295,9 +298,16 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="/java/spring/spring-family-meals/springboot-datasource-single.html">上一篇</a>博客讨论了如何配置单数据源, 这一篇博客接着讨论如何配置多数据源。</p>
+        <h1 id="三、make是如何工作的"><a href="#三、make是如何工作的" class="headerlink" title="三、make是如何工作的"></a>三、make是如何工作的</h1><p>在默认的方式下, 也就是我们只输入 make 命令。那么,</p>
+<ol>
+<li>make 会在当前目录下找名字叫”Makefile” 或 “makefile”的文件</li>
+<li>如果找到, 它会找文件中的第一个目标文件(target), 在上面的例子中, 他会找到”edit”这个文件, 并把这个文件作为最终的目标文件。</li>
+<li>如果 edit 文件不存在, 或是 edit 所依赖的后面的 <code>.o</code> 文件的文件修改时间要比 edit 这个文件新, 那么, 他就会执行后面所定义的命令来生成 edit 文件。</li>
+<li>如果 edit 所依赖的 <code>.o</code> 文件也存在, 那么 make 命令会在当前文件中找目标为 <code>.o</code> 文件的依赖性, 如果找到则在根据那个规则生成 <code>.o</code> 文件。(有点像堆栈的过程)</li>
+<li>当然, 你的 C (或 cpp )文件和 H 文件是存在的啦, 于是 make 会生成 <code>.o</code> 文件, 然后再用 <code>.o</code> 文件声明 make 的终极任务, 也就是执行文件 edit 了。</li>
+</ol>
         
-          <a class="article-more-a" href="/java/spring/spring-family-meals/springboot-datasource-multi.html#more">more >></a>
+          <a class="article-more-a" href="/c_plus_plus/tips/make/edit-makefile-two.html#more">more >></a>
         
       
 
@@ -311,11 +321,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">makefile</a>
         		</li>
       		
 		</ul>
@@ -327,15 +337,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/C/C//" class="article-tag-list-link color1">C/C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java/spring//" class="article-tag-list-link color2">spring</a>
+        			<a href="/categories/C/C/C//" class="article-tag-list-link color4">C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java/spring/learn//" class="article-tag-list-link color3">学习</a>
+        			<a href="/categories/C/C/C/tips//" class="article-tag-list-link color3">积累</a>
         		</li>
       		
 		</ul>
@@ -371,7 +381,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/20/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/22/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/20/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/22/">Next &raquo;</a>
     </nav>
   
 
@@ -477,11 +487,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">想法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">启发</a>
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,6 +503,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitBook</a>
               </li>
              
@@ -506,10 +516,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,10 +535,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
               </li>
              
@@ -546,6 +548,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">想法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">启发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,7 +587,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color1">cocos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,15 +603,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,11 +631,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,10 +656,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -649,10 +675,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
@@ -661,7 +683,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,6 +712,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,10 +748,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
               <li class="article-tag-list-item">

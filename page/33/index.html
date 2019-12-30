@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-my_project/shopping_mall/crud/Shopping-mall-developNote-list" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-js/miniProgram/first-step" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/my_project/shopping_mall/crud/Shopping-mall-developNote-list.html" class="article-date">
-		<time datetime="2019-02-25T12:18:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-25</time>
+	<a href="/js/miniProgram/first-step.html" class="article-date">
+		<time datetime="2019-03-24T01:02:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-24</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/my_project/shopping_mall/crud/Shopping-mall-developNote-list.html">商城开发笔记-首个功能：商品列表</a>
+      <a class="article-title" href="/js/miniProgram/first-step.html">微信小程序的目录结构以及各个文件的用处</a>
     </h1>
   
 
@@ -186,20 +186,10 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>哇, 真的不容易, 搞了这么久, 终于到了正式开发的阶段了。那么我们商城的首个功能是将所有的商品做一个列表展示, 当然是有分页的。那么开始吧。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
-<li>首先将页面写好, 将要填入的数据留出</li>
-<li>将dao, service, controller写好</li>
-<li>大功告成</li>
-</ul>
-<h1 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h1><p>再次说明一下, 我们这个项目采用的是vue作为前端, 样式框架采用的是inspinia。</p>
-<h2 id="在vue中配置jQuery"><a href="#在vue中配置jQuery" class="headerlink" title="在vue中配置jQuery"></a>在vue中配置jQuery</h2><h3 id="安装jQuery"><a href="#安装jQuery" class="headerlink" title="安装jQuery"></a>安装jQuery</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jquery --save</span><br></pre></td></tr></table></figure>
-
-<h3 id="为jQuery和vue添加自定义指令"><a href="#为jQuery和vue添加自定义指令" class="headerlink" title="为jQuery和vue添加自定义指令"></a>为jQuery和vue添加自定义指令</h3><p>webpack中可以配置自定义指令, 这样在我们引入依赖时就可以使用指令而不是确切的路径了。</p>
-<p>在<code>build/webpack.bash.conf</code>文件中添加:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">resolve: &#123;</span><br><span class="line">  extensions: ['', '.js', '.vue'],</span><br><span class="line">  fallback: [path.join(__dirname, '../node_modules')],</span><br><span class="line">  alias: &#123;</span><br><span class="line">    'src': path.resolve(__dirname, '../src'),</span><br><span class="line">    'assets': path.resolve(__dirname, '../src/assets'),</span><br><span class="line">    'components': path.resolve(__dirname, '../src/components'),</span><br><span class="line">    'jquery': path.resolve(__dirname, '../node_modules/jquery/src/jquery'),</span><br><span class="line">    'directives': path.resolve('../src/directives')</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-
+        <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本篇博客介绍了微信小程序的目录结构以及各个文件的作用。</p>
+        
+          <a class="article-more-a" href="/js/miniProgram/first-step.html#more">more >></a>
+        
       
 
       
@@ -212,7 +202,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微信小程序</a>
         		</li>
       		
 		</ul>
@@ -224,15 +214,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/develop-note//" class="article-tag-list-link color5">开发笔记</a>
+        			<a href="/categories/js//" class="article-tag-list-link color3">js</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/develop-note/shopping-mall//" class="article-tag-list-link color3">商城</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/develop-note/shopping-mall/function//" class="article-tag-list-link color4">功能篇</a>
+        			<a href="/categories/js/miniProgram//" class="article-tag-list-link color1">微信小程序</a>
         		</li>
       		
 		</ul>
@@ -266,11 +252,11 @@
 
 
   
-    <article id="post-linux/virtual_machine/vmware-share-folder" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java/mq/rocketMQ/first-step" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/linux/virtual_machine/vmware-share-folder.html" class="article-date">
-		<time datetime="2019-02-24T15:59:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
+	<a href="/java/mq/rocketMQ/first-step.html" class="article-date">
+		<time datetime="2019-03-21T03:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-21</time>
 	</a>
 </div>
   
@@ -280,7 +266,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/linux/virtual_machine/vmware-share-folder.html">使用VMware虚拟机CentOS操作系统遇到的共享文件夹的问题</a>
+      <a class="article-title" href="/java/mq/rocketMQ/first-step.html">rocketMQ的安装与配置</a>
     </h1>
   
 
@@ -296,10 +282,29 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我在使用Vmware时, 遇到了想和物理主机互传文件的问题, 所以就有了此篇文章。</p>
-        
-          <a class="article-more-a" href="/linux/virtual_machine/vmware-share-folder.html#more">more >></a>
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>因工作需要实现待办事项功能, 所以接触到了mq, 并将安装和配置的过程记录下来。</p>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p><a href="http://rocketmq.apache.org/">官网</a><br>这里是它的<a href="http://rocketmq.apache.org/release_notes/release-notes-4.4.0/">下载地址</a></p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>不得不说一句, 它的配置是真的坑, 搞了好长时间才弄明白怎么回事, 相关文档也比较少。</p>
+<h2 id="修改jvm内存大小"><a href="#修改jvm内存大小" class="headerlink" title="修改jvm内存大小"></a>修改jvm内存大小</h2><p>如果你下载好之后, 直接使用 <code>sh mqnamesrv &amp;</code> 命令启动的话, 那么八成会遇到jvm内存不足的错误提示。</p>
+<p>这里需要先修改 <code>bin/runserver.sh</code>, <code>bin/runbroker.sh</code>和<code>bin/tools.sh</code> 文件:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> JVM configuration 的第一句话</span></span><br><span class="line">JAVA_OPT="$&#123;JAVA_OPT&#125; -server -Xms4g -Xmx4g -Xmn2g -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m"</span><br></pre></td></tr></table></figure>
+
+<p>这里修改为适合自己电脑的内存大小。</p>
+<h2 id="修改broker默认启动内网的地址"><a href="#修改broker默认启动内网的地址" class="headerlink" title="修改broker默认启动内网的地址"></a>修改broker默认启动内网的地址</h2><p>其实到上面那一步就可以正常的启动了, 但是我在将rocketMQ配置到腾讯云并启动之后, 他就会报:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">"main"</span> org.apache.rocketmq.remoting.exception.RemotingTooMuchRequestException: sendDefaultImpl call timeout</span><br><span class="line">at org.apache.rocketmq.client.impl.producer.DefaultMQProducerImpl.sendDefaultImpl(DefaultMQProducerImpl.java:<span class="number">634</span>)</span><br><span class="line">	at org.apache.rocketmq.client.impl.producer.DefaultMQProducerImpl.send(DefaultMQProducerImpl.java:<span class="number">1279</span>)</span><br><span class="line">	at org.apache.rocketmq.client.impl.producer.DefaultMQProducerImpl.send(DefaultMQProducerImpl.java:<span class="number">1225</span>)</span><br><span class="line">	at org.apache.rocketmq.client.producer.DefaultMQProducer.send(DefaultMQProducer.java:<span class="number">283</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在启动broker时会有broker的启动的地址, 启动时会有这样的提示:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The broker[broker-a, 127.0.0.1:10911] boot success. serializeType=JSON and name server is 127.0.0.1:9876</span><br></pre></td></tr></table></figure>
+
+<p>但是我们如果远程连接broker的话, 是不能直接使用内网地址来访问的, 所以这里就需要修改一下 <code>conf/broker.conf</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在文件最后添加:</span></span><br><span class="line">brokerIP1 = 你的外网地址</span><br></pre></td></tr></table></figure>
+
+<p>然后在启动broker的时候可以这么写:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh mqbroker -n 127.0.0.1:9876 autoCreateTopicEnable=true -c ../conf/broker.conf</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以正常的使用了。</p>
+<p><a href="https://blog.csdn.net/gwd1154978352/article/details/80829534">这里</a>是它的一些常用命令。</p>
+
       
 
       
@@ -312,11 +317,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">虚拟机</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mq</a>
         		</li>
       		
 		</ul>
@@ -328,11 +333,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/virual-machine//" class="article-tag-list-link color4">虚拟机</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/virual-machine/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/Java/tools//" class="article-tag-list-link color1">tools</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java/tools/mq//" class="article-tag-list-link color3">mq</a>
         		</li>
       		
 		</ul>
@@ -368,7 +377,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/32/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/34/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/32/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/34/">Next &raquo;</a>
     </nav>
   
 
@@ -474,11 +483,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">想法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">启发</a>
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,6 +499,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitBook</a>
               </li>
              
@@ -503,10 +512,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,10 +531,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
               </li>
              
@@ -543,6 +544,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">想法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">启发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,7 +583,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color1">cocos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,15 +599,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,11 +627,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,10 +652,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,10 +671,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
@@ -658,7 +679,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,6 +708,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -703,10 +744,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
               <li class="article-tag-list-item">

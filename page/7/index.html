@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-js/miniProgram/some-skills" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-database/mysql-master-slave-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/js/miniProgram/some-skills.html" class="article-date">
-		<time datetime="2019-08-01T05:18:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
+	<a href="/database/mysql-master-slave-error.html" class="article-date">
+		<time datetime="2019-10-16T18:44:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-17</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/js/miniProgram/some-skills.html">微信小程序的一些技巧</a>
+      <a class="article-title" href="/database/mysql-master-slave-error.html">mysql 主从数据库遇到的问题和解决方案</a>
     </h1>
   
 
@@ -186,18 +186,30 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近工作上遇到了关于一些微信小程序开发的业务, 今天把遇到的问题总结一下。</p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li>小程序设置tabbar选中颜色</li>
-<li>将溢出的文本用省略号代替</li>
-<li>特定区域滚动到顶部时固定</li>
-<li>微信小程序select下拉框实现</li>
-<li>wx.navigateBack() 携带参数返回</li>
-<li>微信小程序 选择器picker的使用</li>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>配置主从数据库请查看<a href="/database/mysql-master-slave.html">mysql 配置主从数据库</a>。</p>
+<p>配置了之后遇到了一些问题, 具体表现为 <code>Slave_IO_Running</code> 和 <code>Slave_SQL_Running</code> 不是 yes。</p>
+<h1 id="排查思路"><a href="#排查思路" class="headerlink" title="排查思路"></a>排查思路</h1><p>首先使用 <code>show slave status\G</code> 命令查看 Last_Error, Last_IO_Error 和 Last_SQL_Error 三个项对应的值, 根据错误信息来具体解决。</p>
+<p>如果不能通过以上三个项来确定原因, 那么可以通过查看 Master_Log_File 项对应的值确定日志文件, 然后进入 bin 目录下, 使用 mysqlbinlog.exe 你的日志目录 -v &gt; test.txt 来解析 mysql 的日志。</p>
+<h2 id="遇到的一些具体的问题"><a href="#遇到的一些具体的问题" class="headerlink" title="遇到的一些具体的问题"></a>遇到的一些具体的问题</h2><ul>
+<li>error connecting to master ‘user@localhost:3306’</li>
 </ul>
-        
-          <a class="article-more-a" href="/js/miniProgram/some-skills.html#more">more >></a>
-        
+<p>这里首先到主库中, 使用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;</span><br><span class="line"><span class="keyword">select</span> Host, <span class="keyword">User</span> <span class="keyword">from</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
+
+<p>来查看你的用户对应的Host是否是locahost, 然后使用用户名和密码登录一下主库检查密码是否错误。</p>
+<p>如果还不行, 那就等 1 分钟之后, 他就会报别的错误。<del>我的就是这样。</del></p>
+<ul>
+<li>COULD NOT FIND FIRST LOG FILE NAME IN BINARY LOG INDEX FILE</li>
+</ul>
+<p>这里应该是从库在读主库的日志的时候出了问题, 解决办法是:</p>
+<ol>
+<li>先停止主从服务: <code>stop slave;</code></li>
+<li>在主库中使用 <code>flush logs</code> 来刷新日志;</li>
+<li>在主库中使用 <code>show master status;</code> 命令来查看日志文件名和日志号;</li>
+<li>到从库中执行 <code>CHANGE MASTER TO MASTER_LOG_FILE=&#39;刚才查看的日志文件名&#39;,MASTER_LOG_POS=刚才查看的日志文件号;</code></li>
+<li>执行 <code>start slave; show slave status\G</code></li>
+</ol>
+
       
 
       
@@ -210,7 +222,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微信小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -222,11 +234,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/js//" class="article-tag-list-link color3">js</a>
+        			<a href="/categories/database//" class="article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/js/miniProgram//" class="article-tag-list-link color1">微信小程序</a>
+        			<a href="/categories/database/mysql//" class="article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -260,11 +272,11 @@
 
 
   
-    <article id="post-java/fastdfs/fastdfs-java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-linux/tools/create-linux-service" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/java/fastdfs/fastdfs-java.html" class="article-date">
-		<time datetime="2019-07-25T09:37:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+	<a href="/linux/tools/create-linux-service.html" class="article-date">
+		<time datetime="2019-09-26T07:11:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
 	</a>
 </div>
   
@@ -274,7 +286,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/java/fastdfs/fastdfs-java.html">fastDFS和java</a>
+      <a class="article-title" href="/linux/tools/create-linux-service.html">创建你自己的linux服务</a>
     </h1>
   
 
@@ -290,10 +302,18 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近一直再用fastDFS, <a href="/java/fastdfs/nginx-fastdfs-config.html">上一篇</a>讲了fastDFS如何配置, 那么这一篇我们来讲一讲如何使用Java来上传和下载文件。</p>
-        
-          <a class="article-more-a" href="/java/fastdfs/fastdfs-java.html#more">more >></a>
-        
+        <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>使用 systemd 来创建类似于 windows 中的服务。</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ul>
+<li>编写需要执行的脚本</li>
+<li>编写服务的脚本</li>
+<li>开启服务</li>
+</ul>
+<h2 id="编写服务脚本"><a href="#编写服务脚本" class="headerlink" title="编写服务脚本"></a>编写服务脚本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/lib/systemd/system/你的服务名字.service</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 下面是脚本内容</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line"><span class="meta">#</span> 服务介绍</span><br><span class="line">Description=enable some service</span><br><span class="line">After=network.target</span><br><span class="line"><span class="meta">#</span> 声明可执行脚本</span><br><span class="line">ConditionFileIsExecutable=/home/littleboy/tools/ngrok/startNgrok.sh</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line"><span class="meta">#</span> 如果执行失败则重新执行</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5</span><br><span class="line"><span class="meta">#</span> 自动执行脚本</span><br><span class="line">ExecStart=/home/littleboy/tools/ngrok/startNgrok.sh --background</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<h2 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reaload</span><br><span class="line">sudo systemctl enable sunny.service</span><br><span class="line">sudo systemctl start sunny.service</span><br></pre></td></tr></table></figure>
+
+<h1 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h1><p><a href="https://github.com/systemd/systemd">systemd 的github地址</a></p>
+
       
 
       
@@ -301,32 +321,17 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">fastdfs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/computer-operation//" class="article-tag-list-link color5">操作系统</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java/fastdfs//" class="article-tag-list-link color3">fastdfs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java/fastdfs/develop//" class="article-tag-list-link color3">开发</a>
+        			<a href="/categories/computer-operation/linux//" class="article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -362,7 +367,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
     </nav>
   
 
@@ -468,11 +473,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">想法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">启发</a>
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,6 +489,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitBook</a>
               </li>
              
@@ -497,10 +502,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,10 +521,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
               </li>
              
@@ -537,6 +534,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">想法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">启发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,7 +573,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color1">cocos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,15 +589,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,11 +617,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,10 +642,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,10 +661,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
@@ -652,7 +669,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,6 +698,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,10 +734,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
               <li class="article-tag-list-item">

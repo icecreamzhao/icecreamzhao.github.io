@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-hexo/modify-new-post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-operation_system/linux/linux_ssh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/hexo/modify-new-post.html" class="article-date">
-		<time datetime="2019-05-27T17:09:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-28</time>
+	<a href="/operation_system/linux/linux_ssh.html" class="article-date">
+		<time datetime="2019-06-21T11:17:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-21</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/hexo/modify-new-post.html">记一次修改hexo新建文件的方式</a>
+      <a class="article-title" href="/operation_system/linux/linux_ssh.html">CentOS的ssh远程连接遇到的问题</a>
     </h1>
   
 
@@ -186,9 +186,9 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>众所周知, 使用hexo新建一篇博客的命令是 <code>hexo new &quot;博客名&quot;</code>, 新建的博客文件会被放到 <code>source/_posts</code> 下, 然后我尝试了一下直接加入目录, 比如: <code>hexo new &quot;目录/博客&quot;</code>, 发现hexo会自动将 <code>/</code> 符号替换成 <code>-</code>, 我打算改回来。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前由于在我的surface book 2 上开虚拟机, 然后一直都是本地连接, 所以一直都没啥问题。后来因为我要在另一台电脑上搞点东西, 然后还用到了linux, 所以想着直接局域网下远程访问这台虚拟机应该也是没啥问题的吧, 但是也还是遇到了一些坑, 故此记录一下。</p>
         
-          <a class="article-more-a" href="/hexo/modify-new-post.html#more">more >></a>
+          <a class="article-more-a" href="/operation_system/linux/linux_ssh.html#more">more >></a>
         
       
 
@@ -202,7 +202,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centos</a>
         		</li>
       		
 		</ul>
@@ -214,11 +222,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/hexo//" class="article-tag-list-link color5">hexo</a>
+        			<a href="/categories/computer-operation//" class="article-tag-list-link color5">操作系统</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/hexo/modify//" class="article-tag-list-link color3">魔改</a>
+        			<a href="/categories/computer-operation/linux//" class="article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -252,11 +260,11 @@
 
 
   
-    <article id="post-c_plus_plus_primer/tips/make/edit-makefile" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-c_plus_plus/tips/make/edit-makefile-six" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/c_plus_plus_primer/tips/make/edit-makefile.html" class="article-date">
-		<time datetime="2019-05-26T11:19:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-26</time>
+	<a href="/c_plus_plus/tips/make/edit-makefile-six.html" class="article-date">
+		<time datetime="2019-06-11T07:46:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-11</time>
 	</a>
 </div>
   
@@ -266,7 +274,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/c_plus_plus_primer/tips/make/edit-makefile.html">c++的Makefile文件的编写</a>
+      <a class="article-title" href="/c_plus_plus/tips/make/edit-makefile-six.html">《跟我一起写Makefile (六)》摘抄</a>
     </h1>
   
 
@@ -282,12 +290,10 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="什么是Makefile"><a href="#什么是Makefile" class="headerlink" title="什么是Makefile"></a>什么是Makefile</h1><p>Makefile文件描述了整个工程的编译, 连接等规则。其中包括: 工程中的那些源文件需要编译以及如何编译, 需要创建那些库文件以及如何创建这些库文件, 如何最后产生可执行文件。为工程编写Makefile的好处是能够使用一行命令来完成自动化编译, 一旦提供正确的Makefile, 编译整个工程所要做的唯一的一件事就是在shell下输入make命令, 整个工程会根据Makefile文件自动编译。</p>
-<h1 id="编译与链接"><a href="#编译与链接" class="headerlink" title="编译与链接"></a>编译与链接</h1><p>C或C++, 首先要把源文件编译成中间代码文件, 在Windows下后缀名为.obj, UNIX下为.o, 即Object file, 这个工作叫做编译(compile), 然后再把大量的Object file合成可执行文件, 这个动作叫做链接。</p>
-<p>编译时, 编译器会检查语法, 函数与变量的声明, 对于后者, 通常需要指定头文件的所在位置, 一般来说, 每个源文件都应该对应一个中间目标文件(Object file)。</p>
-<p>链接时, 主要是连接函数和全局变量, 可以直接使用中间目标文件进行链接, 在大多数时候, 由于中间目标文件太多, 而在链接时需要指出中间目标文件名, 在编写Makefile时很不方便, 所以可以将中间目标文件打包, 在Windows下叫做”库文件”(.lib文件), 在UNIX下是”Archive File”(.a文件)。</p>
+        <h1 id="书写命令"><a href="#书写命令" class="headerlink" title="书写命令"></a>书写命令</h1><p>&emsp;&emsp;每条规则中的命令和操作系统Shell的命令行是一致的。make 会按顺序一条条执行命令, 每条命令的开头必须以 Tab 键开头, 除非, 命令是紧跟在依赖规则后面的分好后的。在命令行之间的空格或是空行会被忽略, 但是如果该空格或空行是以 Tab 键开头的, 那么 make 会认为其是一个空命令。</p>
+<p>&emsp;&emsp;我们再 UNIX 下可能会使用不同的Shell, 但是 make 的命令默认是被 <code>/bin/sh</code> —— UNIX的标准Shell解释执行的。除非你特别指定一个其他的Shell。Makefile 中, <code>#</code> 是注释符, 很像 C/C++ 中的 “\“, 其后的本行字符都被注释。</p>
         
-          <a class="article-more-a" href="/c_plus_plus_primer/tips/make/edit-makefile.html#more">more >></a>
+          <a class="article-more-a" href="/c_plus_plus/tips/make/edit-makefile-six.html#more">more >></a>
         
       
 
@@ -361,7 +367,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/17/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/19/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/17/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/19/">Next &raquo;</a>
     </nav>
   
 
@@ -467,11 +473,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">想法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">启发</a>
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,6 +489,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitBook</a>
               </li>
              
@@ -496,10 +502,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -519,10 +521,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
               </li>
              
@@ -536,6 +534,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">想法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">启发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,7 +573,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color1">cocos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,15 +589,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,11 +617,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,10 +642,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,10 +661,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
@@ -651,7 +669,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,6 +698,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,10 +734,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
               <li class="article-tag-list-item">

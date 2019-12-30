@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-php/apache2-4-php7-3-open-pit" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-read-note/web-site-framework/auto-deploy-hot-update" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/php/apache2-4-php7-3-open-pit.html" class="article-date">
-		<time datetime="2019-09-23T01:23:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
+	<a href="/read-note/web-site-framework/auto-deploy-hot-update.html" class="article-date">
+		<time datetime="2019-12-14T08:23:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-14</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/php/apache2-4-php7-3-open-pit.html">记一次 apache 2.4 启动的坑</a>
+      <a class="article-title" href="/read-note/web-site-framework/auto-deploy-hot-update.html">读《大型网站技术架构》笔记 - 自动化发布及运维</a>
     </h1>
   
 
@@ -186,10 +186,11 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>事情是这样的, 接了一个小活, 用的是 thinkphp, 服务器用的 apache。再把他的网站源码 down 下来放到 apache 的 htdocs 上之后启动, 非常给面子的数据库连接出错, 说是找不到驱动(can not find driver)。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>看到这个问题我马上用 <code>phpinfo()</code> 测试了一下, 看到了 <code>pdo supports</code> 那里赫然是 <code>no value</code>。不过冰雪聪明的我一下子就想到了是 <code>php.ini</code> 的问题。所以还在本页面搜索了一下 <code>extension_dir</code>, 这个是 php 用来指定扩展的路径。一看还是默认值: <code>C:/php/ext</code>, 虽然很久没碰过我电脑里的 php了, 但是我还清楚的记得我配置的扩展路径绝对不是它! 然后我又看了一下 <code>Loaded Configuration File</code> 的值, 居然是空! 我有点懵, 然后跑去 apache24/conf/httpd.conf 那里看了一眼配置, 居然是一个不存在的路径! 然后我改回了之后, 信心慢慢的重启 apache 的服务, 居然失败了! 天! 我彻底懵了, 颤抖着手将路径随便改成了一个不存在的路径, 启动, 成功了…</p>
-<p>行吧, 看来问题在 php.ini身上, 幸好我还有以前没有修改过的配置备份。换成新的配置文件之后果然就可以启动了。那么我想, 问题肯定就出在我加载的那几个扩展上了, 索性一个一个的试, 果然有几个扩展加了之后就启动不了, 暂时还没找到解决办法, 还是先干活吧! </p>
-
+        <h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄:"></a>摘抄:</h1><p>在无人值守的情况下, 一切都可以自动化是网站的理想状态。目前大型网站的自动化架构设计主要集中在发布运维方面。</p>
+<p>发布对于网站来说是头等大事, 许多网站故障出在发布环节, 网站工程师经常加班也是因为发布不顺利。通过减少人为干预, 使发布过程自动化可有效减少故障。发布过程包括诸多环节。自动化代码管理, 代码版本控制, 代码分支创建合并等过程自动化, 开发工程师只要提交自己参与开发的产品代号, 系统就会自动为其创建开发分支。后期会自动进行代码合并。自动化测试, 代码开发完成, 提交测试后, 系统自动将代码部署到测试环境, 启动自动化测试用例进行测试, 向相关人员发送测试报告, 像系统反馈测试结果。自动化安全检测, 安全检测工具通过对代码进行静态安全扫描及部署到安全测试环境进行安全测试, 评估其安全性。最后进行自动化部署, 将工程代码自动部署到线上生产环境。</p>
+        
+          <a class="article-more-a" href="/read-note/web-site-framework/auto-deploy-hot-update.html#more">more >></a>
+        
       
 
       
@@ -202,11 +203,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">踩坑</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
         		</li>
       		
 		</ul>
@@ -218,7 +215,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/php//" class="article-tag-list-link color4">php</a>
+        			<a href="/categories/reading-note//" class="article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/reading-note/大型网站技术架构//" class="article-tag-list-link color4">大型网站技术架构</a>
         		</li>
       		
 		</ul>
@@ -252,11 +253,11 @@
 
 
   
-    <article id="post-operation_and_maintenance/ngrok/enable-own-server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-a-little-thought/a-fucking-difficult-problem" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/operation_and_maintenance/ngrok/enable-own-server.html" class="article-date">
-		<time datetime="2019-09-22T09:02:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
+	<a href="/a-little-thought/a-fucking-difficult-problem.html" class="article-date">
+		<time datetime="2019-12-07T09:36:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-07</time>
 	</a>
 </div>
   
@@ -266,7 +267,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/operation_and_maintenance/ngrok/enable-own-server.html">开启属于自己的服务器</a>
+      <a class="article-title" href="/a-little-thought/a-fucking-difficult-problem.html">一个非常操蛋的难题</a>
     </h1>
   
 
@@ -282,19 +283,10 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>将 22 端口开放到外网, 可以远程连接自己的虚拟机或者服务器。</p>
-<h1 id="物料"><a href="#物料" class="headerlink" title="物料"></a>物料</h1><ul>
-<li>一台服务器(或者虚拟机, 或者树莓派等)</li>
-<li>ngrok 账号</li>
-</ul>
-<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>ngrok 的账号可以去<a href="https://www.ngrok.cc/login/register">这里</a>注册。注册好之后, 找到隧道管理下的开通隧道, 选择最下面的香港 ngrok 免费服务器。</p>
-<p>如果开通服务器端口使用 ssh 连接的话, 那么请选择 tcp 协议; 如果想开通网站请选择 http 协议。</p>
-<blockquote>
-<p>注意, 如果选择 http 协议会有填写前置域名的选项。比如你想让你的域名看起来像这样: <code>blog.ngrok.cc</code>, 那么只需要填写 <code>blog</code> 就可以了。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/operation_and_maintenance/ngrok/enable-own-server.html#more">more >></a>
-        
+        <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>前段时间, 工作方面遇到了一些问题, 具体情况是这样的:</p>
+<p>前端和后端建立长连接(websocket), 但是有的时候会出现客户端非常卡, 然后会造成客户丢分, 甚至会造成负分的情况。我就开始找程序的逻辑, 怎么找都找不到问题。</p>
+<h1 id="解决经历"><a href="#解决经历" class="headerlink" title="解决经历"></a>解决经历</h1><p>后来我发现出问题的时间很有规律, 都是发生在数据库自动备份的时间, 那么其实找到原因, 解决办法就有了, 直接取消自动备份, 完事!</p>
+
       
 
       
@@ -307,13 +299,24 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ngrok</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经历</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/一些经历//" class="article-tag-list-link color5">一些经历</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -344,7 +347,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -450,11 +453,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">想法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">启发</a>
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,6 +469,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitBook</a>
               </li>
              
@@ -479,10 +482,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,10 +501,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
               </li>
              
@@ -519,6 +514,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">想法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">启发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,7 +553,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color1">cocos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,15 +569,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,11 +597,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,10 +622,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,10 +641,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
@@ -634,7 +649,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,6 +678,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,10 +714,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
               <li class="article-tag-list-item">

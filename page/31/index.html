@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-js/webpack/webpack-loaders-babel-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-operation_and_maintenance/ngrok/own-ngrok-server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/js/webpack/webpack-loaders-babel-config.html" class="article-date">
-		<time datetime="2019-03-04T15:14:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-04</time>
+	<a href="/operation_and_maintenance/ngrok/own-ngrok-server.html" class="article-date">
+		<time datetime="2019-04-13T11:48:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/js/webpack/webpack-loaders-babel-config.html">webpack-loaders和babel的配置</a>
+      <a class="article-title" href="/operation_and_maintenance/ngrok/own-ngrok-server.html">搭建自己的ngrok服务器</a>
     </h1>
   
 
@@ -186,10 +186,12 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="/js/webpack/webpack-dev-server.html">上一篇</a>介绍了如何设置本地服务器, 那么本篇来介绍如何配置loaders和babel</p>
-<p>webpack通过使用不同的loaders, 调用外部的脚本或工具, 实现对不同格式的文件的处理, 比如分析转换scss为css, 或者把ES6, ES7文件转换为现代浏览器兼容的JS文件, 合适的loader还可以将react中用到的JSX文件转换为JS文件。</p>
+        <p>转自<a href="https://segmentfault.com/a/1190000010338848">centos下自己假设ngrok服务器(内网测试神器)</a></p>
+<h1 id="场景使用"><a href="#场景使用" class="headerlink" title="场景使用"></a>场景使用</h1><blockquote>
+<p>因为做开发很多程度需要不断同步git服务器或者其他操作来做一些外部对接的测试<br>每次更新都要push到远端, 而且有时候代码还未必正式写完, 不仅影响git提交不美观, 而且麻烦<br>所以ngrok的内网穿透就显神威了<br>网上有ngrok的国内服务了, 不过有时候不稳定<br>下面来和我一起架设自己的ngrok服务吧</p>
+</blockquote>
         
-          <a class="article-more-a" href="/js/webpack/webpack-loaders-babel-config.html#more">more >></a>
+          <a class="article-more-a" href="/operation_and_maintenance/ngrok/own-ngrok-server.html#more">more >></a>
         
       
 
@@ -203,7 +205,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ngrok</a>
         		</li>
       		
 		</ul>
@@ -215,11 +217,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/js//" class="article-tag-list-link color3">js</a>
+        			<a href="/categories/operation-and-maintenance//" class="article-tag-list-link color3">运维</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/js/webpack//" class="article-tag-list-link color3">webpack</a>
+        			<a href="/categories/operation-and-maintenance/net//" class="article-tag-list-link color4">net</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/operation-and-maintenance/net/ngrok//" class="article-tag-list-link color1">ngrok</a>
         		</li>
       		
 		</ul>
@@ -253,11 +259,11 @@
 
 
   
-    <article id="post-js/webpack/webpack-dev-server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java/javaBased/java-file-learn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/js/webpack/webpack-dev-server.html" class="article-date">
-		<time datetime="2019-03-03T12:50:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-03</time>
+	<a href="/java/javaBased/java-file-learn.html" class="article-date">
+		<time datetime="2019-04-10T06:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
 	</a>
 </div>
   
@@ -267,7 +273,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/js/webpack/webpack-dev-server.html">webpack-dev-server</a>
+      <a class="article-title" href="/java/javaBased/java-file-learn.html">Java的File类的文件列表过滤</a>
     </h1>
   
 
@@ -283,9 +289,9 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="/js/webpack/webpack-source-map.html">上一篇</a>讨论了如何配置基本的webpack配置文件, 并且设置source-map。<br>今天来看看如何设置webpack-dev-server。</p>
+        <h1 id="使用FilenameFilter来对文件列表进行过滤"><a href="#使用FilenameFilter来对文件列表进行过滤" class="headerlink" title="使用FilenameFilter来对文件列表进行过滤"></a>使用FilenameFilter来对文件列表进行过滤</h1><p>可以通过File类的list()方法查看目录中的所有文件和文件夹, 并通过FilenameFiler来过滤文件列表。</p>
         
-          <a class="article-more-a" href="/js/webpack/webpack-dev-server.html#more">more >></a>
+          <a class="article-more-a" href="/java/javaBased/java-file-learn.html#more">more >></a>
         
       
 
@@ -299,7 +305,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">io</a>
         		</li>
       		
 		</ul>
@@ -311,11 +321,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/js//" class="article-tag-list-link color3">js</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/js/webpack//" class="article-tag-list-link color3">webpack</a>
+        			<a href="/categories/Java/based//" class="article-tag-list-link color3">基础</a>
         		</li>
       		
 		</ul>
@@ -351,7 +361,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/30/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/33/">33</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/32/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/30/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/33/">33</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/32/">Next &raquo;</a>
     </nav>
   
 
@@ -457,11 +467,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">想法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">启发</a>
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,6 +483,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitBook</a>
               </li>
              
@@ -486,10 +496,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,10 +515,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
               </li>
              
@@ -526,6 +528,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">想法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">启发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,7 +567,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color1">cocos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,15 +583,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,11 +611,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,10 +636,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,10 +655,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
@@ -641,7 +663,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,6 +692,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,10 +728,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
               <li class="article-tag-list-item">

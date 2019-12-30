@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-linux/tools/create-linux-service" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-read-note/web-site-framework/use-cache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/linux/tools/create-linux-service.html" class="article-date">
-		<time datetime="2019-09-26T07:11:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+	<a href="/read-note/web-site-framework/use-cache.html" class="article-date">
+		<time datetime="2019-12-15T05:04:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-15</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/linux/tools/create-linux-service.html">创建你自己的linux服务</a>
+      <a class="article-title" href="/read-note/web-site-framework/use-cache.html">使用缓存来解决性能问题</a>
     </h1>
   
 
@@ -186,18 +186,13 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>使用 systemd 来创建类似于 windows 中的服务。</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ul>
-<li>编写需要执行的脚本</li>
-<li>编写服务的脚本</li>
-<li>开启服务</li>
-</ul>
-<h2 id="编写服务脚本"><a href="#编写服务脚本" class="headerlink" title="编写服务脚本"></a>编写服务脚本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/lib/systemd/system/你的服务名字.service</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 下面是脚本内容</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line"><span class="meta">#</span> 服务介绍</span><br><span class="line">Description=enable some service</span><br><span class="line">After=network.target</span><br><span class="line"><span class="meta">#</span> 声明可执行脚本</span><br><span class="line">ConditionFileIsExecutable=/home/littleboy/tools/ngrok/startNgrok.sh</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line"><span class="meta">#</span> 如果执行失败则重新执行</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5</span><br><span class="line"><span class="meta">#</span> 自动执行脚本</span><br><span class="line">ExecStart=/home/littleboy/tools/ngrok/startNgrok.sh --background</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<h2 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reaload</span><br><span class="line">sudo systemctl enable sunny.service</span><br><span class="line">sudo systemctl start sunny.service</span><br></pre></td></tr></table></figure>
-
-<h1 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h1><p><a href="https://github.com/systemd/systemd">systemd 的github地址</a></p>
-
+        <h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h1><p>网站数据访问通常遵循二八定律, 即80%的访问落在20%的数据上, 因此利用 Hash 表和内存的高速访问特性, 将20%的数据缓存起来。</p>
+<p>不要将频繁修改的数据放到缓存中</p>
+<p>遵守二八定律, 将80%的请求访问的数据放到缓存中</p>
+<p>数据不一致与脏读</p>
+        
+          <a class="article-more-a" href="/read-note/web-site-framework/use-cache.html#more">more >></a>
+        
       
 
       
@@ -205,17 +200,28 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">缓存</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/computer-operation//" class="article-tag-list-link color5">操作系统</a>
+        			<a href="/categories/reading-note//" class="article-tag-list-link color5">读书笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/computer-operation/linux//" class="article-tag-list-link color1">linux</a>
+        			<a href="/categories/reading-note/大型网站技术架构//" class="article-tag-list-link color4">大型网站技术架构</a>
         		</li>
       		
 		</ul>
@@ -249,11 +255,11 @@
 
 
   
-    <article id="post-linux/tools/deploy-seafile" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-read-note/web-site-framework/profermence-test-example" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/linux/tools/deploy-seafile.html" class="article-date">
-		<time datetime="2019-09-24T05:56:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
+	<a href="/read-note/web-site-framework/profermence-test-example.html" class="article-date">
+		<time datetime="2019-12-14T18:38:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-15</time>
 	</a>
 </div>
   
@@ -263,7 +269,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/linux/tools/deploy-seafile.html">在服务器上部署seafile</a>
+      <a class="article-title" href="/read-note/web-site-framework/profermence-test-example.html">性能测试指标介绍</a>
     </h1>
   
 
@@ -279,13 +285,14 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>部署 seafile 服务器</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="下载服务器端"><a href="#下载服务器端" class="headerlink" title="下载服务器端"></a>下载服务器端</h2><p>地址<a href="https://www.seafile.com/download/">https://www.seafile.com/download/</a>, 注意, 这里需要看清楚自己的系统版本。</p>
-<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf seafile-server_*</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装之前的准备工作"><a href="#安装之前的准备工作" class="headerlink" title="安装之前的准备工作"></a>安装之前的准备工作</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install python2.7 python-setuptools python-imaging python-mysqldb</span><br></pre></td></tr></table></figure>
+        <h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h1><p>性能测试指标</p>
+<p>不同视角下有不同的性能标准, 不同的标准有不同的性能测试指标, 从开发到测试人员的视角, 网站性能测试的主要指标有响应时间, 并发数, 吞吐量, 性能计数器等。</p>
+<ul>
+<li>响应时间</li>
+</ul>
+<p>指应用执行一个操作需要的时间, 包括从发出请求开始到收到最后响应数据结束所需要的时间。响应时间是系统最重要的性能指标, 直观的反映了系统的”快慢”。下面列出了一些常用的系统操作需要的响应时间。</p>
         
-          <a class="article-more-a" href="/linux/tools/deploy-seafile.html#more">more >></a>
+          <a class="article-more-a" href="/read-note/web-site-framework/profermence-test-example.html#more">more >></a>
         
       
 
@@ -299,7 +306,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">性能</a>
         		</li>
       		
 		</ul>
@@ -311,15 +318,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/computer-operation//" class="article-tag-list-link color5">操作系统</a>
+        			<a href="/categories/reading-note//" class="article-tag-list-link color5">读书笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/computer-operation/linux//" class="article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/computer-operation/linux/tools//" class="article-tag-list-link color3">工具</a>
+        			<a href="/categories/reading-note/大型网站技术架构//" class="article-tag-list-link color4">大型网站技术架构</a>
         		</li>
       		
 		</ul>
@@ -355,7 +358,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -461,11 +464,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">想法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">启发</a>
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,6 +480,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitBook</a>
               </li>
              
@@ -490,10 +493,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,10 +512,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
               </li>
              
@@ -530,6 +525,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">想法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">启发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,7 +564,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color1">cocos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,15 +580,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,11 +608,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,10 +633,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,10 +652,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">debian</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
               </li>
              
@@ -645,7 +660,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">debian</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,6 +689,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">缓存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,10 +725,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">商城开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
               <li class="article-tag-list-item">
