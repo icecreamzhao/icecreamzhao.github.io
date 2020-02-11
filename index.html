@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-java/log4j/log4j-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mobile/flutter/flutter-android-internet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/java/log4j/log4j-config.html" class="article-date">
-		<time datetime="2019-12-17T19:42:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-18</time>
+	<a href="/mobile/flutter/flutter-android-internet.html" class="article-date">
+		<time datetime="2020-02-10T08:52:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/java/log4j/log4j-config.html">Log4j 日志配置</a>
+      <a class="article-title" href="/mobile/flutter/flutter-android-internet.html">flutter 打包之后安装到手机上无法访问网络</a>
     </h1>
   
 
@@ -186,21 +186,10 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Log4j 有三个主要的组件, Loggers(记录器), Appenders(输出源)和Layouts(布局)。这里可以简单的理解为日志级别, 日志要输出的地方和日志以何种方式输出。综合使用三个组件可以轻松地记录的类型和级别, 并可以在运行时控制日志输出的样式和位置。</p>
-<ol>
-<li>Loggers</li>
-</ol>
-<p>Loggers 组件在此系统中被分为五个级别: DEBUG, INFO, WARN, ERROR, FATAL, 这五个级别是有顺序的, DEBUG &lt; INFO &lt; WARN &lt; ERROR &lt; FATAL, 分别用来指定这条日志信息的重要程度, 明白这一点很重要, Log4j有一条规则: 只输出级别不低于设定级别的日志信息, 假设Loggers级别设定为INFO, 则INFO、WARN、ERROR和FATAL级别的日志都会输出, 而级别比INFO低的DEBUG则不会输出。</p>
-<ol start="2">
-<li>Appenders</li>
-</ol>
-<p>禁用和使用日志请求只是Log4j的基本功能, Log4j日志系统还提供许多强大的功能, 比如允许把日志输出到不同的地方, 如控制台, 文件等, 可以根据天数或者文件大小产生新的文件, 可以以流的形式发送到其他地方等。</p>
-<p>常使用的类如下:</p>
-<blockquote>
-<p>org.apache.log4j.ConsoleAppender (控制台)<br>org.apache.log4j.FileAppender (文件)<br>org.apache.log4j.DailyRollingFileAppender (每天产生一个日志文件)<br>org.apache.log4j.RollingFileAppender (文件大小到达指定尺寸的时候产生一个新的文件)<br>org.apache.log4j.WriterAppender (将日志信息以流格式发送到任何指定的地方)</p>
-</blockquote>
-<p>配置模式:</p>
-<p>log4j.appender.appenderName.layout = className<br>log4j.appender.appenderName.Option1 = value1<br>…<br>log4j.appender.appenderName.OptionN = valueN</p>
+        <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>在 <code>项目根目录/android/app/src/AndroidManifest.xml</code> 文件的第一层下添加一下内容:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>来申请网络权限。</p>
 
       
 
@@ -214,7 +203,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jog4j</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter</a>
         		</li>
       		
 		</ul>
@@ -226,11 +215,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/mobile//" class="article-tag-list-link color5">移动开发</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java/log4j//" class="article-tag-list-link color1">log4j</a>
+        			<a href="/categories/mobile/flutter//" class="article-tag-list-link color3">flutter</a>
         		</li>
       		
 		</ul>
@@ -264,11 +253,11 @@
 
 
   
-    <article id="post-read-note/web-site-framework/profermence-test-way-method" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mobile/flutter/flutter-android-package" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/read-note/web-site-framework/profermence-test-way-method.html" class="article-date">
-		<time datetime="2019-12-15T11:38:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-15</time>
+	<a href="/mobile/flutter/flutter-android-package.html" class="article-date">
+		<time datetime="2020-02-10T08:36:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
 	</a>
 </div>
   
@@ -278,7 +267,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/read-note/web-site-framework/profermence-test-way-method.html">性能测试方法和报告</a>
+      <a class="article-title" href="/mobile/flutter/flutter-android-package.html">flutter apk 打包</a>
     </h1>
   
 
@@ -294,94 +283,14 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h1><p>性能测试方法</p>
-<p>具体可分为性能测试, 负载测试, 压力测试, 稳定性测试。</p>
-<ul>
-<li>性能测试</li>
-</ul>
-<p>以系统设计初期规划的性能指标为预期目标, 对系统不断施加压力, 验证系统在资源可接受范围内, 是否能达到性能预期。</p>
-<ul>
-<li>负载测试</li>
-</ul>
-<p>对系统不断地增加并发请求以增加系统压力, 知道系统的某项或多项性能指标达到安全临界值, 如某种资源已经呈现饱和状态, 这时继续对系统施加压力, 系统的处理能力不但不能提高, 反而会下降。</p>
-<ul>
-<li>压力测试</li>
-</ul>
-<p>超过安全负载的情况下, 对系统继续施加压力, 直到系统崩溃或不能再处理任何请求, 以此来获得系统最大压力承受能力。</p>
-<ul>
-<li>稳定性测试</li>
-</ul>
-<p>被测试系统在特定硬件, 软件, 网络环境条件下, 给系统加载一定业务压力, 使系统运行一段较长时间, 以此检测系统是否稳定。在不同的生产环境, 不同时间点的请求压力是不均匀的, 呈波浪特性, 因此为了更好的模拟生产环境, 稳定性测试也应不均匀地对系统施加压力。</p>
-<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>如何编写测试用例, 还是一个问题, 因为如果要实现测试自动化, 那么测试用例到底是由开发/测试人员编写, 还是系统自动生成? 如果由开发/测试人员编写, 那会是一个很大的工作量; 如果系统生成, 那么测试用例肯定和业务有关, 如何实现? 还是一个问题。</p>
-<h1 id="摘抄-1"><a href="#摘抄-1" class="headerlink" title="摘抄"></a>摘抄</h1><p>性能测试报告</p>
-<table>
-<thead>
-<tr>
-<th align="left">并发数</th>
-<th align="center">响应时间(ms)</th>
-<th align="center">TPS</th>
-<th align="center">错误率(%)</th>
-<th align="right">Load</th>
-<th align="right">内存(GB)</th>
-<th align="center">备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">10</td>
-<td align="center">500</td>
-<td align="center">20</td>
-<td align="center">0</td>
-<td align="right">5</td>
-<td align="right">8</td>
-<td align="center">性能测试</td>
-</tr>
-<tr>
-<td align="left">20</td>
-<td align="center">800</td>
-<td align="center">30</td>
-<td align="center">0</td>
-<td align="right">10</td>
-<td align="right">10</td>
-<td align="center">性能测试</td>
-</tr>
-<tr>
-<td align="left">30</td>
-<td align="center">1000</td>
-<td align="center">40</td>
-<td align="center">2</td>
-<td align="right">15</td>
-<td align="right">14</td>
-<td align="center">性能测试</td>
-</tr>
-<tr>
-<td align="left">40</td>
-<td align="center">1200</td>
-<td align="center">45</td>
-<td align="center">20</td>
-<td align="right">30</td>
-<td align="right">16</td>
-<td align="center">负载测试</td>
-</tr>
-<tr>
-<td align="left">50</td>
-<td align="center">2000</td>
-<td align="center">30</td>
-<td align="center">40</td>
-<td align="right">50</td>
-<td align="right">16</td>
-<td align="center">压力测试</td>
-</tr>
-<tr>
-<td align="left">60</td>
-<td align="center">超时</td>
-<td align="center">0</td>
-<td align="center">100</td>
-<td align="right">不详</td>
-<td align="right">不祥</td>
-<td align="center">压力测试</td>
-</tr>
-</tbody></table>
-
+        <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>创建签名文件</li>
+<li>在 gradle 中配置签名</li>
+<li>执行构建命令</li>
+</ol>
+        
+          <a class="article-more-a" href="/mobile/flutter/flutter-android-package.html#more">more >></a>
+        
       
 
       
@@ -394,7 +303,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">性能</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">flutter</a>
         		</li>
       		
 		</ul>
@@ -406,11 +315,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/reading-note//" class="article-tag-list-link color5">读书笔记</a>
+        			<a href="/categories/mobile//" class="article-tag-list-link color5">移动开发</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/reading-note/大型网站技术架构//" class="article-tag-list-link color4">大型网站技术架构</a>
+        			<a href="/categories/mobile/flutter//" class="article-tag-list-link color3">flutter</a>
         		</li>
       		
 		</ul>
@@ -446,7 +355,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/66/">66</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -458,7 +367,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 littleboyDK
+    		&copy; 2020 littleboyDK
     	</div>
       	<div class="footer-right">
       		<!--
@@ -552,11 +461,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经历</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color3">想法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">启发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,10 +478,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,6 +493,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -592,11 +505,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo插件</a>
+                <a href="javascript:void(0)" class="js-tag color2">hexo起步</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo起步</a>
+                <a href="javascript:void(0)" class="js-tag color2">hexo插件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,31 +521,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">想法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">启发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,6 +545,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -660,15 +561,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">io</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -684,6 +585,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
@@ -696,19 +601,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,11 +621,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">快乐的Linux命令行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,7 +629,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wifi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,15 +649,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">json</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,6 +689,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">快乐的Linux命令行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
@@ -792,6 +709,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
              
@@ -801,6 +722,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">makefile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">servlet</a>
               </li>
              
               <li class="article-tag-list-item">

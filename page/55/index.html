@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-read-note/javascript-The-Definitive-Guide/javascript-The-Definitive-Guide-read-note-firstDay" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html" class="article-date">
-		<time datetime="2018-12-02T03:43:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-02</time>
+	<a href="/read-note/javascript-The-Definitive-Guide/javascript-The-Definitive-Guide-read-note-firstDay.html" class="article-date">
+		<time datetime="2018-12-13T13:01:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">快乐的Linux命令行笔记-重定向标准输入和输出以及处理查询结果</a>
+      <a class="article-title" href="/read-note/javascript-The-Definitive-Guide/javascript-The-Definitive-Guide-read-note-firstDay.html">javascript权威指南读书笔记-第一天</a>
     </h1>
   
 
@@ -186,11 +186,23 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a><br></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天学习了如何将标准输入和标准输出的概念, 并如何重定向到文件中, 以及一些处理结果的技巧, 比如排序, 去重等等。</p>
-        
-          <a class="article-more-a" href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html#more">more >></a>
-        
+        <h1 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h1><p>null 的类型是Object(可用typeof来得到结果), 而undefined的类型就是undefined</p>
+<p>undefined是一个预定义的全局属性, 而null是一个关键字</p>
+<p>通常如果想要给一个变量传入空值的话, 最佳选择是null</p>
+<br>
+
+<h1 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">"test"</span>;</span><br><span class="line">s.len = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s.len);</span><br></pre></td></tr></table></figure>
+
+<p>output:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>在声明一个字符串类型的值时, JavaScript会这样做:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"test"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>而之后就会销毁这个对象, 所以给它定义属性也会被忽略, 同理, 数字和布尔值也是这样的做法。</p>
+<br>
+
+
       
 
       
@@ -203,15 +215,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">快乐的Linux命令行</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		
 		</ul>
@@ -227,7 +231,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/reading-note/The-Linux-Command-Line//" class="article-tag-list-link color2">快乐的Linux命令行</a>
+        			<a href="/categories/reading-note/The-Definitive-Guide-read-note//" class="article-tag-list-link color5">JavaScript权威指南</a>
         		</li>
       		
 		</ul>
@@ -261,11 +265,11 @@
 
 
   
-    <article id="post-linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-js/webpack/webpack-first-step" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html" class="article-date">
-		<time datetime="2018-12-01T12:17:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+	<a href="/js/webpack/webpack-first-step.html" class="article-date">
+		<time datetime="2018-12-12T13:38:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-12</time>
 	</a>
 </div>
   
@@ -275,7 +279,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">快乐的Linux命令行笔记-查阅命令文档并创建命令别名</a>
+      <a class="article-title" href="/js/webpack/webpack-first-step.html">webpack-起步</a>
     </h1>
   
 
@@ -291,10 +295,9 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天学到了有关怎样查阅命令的帮助文档以及怎样创建属于自己的命令别名。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>从今天开始, 我要学习前端, 我觉得webpack应该是必经之路, 所以做一下笔记。</p>
         
-          <a class="article-more-a" href="/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html#more">more >></a>
+          <a class="article-more-a" href="/js/webpack/webpack-first-step.html#more">more >></a>
         
       
 
@@ -308,15 +311,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">快乐的Linux命令行</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
         		</li>
       		
 		</ul>
@@ -328,11 +327,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/reading-note//" class="article-tag-list-link color5">读书笔记</a>
+        			<a href="/categories/js//" class="article-tag-list-link color3">js</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/reading-note/The-Linux-Command-Line//" class="article-tag-list-link color2">快乐的Linux命令行</a>
+        			<a href="/categories/js/webpack//" class="article-tag-list-link color3">webpack</a>
         		</li>
       		
 		</ul>
@@ -368,7 +367,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/54/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/53/">53</a><a class="page-number" href="/page/54/">54</a><span class="page-number current">55</span><a class="page-number" href="/page/56/">56</a><a class="page-number" href="/page/57/">57</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/56/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/54/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/53/">53</a><a class="page-number" href="/page/54/">54</a><span class="page-number current">55</span><a class="page-number" href="/page/56/">56</a><a class="page-number" href="/page/57/">57</a><span class="space">&hellip;</span><a class="page-number" href="/page/66/">66</a><a class="extend next" rel="next" href="/page/56/">Next &raquo;</a>
     </nav>
   
 
@@ -380,7 +379,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 littleboyDK
+    		&copy; 2020 littleboyDK
     	</div>
       	<div class="footer-right">
       		<!--
@@ -474,11 +473,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经历</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color3">想法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">启发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,10 +490,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,6 +505,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -514,11 +517,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo插件</a>
+                <a href="javascript:void(0)" class="js-tag color2">hexo起步</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo起步</a>
+                <a href="javascript:void(0)" class="js-tag color2">hexo插件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,31 +533,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">想法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">启发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,6 +557,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -582,15 +573,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">io</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,6 +597,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
@@ -618,19 +613,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,11 +633,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">快乐的Linux命令行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,7 +641,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wifi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,15 +661,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">json</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,6 +701,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">快乐的Linux命令行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
@@ -714,6 +721,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
              
@@ -723,6 +734,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">makefile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">servlet</a>
               </li>
              
               <li class="article-tag-list-item">

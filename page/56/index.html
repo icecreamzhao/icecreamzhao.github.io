@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-operation_system/windows/deploy-system" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-my_project/shopping_mall/js/shopping-mall-developNote-js" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/operation_system/windows/deploy-system.html" class="article-date">
-		<time datetime="2018-11-30T11:51:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+	<a href="/my_project/shopping_mall/js/shopping-mall-developNote-js.html" class="article-date">
+		<time datetime="2018-12-10T12:04:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-10</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/operation_system/windows/deploy-system.html">装机</a>
+      <a class="article-title" href="/my_project/shopping_mall/js/shopping-mall-developNote-js.html">商城开发笔记-js配置</a>
     </h1>
   
 
@@ -186,10 +186,87 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天我的室友将他的电脑留在这里, 那么不对它做些什么是不可能的! 哈哈, 那么, 我就开始啦。</p>
-        
-          <a class="article-more-a" href="/operation_system/windows/deploy-system.html#more">more >></a>
-        
+        <h1 id="js模块介绍"><a href="#js模块介绍" class="headerlink" title="js模块介绍"></a>js模块介绍</h1><p>这个项目使用的ui是<a href="http://cn.inspinia.cn/">inspinia</a>, 我觉得还挺好看的, 所以就选择了这个。</p>
+<p>大概看了一下, 有用到这几个js模块:</p>
+<ul>
+<li>jquery</li>
+<li>bootstrap</li>
+<li>jquery.metisMenu</li>
+<li>jquery.slimscroll</li>
+<li>inspinia</li>
+<li>pace</li>
+<li>bootstrap-datepicker</li>
+<li>summernote</li>
+</ul>
+<h2 id="在Vue项目引用jQuery"><a href="#在Vue项目引用jQuery" class="headerlink" title="在Vue项目引用jQuery"></a>在Vue项目引用jQuery</h2><p>步骤如下:</p>
+<ul>
+<li><p>在<code>package.json</code>文件的<code>dependencies</code>中添加: <code>&quot;jquery&quot;: &quot;^3.3.1&quot;</code></p>
+</li>
+<li><p>接着在<code>build/webpack.bash.conf.js</code>文件中的头部分添加:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>还是这个文件, 在<code>module.exports</code>部分中添加:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.ProvidePlugin(&#123;</span><br><span class="line">        $: <span class="string">'jquery'</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>如果已经有<code>plugins</code>, 就直接写声明部分</p>
+</li>
+<li><p>最后在<code>main.js</code>入口文件中, 添加:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> $ <span class="keyword">from</span> <span class="string">'jquery'</span></span><br><span class="line"></span><br><span class="line">Vue.prototype.$ = $</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这样就可以直接使用<code>this.$</code>来进行对元素的操作了。</p>
+<h2 id="使用-BootstrapVue"><a href="#使用-BootstrapVue" class="headerlink" title="使用 BootstrapVue"></a>使用 BootstrapVue</h2><p>首先安装:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue bootstrap-vue bootstrap --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>接着在 main.js 中声明 bootstrap-vue:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'~/bootstrap/dist/css/bootstrap.css'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'~/bootstrap-vue/dist/bootstrap-vue.css'</span></span><br><span class="line"><span class="keyword">import</span> BootstrapVue <span class="keyword">from</span> <span class="string">'bootstrap-vue'</span></span><br><span class="line"></span><br><span class="line">Vue.use(BootstrapVue)</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以直接使用 bootstrap 的组件了。关于组件的详细信息可以查看<a href="https://bootstrap-vue.js.org">官网</a>。</p>
+<h2 id="在-Vue-中使用-jquery-metisMenu-和-jquery-slimscroll"><a href="#在-Vue-中使用-jquery-metisMenu-和-jquery-slimscroll" class="headerlink" title="在 Vue 中使用 jquery.metisMenu 和 jquery.slimscroll"></a>在 Vue 中使用 jquery.metisMenu 和 jquery.slimscroll</h2><p>同样的, 首先安装:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save metismenu jquery-slimscroll</span><br></pre></td></tr></table></figure>
+
+<p>在 main.js 中使用 <code>require</code> 来加载 metisMenu 和 slimscoroll:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'metismenu'</span>)</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'jquery-slimscroll'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>关于 import 和 require 的区别, 请查看<a href="https://www.cnblogs.com/sunshq/p/7922182.html">import和require的区别</a>。</p>
+<p>之后就可以直接使用了, 关于 metisMenu 的使用方法请查看<a href="https://mm.onokumus.com/index.html">官网</a>。</p>
+<h2 id="使用-bootstrap-datepicker"><a href="#使用-bootstrap-datepicker" class="headerlink" title="使用 bootstrap-datepicker"></a>使用 bootstrap-datepicker</h2><p>这个和之前的步骤不太一样。首先到<a href="https://github.com/uxsolutions/bootstrap-datepicker/releases">官网</a>将最新的版本下载下来, 然后将 css 和 js 两个文件夹放置项目的静态文件目录, 假定为 <code>/src/static</code>文件夹下。</p>
+<p>之后在 <code>main.js</code> 中引入文件:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'../static/css/bootstrap-datepicker.css'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../static/js/bootstrap-datepicker.js'</span></span><br></pre></td></tr></table></figure>
+
+<p>就可以了。</p>
+<h2 id="在-vue-中使用-summernote"><a href="#在-vue-中使用-summernote" class="headerlink" title="在 vue 中使用 summernote"></a>在 vue 中使用 summernote</h2><p>首先安装:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save codemirror font-awesome moment popper.js summernote tooltip.js</span><br></pre></td></tr></table></figure>
+
+<p>安装好之后在 main.js 中引入:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'popper.js'</span>)</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'tooltip.js'</span>)</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'bootstrap'</span>)</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'summernote'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>大功告成! </p>
+<h2 id="在Vue中引用js文件"><a href="#在Vue中引用js文件" class="headerlink" title="在Vue中引用js文件"></a>在Vue中引用js文件</h2><p>先说怎么操作:</p>
+<ol>
+<li><p>在<code>build/webpack.base.conf.js</code>文件中的<code>module.exports</code>部分里面的<code>alias</code>里添加:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	<span class="comment">// ... 省略前面的代码</span></span><br><span class="line">	resolve: &#123;</span><br><span class="line">    extensions: [<span class="string">'.js'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>],</span><br><span class="line">    alias: &#123;</span><br><span class="line">		<span class="string">`apiTools`</span>: resolve(<span class="string">'src/api/tools.js'</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...省略后面的代码</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>main.js</code>里引用:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tools <span class="keyword">from</span> <span class="string">'apiTools'</span></span><br><span class="line"><span class="keyword">import</span> tools2 <span class="keyword">from</span> <span class="string">'apiTools'</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>补充, apiTools.js内容是:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function tools () &#123;</span><br><span class="line">  console.log(&apos;test&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function tools2() &#123;</span><br><span class="line">	console.log(&apos;test2&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  tools: tools(),</span><br><span class="line">  tools2: tools2()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>调用js方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  name: &apos;App&apos;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    tools</span><br><span class="line">    tools2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>大概就是这三步, 那么接下来解释一下:</p>
+<p>第一步, 设置别名, 如果接触过linux系统的话, 对别名应该比较熟悉。其实就是字符串替换, 比如上面的例子, 就是将<code>apiTools</code>替换成了后面的路径。<br>第二步, 引用js文件, 这里import后面的是js文件暴露出的方法名(或者是变量名), from 后面的是前面约定好的替换的字符串。<br>最后一步, 直接调用就可以。</p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>在配置字符串替换的时候, 可能有关键字的问题, 这个还不太确定, 所以在配置的时候尽量避免使用那些常用的字符串。</p>
+
       
 
       
@@ -202,11 +279,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">商城开发</a>
         		</li>
       		
 		</ul>
@@ -218,11 +295,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/computer-operation//" class="article-tag-list-link color5">操作系统</a>
+        			<a href="/categories/develop-note//" class="article-tag-list-link color5">开发笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/computer-operation/windows//" class="article-tag-list-link color3">windows</a>
+        			<a href="/categories/develop-note/shopping-mall//" class="article-tag-list-link color3">商城</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/develop-note/shopping-mall/front//" class="article-tag-list-link color4">前端篇</a>
         		</li>
       		
 		</ul>
@@ -256,11 +337,11 @@
 
 
   
-    <article id="post-my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-linux-environment" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-config.html" class="article-date">
-		<time datetime="2018-11-27T15:30:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-27</time>
+	<a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-linux-environment.html" class="article-date">
+		<time datetime="2018-12-09T09:56:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-09</time>
 	</a>
 </div>
   
@@ -270,7 +351,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-config.html">商城开发/商城开发笔记-web的配置</a>
+      <a class="article-title" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-linux-environment.html">商城开发笔记-linux端环境搭建</a>
     </h1>
   
 
@@ -286,9 +367,9 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Spring-MVC的配置"><a href="#Spring-MVC的配置" class="headerlink" title="Spring MVC的配置"></a>Spring MVC的配置</h1><p>主要包括了注解配置, 拦截器配置, 自动扫描配置和最重要的dubbo配置 <del>其实还包括一个静态资源配置, 但是因为咱们的前端使用的是vue, Spring MVC就不用管这里了</del></p>
+        <h1 id="在Linux系统-CentOS-下搭建运行环境"><a href="#在Linux系统-CentOS-下搭建运行环境" class="headerlink" title="在Linux系统(CentOS)下搭建运行环境"></a>在Linux系统(CentOS)下搭建运行环境</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于<a href="/operation_system/windows/deploy-system.html">这篇文章</a>, 我尝试着把我的项目放到linux系统上运行试试看, 然后就有了这篇总结。</p>
         
-          <a class="article-more-a" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-config.html#more">more >></a>
+          <a class="article-more-a" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-linux-environment.html#more">more >></a>
         
       
 
@@ -301,6 +382,10 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">商城开发</a>
         		</li>
@@ -358,7 +443,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/55/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><span class="page-number current">56</span><a class="page-number" href="/page/57/">57</a><a class="page-number" href="/page/58/">58</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/57/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/55/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><span class="page-number current">56</span><a class="page-number" href="/page/57/">57</a><a class="page-number" href="/page/58/">58</a><span class="space">&hellip;</span><a class="page-number" href="/page/66/">66</a><a class="extend next" rel="next" href="/page/57/">Next &raquo;</a>
     </nav>
   
 
@@ -370,7 +455,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 littleboyDK
+    		&copy; 2020 littleboyDK
     	</div>
       	<div class="footer-right">
       		<!--
@@ -464,11 +549,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经历</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color3">想法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">启发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,10 +566,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,6 +581,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -504,11 +593,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo插件</a>
+                <a href="javascript:void(0)" class="js-tag color2">hexo起步</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo起步</a>
+                <a href="javascript:void(0)" class="js-tag color2">hexo插件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,31 +609,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">想法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">启发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,6 +633,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -572,15 +649,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">io</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,6 +673,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
@@ -608,19 +689,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,11 +709,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">快乐的Linux命令行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,7 +717,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wifi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,15 +737,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">json</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -692,6 +777,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">快乐的Linux命令行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
               </li>
              
@@ -704,6 +797,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
              
@@ -713,6 +810,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">makefile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">servlet</a>
               </li>
              
               <li class="article-tag-list-item">
