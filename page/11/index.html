@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-database/mysql-master-slave-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-read-note/web-site-framework/profermence-test-example" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/database/mysql-master-slave-error.html" class="article-date">
-		<time datetime="2019-10-16T18:44:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-17</time>
+	<a href="/read-note/web-site-framework/profermence-test-example.html" class="article-date">
+		<time datetime="2019-12-14T18:38:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-15</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/database/mysql-master-slave-error.html">mysql 主从数据库遇到的问题和解决方案</a>
+      <a class="article-title" href="/read-note/web-site-framework/profermence-test-example.html">性能测试指标介绍</a>
     </h1>
   
 
@@ -186,30 +186,15 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>配置主从数据库请查看<a href="/database/mysql-master-slave.html">mysql 配置主从数据库</a>。</p>
-<p>配置了之后遇到了一些问题, 具体表现为 <code>Slave_IO_Running</code> 和 <code>Slave_SQL_Running</code> 不是 yes。</p>
-<h1 id="排查思路"><a href="#排查思路" class="headerlink" title="排查思路"></a>排查思路</h1><p>首先使用 <code>show slave status\G</code> 命令查看 Last_Error, Last_IO_Error 和 Last_SQL_Error 三个项对应的值, 根据错误信息来具体解决。</p>
-<p>如果不能通过以上三个项来确定原因, 那么可以通过查看 Master_Log_File 项对应的值确定日志文件, 然后进入 bin 目录下, 使用 mysqlbinlog.exe 你的日志目录 -v &gt; test.txt 来解析 mysql 的日志。</p>
-<h2 id="遇到的一些具体的问题"><a href="#遇到的一些具体的问题" class="headerlink" title="遇到的一些具体的问题"></a>遇到的一些具体的问题</h2><ul>
-<li>error connecting to master ‘user@localhost:3306’</li>
-</ul>
-<p>这里首先到主库中, 使用</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;</span><br><span class="line"><span class="keyword">select</span> Host, <span class="keyword">User</span> <span class="keyword">from</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
-
-<p>来查看你的用户对应的Host是否是locahost, 然后使用用户名和密码登录一下主库检查密码是否错误。</p>
-<p>如果还不行, 那就等 1 分钟之后, 他就会报别的错误。<del>我的就是这样。</del></p>
+        <h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h1><p>性能测试指标</p>
+<p>不同视角下有不同的性能标准, 不同的标准有不同的性能测试指标, 从开发到测试人员的视角, 网站性能测试的主要指标有响应时间, 并发数, 吞吐量, 性能计数器等。</p>
 <ul>
-<li>COULD NOT FIND FIRST LOG FILE NAME IN BINARY LOG INDEX FILE</li>
+<li>响应时间</li>
 </ul>
-<p>这里应该是从库在读主库的日志的时候出了问题, 解决办法是:</p>
-<ol>
-<li>先停止主从服务: <code>stop slave;</code></li>
-<li>在主库中使用 <code>flush logs</code> 来刷新日志;</li>
-<li>在主库中使用 <code>show master status;</code> 命令来查看日志文件名和日志号;</li>
-<li>到从库中执行 <code>CHANGE MASTER TO MASTER_LOG_FILE=&#39;刚才查看的日志文件名&#39;,MASTER_LOG_POS=刚才查看的日志文件号;</code></li>
-<li>执行 <code>start slave; show slave status\G</code></li>
-</ol>
-
+<p>指应用执行一个操作需要的时间, 包括从发出请求开始到收到最后响应数据结束所需要的时间。响应时间是系统最重要的性能指标, 直观的反映了系统的”快慢”。下面列出了一些常用的系统操作需要的响应时间。</p>
+        
+          <a class="article-more-a" href="/read-note/web-site-framework/profermence-test-example.html#more">more >></a>
+        
       
 
       
@@ -222,7 +207,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">性能</a>
         		</li>
       		
 		</ul>
@@ -234,11 +219,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/database//" class="article-tag-list-link color4">数据库</a>
+        			<a href="/categories/reading-note//" class="article-tag-list-link color5">读书笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/database/mysql//" class="article-tag-list-link color1">mysql</a>
+        			<a href="/categories/reading-note/大型网站技术架构//" class="article-tag-list-link color4">大型网站技术架构</a>
         		</li>
       		
 		</ul>
@@ -272,11 +257,11 @@
 
 
   
-    <article id="post-linux/tools/create-linux-service" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-read-note/web-site-framework/auto-deploy-hot-update" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/linux/tools/create-linux-service.html" class="article-date">
-		<time datetime="2019-09-26T07:11:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+	<a href="/read-note/web-site-framework/auto-deploy-hot-update.html" class="article-date">
+		<time datetime="2019-12-14T08:23:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-14</time>
 	</a>
 </div>
   
@@ -286,7 +271,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/linux/tools/create-linux-service.html">创建你自己的linux服务</a>
+      <a class="article-title" href="/read-note/web-site-framework/auto-deploy-hot-update.html">读《大型网站技术架构》笔记 - 自动化发布及运维</a>
     </h1>
   
 
@@ -302,18 +287,11 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>使用 systemd 来创建类似于 windows 中的服务。</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ul>
-<li>编写需要执行的脚本</li>
-<li>编写服务的脚本</li>
-<li>开启服务</li>
-</ul>
-<h2 id="编写服务脚本"><a href="#编写服务脚本" class="headerlink" title="编写服务脚本"></a>编写服务脚本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/lib/systemd/system/你的服务名字.service</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 下面是脚本内容</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line"><span class="meta">#</span> 服务介绍</span><br><span class="line">Description=enable some service</span><br><span class="line">After=network.target</span><br><span class="line"><span class="meta">#</span> 声明可执行脚本</span><br><span class="line">ConditionFileIsExecutable=/home/littleboy/tools/ngrok/startNgrok.sh</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line"><span class="meta">#</span> 如果执行失败则重新执行</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5</span><br><span class="line"><span class="meta">#</span> 自动执行脚本</span><br><span class="line">ExecStart=/home/littleboy/tools/ngrok/startNgrok.sh --background</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<h2 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reaload</span><br><span class="line">sudo systemctl enable sunny.service</span><br><span class="line">sudo systemctl start sunny.service</span><br></pre></td></tr></table></figure>
-
-<h1 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h1><p><a href="https://github.com/systemd/systemd">systemd 的github地址</a></p>
-
+        <h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄:"></a>摘抄:</h1><p>在无人值守的情况下, 一切都可以自动化是网站的理想状态。目前大型网站的自动化架构设计主要集中在发布运维方面。</p>
+<p>发布对于网站来说是头等大事, 许多网站故障出在发布环节, 网站工程师经常加班也是因为发布不顺利。通过减少人为干预, 使发布过程自动化可有效减少故障。发布过程包括诸多环节。自动化代码管理, 代码版本控制, 代码分支创建合并等过程自动化, 开发工程师只要提交自己参与开发的产品代号, 系统就会自动为其创建开发分支。后期会自动进行代码合并。自动化测试, 代码开发完成, 提交测试后, 系统自动将代码部署到测试环境, 启动自动化测试用例进行测试, 向相关人员发送测试报告, 像系统反馈测试结果。自动化安全检测, 安全检测工具通过对代码进行静态安全扫描及部署到安全测试环境进行安全测试, 评估其安全性。最后进行自动化部署, 将工程代码自动部署到线上生产环境。</p>
+        
+          <a class="article-more-a" href="/read-note/web-site-framework/auto-deploy-hot-update.html#more">more >></a>
+        
       
 
       
@@ -321,17 +299,28 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/computer-operation//" class="article-tag-list-link color5">操作系统</a>
+        			<a href="/categories/reading-note//" class="article-tag-list-link color5">读书笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/computer-operation/linux//" class="article-tag-list-link color1">linux</a>
+        			<a href="/categories/reading-note/大型网站技术架构//" class="article-tag-list-link color4">大型网站技术架构</a>
         		</li>
       		
 		</ul>
@@ -367,7 +356,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/66/">66</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
     </nav>
   
 
@@ -473,7 +462,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,14 +471,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">启发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,6 +486,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
@@ -517,11 +506,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hexo插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">hexo起步</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo插件</a>
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,7 +526,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+                <a href="javascript:void(0)" class="js-tag color3">支付</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,6 +535,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">beautiful soup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">reportlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,11 +562,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经历</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,10 +574,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -585,11 +582,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
+                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,11 +634,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+                <a href="javascript:void(0)" class="js-tag color5">archlinux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">wifi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,23 +662,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color2">gradle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,7 +678,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">跨域</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,11 +714,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">快乐的Linux命令行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -721,15 +742,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -156,11 +156,11 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-common-manager-depend" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-my_project/shopping_mall/taps/shopping-mall-developNote-mybatis-automatic-generation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-common-manager-depend.html" class="article-date">
-		<time datetime="2018-11-20T11:33:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-20</time>
+	<a href="/my_project/shopping_mall/taps/shopping-mall-developNote-mybatis-automatic-generation.html" class="article-date">
+		<time datetime="2018-12-03T13:36:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-03</time>
 	</a>
 </div>
   
@@ -170,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-common-manager-depend.html">商城开发笔记-common, manager的依赖</a>
+      <a class="article-title" href="/my_project/shopping_mall/taps/shopping-mall-developNote-mybatis-automatic-generation.html">商城开发笔记-小知识点-mybatis构建实体类</a>
     </h1>
   
 
@@ -186,11 +186,9 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="common的依赖"><a href="#common的依赖" class="headerlink" title="common的依赖"></a>common的依赖</h1><h2 id="主体部分"><a href="#主体部分" class="headerlink" title="主体部分"></a>主体部分</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 主体内容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.littleboy<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>common<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="打包方式"><a href="#打包方式" class="headerlink" title="打包方式"></a>打包方式</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>主要使用了<code>org.mybatis.generator.api.MyBatisGenerator</code>这个类, 该类使用xml文件来对表进行映射, 从而创建对应的实体类。</p>
         
-          <a class="article-more-a" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-common-manager-depend.html#more">more >></a>
+          <a class="article-more-a" href="/my_project/shopping_mall/taps/shopping-mall-developNote-mybatis-automatic-generation.html#more">more >></a>
         
       
 
@@ -205,6 +203,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">商城开发</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">小知识点</a>
         		</li>
       		
 		</ul>
@@ -224,7 +226,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/develop-note/shopping-mall/config//" class="article-tag-list-link color4">配置篇</a>
+        			<a href="/categories/develop-note/shopping-mall/tips//" class="article-tag-list-link color4">技巧篇</a>
         		</li>
       		
 		</ul>
@@ -258,11 +260,11 @@
 
 
   
-    <article id="post-my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-parent-depend" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   
 	<div class="article-meta">
-	<a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-parent-depend.html" class="article-date">
-		<time datetime="2018-11-20T10:47:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-20</time>
+	<a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html" class="article-date">
+		<time datetime="2018-12-02T03:43:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-02</time>
 	</a>
 </div>
   
@@ -272,7 +274,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-parent-depend.html">商城开发笔记-依赖</a>
+      <a class="article-title" href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">快乐的Linux命令行笔记-重定向标准输入和输出以及处理查询结果</a>
     </h1>
   
 
@@ -288,19 +290,10 @@
 	
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="框架简介"><a href="#框架简介" class="headerlink" title="框架简介"></a>框架简介</h1><p>本项目主要用到的框架有:</p>
-<ol>
-<li>Spring</li>
-<li>SpringMVC</li>
-<li>Mybatis</li>
-<li>zookeeper</li>
-<li>dubbo</li>
-<li>radis</li>
-<li>junit</li>
-</ol>
-<p>还有一些其他的小工具, 方便开发使用的, 等用到的时候我再作介绍</p>
+        <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天学习了如何将标准输入和标准输出的概念, 并如何重定向到文件中, 以及一些处理结果的技巧, 比如排序, 去重等等。</p>
         
-          <a class="article-more-a" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-parent-depend.html#more">more >></a>
+          <a class="article-more-a" href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html#more">more >></a>
         
       
 
@@ -314,7 +307,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">商城开发</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">快乐的Linux命令行</a>
         		</li>
       		
 		</ul>
@@ -326,15 +327,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/develop-note//" class="article-tag-list-link color5">开发笔记</a>
+        			<a href="/categories/reading-note//" class="article-tag-list-link color5">读书笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/develop-note/shopping-mall//" class="article-tag-list-link color3">商城</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/develop-note/shopping-mall/config//" class="article-tag-list-link color4">配置篇</a>
+        			<a href="/categories/reading-note/The-Linux-Command-Line//" class="article-tag-list-link color2">快乐的Linux命令行</a>
         		</li>
       		
 		</ul>
@@ -370,7 +367,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/62/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="page-number" href="/page/62/">62</a><span class="page-number current">63</span><a class="page-number" href="/page/64/">64</a><a class="page-number" href="/page/65/">65</a><a class="page-number" href="/page/66/">66</a><a class="extend next" rel="next" href="/page/64/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/62/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="page-number" href="/page/62/">62</a><span class="page-number current">63</span><a class="page-number" href="/page/64/">64</a><a class="page-number" href="/page/65/">65</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="extend next" rel="next" href="/page/64/">Next &raquo;</a>
     </nav>
   
 
@@ -476,7 +473,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color3">经历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,14 +482,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">启发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,6 +497,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
@@ -520,11 +517,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hexo插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">hexo起步</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo插件</a>
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,7 +537,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+                <a href="javascript:void(0)" class="js-tag color3">支付</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,6 +546,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thinkPHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">beautiful soup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">reportlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,11 +573,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经历</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,10 +585,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -588,11 +593,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
+                <a href="javascript:void(0)" class="js-tag color2">Javafx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,11 +645,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+                <a href="javascript:void(0)" class="js-tag color5">archlinux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">wifi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,23 +673,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color2">gradle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color3">flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,7 +689,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">跨域</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">jog4j</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -704,11 +725,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">快乐的Linux命令行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,15 +753,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
