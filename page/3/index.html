@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-17Day.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/raspberry/setup-my-environment.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +204,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-17Day.html" class="post-title-link" itemprop="url">快乐的Linux命令行笔记-正则表达式</a>
+            <a href="/raspberry/setup-my-environment.html" class="post-title-link" itemprop="url">设置我的树莓派环境脚本</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +214,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-31 19:41:08" itemprop="dateCreated datePublished" datetime="2020-05-31T19:41:08+08:00">2020-05-31</time>
+              <time title="创建时间：2020-06-16 04:18:02" itemprop="dateCreated datePublished" datetime="2020-06-16T04:18:02+08:00">2020-06-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-04 06:51:50" itemprop="dateModified" datetime="2020-06-04T06:51:50+08:00">2020-06-04</time>
+                <time title="修改时间：2020-06-19 23:31:44" itemprop="dateModified" datetime="2020-06-19T23:31:44+08:00">2020-06-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,11 +229,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                  <a href="/categories/operation-and-maintenance/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
+                  <a href="/categories/operation-and-maintenance/raspberry/" itemprop="url" rel="index"><span itemprop="name">raspberry</span></a>
                 </span>
             </span>
 
@@ -248,11 +248,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">第四天的笔记-重定向标准输入和输出以及处理查询结果</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-5Day.html">第五天的笔记-命令的展开</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-6Day.html">第六天的笔记-快捷键</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-7Day.html">第七天的笔记-文件权限</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-8Day.html">第八天的笔记-进程</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-9Day.html">第九天的笔记-修改shell环境</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-10Day.html">第十天的笔记-vim入门</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">第十一天的笔记-自定义shell提示符</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html">第十二天的笔记-软件包管理系统</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-13Day.html">第十三天的笔记-创建映像</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-14Day.html">第十四天的笔记-网络</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-15Day.html">第十五天的笔记-查找文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-16Day.html">第十六天的笔记-压缩</a></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本次主要学习了如何在各种命令中使用正则表达式来匹配, 其他的命令如find, 可以使用 -regex, locate 可以使用 –regex</p>
+          <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>首先总结一下本篇博客的内容: 将一个全新的树莓派通过执行脚本的方式将我所有的使用习惯和开发环境下载到本地并编译, 该脚本通过命令选项的方式将所需要的可选项设置好, 这样脚本在执行中途就不需要等待用户输入了。</p>
+<p>最后将所有的软件安装位置和安装的成功与否生成一个txt文本文档保存在用户根目录下。</p>
+<p>本脚本如果在安装某个软件失败了, 需要自行解决并安装下一个软件。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-17Day.html#more" rel="contents">
+              <a class="btn" href="/raspberry/setup-my-environment.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -276,7 +277,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/python/use-python-to-get-webpage-to-pdf.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-18Day.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -290,7 +291,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/python/use-python-to-get-webpage-to-pdf.html" class="post-title-link" itemprop="url">使用python获取网页内容并转换pdf</a>
+            <a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-18Day.html" class="post-title-link" itemprop="url">快乐的Linux命令行笔记-文本处理</a>
         </h2>
 
         <div class="post-meta">
@@ -300,14 +301,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-31 07:55:53" itemprop="dateCreated datePublished" datetime="2020-05-31T07:55:53+08:00">2020-05-31</time>
+              <time title="创建时间：2020-06-03 23:52:13" itemprop="dateCreated datePublished" datetime="2020-06-03T23:52:13+08:00">2020-06-03</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:18:04" itemprop="dateModified" datetime="2020-06-19T23:18:04+08:00">2020-06-19</time>
+                <time title="修改时间：2020-06-04 18:57:07" itemprop="dateModified" datetime="2020-06-04T18:57:07+08:00">2020-06-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -315,11 +316,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/front-code/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                  <a href="/categories/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/front-code/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                  <a href="/categories/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
                 </span>
             </span>
 
@@ -334,12 +335,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>最近看到有一本书以网页的形式放到了一个网站上, 想把它扒下来并转换成pdf, 想了想python好像特别适合做这种事情, 试了一下还真的可以。用到了两个第三方模块: beautiful soup 和 reportlab。</p>
-<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>首先我看了一下结构, 章节目录是一个网页, 每个章节都是一个链接, 点进去是对应的章节内容, 那么首要任务就是将目录扒下来。</p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>首先打开f12, 看到了这个网页的结构, 每一个章节都是一个 <code>&lt;span&gt;</code> 标签, 并且有对应的 class 名称:</p>
+          <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">第四天的笔记-重定向标准输入和输出以及处理查询结果</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-5Day.html">第五天的笔记-命令的展开</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-6Day.html">第六天的笔记-快捷键</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-7Day.html">第七天的笔记-文件权限</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-8Day.html">第八天的笔记-进程</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-9Day.html">第九天的笔记-修改shell环境</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-10Day.html">第十天的笔记-vim入门</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">第十一天的笔记-自定义shell提示符</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html">第十二天的笔记-软件包管理系统</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-13Day.html">第十三天的笔记-创建映像</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-14Day.html">第十四天的笔记-网络</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-15Day.html">第十五天的笔记-查找文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-16Day.html">第十六天的笔记-压缩</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-17Day.html">第十六天的笔记-正则表达式</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/python/use-python-to-get-webpage-to-pdf.html#more" rel="contents">
+              <a class="btn" href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-18Day.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -362,7 +362,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -430,18 +430,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">80</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

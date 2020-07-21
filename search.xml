@@ -2409,6 +2409,21 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       </tags>
   </entry>
   <entry>
+    <title>http-connect-failed-EHOSTUNREACH</title>
+    <url>/mobile/android/http-connect-failed-EHOSTUNREACH.html</url>
+    <content><![CDATA[<p>提示访问不到服务器</p>
+<p>解决方式: 切换到其他wifi网络, 在切回来, 就好了。。</p>
+]]></content>
+      <categories>
+        <category>移动开发</category>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>踩坑</tag>
+        <tag>android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于flutter的listview控件需要注意的地方</title>
     <url>/mobile/flutter/about-listview.html</url>
     <content><![CDATA[<h1 id="构造一个listview"><a href="#构造一个listview" class="headerlink" title="构造一个listview"></a>构造一个listview</h1><p>官方文档给出了四中可以构造listview的方法, 下面是原文:</p>
@@ -6213,6 +6228,33 @@ default     192.168.1.1 0.0.0.0         UG      0   0       0       eth0</code><
       </tags>
   </entry>
   <entry>
+    <title>计算机中的单位</title>
+    <url>/read-note/assembly_language/assembly-unit.html</url>
+    <content><![CDATA[<h1 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h1><p>记录一下计算机中的单位:</p>
+<p>1 GB = 2的8次方 MB = 2的16次方 KB = 2的32次方 byte = 8 x 2的32次方 bit</p>
+<p>一个存储单元可以存放1个byte(也就是一个字节), 8个bit, 一个存储器有128个存储单元</p>
+<a id="more"></a>
+
+<h1 id="控制总线"><a href="#控制总线" class="headerlink" title="控制总线"></a>控制总线</h1><p>地址总线的寻址情况:</p>
+<p>一根地址总线可以传输1bit的内容(0或1, 0表示低电平, 1表示高电平), 可以寻址两个内存单元, 10根地址总线可以传输10bit的内容, 也就是10位二进制数据, 也就是1023个数据。这里的地址总线传输的数据是用来访问地址为该数据的内存单元。</p>
+<p>数据总线的传输情况:</p>
+<p>一根总线可以传输一位, 8根一次可以传输8位(也就是一个字节)的数据。</p>
+<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><p>老一代的cpu(8086之前的cpu)采用的都是8位寄存器, 8086采用的是16位寄存器, 为了兼容性, 8086cpu可以一次性处理两种尺寸的数据:</p>
+<ul>
+<li>字节, 一个字节由8bit组成, 可以存在8位寄存器中。</li>
+<li>字, 记为word, 由两个字节组成, 分别为这个字的高位字节和低位字节。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>汇编语言</category>
+      </categories>
+      <tags>
+        <tag>汇编</tag>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>javascript权威指南读书笔记-第一天</title>
     <url>/read-note/javascript-The-Definitive-Guide/javascript-The-Definitive-Guide-read-note-firstDay.html</url>
     <content><![CDATA[<h1 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h1><p>null 的类型是Object(可用typeof来得到结果), 而undefined的类型就是undefined</p>
@@ -6234,6 +6276,59 @@ default     192.168.1.1 0.0.0.0         UG      0   0       0       eth0</code><
       </categories>
       <tags>
         <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>阅读《C程序设计语言（第二版）》第一天</title>
+    <url>/read-note/the_c_programming_language/the-c-programming-language-first-day.html</url>
+    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>学到了一些关于C的基础知识。</p>
+<a id="more"></a>
+
+<h1 id="在linux上编写c"><a href="#在linux上编写c" class="headerlink" title="在linux上编写c"></a>在linux上编写c</h1><p>首先声明本人使用的linux版本为centos7</p>
+<ol>
+<li>使用<code>cat</code>或者其他命令来新建一个文件, 后缀名是<code>.c</code></li>
+<li>使用<code>vim</code>命令来编写这个文件</li>
+<li>使用<code>cc 文件名.c</code>来编译该文件</li>
+<li>使用<code>./a.out</code>来运行该文件</li>
+</ol>
+<br>
+
+<h1 id="在visual-studio-2017-上编写c"><a href="#在visual-studio-2017-上编写c" class="headerlink" title="在visual studio 2017 上编写c"></a>在visual studio 2017 上编写c</h1><ol>
+<li><p>新建一个项目<br><img src="/images/c-programming-language/firstDay/vs1.jpg" alt="&#39;新建一个项目&#39;"></p>
+</li>
+<li><p>创建文件<br><img src="/images/c-programming-language/firstDay/vs2.jpg" alt="&#39;创建文件&#39;"></p>
+</li>
+<li><p>修改文件属性<br><img src="/images/c-programming-language/firstDay/vs3.jpg" alt="&#39;创建文件&#39;"><br><img src="/images/c-programming-language/firstDay/vs4.jpg" alt="&#39;创建文件&#39;"><br>vs有一个预编译头的功能, 将需要导入的库放入预编译头指定的文件, 直接引入这个文件就可以了, 但是我们现在不需要这个功能, 所以先取消掉</p>
+</li>
+<li><p>编写程序</p>
+</li>
+<li><p>生成项目<br><img src="/images/c-programming-language/firstDay/vs5.jpg" alt="&#39;创建文件&#39;"></p>
+</li>
+<li><p>运行项目(ctrl-f5)<br><img src="/images/c-programming-language/firstDay/vs6.jpg" alt="&#39;创建文件&#39;"></p>
+</li>
+</ol>
+<br/>
+
+<h1 id="define关键字"><a href="#define关键字" class="headerlink" title="#define关键字"></a><code>#define</code>关键字</h1><p>语法:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY <span class="meta-string">"word"</span></span></span><br></pre></td></tr></table></figure>
+
+<p>该关键字定义了符号常量, 在程序中可直接使用定义的键来替代相应的值。</p>
+<br>
+
+<h1 id="getchar-和-putchar"><a href="#getchar-和-putchar" class="headerlink" title="getchar() 和 putchar()"></a><code>getchar()</code> 和 <code>putchar()</code></h1><ul>
+<li><p>getchar()<br>可以从输入中读一个字符并返回</p>
+</li>
+<li><p>putchar(obj)<br>可以将参数以字符的形式打印出来</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>C程序设计语言</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -6324,59 +6419,6 @@ default     192.168.1.1 0.0.0.0         UG      0   0       0       eth0</code><
       </categories>
       <tags>
         <tag>性能</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>阅读《C程序设计语言（第二版）》第一天</title>
-    <url>/read-note/the_c_programming_language/the-c-programming-language-first-day.html</url>
-    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>学到了一些关于C的基础知识。</p>
-<a id="more"></a>
-
-<h1 id="在linux上编写c"><a href="#在linux上编写c" class="headerlink" title="在linux上编写c"></a>在linux上编写c</h1><p>首先声明本人使用的linux版本为centos7</p>
-<ol>
-<li>使用<code>cat</code>或者其他命令来新建一个文件, 后缀名是<code>.c</code></li>
-<li>使用<code>vim</code>命令来编写这个文件</li>
-<li>使用<code>cc 文件名.c</code>来编译该文件</li>
-<li>使用<code>./a.out</code>来运行该文件</li>
-</ol>
-<br>
-
-<h1 id="在visual-studio-2017-上编写c"><a href="#在visual-studio-2017-上编写c" class="headerlink" title="在visual studio 2017 上编写c"></a>在visual studio 2017 上编写c</h1><ol>
-<li><p>新建一个项目<br><img src="/images/c-programming-language/firstDay/vs1.jpg" alt="&#39;新建一个项目&#39;"></p>
-</li>
-<li><p>创建文件<br><img src="/images/c-programming-language/firstDay/vs2.jpg" alt="&#39;创建文件&#39;"></p>
-</li>
-<li><p>修改文件属性<br><img src="/images/c-programming-language/firstDay/vs3.jpg" alt="&#39;创建文件&#39;"><br><img src="/images/c-programming-language/firstDay/vs4.jpg" alt="&#39;创建文件&#39;"><br>vs有一个预编译头的功能, 将需要导入的库放入预编译头指定的文件, 直接引入这个文件就可以了, 但是我们现在不需要这个功能, 所以先取消掉</p>
-</li>
-<li><p>编写程序</p>
-</li>
-<li><p>生成项目<br><img src="/images/c-programming-language/firstDay/vs5.jpg" alt="&#39;创建文件&#39;"></p>
-</li>
-<li><p>运行项目(ctrl-f5)<br><img src="/images/c-programming-language/firstDay/vs6.jpg" alt="&#39;创建文件&#39;"></p>
-</li>
-</ol>
-<br/>
-
-<h1 id="define关键字"><a href="#define关键字" class="headerlink" title="#define关键字"></a><code>#define</code>关键字</h1><p>语法:</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY <span class="meta-string">"word"</span></span></span><br></pre></td></tr></table></figure>
-
-<p>该关键字定义了符号常量, 在程序中可直接使用定义的键来替代相应的值。</p>
-<br>
-
-<h1 id="getchar-和-putchar"><a href="#getchar-和-putchar" class="headerlink" title="getchar() 和 putchar()"></a><code>getchar()</code> 和 <code>putchar()</code></h1><ul>
-<li><p>getchar()<br>可以从输入中读一个字符并返回</p>
-</li>
-<li><p>putchar(obj)<br>可以将参数以字符的形式打印出来</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-        <category>C程序设计语言</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -6564,6 +6606,25 @@ default     192.168.1.1 0.0.0.0         UG      0   0       0       eth0</code><
       </tags>
   </entry>
   <entry>
+    <title>读《大型网站技术架构》笔记 - 自动化发布及运维</title>
+    <url>/read-note/web-site-framework/auto-deploy-hot-update.html</url>
+    <content><![CDATA[<h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄:"></a>摘抄:</h1><p>在无人值守的情况下, 一切都可以自动化是网站的理想状态。目前大型网站的自动化架构设计主要集中在发布运维方面。</p>
+<p>发布对于网站来说是头等大事, 许多网站故障出在发布环节, 网站工程师经常加班也是因为发布不顺利。通过减少人为干预, 使发布过程自动化可有效减少故障。发布过程包括诸多环节。自动化代码管理, 代码版本控制, 代码分支创建合并等过程自动化, 开发工程师只要提交自己参与开发的产品代号, 系统就会自动为其创建开发分支。后期会自动进行代码合并。自动化测试, 代码开发完成, 提交测试后, 系统自动将代码部署到测试环境, 启动自动化测试用例进行测试, 向相关人员发送测试报告, 像系统反馈测试结果。自动化安全检测, 安全检测工具通过对代码进行静态安全扫描及部署到安全测试环境进行安全测试, 评估其安全性。最后进行自动化部署, 将工程代码自动部署到线上生产环境。</p>
+<a id="more"></a>
+
+<p>此外, 网站在运行过程中可能会遇到各种问题: 服务器宕机, 程序bug, 存储空间不足, 突然爆发的访问高峰。网站需要对线上生产环境进行自动监控, 对服务器进行心跳检测, 并监控其各项性能指标和应用程序的关键数据指标。如果发现异常, 超出预设的阈值, 就进行自动报警, 向相关人员发送报警信息, 警告故障可能会发生。在检测到故障发生之后, 系统会进行自动化失效转移, 将失效的服务器从集群中隔离出去, 不在处理系统中的应用请求。待故障消除后, 系统进行自动化失效恢复, 重新启动服务, 同步数据保证数据的一致性。在网站遇到访问高峰, 超出网站最大处理能力时, 为了保证整个网站的安全可用, 还会进行自动化降级, 通过拒绝部分请求及关闭部分不重要的服务将系统负载降至一个安全的水平, 必要时, 还需要自动化分配资源, 将空闲资源分配给重要的服务, 扩大其部署规模。</p>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>以上两段是我对原文的摘抄, 文章中也说明了是理想状态, 那么我就来说说我的看法:</p>
+<p>我的工作时间不长, 但是就我的经历而言, 部署和运维的确经常成为加班的一个重要原因。最重要的是, 这些步骤可以通过脚本的方式实现自动化。就如文章中提到的那样, 代码的管理, 测试, 部署, 出问题之后的解决等等, 都可以自动化, 那么我的问题是, 应该从哪方面入手? 再写自动化处理错误的脚本时, 应该将自己想象成什么角色? 将该脚本的行为模拟成一个用户? 这个用户不停的对网站的所有服务进行访问(心跳检测), 想到这里我想明白了, 就是应该这样做, 将几个角色分别以脚本的形式对网站进行维护: 用户, 对网站的所有服务进行测试; 运维, 当用户测试出了问题时, 应当及时对出问题的服务器进行应急处理; 报警人员: 出问题时, 及时通知相关人员处理问题等等, 这样, 就可以让机器代替人类来做这些麻烦而且容易出错的事情了。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>大型网站技术架构</category>
+      </categories>
+      <tags>
+        <tag>架构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>阅读《C程序设计语言（第二版）》第二天</title>
     <url>/read-note/the_c_programming_language/the-c-programming-language-second-day.html</url>
     <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><a id="more"></a>
@@ -6584,25 +6645,6 @@ default     192.168.1.1 0.0.0.0         UG      0   0       0       eth0</code><
       <tags>
         <tag>笔记</tag>
         <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>读《大型网站技术架构》笔记 - 自动化发布及运维</title>
-    <url>/read-note/web-site-framework/auto-deploy-hot-update.html</url>
-    <content><![CDATA[<h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄:"></a>摘抄:</h1><p>在无人值守的情况下, 一切都可以自动化是网站的理想状态。目前大型网站的自动化架构设计主要集中在发布运维方面。</p>
-<p>发布对于网站来说是头等大事, 许多网站故障出在发布环节, 网站工程师经常加班也是因为发布不顺利。通过减少人为干预, 使发布过程自动化可有效减少故障。发布过程包括诸多环节。自动化代码管理, 代码版本控制, 代码分支创建合并等过程自动化, 开发工程师只要提交自己参与开发的产品代号, 系统就会自动为其创建开发分支。后期会自动进行代码合并。自动化测试, 代码开发完成, 提交测试后, 系统自动将代码部署到测试环境, 启动自动化测试用例进行测试, 向相关人员发送测试报告, 像系统反馈测试结果。自动化安全检测, 安全检测工具通过对代码进行静态安全扫描及部署到安全测试环境进行安全测试, 评估其安全性。最后进行自动化部署, 将工程代码自动部署到线上生产环境。</p>
-<a id="more"></a>
-
-<p>此外, 网站在运行过程中可能会遇到各种问题: 服务器宕机, 程序bug, 存储空间不足, 突然爆发的访问高峰。网站需要对线上生产环境进行自动监控, 对服务器进行心跳检测, 并监控其各项性能指标和应用程序的关键数据指标。如果发现异常, 超出预设的阈值, 就进行自动报警, 向相关人员发送报警信息, 警告故障可能会发生。在检测到故障发生之后, 系统会进行自动化失效转移, 将失效的服务器从集群中隔离出去, 不在处理系统中的应用请求。待故障消除后, 系统进行自动化失效恢复, 重新启动服务, 同步数据保证数据的一致性。在网站遇到访问高峰, 超出网站最大处理能力时, 为了保证整个网站的安全可用, 还会进行自动化降级, 通过拒绝部分请求及关闭部分不重要的服务将系统负载降至一个安全的水平, 必要时, 还需要自动化分配资源, 将空闲资源分配给重要的服务, 扩大其部署规模。</p>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>以上两段是我对原文的摘抄, 文章中也说明了是理想状态, 那么我就来说说我的看法:</p>
-<p>我的工作时间不长, 但是就我的经历而言, 部署和运维的确经常成为加班的一个重要原因。最重要的是, 这些步骤可以通过脚本的方式实现自动化。就如文章中提到的那样, 代码的管理, 测试, 部署, 出问题之后的解决等等, 都可以自动化, 那么我的问题是, 应该从哪方面入手? 再写自动化处理错误的脚本时, 应该将自己想象成什么角色? 将该脚本的行为模拟成一个用户? 这个用户不停的对网站的所有服务进行访问(心跳检测), 想到这里我想明白了, 就是应该这样做, 将几个角色分别以脚本的形式对网站进行维护: 用户, 对网站的所有服务进行测试; 运维, 当用户测试出了问题时, 应当及时对出问题的服务器进行应急处理; 报警人员: 出问题时, 及时通知相关人员处理问题等等, 这样, 就可以让机器代替人类来做这些麻烦而且容易出错的事情了。</p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-        <category>大型网站技术架构</category>
-      </categories>
-      <tags>
-        <tag>架构</tag>
       </tags>
   </entry>
   <entry>
@@ -8718,101 +8760,6 @@ serviceCenter --> memberService[会员服务层]</pre>
       </tags>
   </entry>
   <entry>
-    <title>《跟我一起写Makefile (六)》摘抄</title>
-    <url>/cpp/notes/edit-makefile/edit-makefile-six.html</url>
-    <content><![CDATA[<h1 id="书写命令"><a href="#书写命令" class="headerlink" title="书写命令"></a>书写命令</h1><p>&emsp;&emsp;每条规则中的命令和操作系统Shell的命令行是一致的。make 会按顺序一条条执行命令, 每条命令的开头必须以 Tab 键开头, 除非, 命令是紧跟在依赖规则后面的分好后的。在命令行之间的空格或是空行会被忽略, 但是如果该空格或空行是以 Tab 键开头的, 那么 make 会认为其是一个空命令。</p>
-<p>&emsp;&emsp;我们再 UNIX 下可能会使用不同的Shell, 但是 make 的命令默认是被 <code>/bin/sh</code> —— UNIX的标准Shell解释执行的。除非你特别指定一个其他的Shell。Makefile 中, <code>#</code> 是注释符, 很像 C/C++ 中的 “\“, 其后的本行字符都被注释。</p>
-<a id="more"></a>
-<h1 id="一、显示命令"><a href="#一、显示命令" class="headerlink" title="一、显示命令"></a>一、显示命令</h1><p>通常, make 会把其要执行的命令在命令执行前输出到屏幕上。当我们用”@”字符在命令行前, 那么, 这个命令将不被 make 显示出来, 最具代表性的例子是, 我们用这个功能来向屏幕显示一些信息。如:</p>
-<blockquote>
-<p>@echo 正在编译XXX模块</p>
-</blockquote>
-<p>当 make 执行时, 会输出”正在编译XXX模块”, 但不会输出命令, 如果没有<code>@</code>, 那么 make 将输出:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo 正在编译XXX模块</span><br><span class="line">正在编译XXX模块</span><br></pre></td></tr></table></figure>
-
-<p>如果 make 执行时, 带入 make 参数 “-n” 或 “–just-print”, 那么其只是显示命令, 但不会执行命令, 这个功能很有利于我们调试我们的 Makefile, 看看我们书写的命令执行起来是什么样子或是什么顺序。</p>
-<p>而 make 参数 “-s” 或 “–slient” 则是全面禁止命令的显示。</p>
-<h1 id="二、命令执行"><a href="#二、命令执行" class="headerlink" title="二、命令执行"></a>二、命令执行</h1><p>当依赖目标新于目标时,也就是当规则的目标需要被更新时, make 会一条一条的执行其后的命令。需要注意的是, 如果你要让上一条的命令的结果应用在下一条命令时, 你应该使用分号分隔这两条命令。比如你的第一条命令是 cd 命令, 你希望第二条命令得在 cd 的基础上运行, 那么你就不能把这两条命令写在两行上, 而应该把这两条命令卸载一行上, 用分号分隔。</p>
-<p>如:</p>
-<p>示例一:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exec:</span><br><span class="line">	cd /home/littleboy</span><br><span class="line">	pwd</span><br></pre></td></tr></table></figure>
-
-<p>示例二:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exec:</span><br><span class="line">	cd /home/littleboy; pwd</span><br></pre></td></tr></table></figure>
-
-<p>当我们执行 “make exec” 时, 第一个例子中的 cd 没有作用, pwd会打印出当前的 Makefile 目录。而第二个例子中, cd 就起作用了, pwd 会打印 <code>/home/littleboy</code>。</p>
-<p>make 一般是使用环境变量 SHELL 所定义的系统 Shell 来执行命令, 默认情况下使用 UNIX 标准 Shell —— /bin/sh 来执行命令。但在 MS-DOS 下有点特殊, 因为 MS-DOS 下没有 SHELL 环境变量, 当然你也可以指定。如果你指定了 UNIX 风格的目录形式, 首先, make 会在 SHELL 所指定的路径中找寻命令解释器, 如果找不到, 其会在当前盘符中的当前目录寻找, 如果再找不到, 其会在 PATH 环境变量中所定义的所有路径中寻找。MS-DOS 中, 如果你定义的命令解释器没有找到, 其会给你的命令解释器加上诸如<code>.exe</code>、<code>.com</code>、<code>.bat</code>、<code>.sh</code> 等后缀。</p>
-<h1 id="三、命令出错"><a href="#三、命令出错" class="headerlink" title="三、命令出错"></a>三、命令出错</h1><p>每当命令运行完后, make 会检测每个命令的返回码, 如果命令返回成功, 那么 make 会执行下一条命令, 当规则中所有的命令成功返回后, 这个规则就算是成功完成了。如果一个规则中的某个命令出错了(命令退出码非零), 那么 make 就会终止执行当前规则, 这将有可能终止所有规则的执行。</p>
-<p>有些时候, 命令的出错并不表示就是错误的。例如 mkdir 命令, 我们一定需要建立一个目录, 如果目录不存在, 那么 mkdir 就成功执行, 万事大吉。如果目录存在, 那 mkdir 就出错了, 但是并不代表命令有问题。所以有些错误我们需要忽略掉, 为了做到这一点, 我们可以在 Makefile 的命令行前加一个减号<code>-</code>(在 Tab 键之后), 标记为不管命令出不出错都认为是成功的。如:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">	-rm -f *.o</span><br></pre></td></tr></table></figure>
-
-<p>还有一个全局的办法是, 给 make 加上<code>-i</code>或是<code>--ignore-errors</code>参数, 那么, Makefile 中所有命令都会忽略这个错误。而如果一个规则是以<code>.INGNORE</code>作为目标的, 那么这个规则中的所有命令都会忽略这个错误。这些是不同级别的防止命令出错的方法, 你可以根据你的不同喜欢设置。</p>
-<p>还有一个要提一下的是 make 的参数 <code>-k</code> 或是 <code>--keep-going</code>, 这个参数的意思是, 如果某规则中的命令出错了, 那么就终止该规则执行, 但继续执行其他规则。</p>
-<h1 id="四、嵌套执行-make"><a href="#四、嵌套执行-make" class="headerlink" title="四、嵌套执行 make"></a>四、嵌套执行 make</h1><p>在一些大的工程中, 我们会把我们不同模块或是不同功能的源文件放在不同的目录中, 我们可以在每个目录中都书写一个该目录的 Makefile, 这有利于我们的 Makefile 变得更加的简洁, 而不至于把所有的东西全部写在一个 Makefile 中, 这样会很难维护我们的 Makefile, 这个技术对于我们模块编译和分段编译有着非常大的好处。</p>
-<p>例如, 我们有一个子目录叫 subdir, 这个目录有个 Makefile 文件, 来指明了这个目录下文件的编译规则。那么我们总控的 Makefile 可以这样书写:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subsystem:</span><br><span class="line">	cd subdir &amp;&amp; $(MAKE)</span><br></pre></td></tr></table></figure>
-
-<p>其等价于:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subsystem:</span><br><span class="line">	$(MAKE) -C subdir</span><br></pre></td></tr></table></figure>
-
-<p>定义<code>$(MAKE)</code>宏变量的意思是, 也许我们的 make 需要一些参数, 所以定义成一个变量比较利于维护。这两个例子的意思都是先进入<code>subdir</code>目录, 然后执行 make 命令。</p>
-<p>我们把这个 Makefile 叫做 “总控 Makefile”, 总控 Makefile 的变量可以传递到下级的 Makefile 中, 但是不会覆盖下层的 Makefile 中所定义的变量, 除非指定了 <code>-e</code> 参数。</p>
-<p>如果你要传递变量到下级 Makefile 中, 那么你可以使用这样的声明:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export &lt;variable...&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果你不想让某些变量传递到下级 Makefile 中, 那么你可以这样声明:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unexport &lt;variable...&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export variable = value</span><br></pre></td></tr></table></figure>
-
-<p>其等价于:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">variable = value</span><br><span class="line">export variable</span><br></pre></td></tr></table></figure>
-
-<p>等价于:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export variable := value</span><br></pre></td></tr></table></figure>
-
-<p>等价于:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">variable := value</span><br><span class="line">export variable</span><br></pre></td></tr></table></figure>
-
-<p>再如:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export variable += value</span><br></pre></td></tr></table></figure>
-
-<p>其等价于:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">variable += value</span><br><span class="line">export variable</span><br></pre></td></tr></table></figure>
-
-<p>如果你要传递所有的变量, 那么, 只要有一个<code>export</code>就行了, 表示传递所有的变量。</p>
-<p>需要注意的是, 有两个变量, 一个是SHELL, 一个是 MAKEFILES, 这两个变量不管是否 export, 都会传递到下层的 Makefile 中, 特别是 MAKEFILES 变量, 其中包含了 make 的参数信息, 如果我们执行”总控 Makefile”时有 make 参数或是在上层 Makefile 中定义了这个变量, 那么 MAKEFILES 变量将会是这些参数, 并会传递到下层 Makefile 中, 这是一个系统级的变量。</p>
-<p>但是 make 命令中的有几个参数并不往下传递, 他们是<code>-C</code>, <code>-f</code>, <code>-h</code>, <code>-o</code>和<code>-W</code>, 如果你不想往下层传递参数, 那么你可以这样来:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subsystem:</span><br><span class="line">	cd subdir &amp;&amp; $(MAKE) MAKEFLAGS=</span><br></pre></td></tr></table></figure>
-
-<p>如果你定义了环境变量 MAKEFLAGS, 那么你得确信其中的选项是大家都会用到的, 如果其中有<code>-t</code>, <code>-n</code>和<code>-q</code>参数, 那么将会有意想不到的错误。</p>
-<p>还有一个在嵌套执行中比较有用的参数, <code>-w</code>或是<code>--print-directory</code>会在 make 的过程中输出一些信息, 让你看到目前的工作目录。比如, 如果我们的下级 make 目录是 <code>/home/littleboy/gnu/make</code>, 如果我们使用<code>make -w</code>来执行, 那么当进入该目录时, 我们将会看到:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make: Entering directory /home/littleboy/gnu/make`</span><br></pre></td></tr></table></figure>
-
-<p>而在完成下层 make 后离开目录时, 我们会看到:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make: Leaving directory `/home/littleboy/gnu/make`</span><br></pre></td></tr></table></figure>
-
-<p>当你使用<code>-C</code>参数来指定 make 下层 Makefile 时, <code>-w</code> 会被自动打开。如果参数中有<code>-s</code>(<code>--slient</code>)或是<code>--no-print-directory</code>, 那么<code>-w</code>总是失效的。</p>
-<h1 id="五-定义命令包"><a href="#五-定义命令包" class="headerlink" title="五: 定义命令包"></a>五: 定义命令包</h1><p>如果 Makefile 中出现一些相同命令序列, 那么我们可以为这些相同的命令序列定义一个变量。定义这种命令序列的语法以<code>define</code>开始, 以<code>endef</code>结束, 如:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">define run-yacc</span><br><span class="line">yacc $(firstword $^)</span><br><span class="line">mv y.tab.c $@</span><br><span class="line">endef</span><br></pre></td></tr></table></figure>
-
-<p>这里, “run-yacc”是这个命令包的名字, 不要和 Makefile 中的变量重名。在<code>define</code>和<code>endef</code>中的两行就是命令序列。这个命令包中的第一个命令是运行 Yacc 程序, 因为 Yacc 程序总是生成 “y.yab.c” 的文件, 所以第二行的命令就是把这个文件改名字。还是把这个命令包放到一个实例中看看:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">foo.c: foo.y</span><br><span class="line">	$(run-yacc)</span><br></pre></td></tr></table></figure>
-
-<p>我们可以看见, 要使用这个命令包, 我们就好像使用变量一样。在这个命令包的使用中, 命令包 “run-yacc” 中的 <code>$^</code> 就是 <code>foo.y</code>, <code>$@</code> 就是 <code>foo.c</code>, make 在执行命令包时, 命令包中的每个命令会被依次独立执行。</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-        <category>跟我一起写makefile</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
-        <tag>makefile</tag>
-        <tag>跟我一起写makefile</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《跟我一起写makefile (七)》摘抄</title>
     <url>/cpp/notes/edit-makefile/edit-makefile-seven.html</url>
     <content><![CDATA[<h1 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h1><p>&emsp;&emsp;在 Makefile 中定义的变量, 就像是 C/C++ 语言中的宏一样, 他代表一个文本字串, 在 Makefile 中执行的时候其会自动原模原样地展开在所使用的地方。其与 C/C++ 不同的是, 你可以在 Makefile 中改变其值。 在 Makefile 中, 变量可以使用在”目标”, “依赖目标”, “命令”或是 Makefile 的其他部分中。</p>
@@ -8942,6 +8889,101 @@ serviceCenter --> memberService[会员服务层]</pre>
         <tag>笔记</tag>
         <tag>c++</tag>
         <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《跟我一起写Makefile (六)》摘抄</title>
+    <url>/cpp/notes/edit-makefile/edit-makefile-six.html</url>
+    <content><![CDATA[<h1 id="书写命令"><a href="#书写命令" class="headerlink" title="书写命令"></a>书写命令</h1><p>&emsp;&emsp;每条规则中的命令和操作系统Shell的命令行是一致的。make 会按顺序一条条执行命令, 每条命令的开头必须以 Tab 键开头, 除非, 命令是紧跟在依赖规则后面的分好后的。在命令行之间的空格或是空行会被忽略, 但是如果该空格或空行是以 Tab 键开头的, 那么 make 会认为其是一个空命令。</p>
+<p>&emsp;&emsp;我们再 UNIX 下可能会使用不同的Shell, 但是 make 的命令默认是被 <code>/bin/sh</code> —— UNIX的标准Shell解释执行的。除非你特别指定一个其他的Shell。Makefile 中, <code>#</code> 是注释符, 很像 C/C++ 中的 “\“, 其后的本行字符都被注释。</p>
+<a id="more"></a>
+<h1 id="一、显示命令"><a href="#一、显示命令" class="headerlink" title="一、显示命令"></a>一、显示命令</h1><p>通常, make 会把其要执行的命令在命令执行前输出到屏幕上。当我们用”@”字符在命令行前, 那么, 这个命令将不被 make 显示出来, 最具代表性的例子是, 我们用这个功能来向屏幕显示一些信息。如:</p>
+<blockquote>
+<p>@echo 正在编译XXX模块</p>
+</blockquote>
+<p>当 make 执行时, 会输出”正在编译XXX模块”, 但不会输出命令, 如果没有<code>@</code>, 那么 make 将输出:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo 正在编译XXX模块</span><br><span class="line">正在编译XXX模块</span><br></pre></td></tr></table></figure>
+
+<p>如果 make 执行时, 带入 make 参数 “-n” 或 “–just-print”, 那么其只是显示命令, 但不会执行命令, 这个功能很有利于我们调试我们的 Makefile, 看看我们书写的命令执行起来是什么样子或是什么顺序。</p>
+<p>而 make 参数 “-s” 或 “–slient” 则是全面禁止命令的显示。</p>
+<h1 id="二、命令执行"><a href="#二、命令执行" class="headerlink" title="二、命令执行"></a>二、命令执行</h1><p>当依赖目标新于目标时,也就是当规则的目标需要被更新时, make 会一条一条的执行其后的命令。需要注意的是, 如果你要让上一条的命令的结果应用在下一条命令时, 你应该使用分号分隔这两条命令。比如你的第一条命令是 cd 命令, 你希望第二条命令得在 cd 的基础上运行, 那么你就不能把这两条命令写在两行上, 而应该把这两条命令卸载一行上, 用分号分隔。</p>
+<p>如:</p>
+<p>示例一:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exec:</span><br><span class="line">	cd /home/littleboy</span><br><span class="line">	pwd</span><br></pre></td></tr></table></figure>
+
+<p>示例二:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exec:</span><br><span class="line">	cd /home/littleboy; pwd</span><br></pre></td></tr></table></figure>
+
+<p>当我们执行 “make exec” 时, 第一个例子中的 cd 没有作用, pwd会打印出当前的 Makefile 目录。而第二个例子中, cd 就起作用了, pwd 会打印 <code>/home/littleboy</code>。</p>
+<p>make 一般是使用环境变量 SHELL 所定义的系统 Shell 来执行命令, 默认情况下使用 UNIX 标准 Shell —— /bin/sh 来执行命令。但在 MS-DOS 下有点特殊, 因为 MS-DOS 下没有 SHELL 环境变量, 当然你也可以指定。如果你指定了 UNIX 风格的目录形式, 首先, make 会在 SHELL 所指定的路径中找寻命令解释器, 如果找不到, 其会在当前盘符中的当前目录寻找, 如果再找不到, 其会在 PATH 环境变量中所定义的所有路径中寻找。MS-DOS 中, 如果你定义的命令解释器没有找到, 其会给你的命令解释器加上诸如<code>.exe</code>、<code>.com</code>、<code>.bat</code>、<code>.sh</code> 等后缀。</p>
+<h1 id="三、命令出错"><a href="#三、命令出错" class="headerlink" title="三、命令出错"></a>三、命令出错</h1><p>每当命令运行完后, make 会检测每个命令的返回码, 如果命令返回成功, 那么 make 会执行下一条命令, 当规则中所有的命令成功返回后, 这个规则就算是成功完成了。如果一个规则中的某个命令出错了(命令退出码非零), 那么 make 就会终止执行当前规则, 这将有可能终止所有规则的执行。</p>
+<p>有些时候, 命令的出错并不表示就是错误的。例如 mkdir 命令, 我们一定需要建立一个目录, 如果目录不存在, 那么 mkdir 就成功执行, 万事大吉。如果目录存在, 那 mkdir 就出错了, 但是并不代表命令有问题。所以有些错误我们需要忽略掉, 为了做到这一点, 我们可以在 Makefile 的命令行前加一个减号<code>-</code>(在 Tab 键之后), 标记为不管命令出不出错都认为是成功的。如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">	-rm -f *.o</span><br></pre></td></tr></table></figure>
+
+<p>还有一个全局的办法是, 给 make 加上<code>-i</code>或是<code>--ignore-errors</code>参数, 那么, Makefile 中所有命令都会忽略这个错误。而如果一个规则是以<code>.INGNORE</code>作为目标的, 那么这个规则中的所有命令都会忽略这个错误。这些是不同级别的防止命令出错的方法, 你可以根据你的不同喜欢设置。</p>
+<p>还有一个要提一下的是 make 的参数 <code>-k</code> 或是 <code>--keep-going</code>, 这个参数的意思是, 如果某规则中的命令出错了, 那么就终止该规则执行, 但继续执行其他规则。</p>
+<h1 id="四、嵌套执行-make"><a href="#四、嵌套执行-make" class="headerlink" title="四、嵌套执行 make"></a>四、嵌套执行 make</h1><p>在一些大的工程中, 我们会把我们不同模块或是不同功能的源文件放在不同的目录中, 我们可以在每个目录中都书写一个该目录的 Makefile, 这有利于我们的 Makefile 变得更加的简洁, 而不至于把所有的东西全部写在一个 Makefile 中, 这样会很难维护我们的 Makefile, 这个技术对于我们模块编译和分段编译有着非常大的好处。</p>
+<p>例如, 我们有一个子目录叫 subdir, 这个目录有个 Makefile 文件, 来指明了这个目录下文件的编译规则。那么我们总控的 Makefile 可以这样书写:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subsystem:</span><br><span class="line">	cd subdir &amp;&amp; $(MAKE)</span><br></pre></td></tr></table></figure>
+
+<p>其等价于:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subsystem:</span><br><span class="line">	$(MAKE) -C subdir</span><br></pre></td></tr></table></figure>
+
+<p>定义<code>$(MAKE)</code>宏变量的意思是, 也许我们的 make 需要一些参数, 所以定义成一个变量比较利于维护。这两个例子的意思都是先进入<code>subdir</code>目录, 然后执行 make 命令。</p>
+<p>我们把这个 Makefile 叫做 “总控 Makefile”, 总控 Makefile 的变量可以传递到下级的 Makefile 中, 但是不会覆盖下层的 Makefile 中所定义的变量, 除非指定了 <code>-e</code> 参数。</p>
+<p>如果你要传递变量到下级 Makefile 中, 那么你可以使用这样的声明:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export &lt;variable...&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果你不想让某些变量传递到下级 Makefile 中, 那么你可以这样声明:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unexport &lt;variable...&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export variable = value</span><br></pre></td></tr></table></figure>
+
+<p>其等价于:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">variable = value</span><br><span class="line">export variable</span><br></pre></td></tr></table></figure>
+
+<p>等价于:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export variable := value</span><br></pre></td></tr></table></figure>
+
+<p>等价于:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">variable := value</span><br><span class="line">export variable</span><br></pre></td></tr></table></figure>
+
+<p>再如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export variable += value</span><br></pre></td></tr></table></figure>
+
+<p>其等价于:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">variable += value</span><br><span class="line">export variable</span><br></pre></td></tr></table></figure>
+
+<p>如果你要传递所有的变量, 那么, 只要有一个<code>export</code>就行了, 表示传递所有的变量。</p>
+<p>需要注意的是, 有两个变量, 一个是SHELL, 一个是 MAKEFILES, 这两个变量不管是否 export, 都会传递到下层的 Makefile 中, 特别是 MAKEFILES 变量, 其中包含了 make 的参数信息, 如果我们执行”总控 Makefile”时有 make 参数或是在上层 Makefile 中定义了这个变量, 那么 MAKEFILES 变量将会是这些参数, 并会传递到下层 Makefile 中, 这是一个系统级的变量。</p>
+<p>但是 make 命令中的有几个参数并不往下传递, 他们是<code>-C</code>, <code>-f</code>, <code>-h</code>, <code>-o</code>和<code>-W</code>, 如果你不想往下层传递参数, 那么你可以这样来:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subsystem:</span><br><span class="line">	cd subdir &amp;&amp; $(MAKE) MAKEFLAGS=</span><br></pre></td></tr></table></figure>
+
+<p>如果你定义了环境变量 MAKEFLAGS, 那么你得确信其中的选项是大家都会用到的, 如果其中有<code>-t</code>, <code>-n</code>和<code>-q</code>参数, 那么将会有意想不到的错误。</p>
+<p>还有一个在嵌套执行中比较有用的参数, <code>-w</code>或是<code>--print-directory</code>会在 make 的过程中输出一些信息, 让你看到目前的工作目录。比如, 如果我们的下级 make 目录是 <code>/home/littleboy/gnu/make</code>, 如果我们使用<code>make -w</code>来执行, 那么当进入该目录时, 我们将会看到:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make: Entering directory /home/littleboy/gnu/make`</span><br></pre></td></tr></table></figure>
+
+<p>而在完成下层 make 后离开目录时, 我们会看到:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make: Leaving directory `/home/littleboy/gnu/make`</span><br></pre></td></tr></table></figure>
+
+<p>当你使用<code>-C</code>参数来指定 make 下层 Makefile 时, <code>-w</code> 会被自动打开。如果参数中有<code>-s</code>(<code>--slient</code>)或是<code>--no-print-directory</code>, 那么<code>-w</code>总是失效的。</p>
+<h1 id="五-定义命令包"><a href="#五-定义命令包" class="headerlink" title="五: 定义命令包"></a>五: 定义命令包</h1><p>如果 Makefile 中出现一些相同命令序列, 那么我们可以为这些相同的命令序列定义一个变量。定义这种命令序列的语法以<code>define</code>开始, 以<code>endef</code>结束, 如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">define run-yacc</span><br><span class="line">yacc $(firstword $^)</span><br><span class="line">mv y.tab.c $@</span><br><span class="line">endef</span><br></pre></td></tr></table></figure>
+
+<p>这里, “run-yacc”是这个命令包的名字, 不要和 Makefile 中的变量重名。在<code>define</code>和<code>endef</code>中的两行就是命令序列。这个命令包中的第一个命令是运行 Yacc 程序, 因为 Yacc 程序总是生成 “y.yab.c” 的文件, 所以第二行的命令就是把这个文件改名字。还是把这个命令包放到一个实例中看看:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">foo.c: foo.y</span><br><span class="line">	$(run-yacc)</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看见, 要使用这个命令包, 我们就好像使用变量一样。在这个命令包的使用中, 命令包 “run-yacc” 中的 <code>$^</code> 就是 <code>foo.y</code>, <code>$@</code> 就是 <code>foo.c</code>, make 在执行命令包时, 命令包中的每个命令会被依次独立执行。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>跟我一起写makefile</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>makefile</tag>
+        <tag>跟我一起写makefile</tag>
       </tags>
   </entry>
   <entry>

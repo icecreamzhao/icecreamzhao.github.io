@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/mobile/flutter/flutter-android-internet.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/mobile/flutter/flutter_page_hook_dart.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +204,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/mobile/flutter/flutter-android-internet.html" class="post-title-link" itemprop="url">flutter 打包之后安装到手机上无法访问网络</a>
+            <a href="/mobile/flutter/flutter_page_hook_dart.html" class="post-title-link" itemprop="url">flutter 的页面钩子</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +214,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-10 16:52:48" itemprop="dateCreated datePublished" datetime="2020-02-10T16:52:48+08:00">2020-02-10</time>
+              <time title="创建时间：2020-03-12 16:09:54" itemprop="dateCreated datePublished" datetime="2020-03-12T16:09:54+08:00">2020-03-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-11 00:55:16" itemprop="dateModified" datetime="2020-02-11T00:55:16+08:00">2020-02-11</time>
+                <time title="修改时间：2020-04-18 20:08:25" itemprop="dateModified" datetime="2020-04-18T20:08:25+08:00">2020-04-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,10 +248,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>在 <code>项目根目录/android/app/src/AndroidManifest.xml</code> 文件的第一层下添加一下内容:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>来申请网络权限。</p>
+          <h1 id="deactivate-方法"><a href="#deactivate-方法" class="headerlink" title="deactivate 方法"></a>deactivate 方法</h1><p>官方注释:</p>
+<blockquote>
+<p>Called when this object is removed from the tree.<br>The framework calls this method whenever it removes this [State] object<br>from the tree. In some cases, the framework will reinsert the [State]<br>object into another part of the tree (e.g., if the subtree containing this<br>[State] object is grafted from one location in the tree to another). If<br>that happens, the framework will ensure that it calls [build] to give the<br>[State] object a chance to adapt to its new location in the tree. If<br>the framework does reinsert this subtree, it will do so before the end of<br>the animation frame in which the subtree was removed from the tree. For<br>this reason, [State] objects can defer releasing most resources until the<br>framework calls their [dispose] method.<br>Subclasses should override this method to clean up any links between<br>this object and other elements in the tree (e.g. if you have provided an<br>ancestor with a pointer to a descendant’s [RenderObject]).<br>If you override this, make sure to end your method with a call to<br>super.deactivate().</p>
+</blockquote>
+<p>简单翻译一下:</p>
+<p>当本页面被移出整个视图树后被自动调用。<br>framework 将本页面移出视图树后调用这个方法。在某些情况下, framework会将当前页面<br>重新插入到另一个树的某个部分(e.g. 如果子树包含的这个页面是从其他树中嫁接过来的)。<br>如果出现这种情况, framework会确保调用build()方法让该页面去适应在树中的新位置。如果<br>framework 重新插入了这个子树, 它将在从树中移出这个子树之前执行本方法。因为这个原<br>因, 当framework调用他们的dispose()方法的时候可以延迟释放更多资源。</p>
+<p>也就是说只要是当页面不在当前视图中, 该方法就会被调用, 而且会调用该页面的build()方法。<br>注释中还提到了如果需要重载该方法, 请确保在方法最后调用 super.deactivate() 。</p>
+<p>所以, 该方法其实是用来执行清理工作的, </p>
 
       
     </div>
@@ -271,7 +275,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/mobile/flutter/flutter-android-package.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/mobile/flutter/bottom-bar-unread.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -285,7 +289,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/mobile/flutter/flutter-android-package.html" class="post-title-link" itemprop="url">flutter apk 打包</a>
+            <a href="/mobile/flutter/bottom-bar-unread.html" class="post-title-link" itemprop="url">flutter 带未读消息的导航</a>
         </h2>
 
         <div class="post-meta">
@@ -295,14 +299,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-10 16:36:49" itemprop="dateCreated datePublished" datetime="2020-02-10T16:36:49+08:00">2020-02-10</time>
+              <time title="创建时间：2020-02-28 15:59:11" itemprop="dateCreated datePublished" datetime="2020-02-28T15:59:11+08:00">2020-02-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-11 00:52:22" itemprop="dateModified" datetime="2020-02-11T00:52:22+08:00">2020-02-11</time>
+                <time title="修改时间：2020-03-12 23:02:48" itemprop="dateModified" datetime="2020-03-12T23:02:48+08:00">2020-03-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -329,19 +333,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
-<li>创建签名文件</li>
-<li>在 gradle 中配置签名</li>
-<li>执行构建命令</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/mobile/flutter/flutter-android-package.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>在 pubspec.yaml 文件中的 <code>dependencies</code> </p>
+
       
     </div>
 
@@ -359,7 +352,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -427,18 +420,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">80</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

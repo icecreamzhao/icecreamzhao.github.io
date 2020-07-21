@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/java/read-open-source-java-version-project/read-mybatis-enhance.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/java/read-open-source-java-version-project/read-mybatis-enhance-tableFieldsConstruct.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +204,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/java/read-open-source-java-version-project/read-mybatis-enhance.html" class="post-title-link" itemprop="url">读mybatis-enhance开源项目</a>
+            <a href="/java/read-open-source-java-version-project/read-mybatis-enhance-tableFieldsConstruct.html" class="post-title-link" itemprop="url">mybatis-enhance的tableFieldsConstruct方法</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +214,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-01-12 14:12:43" itemprop="dateCreated datePublished" datetime="2019-01-12T14:12:43+08:00">2019-01-12</time>
+              <time title="创建时间：2019-01-16 00:15:51" itemprop="dateCreated datePublished" datetime="2019-01-16T00:15:51+08:00">2019-01-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:24:49" itemprop="dateModified" datetime="2020-06-19T23:24:49+08:00">2020-06-19</time>
+                <time title="修改时间：2020-06-19 23:25:08" itemprop="dateModified" datetime="2020-06-19T23:25:08+08:00">2020-06-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -256,15 +256,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>mybatis 和 hibernate 是最受欢迎的orm框架之二, 但是我一直觉得hibernate这个框架对于我来说还是太重了, 而且稍有不注意性能上就会损失巨大, 所以mybatis成为了我的首选。<br>但是hibernate有一个功能我非常喜欢, 就是可以根据实体类自动建表, 那我就想mybatis可不可以也做到这一点呢? 那么就让我来介绍一下<a href="http://git.oschina.net/sunchenbin/mybatis-enhance">ACTable</a>这个开源工具, 他可以让mybatis实现自动建表的功能, 具体的使用方法大家可以通过上面的链接查看, 这篇博客主要是来记录一下这个工具的实现思路。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/java/read-open-source-java-version-project/read-mybatis-enhance.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1>
       
     </div>
 
@@ -283,7 +275,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/software/set_up/mysql-setup.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/java/read-open-source-java-version-project/read-mybatis-enhance-ClassTools.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -297,7 +289,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/software/set_up/mysql-setup.html" class="post-title-link" itemprop="url">安装解压版mysql</a>
+            <a href="/java/read-open-source-java-version-project/read-mybatis-enhance-ClassTools.html" class="post-title-link" itemprop="url">mybatis-enhance 的 ClassTools</a>
         </h2>
 
         <div class="post-meta">
@@ -307,14 +299,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-01-10 21:29:32" itemprop="dateCreated datePublished" datetime="2019-01-10T21:29:32+08:00">2019-01-10</time>
+              <time title="创建时间：2019-01-12 14:58:16" itemprop="dateCreated datePublished" datetime="2019-01-12T14:58:16+08:00">2019-01-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:33:24" itemprop="dateModified" datetime="2020-06-19T23:33:24+08:00">2020-06-19</time>
+                <time title="修改时间：2020-06-19 23:24:33" itemprop="dateModified" datetime="2020-06-19T23:24:33+08:00">2020-06-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -322,7 +314,19 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/operation-and-maintenance/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+                  <a href="/categories/back-code/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/back-code/read-open-source/" itemprop="url" rel="index"><span itemprop="name">读开源项目</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/back-code/read-open-source/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/back-code/read-open-source/java/mybatis-enhance/" itemprop="url" rel="index"><span itemprop="name">mybatis-enhance</span></a>
                 </span>
             </span>
 
@@ -337,10 +341,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>安装这些工具所需要的知识对于开发人员来说应该是必会的, 但是谁也不是没事总是去装这些工具, 时间长了可能就会忘记, 所以借此写篇博客来记录这些。</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇博客专门就<code>mybatis-enhance</code>的ClassTools类进行分析, 请先移步<a href="/java/read-open-source-java-version-project/read-mybatis-enhance.html">读mybatis-enhance开源项目</a>。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/software/set_up/mysql-setup.html#more" rel="contents">
+              <a class="btn" href="/java/read-open-source-java-version-project/read-mybatis-enhance-ClassTools.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -363,7 +367,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/56/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><span class="page-number current">57</span><a class="page-number" href="/page/58/">58</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="extend next" rel="next" href="/page/58/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/56/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><span class="page-number current">57</span><a class="page-number" href="/page/58/">58</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/58/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -431,18 +435,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">80</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

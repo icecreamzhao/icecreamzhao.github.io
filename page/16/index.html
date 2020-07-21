@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-parent-depend-addSwagger.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/operation_and_maintenance/python_and_shell/use-shell-in-python.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +204,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-parent-depend-addSwagger.html" class="post-title-link" itemprop="url">商城开发笔记-给parent配置添加swagger依赖</a>
+            <a href="/operation_and_maintenance/python_and_shell/use-shell-in-python.html" class="post-title-link" itemprop="url">在 python 中使用 bash</a>
         </h2>
 
         <div class="post-meta">
@@ -213,31 +213,25 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-10-26 16:46:09" itemprop="dateCreated datePublished" datetime="2019-10-26T16:46:09+08:00">2019-10-26</time>
+              <time title="创建时间：2019-10-31 03:24:15 / 修改时间：11:49:26" itemprop="dateCreated datePublished" datetime="2019-10-31T03:24:15+08:00">2019-10-31</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-27 11:44:39" itemprop="dateModified" datetime="2019-10-27T11:44:39+08:00">2019-10-27</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/develop-note/" itemprop="url" rel="index"><span itemprop="name">开发笔记</span></a>
+                  <a href="/categories/operation-and-maintenance/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/develop-note/shopping-mall/" itemprop="url" rel="index"><span itemprop="name">商城</span></a>
+                  <a href="/categories/operation-and-maintenance/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/develop-note/shopping-mall/config/" itemprop="url" rel="index"><span itemprop="name">配置篇</span></a>
+                  <a href="/categories/operation-and-maintenance/linux/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
                 </span>
             </span>
 
@@ -252,17 +246,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>swagger 是一个定义接口文档及接口相关信息的工具, 通过这个工具可以生成各种形式的文档。作为 Java 大一统框架, 当然会将该规范纳入进来, 形成了 Spring-swagger, 现在改成了 Springfox, 那么接下来讲一讲如何引入这个东东。</p>
-<h1 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h1><p>pom.xml:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;swagger.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;swagger.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-parent-depend-addSwagger.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="查看系统信息"><a href="#查看系统信息" class="headerlink" title="查看系统信息"></a>查看系统信息</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line">uname = <span class="string">"uname"</span></span><br><span class="line">uname_args = <span class="string">"-a"</span></span><br><span class="line">subprocess.call([uname, uname_args])</span><br></pre></td></tr></table></figure>
+
+<p>output:</p>
+<blockquote>
+<p>Linux raspberrypi 4.19.57-v7l+ #1244 SMP Thu Jul 4 18:48:07 BST 2019 armv7l GNU/Linux</p>
+</blockquote>
+
       
     </div>
 
@@ -281,7 +271,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/cpp/notes/the_best_c_plus_plus_course/how-the-cpp-compiler-works.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/my_project/shopping_mall/crud/Shopping-mall-developNote-register.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -295,7 +285,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/cpp/notes/the_best_c_plus_plus_course/how-the-cpp-compiler-works.html" class="post-title-link" itemprop="url">C++ 编译器是如何工作的</a>
+            <a href="/my_project/shopping_mall/crud/Shopping-mall-developNote-register.html" class="post-title-link" itemprop="url">商城开发笔记-注册</a>
         </h2>
 
         <div class="post-meta">
@@ -305,14 +295,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-10-19 04:51:46" itemprop="dateCreated datePublished" datetime="2019-10-19T04:51:46+08:00">2019-10-19</time>
+              <time title="创建时间：2019-10-29 13:39:32" itemprop="dateCreated datePublished" datetime="2019-10-29T13:39:32+08:00">2019-10-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 18:49:32" itemprop="dateModified" datetime="2020-06-19T18:49:32+08:00">2020-06-19</time>
+                <time title="修改时间：2020-06-19 23:11:50" itemprop="dateModified" datetime="2020-06-19T23:11:50+08:00">2020-06-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -320,11 +310,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                  <a href="/categories/develop-note/" itemprop="url" rel="index"><span itemprop="name">开发笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/the-best-c-plus-plus-course/" itemprop="url" rel="index"><span itemprop="name">最好的c++教程笔记</span></a>
+                  <a href="/categories/develop-note/shopping-mall/" itemprop="url" rel="index"><span itemprop="name">商城</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/develop-note/shopping-mall/function/" itemprop="url" rel="index"><span itemprop="name">功能篇</span></a>
                 </span>
             </span>
 
@@ -339,16 +333,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="需要搞明白的问题"><a href="#需要搞明白的问题" class="headerlink" title="需要搞明白的问题"></a>需要搞明白的问题</h1><p>C++ 编译器都做了那些事情?</p>
-<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ul>
-<li><p>和 java 不同的一点是, java 重视文件, 文件名和文件目录都会影响到 java 项目的编译, 而c++不重视文件, 文件对于c++来说只是用来给编译器提供源码的一种方法。</p>
-</li>
-<li><p>cpp 文件可以互相 include。 如果 cpp 不互相 include 的话, 那么一个 cpp 就代表一个 translate unit; 如果互相 include, 那么就对于编译器来说就相当于是一个大的 cpp 文件, 编译之后也是众多有 include 关系的 cpp 编译成一个 translate unit。一个 translate unit 代表一个 obj 文件。</p>
-</li>
+          <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><ul>
+<li>创建用户表</li>
+<li>编写添加用户功能</li>
 </ul>
+<h1 id="创建用户表"><a href="#创建用户表" class="headerlink" title="创建用户表"></a>创建用户表</h1><p>由于我们已经使用了actable框架, 可以实现通过实体类自动创建表, 所以我们只需要设计好实体类就可以了。</p>
+<p>我们在 pojo 模块中新建 <code>BasePojo.java</code> 用来充当我们的实体类基类。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/cpp/notes/the_best_c_plus_plus_course/how-the-cpp-compiler-works.html#more" rel="contents">
+              <a class="btn" href="/my_project/shopping_mall/crud/Shopping-mall-developNote-register.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -371,7 +364,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -439,18 +432,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">80</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

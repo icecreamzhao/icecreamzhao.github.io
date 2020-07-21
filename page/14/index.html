@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/database/mysql-high-version-group-by-error.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/read-note/web-site-framework/auto-deploy-hot-update.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +204,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/database/mysql-high-version-group-by-error.html" class="post-title-link" itemprop="url">MySql8.0以上only_full_group_by的问题</a>
+            <a href="/read-note/web-site-framework/auto-deploy-hot-update.html" class="post-title-link" itemprop="url">读《大型网站技术架构》笔记 - 自动化发布及运维</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +214,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-01 09:51:45" itemprop="dateCreated datePublished" datetime="2019-12-01T09:51:45+08:00">2019-12-01</time>
+              <time title="创建时间：2019-12-14 16:23:21" itemprop="dateCreated datePublished" datetime="2019-12-14T16:23:21+08:00">2019-12-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 19:01:46" itemprop="dateModified" datetime="2020-06-19T19:01:46+08:00">2020-06-19</time>
+                <time title="修改时间：2019-12-15 00:49:15" itemprop="dateModified" datetime="2019-12-15T00:49:15+08:00">2019-12-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,15 +229,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/database/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                  <a href="/categories/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/database/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/database/mysql/pit/" itemprop="url" rel="index"><span itemprop="name">踩坑</span></a>
+                  <a href="/categories/read-note/大型网站技术架构/" itemprop="url" rel="index"><span itemprop="name">大型网站技术架构</span></a>
                 </span>
             </span>
 
@@ -252,87 +248,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>当在使用mysql8.0以上的版本时, 在使用<code>group by</code>时, 会出现类似下面的报错:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR 1055(42000): Expression #7 of SELECT list is not in GROUP BY clause and contains nonaggregated column ....</span><br><span class="line">this is incompatible with sql_mode=only_full_group_by</span><br></pre></td></tr></table></figure>
-
-<p>在 mysql 8.0 以上的版本中, 对于 group by 这种聚合操作, 如果在 select 中的列, 没有在 group by 中出现, 那么这个 sql 是不合法的。因为列不在 group by 的从句中, 所以对于设置了这个 mode 的数据库, 在使用 group by 的时候, 就要用 MAX(), SUM() 的这种聚合函数, 才能完成 group by 的聚合操作。</p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>可以通过以下方式关闭:</p>
-<p>在 my.cnf 添加如下配置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"></span><br><span class="line">sql_mode=&quot;NO_AUTO_VALUE_ON_ZERO,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVSION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,PIPES_AS_CONCAT,ANSI_QUOTES&quot;</span><br></pre></td></tr></table></figure>
-
-<p>注意, 这里NO_AUTO_CREATOR_USER选项在 mysql8 中已经取消, 不能加入这个。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/cocos/cocoscreator/cocoscreator-intructration.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/personal/icon.png">
-      <meta itemprop="name" content="littleboyDK">
-      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleboyDK's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/cocos/cocoscreator/cocoscreator-intructration.html" class="post-title-link" itemprop="url">使用cocoscreator遇到的一些问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-16 11:40:54" itemprop="dateCreated datePublished" datetime="2019-11-16T11:40:54+08:00">2019-11-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 18:59:12" itemprop="dateModified" datetime="2020-06-19T18:59:12+08:00">2020-06-19</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近接手了一个使用 cocoscreator 的活, 由于之前没有接触过, 所以遇到了很多问题, 但是最后也都解决了, 今天想来记录一下。</p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ul>
-<li>制作一个类系统弹窗, 并使背景置灰。</li>
-</ul>
-<p>遇到这个需求时, 我的第一个反应是上官网找找有没有可以直接使用的弹窗组件。但是其实并没有这种东西, 所以需要自己搞一个。</p>
+          <h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄:"></a>摘抄:</h1><p>在无人值守的情况下, 一切都可以自动化是网站的理想状态。目前大型网站的自动化架构设计主要集中在发布运维方面。</p>
+<p>发布对于网站来说是头等大事, 许多网站故障出在发布环节, 网站工程师经常加班也是因为发布不顺利。通过减少人为干预, 使发布过程自动化可有效减少故障。发布过程包括诸多环节。自动化代码管理, 代码版本控制, 代码分支创建合并等过程自动化, 开发工程师只要提交自己参与开发的产品代号, 系统就会自动为其创建开发分支。后期会自动进行代码合并。自动化测试, 代码开发完成, 提交测试后, 系统自动将代码部署到测试环境, 启动自动化测试用例进行测试, 向相关人员发送测试报告, 像系统反馈测试结果。自动化安全检测, 安全检测工具通过对代码进行静态安全扫描及部署到安全测试环境进行安全测试, 评估其安全性。最后进行自动化部署, 将工程代码自动部署到线上生产环境。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/cocos/cocoscreator/cocoscreator-intructration.html#more" rel="contents">
+              <a class="btn" href="/read-note/web-site-framework/auto-deploy-hot-update.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -352,10 +272,86 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/thought/a-fucking-difficult-problem.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/personal/icon.png">
+      <meta itemprop="name" content="littleboyDK">
+      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleboyDK's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/thought/a-fucking-difficult-problem.html" class="post-title-link" itemprop="url">一个非常操蛋的难题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-07 17:36:15" itemprop="dateCreated datePublished" datetime="2019-12-07T17:36:15+08:00">2019-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-19 18:43:13" itemprop="dateModified" datetime="2020-06-19T18:43:13+08:00">2020-06-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>前段时间, 工作方面遇到了一些问题, 具体情况是这样的:</p>
+<p>前端和后端建立长连接(websocket), 但是有的时候会出现客户端非常卡, 然后会造成客户丢分, 甚至会造成负分的情况。我就开始找程序的逻辑, 怎么找都找不到问题。</p>
+<h1 id="解决经历"><a href="#解决经历" class="headerlink" title="解决经历"></a>解决经历</h1><p>后来我发现出问题的时间很有规律, 都是发生在数据库自动备份的时间, 那么其实找到原因, 解决办法就有了, 直接取消自动备份, 完事!</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -423,18 +419,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">80</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

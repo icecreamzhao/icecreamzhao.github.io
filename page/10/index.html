@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/mobile/flutter/set-up-environment.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/java/maven/servlet/servlet-inline-tomcat.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +204,92 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/mobile/flutter/set-up-environment.html" class="post-title-link" itemprop="url">搭建flutter开发环境</a>
+            <a href="/java/maven/servlet/servlet-inline-tomcat.html" class="post-title-link" itemprop="url">使用maven插件创建一个servlet项目</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-09 16:16:28" itemprop="dateCreated datePublished" datetime="2020-01-09T16:16:28+08:00">2020-01-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-19 23:22:47" itemprop="dateModified" datetime="2020-06-19T23:22:47+08:00">2020-06-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/back-code/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/back-code/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h1><p>使用 idea 新创建一个 maven 项目, 不要选择任何模板, 在 <code>pom.xml</code> 中添加下列依赖:</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/java/maven/servlet/servlet-inline-tomcat.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/mobile/flutter/flutter-json.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/personal/icon.png">
+      <meta itemprop="name" content="littleboyDK">
+      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleboyDK's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/mobile/flutter/flutter-json.html" class="post-title-link" itemprop="url">flutter 和 json</a>
         </h2>
 
         <div class="post-meta">
@@ -215,7 +300,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-01-02 06:27:11 / 修改时间：14:51:02" itemprop="dateCreated datePublished" datetime="2020-01-02T06:27:11+08:00">2020-01-02</time>
+              <time title="创建时间：2020-01-02 10:10:42 / 修改时间：19:22:48" itemprop="dateCreated datePublished" datetime="2020-01-02T10:10:42+08:00">2020-01-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,101 +327,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>flutter 是谷歌的移动UI框架, 可以快速在 IOS 和 Android 上构建高质量的原生用户界面。这里是它的<a href="https://flutterchina.club">中文网站</a>和<a href="https://api.flutter.dev">api</a>。</p>
-<h1 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h1><p>这里<a href="https://flutterchina.club/setup-windows">官网</a>介绍的非常详细, 我就不多赘述了, 这里就说一下几个注意的地方:</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前面讲了如何配置flutter的开发环境, 这次来说说如何使用flutter解析json, 等弄明白了如何解析json, 那么就可以进行网络开发了, 因为现在绝大部分传输数据使用的都是json格式, 那么接下来就说说如何解析json吧。</p>
+<p>flutter 有两种方式, 一种是如果是比较简单的 json 的话, 可以直接手动解析, 另外一种是针对比较复杂的格式, 使用实体类来映射, 那么接下来分别介绍这两种方式。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/mobile/flutter/set-up-environment.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/linux/tools/connect-wifi.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/personal/icon.png">
-      <meta itemprop="name" content="littleboyDK">
-      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleboyDK's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/linux/tools/connect-wifi.html" class="post-title-link" itemprop="url">linux 连接wifi</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-01 04:25:16" itemprop="dateCreated datePublished" datetime="2020-01-01T04:25:16+08:00">2020-01-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:06:27" itemprop="dateModified" datetime="2020-06-19T23:06:27+08:00">2020-06-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/operation-and-maintenance/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/operation-and-maintenance/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ul>
-<li>查看自己的网卡名称</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/linux/ethcard/ifconfig.png" alt="ifconfig命令"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/linux/tools/connect-wifi.html#more" rel="contents">
+              <a class="btn" href="/mobile/flutter/flutter-json.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -359,7 +354,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -427,18 +422,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">80</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

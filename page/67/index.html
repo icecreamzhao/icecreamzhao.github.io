@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-service-config.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +204,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html" class="post-title-link" itemprop="url">商城开发笔记-pojo,dao,interface,service的依赖</a>
+            <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-service-config.html" class="post-title-link" itemprop="url">商城开发笔记-service的配置</a>
         </h2>
 
         <div class="post-meta">
@@ -214,7 +214,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-11-21 19:37:28" itemprop="dateCreated datePublished" datetime="2018-11-21T19:37:28+08:00">2018-11-21</time>
+              <time title="创建时间：2018-11-26 19:46:23" itemprop="dateCreated datePublished" datetime="2018-11-26T19:46:23+08:00">2018-11-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -252,13 +252,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="pojo的依赖"><a href="#pojo的依赖" class="headerlink" title="pojo的依赖"></a>pojo的依赖</h1><p>pojo是用来存放实体类的工程, 它什么依赖也不需要, 只需要将打包方式改成jar就可以。</p>
-<br>
-
-<h1 id="dao的依赖"><a href="#dao的依赖" class="headerlink" title="dao的依赖"></a>dao的依赖</h1><p>他的打包方式同样是jar, 而且因为和数据库打交道, 所以需要将mybatis的依赖添加进来</p>
+          <h1 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h1><p>如果把配置写到xml配置文件中会显得很乱, 而且不好改, 如果有多个数据库的话, 会非常不方便, 那么可以单独写到一个配置文件中, 这样如果有多个数据库配置的话, 就可以直接切换配置文件了。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html#more" rel="contents">
+              <a class="btn" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-service-config.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -282,7 +279,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -296,7 +293,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html" class="post-title-link" itemprop="url">快乐的Linux命令行笔记-操作文件</a>
+            <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html" class="post-title-link" itemprop="url">商城开发笔记-web依赖</a>
         </h2>
 
         <div class="post-meta">
@@ -306,14 +303,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-11-21 14:05:06" itemprop="dateCreated datePublished" datetime="2018-11-21T14:05:06+08:00">2018-11-21</time>
+              <time title="创建时间：2018-11-26 19:39:18" itemprop="dateCreated datePublished" datetime="2018-11-26T19:39:18+08:00">2018-11-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-04 06:42:16" itemprop="dateModified" datetime="2020-06-04T06:42:16+08:00">2020-06-04</time>
+                <time title="修改时间：2019-08-18 15:11:36" itemprop="dateModified" datetime="2019-08-18T15:11:36+08:00">2019-08-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -321,11 +318,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                  <a href="/categories/develop-note/" itemprop="url" rel="index"><span itemprop="name">开发笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
+                  <a href="/categories/develop-note/shopping-mall/" itemprop="url" rel="index"><span itemprop="name">商城</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/develop-note/shopping-mall/config/" itemprop="url" rel="index"><span itemprop="name">配置篇</span></a>
                 </span>
             </span>
 
@@ -340,14 +341,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天主要学习了一些操作文件的命令, 包括创建文件夹, 复制, 删除, 查看文件和文件夹, 还有链接的一些知识, 包括硬链接和符号链接。</p>
-<p>硬链接在文件被删掉之后也会留存源文件的数据, 符号链接不会。</p>
-<p>硬链接和源文件的文件索引节点号是一样的, 符号链接不同。</p>
-<p>每一个硬链接都关系到一个具体的包含文件内容的索引节点。</p>
+          <h1 id="web的依赖"><a href="#web的依赖" class="headerlink" title="web的依赖"></a>web的依赖</h1><p>不同于其他的工程, 它的打包方式是web工程的打包方式, 所以应该是:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>由于是表现层, 所以依赖中应该包括SpringMVC, 下面是它的所有依赖:</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html#more" rel="contents">
+              <a class="btn" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -370,7 +372,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/66/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/66/">66</a><span class="page-number current">67</span><a class="page-number" href="/page/68/">68</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="extend next" rel="next" href="/page/68/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/66/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/66/">66</a><span class="page-number current">67</span><a class="page-number" href="/page/68/">68</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/68/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -438,18 +440,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">80</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
