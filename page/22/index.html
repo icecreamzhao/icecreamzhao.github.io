@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,16 +23,15 @@
   </script>
 
   <meta name="description" content="对前端特别感兴趣的后端工程师">
-<meta name="keywords" content="后端,java,Spring,database,算法">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LittleboyDK&#39;s Blog">
 <meta property="og:url" content="http://icecreamzhao.github.io/page/22/index.html">
 <meta property="og:site_name" content="LittleboyDK&#39;s Blog">
 <meta property="og:description" content="对前端特别感兴趣的后端工程师">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="后端,java,Spring,database,算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LittleboyDK&#39;s Blog">
-<meta name="twitter:description" content="对前端特别感兴趣的后端工程师">
 
 <link rel="canonical" href="http://icecreamzhao.github.io/page/22/">
 
@@ -190,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/linux/tools/create-ap.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/sentiment/about-appearance-and-nature.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +203,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/linux/tools/create-ap.html" class="post-title-link" itemprop="url">使用树莓派开启热点</a>
+            <a href="/sentiment/about-appearance-and-nature.html" class="post-title-link" itemprop="url">听《左耳听风》专栏第十九章产生的一些启发和思考</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +213,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-08-18 11:16:36" itemprop="dateCreated datePublished" datetime="2019-08-18T11:16:36+08:00">2019-08-18</time>
+              <time title="创建时间：2019-02-16 11:55:54" itemprop="dateCreated datePublished" datetime="2019-02-16T11:55:54+08:00">2019-02-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:07:02" itemprop="dateModified" datetime="2020-06-19T23:07:02+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-07 20:55:17" itemprop="dateModified" datetime="2022-10-07T20:55:17+08:00">2022-10-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,11 +228,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/operation-and-maintenance/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/operation-and-maintenance/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                  <a href="/categories/sentiment/" itemprop="url" rel="index"><span itemprop="name">感悟</span></a>
                 </span>
             </span>
 
@@ -248,11 +243,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我也是不知道怎么折腾才好了, 之前尝试着将centos装到树莓派上无果, 这不才下载了<a href="https://www.raspberrypi.org/downloads/raspbian/">树莓派的官网</a>上的系统, 烧录到内存卡上, 这才算是能用上它。但是因为我更倾向于面向命令行, 图形界面无感(尤其是linux -_-!), 所以装了官网上的最小的版本, 在下载的时候我就已经做好了觉悟, 由于是最小的版本, 所以基本上要啥啥没有, 嗯, 以后有够折腾的了。</p>
-<p>那么既然要打算命令行, 那么肯定是要ssh登录的了, 所以这才想着让树莓派自己发射wifi信号, 然后自己开放ssh端口, 这样就省去路由器这一步了, 那么就开始吧。</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天听了<code>左耳朵耗子</code>大神的专栏, 主题是《我们应该能够识别的表象和本质》, 深受启发, 固有此文。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/linux/tools/create-ap.html#more" rel="contents">
+              <a class="btn" href="/sentiment/about-appearance-and-nature.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -276,7 +270,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/linux/tools/connect-ftp.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -290,7 +284,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/linux/tools/connect-ftp.html" class="post-title-link" itemprop="url">CentOS下使用ftp协议连接ftp服务器</a>
+            <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html" class="post-title-link" itemprop="url">快乐的Linux命令行笔记-软件包管理系统</a>
         </h2>
 
         <div class="post-meta">
@@ -300,14 +294,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-08-14 16:07:46" itemprop="dateCreated datePublished" datetime="2019-08-14T16:07:46+08:00">2019-08-14</time>
+              <time title="创建时间：2019-02-17 21:28:56" itemprop="dateCreated datePublished" datetime="2019-02-17T21:28:56+08:00">2019-02-17</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:06:39" itemprop="dateModified" datetime="2020-06-19T23:06:39+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-07 21:03:55" itemprop="dateModified" datetime="2022-10-07T21:03:55+08:00">2022-10-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -315,11 +309,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/operation-and-maintenance/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/operation-and-maintenance/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
                 </span>
             </span>
 
@@ -334,10 +332,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="/linux/tools/open-ftp.html">这篇博客</a>介绍了如何搭建ftp服务器, 现在我们来使用shell的方式连接它吧。</p>
+          <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">第四天的笔记-重定向标准输入和输出以及处理查询结果</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-5Day.html">第五天的笔记-命令的展开</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-6Day.html">第六天的笔记-快捷键</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-7Day.html">第七天的笔记-文件权限</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-8Day.html">第八天的笔记-进程</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-9Day.html">第九天的笔记-修改shell环境</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-10Day.html">第十天的笔记-vim入门</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">第十一天的笔记-自定义shell提示符</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天主要学习了如何使用包管理系统来进行软件的安装, 下载和更新。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/linux/tools/connect-ftp.html#more" rel="contents">
+              <a class="btn" href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -360,7 +359,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -428,18 +427,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -466,7 +465,7 @@
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -490,9 +489,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -501,7 +508,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="需要搞明白的问题C++ 编译器都做了那些事情? 知识点 和 java 不同的一点是, java 重视文件, 文件名和文件目录都会影响到 java 项目的编译, 而c++不重视文件, 文件对于c++来说只是用来给编译器提供源码的一种方法。  cpp 文件可以互相 include。 如果 cpp 不互相 include 的话, 那么一个 cpp 就代表一个 translate unit; 如果互相 i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 编译器是如何工作的">
+<meta property="og:url" content="http://icecreamzhao.github.io/note/blog_note/the_best_c_plus_plus_course/how-the-cpp-compiler-works.html">
+<meta property="og:site_name" content="LittleboyDK&#39;s Blog">
+<meta property="og:description" content="需要搞明白的问题C++ 编译器都做了那些事情? 知识点 和 java 不同的一点是, java 重视文件, 文件名和文件目录都会影响到 java 项目的编译, 而c++不重视文件, 文件对于c++来说只是用来给编译器提供源码的一种方法。  cpp 文件可以互相 include。 如果 cpp 不互相 include 的话, 那么一个 cpp 就代表一个 translate unit; 如果互相 i">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-18T20:51:46.000Z">
+<meta property="article:modified_time" content="2022-10-07T13:29:08.881Z">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="最好的c++教程">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://icecreamzhao.github.io/note/blog_note/the_best_c_plus_plus_course/how-the-cpp-compiler-works.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C++ 编译器是如何工作的 | LittleboyDK's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LittleboyDK's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">特别不靠谱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/blog_note/the_best_c_plus_plus_course/how-the-cpp-compiler-works.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/personal/icon.png">
+      <meta itemprop="name" content="littleboyDK">
+      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleboyDK's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++ 编译器是如何工作的
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-19 04:51:46" itemprop="dateCreated datePublished" datetime="2019-10-19T04:51:46+08:00">2019-10-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-07 21:29:08" itemprop="dateModified" datetime="2022-10-07T21:29:08+08:00">2022-10-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/the-best-c-plus-plus-course/" itemprop="url" rel="index"><span itemprop="name">最好的c++教程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="需要搞明白的问题"><a href="#需要搞明白的问题" class="headerlink" title="需要搞明白的问题"></a>需要搞明白的问题</h1><p>C++ 编译器都做了那些事情?</p>
+<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ul>
+<li><p>和 java 不同的一点是, java 重视文件, 文件名和文件目录都会影响到 java 项目的编译, 而c++不重视文件, 文件对于c++来说只是用来给编译器提供源码的一种方法。</p>
+</li>
+<li><p>cpp 文件可以互相 include。 如果 cpp 不互相 include 的话, 那么一个 cpp 就代表一个 translate unit; 如果互相 include, 那么就对于编译器来说就相当于是一个大的 cpp 文件, 编译之后也是众多有 include 关系的 cpp 编译成一个 translate unit。一个 translate unit 代表一个 obj 文件。</p>
+</li>
+</ul>
+<span id="more"></span>
+
+<ul>
+<li><p><code>.cpp</code> 后缀名只是默认约定的编译器处理文件的方式, 如果你不告诉编译器如何处理文件, 那么编译器就会按照默认的方式当作 c++ 文件处理; 但是你也可以告诉编译器, 指定一个后缀名, 将该后缀名的文件当作 c++ 文件来处理。</p>
+</li>
+<li><p>编译好的 obj 文件为什么这么大?</p>
+<blockquote>
+<p>因为在预编译头那里引用了其他的头文件, 这意味着在编译之后, 这些头文件的内容会被复制到编译好的文件中。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="预处理相关的关键字"><a href="#预处理相关的关键字" class="headerlink" title="预处理相关的关键字"></a>预处理相关的关键字</h2><h3 id="head-file"><a href="#head-file" class="headerlink" title="head file"></a>head file</h3><p>关于头文件: 当在使用 <code>#include &quot;*.h&quot;</code> 时, 编译器所做的事情是, 将该头文件中所有的内容复制替换到 <code>#inlclude &quot;*.h&quot;</code> 语句的位置。</p>
+<p>这里有一个例子:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">multiply</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> result = a * b;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&#x27;EndBrace.h&#x27;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>EndBrace.h file:</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里可以看到, <code>EndBrace.h</code> 文件中只有一个 <code>&#125;</code> , 编译器在遇到 <code>#include</code> 时要做的事情就是找到该头文件并把内容复制到当前 include 的位置而已。</p>
+<h3 id="define"><a href="#define" class="headerlink" title="define"></a>define</h3><p>关于 define: 当在使用 <code>#define</code> 时, 比如 <code>#define INTEGER int</code>, 那么编译器会搜索该 cpp 下所有 INTEGER 并替换成 int。</p>
+<h3 id="if-和-endif"><a href="#if-和-endif" class="headerlink" title="if 和 endif"></a>if 和 endif</h3><p>关于 if 和 endif: 如果符合 if 的条件, 则 if 块中所有的代码会被放到 obj 文件中, 如果不符合, 则不会。</p>
+<h2 id="linker"><a href="#linker" class="headerlink" title="linker"></a>linker</h2><p>链接, 将函数的声明和函数的定义找到并连接在一起。通常一个 C++ 工程由多个 obj 文件构成, 每一个 obj 是一个 translation unit, 而链接器的工作就是将所有 obj 中的符号和函数找到并连接到一起。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>最后来理一下思路, 编译器要做的事情有两件。第一件: compiling, 编译代码, 将代码编译成 <code>.obj</code> 文件, 之后就可以给 linker 用。compiling 期间, 首先预编译代码, 上面的知识点都是 preprocessor 语句, 预处理之后, 会进入 tokenizing (标记解释) 和 parsing (解析) 阶段; 第二件: 链接。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c++</a>
+              <a href="/tags/note/" rel="tag"># 笔记</a>
+              <a href="/tags/%E6%9C%80%E5%A5%BD%E7%9A%84c-%E6%95%99%E7%A8%8B/" rel="tag"># 最好的c++教程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/config_skill_experience/develop__tool_config/mysql/mysql-master-slave-error.html" rel="prev" title="mysql 主从数据库遇到的问题和解决方案">
+      <i class="fa fa-chevron-left"></i> mysql 主从数据库遇到的问题和解决方案
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-parent-depend-addSwagger.html" rel="next" title="商城开发笔记-给parent配置添加swagger依赖">
+      商城开发笔记-给parent配置添加swagger依赖 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E6%90%9E%E6%98%8E%E7%99%BD%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">需要搞明白的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">2.1.</span> <span class="nav-text">预处理相关的关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#head-file"><span class="nav-number">2.1.1.</span> <span class="nav-text">head file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#define"><span class="nav-number">2.1.2.</span> <span class="nav-text">define</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-%E5%92%8C-endif"><span class="nav-number">2.1.3.</span> <span class="nav-text">if 和 endif</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linker"><span class="nav-number">2.2.</span> <span class="nav-text">linker</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="littleboyDK"
+      src="/images/personal/icon.png">
+  <p class="site-author-name" itemprop="name">littleboyDK</p>
+  <div class="site-description" itemprop="description">对前端特别感兴趣的后端工程师</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">littleboyDK</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,16 +23,15 @@
   </script>
 
   <meta name="description" content="对前端特别感兴趣的后端工程师">
-<meta name="keywords" content="后端,java,Spring,database,算法">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LittleboyDK&#39;s Blog">
 <meta property="og:url" content="http://icecreamzhao.github.io/page/5/index.html">
 <meta property="og:site_name" content="LittleboyDK&#39;s Blog">
 <meta property="og:description" content="对前端特别感兴趣的后端工程师">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="后端,java,Spring,database,算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LittleboyDK&#39;s Blog">
-<meta name="twitter:description" content="对前端特别感兴趣的后端工程师">
 
 <link rel="canonical" href="http://icecreamzhao.github.io/page/5/">
 
@@ -190,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/operation_and_maintenance/nginx/nginx-cross-pass.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +203,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/operation_and_maintenance/nginx/nginx-cross-pass.html" class="post-title-link" itemprop="url">vue, 打包, 跨域和 nginx</a>
+            <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html" class="post-title-link" itemprop="url">快乐的Linux命令行笔记-操作文件</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +213,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-04-27 06:36:03" itemprop="dateCreated datePublished" datetime="2020-04-27T06:36:03+08:00">2020-04-27</time>
+              <time title="创建时间：2018-11-21 14:05:06" itemprop="dateCreated datePublished" datetime="2018-11-21T14:05:06+08:00">2018-11-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-28 23:49:17" itemprop="dateModified" datetime="2020-05-28T23:49:17+08:00">2020-05-28</time>
+                <time title="修改时间：2022-10-07 21:02:22" itemprop="dateModified" datetime="2022-10-07T21:02:22+08:00">2022-10-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,11 +228,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/operation-and-maintenance/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/operation-and-maintenance/nginx/" itemprop="url" rel="index"><span itemprop="name">nginx</span></a>
+                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
                 </span>
             </span>
 
@@ -248,14 +251,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="要解决的问题"><a href="#要解决的问题" class="headerlink" title="要解决的问题"></a>要解决的问题</h1><ul>
-<li>当一个 vue 项目本地运行时, 如何解决跨域的问题</li>
-<li>当一个 vue 项目打包, 并部署到 nginx 服务器之后, 如何解决跨域的问题</li>
-</ul>
-<h1 id="问题说明"><a href="#问题说明" class="headerlink" title="问题说明"></a>问题说明</h1><h2 id="当一个-vue-项目本地运行时-如何解决跨域的问题"><a href="#当一个-vue-项目本地运行时-如何解决跨域的问题" class="headerlink" title="当一个 vue 项目本地运行时, 如何解决跨域的问题"></a>当一个 vue 项目本地运行时, 如何解决跨域的问题</h2><p>vue 项目本地开发时, 这个时候使用的是 vue 静态服务器做代理, 这个功能是 http-proxy-middleware 这个模块提供的。<br>在 vue 2.x 版本中, 我们使用 config/index.js 来配置跨域。<br>在 vue 3.x 版本中, 使用 vue.config.js 来配置跨域。</p>
+          <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天主要学习了一些操作文件的命令, 包括创建文件夹, 复制, 删除, 查看文件和文件夹, 还有链接的一些知识, 包括硬链接和符号链接。</p>
+<p>硬链接在文件被删掉之后也会留存源文件的数据, 符号链接不会。</p>
+<p>硬链接和源文件的文件索引节点号是一样的, 符号链接不同。</p>
+<p>每一个硬链接都关系到一个具体的包含文件内容的索引节点。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/operation_and_maintenance/nginx/nginx-cross-pass.html#more" rel="contents">
+              <a class="btn" href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -279,7 +282,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/pay/pay-flow.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -293,7 +296,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/pay/pay-flow.html" class="post-title-link" itemprop="url">支付流程</a>
+            <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html" class="post-title-link" itemprop="url">商城开发笔记-pojo,dao,interface,service的依赖</a>
         </h2>
 
         <div class="post-meta">
@@ -303,14 +306,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-04-20 14:06:31" itemprop="dateCreated datePublished" datetime="2020-04-20T14:06:31+08:00">2020-04-20</time>
+              <time title="创建时间：2018-11-21 19:37:28" itemprop="dateCreated datePublished" datetime="2018-11-21T19:37:28+08:00">2018-11-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:17:25" itemprop="dateModified" datetime="2020-06-19T23:17:25+08:00">2020-06-19</time>
+                <time title="修改时间：2021-10-14 16:18:54" itemprop="dateModified" datetime="2021-10-14T16:18:54+08:00">2021-10-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -318,7 +321,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/essay/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                  <a href="/categories/develop-note/" itemprop="url" rel="index"><span itemprop="name">开发笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/develop-note/%E5%95%86%E5%9F%8E/" itemprop="url" rel="index"><span itemprop="name">商城</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/develop-note/%E5%95%86%E5%9F%8E/%E9%85%8D%E7%BD%AE%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">配置篇</span></a>
                 </span>
             </span>
 
@@ -333,21 +344,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="支付流程"><a href="#支付流程" class="headerlink" title="支付流程"></a>支付流程</h1><p>最近对接了不少支付相关的业务, 也遇到了很多问题, 今天特此来做一个复盘。</p>
-<p>首先来总结一下支付流程:</p>
-<pre class="mermaid">
-graph LR
+          <h1 id="pojo的依赖"><a href="#pojo的依赖" class="headerlink" title="pojo的依赖"></a>pojo的依赖</h1><p>pojo是用来存放实体类的工程, 它什么依赖也不需要, 只需要将打包方式改成jar就可以。</p>
+<br>
 
-client[客户端发起调用] --携带订单金额等必要信息--> server[商户服务器接受到请求]
-server --根据收款主体给的唯一密钥对所有参数进行签名, 并将回调路径一并传送--> payServer[收款主体]
-payServer --对签名进行校验并处理支付请求, 并根据回调路径调用商户服务器 --> server
-server --在回调函数中对返回值进行签名校验, 并根据其他的参数来处理订单--> client</pre>
-
-<p>这是一个非常简单的支付流程图, 省略了所有不必要的细节, 其中在校验签名部分, 有不同的方式可以校验, 第一种就是流程图中呈现的, 商户需要在收款方注册账号并生成唯一密钥, 在商户服务器和收款方服务器来回传参的过程中, 都需要根据签名来进行校验。</p>
-<p>另外一种, 是让商户自己来生成一个私钥和公钥, 在收款方服务器中将公钥填写进去, 并生成一个收款方的公钥。在每次传参的过程中, 将应用私钥和收款方公钥携带进参数中, 这样也保证了支付的安全性。在回调部分中, 直接校验商户id(商户在收款方注册时会有一个唯一值)和订单号来确定商户和订单。</p>
+<h1 id="dao的依赖"><a href="#dao的依赖" class="headerlink" title="dao的依赖"></a>dao的依赖</h1><p>他的打包方式同样是jar, 而且因为和数据库打交道, 所以需要将mybatis的依赖添加进来</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/pay/pay-flow.html#more" rel="contents">
+              <a class="btn" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -370,7 +373,7 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -438,18 +441,18 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -476,7 +479,7 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -500,9 +503,17 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -511,7 +522,9 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="第一天的笔记-基本的命令和使用方法第二天的笔记-操作文件第三天的笔记-查阅命令文档并创建命令别名第四天的笔记-重定向标准输入和输出以及处理查询结果第五天的笔记-命令的展开第六天的笔记-快捷键第七天的笔记-文件权限第八天的笔记-进程第九天的笔记-修改shell环境第十天的笔记-vim入门第十一天的笔记-自定义shell提示符第十二天的笔记-软件包管理系统第十三天的笔记-创建映像第十四天的笔记-网络第">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快乐的Linux命令行笔记-压缩">
+<meta property="og:url" content="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-16Day.html">
+<meta property="og:site_name" content="LittleboyDK&#39;s Blog">
+<meta property="og:description" content="第一天的笔记-基本的命令和使用方法第二天的笔记-操作文件第三天的笔记-查阅命令文档并创建命令别名第四天的笔记-重定向标准输入和输出以及处理查询结果第五天的笔记-命令的展开第六天的笔记-快捷键第七天的笔记-文件权限第八天的笔记-进程第九天的笔记-修改shell环境第十天的笔记-vim入门第十一天的笔记-自定义shell提示符第十二天的笔记-软件包管理系统第十三天的笔记-创建映像第十四天的笔记-网络第">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-18T09:01:35.000Z">
+<meta property="article:modified_time" content="2022-10-07T13:04:27.977Z">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="快乐的Linux命令行">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-16Day.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>快乐的Linux命令行笔记-压缩 | LittleboyDK's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LittleboyDK's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">特别不靠谱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-16Day.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/personal/icon.png">
+      <meta itemprop="name" content="littleboyDK">
+      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleboyDK's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          快乐的Linux命令行笔记-压缩
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-18 17:01:35" itemprop="dateCreated datePublished" datetime="2019-03-18T17:01:35+08:00">2019-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-07 21:04:27" itemprop="dateModified" datetime="2022-10-07T21:04:27+08:00">2022-10-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">第四天的笔记-重定向标准输入和输出以及处理查询结果</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-5Day.html">第五天的笔记-命令的展开</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-6Day.html">第六天的笔记-快捷键</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-7Day.html">第七天的笔记-文件权限</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-8Day.html">第八天的笔记-进程</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-9Day.html">第九天的笔记-修改shell环境</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-10Day.html">第十天的笔记-vim入门</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">第十一天的笔记-自定义shell提示符</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html">第十二天的笔记-软件包管理系统</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-13Day.html">第十三天的笔记-创建映像</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-14Day.html">第十四天的笔记-网络</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-15Day.html">第十五天的笔记-查找文件</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>主要学习了如何使用gzip, bzip2, zip的使用方法, 如何使用tar创建系统归档文件。</p>
+<span id="more"></span>
+
+<h1 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h1><p>压缩的算法基本遵循一个原则, 就是避免冗余数据。</p>
+<p>比如一张纯黑色的100x100像素的图片, 每一个像素都会占用存储空间, 那么我们不必存储每一个像素, 而是用另一种方式表示这张图片, 比如这张图片有三万个黑色像素点, 那么直接存储数字30000, 后跟一个0(表示黑色像素)来表示这张图, 这种数据压缩方案被称为游程编码。</p>
+<h1 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用gzip压缩</span></span><br><span class="line">gzip test.txt</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用gunzip解压缩</span></span><br><span class="line">gunzip test.txt.gz</span><br></pre></td></tr></table></figure>
+
+<p>gzip 选项</p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-c</td>
+<td align="left">把输出写到标准输出, 并保留原始文件, 也可以用 –stdout 和 –tostdout 选项来指定。</td>
+</tr>
+<tr>
+<td align="left">-d</td>
+<td align="left">解压缩, 和gunzip命令一样, 也可以用 –decompress 或者 –uncompress 选项来指定。</td>
+</tr>
+<tr>
+<td align="left">-f</td>
+<td align="left">强制压缩, 即使原压缩文件存在也要强制执行, 也可用 –force 选项来指定。</td>
+</tr>
+<tr>
+<td align="left">-h</td>
+<td align="left">显示用法信息, 也可用 –help 选项来指定。</td>
+</tr>
+<tr>
+<td align="left">-l</td>
+<td align="left">列出每个被压缩文件的压缩数据, 也可用 –list 选项来指定。</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="left">若命令的一个或多个参数是目录, 则递归的压缩目录中的文件, 也可用 –recursive 来指定。</td>
+</tr>
+<tr>
+<td align="left">-t</td>
+<td align="left">测试压缩文件的完整性, 也可用 –test 选项来指定。</td>
+</tr>
+<tr>
+<td align="left">-v</td>
+<td align="left">显示压缩过程中的信息, 也可用 –verbose 选项来指定。</td>
+</tr>
+<tr>
+<td align="left">-number</td>
+<td align="left">指定压缩指数, number是一个在1-9之间的整数, 默认值是整数6。</td>
+</tr>
+</tbody></table>
+<p>zcat 命令</p>
+<blockquote>
+<p>等同于<code>gzip -c</code>命令</p>
+</blockquote>
+<p>zless 命令</p>
+<blockquote>
+<p>等同于<code>gzip *.gz | less</code> 命令</p>
+</blockquote>
+<h1 id="bzip2"><a href="#bzip2" class="headerlink" title="bzip2"></a>bzip2</h1><p>舍弃了压缩速度, 实现了更高的压缩级别。由bzip2压缩的文件, 使用后缀名<code>.bz2</code>来表示。</p>
+<p>工作模式和gzip相同(除了-r选项), 相对应的, 也有<code>bunzip</code>和<code>bzcat</code>命令来进行解压缩, 还有<code>bzip2recover</code>来对受损的文件进行修复。</p>
+<h1 id="归档文件"><a href="#归档文件" class="headerlink" title="归档文件"></a>归档文件</h1><p>归档经常作为系统备份的一部分来使用, 归档就是把很多文件捆绑成一个大文件的过程。</p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">c</td>
+<td align="center">为文件和&#x2F;或目录列表创建归档文件</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">抽取归档文件</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td align="center">追加具体的路径到归档文件的末尾</td>
+</tr>
+<tr>
+<td align="center">t</td>
+<td align="center">列出归档文件的内容</td>
+</tr>
+</tbody></table>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 tar 将目录归档</span></span><br><span class="line">tar cf dir.tar <span class="built_in">dir</span></span><br><span class="line"><span class="comment"># 列出归档文件的内容</span></span><br><span class="line">tar tf dir.tar</span><br><span class="line"><span class="comment"># 复原tar</span></span><br><span class="line">tar xf dir.tar</span><br></pre></td></tr></table></figure>
+
+<p>注意, 如果使用的是普通用户(没用超级用户权限)来对tar进行复原操作, 则复原的所有文件的权限都归当前操作用户所有!</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单独抽取某个文件</span></span><br><span class="line">tar xf dir.tar pathname</span><br><span class="line"><span class="comment"># 抽取匹配的文件</span></span><br><span class="line">tar xf dir.tar --wildcards <span class="string">&#x27;home/me/playground/dir-\*/file-A&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>还可以使用find命令和tar配合使用:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 含义: 将playground文件夹中符合条件的文件使用 -exec 命令来调用 tar 的追加模式, 将文件追加到已有的归档文件中</span></span><br><span class="line">find playground -name <span class="string">&#x27;file-A&#x27;</span> -<span class="built_in">exec</span> tar rf playground.tar <span class="string">&#x27;&#123;&#125;&#x27;</span> <span class="string">&#x27;+&#x27;</span></span><br><span class="line"><span class="comment"># 含义: 将playground文件夹中符合条件的文件使用管道的方式制作压缩归档文件 (.tgz 或者 .tar.gz)</span></span><br><span class="line"><span class="comment"># - 代表从管道中读取</span></span><br><span class="line">find playground -name <span class="string">&#x27;file-A&#x27;</span> | tar cf - --files-from=- | gzip &gt; playground.tgz</span><br><span class="line"><span class="comment"># 上面命令的简化版 czf 代表用gzip方式压缩, cjf 代表用bzip2方式压缩</span></span><br><span class="line">find playground -name <span class="string">&#x27;file-A&#x27;</span> | tar czf playground.tgz -T -</span><br><span class="line">find playground -name <span class="string">&#x27;file-A&#x27;</span> | tar cjf playground.tbz -T -</span><br></pre></td></tr></table></figure>
+
+<p>还可以配合ssh工具将远端的系统(remote-stuff)中的文件夹复制到本地系统中:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[me@linuxbox ~]$ <span class="built_in">mkdir</span> remote-stuff</span><br><span class="line">[me@linuxbox ~]$ <span class="built_in">cd</span> remote-stuff</span><br><span class="line">[me@linuxbox remote-stuff]$ ssh remote-sys <span class="string">&#x27;tar cf - Documents&#x27;</span> | tar xf -</span><br><span class="line">[me@linuxbox remote-stuff]$ <span class="built_in">ls</span></span><br><span class="line">Documents</span><br></pre></td></tr></table></figure>
+
+<h1 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h1><p>使用方式:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将目录打包为zip</span></span><br><span class="line">zip -r dirPath.zip dirPath</span><br><span class="line"><span class="comment"># 列出指定zip文件</span></span><br><span class="line">zip -l dirPath.zip dir1/dir2</span><br><span class="line"><span class="comment"># 使用管道</span></span><br><span class="line">find playground -name <span class="string">&quot;files-A&quot;</span> | zip -@ files-A.zip</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/note/" rel="tag"># 笔记</a>
+              <a href="/tags/The-Linux-Command-Line/" rel="tag"># 快乐的Linux命令行</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/leetcode/java/two-sum.html" rel="prev" title="two sum">
+      <i class="fa fa-chevron-left"></i> two sum
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/back_skill_experience/java/spring/spring-family-meals/springboot-first-step.html" rel="next" title="快速构建SpringBoot项目">
+      快速构建SpringBoot项目 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">压缩文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gzip"><span class="nav-number">3.</span> <span class="nav-text">gzip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bzip2"><span class="nav-number">4.</span> <span class="nav-text">bzip2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%92%E6%A1%A3%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">归档文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zip"><span class="nav-number">6.</span> <span class="nav-text">zip</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="littleboyDK"
+      src="/images/personal/icon.png">
+  <p class="site-author-name" itemprop="name">littleboyDK</p>
+  <div class="site-description" itemprop="description">对前端特别感兴趣的后端工程师</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">littleboyDK</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

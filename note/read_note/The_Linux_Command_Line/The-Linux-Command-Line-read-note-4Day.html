@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="第一天的笔记-基本的命令和使用方法第二天的笔记-操作文件第三天的笔记-查阅命令文档并创建命令别名 总结今天学习了如何将标准输入和标准输出的概念, 并如何重定向到文件中, 以及一些处理结果的技巧, 比如排序, 去重等等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快乐的Linux命令行笔记-重定向标准输入和输出以及处理查询结果">
+<meta property="og:url" content="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">
+<meta property="og:site_name" content="LittleboyDK&#39;s Blog">
+<meta property="og:description" content="第一天的笔记-基本的命令和使用方法第二天的笔记-操作文件第三天的笔记-查阅命令文档并创建命令别名 总结今天学习了如何将标准输入和标准输出的概念, 并如何重定向到文件中, 以及一些处理结果的技巧, 比如排序, 去重等等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-02T03:43:17.000Z">
+<meta property="article:modified_time" content="2022-10-07T13:02:48.933Z">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="快乐的Linux命令行">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>快乐的Linux命令行笔记-重定向标准输入和输出以及处理查询结果 | LittleboyDK's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LittleboyDK's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">特别不靠谱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/personal/icon.png">
+      <meta itemprop="name" content="littleboyDK">
+      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleboyDK's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          快乐的Linux命令行笔记-重定向标准输入和输出以及处理查询结果
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-02 11:43:17" itemprop="dateCreated datePublished" datetime="2018-12-02T11:43:17+08:00">2018-12-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-07 21:02:48" itemprop="dateModified" datetime="2022-10-07T21:02:48+08:00">2022-10-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天学习了如何将标准输入和标准输出的概念, 并如何重定向到文件中, 以及一些处理结果的技巧, 比如排序, 去重等等。</p>
+<span id="more"></span>
+
+<br>
+
+<h1 id="IO重定向"><a href="#IO重定向" class="headerlink" title="IO重定向"></a>IO重定向</h1><h2 id="将命令的标准输出-x2F-标准错误重定向到文件"><a href="#将命令的标准输出-x2F-标准错误重定向到文件" class="headerlink" title="将命令的标准输出&#x2F;标准错误重定向到文件"></a>将命令的标准输出&#x2F;标准错误重定向到文件</h2><blockquote>
+<p>将ls命令的输出重定向到指定文件</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l /usr/bin &gt; ls-output.txt <span class="comment"># 重定向标准输出到指定文件(该文件会被重写)</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l /usr/bin &gt;&gt; ls-output.txt <span class="comment"># 重定向标准输出到指定文件(将输出添加至文件内容之后)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>注意:</p>
+<ol>
+<li><p>只指定了标准输出, 如果在执行命令时出现错误, 则会将标准错误输出到屏幕, 而不是文件</p>
+</li>
+<li><p>每次重定向输出到文件时, 文件都会被重写, 而如果命令出错, 则该文件会变为空</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">小技巧(清空一个文件): $ &gt; 需要被清空的文件.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重定向标准错误到指定文件 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l /bin/usr 2&gt; ls-error.txt <span class="comment"># 0 输入 1 输出 2 错误</span></span></span><br></pre></td></tr></table></figure>
+
+<br></li>
+</ol>
+<h2 id="将命令的标准输出和错误重定向到指定文件"><a href="#将命令的标准输出和错误重定向到指定文件" class="headerlink" title="将命令的标准输出和错误重定向到指定文件"></a>将命令的标准输出和错误重定向到指定文件</h2><p>两种方式</p>
+<ol>
+<li><p>对于旧版本shell也有效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l /bin/usr &gt; ls-output.txt 2&gt;&amp;1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新版本的方式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /bin/usr &amp;&gt; ls-output.txt</span><br></pre></td></tr></table></figure></li>
+</ol>
+<br>
+
+<h2 id="处理不需要的输出"><a href="#处理不需要的输出" class="headerlink" title="处理不需要的输出"></a>处理不需要的输出</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /bin/usr 2&gt; /dev/null</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以不显示输出, 也不用创建一个文件来存储输出。</p>
+<br>
+
+<h2 id="标准输入重定向"><a href="#标准输入重定向" class="headerlink" title="标准输入重定向"></a>标准输入重定向</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat [file] # file是需要读取的文件, cat命令会将该文件中的内容读取到屏幕上</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="连接文件"><a href="#连接文件" class="headerlink" title="连接文件"></a>连接文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> [file1] [file2] &gt; [allFile] <span class="comment"># 会将file1和file2的文件内容全部放到allFile中</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="创建一个文件并输入文件内容"><a href="#创建一个文件并输入文件内容" class="headerlink" title="创建一个文件并输入文件内容"></a>创建一个文件并输入文件内容</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> &gt; test.txt <span class="comment"># 将标准输入重定向到指定文件</span></span></span><br><span class="line">text something... # 输入一些内容, ctrl-d结束</span><br><span class="line">less test.txt # 查看文件内容</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="管道线"><a href="#管道线" class="headerlink" title="管道线"></a>管道线</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l /usr/bin | less</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用<code>|</code> 符号将一个命令的标准输入输送到另一个命令的标准输出, less命令接受任何命令的标准输入, 如上一例就是将ls命令的运行结果输送到标准输出</p>
+</blockquote>
+<br>
+
+<h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><h5 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l /usr/bin | <span class="built_in">sort</span> | less</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用sort过滤器将运行结果排序并输送到标准输出中。</p>
+</blockquote>
+<h5 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l /usr/bin /bin | <span class="built_in">uniq</span> | <span class="built_in">sort</span> | less <span class="comment"># 会确保bin目录和/usr/bin目录不包含重复的句子</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l /usr/bin /bin | <span class="built_in">uniq</span> -d | <span class="built_in">sort</span> | less <span class="comment"># 会将bin目录和/usr/bin目录下重复的文件列出来</span></span></span><br></pre></td></tr></table></figure>
+
+<h5 id="打印文件字节数"><a href="#打印文件字节数" class="headerlink" title="打印文件字节数"></a>打印文件字节数</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">wc</span> [file] <span class="comment"># 结果是三个字段, 分别是行数, 单词数和字节数</span></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>wc命令</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c –btyes</td>
+<td>只打印字节数</td>
+</tr>
+<tr>
+<td>-m –chars</td>
+<td>只打印字数</td>
+</tr>
+<tr>
+<td>-l –lines</td>
+<td>只打印行数</td>
+</tr>
+<tr>
+<td>–files0-from&#x3D;F</td>
+<td>???</td>
+</tr>
+<tr>
+<td>-L –max-line-length</td>
+<td>只打印最长的一行的宽度</td>
+</tr>
+<tr>
+<td>-w –words</td>
+<td>打印单词数</td>
+</tr>
+</tbody></table>
+<h5 id="打印匹配行"><a href="#打印匹配行" class="headerlink" title="打印匹配行"></a>打印匹配行</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l /usr/bin | grep zip | <span class="built_in">uniq</span> <span class="comment"># 打印带有zip字样的文件</span></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>grep命令</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>忽略大小写</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>只打印不匹配的行</td>
+</tr>
+</tbody></table>
+<h5 id="打印文件开头部分-x2F-结尾部分"><a href="#打印文件开头部分-x2F-结尾部分" class="headerlink" title="打印文件开头部分&#x2F;结尾部分"></a>打印文件开头部分&#x2F;结尾部分</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">head</span> -n output.txt <span class="comment"># 打印文件前五行</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -n output.txt <span class="comment"># 打印文件最后五行</span></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>tail命令有一个选项支持实时浏览文件, 如果是log文件, 新写入的内容会立即出现在屏幕上</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -f /var/log/messages</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="从标准输入到标准输出"><a href="#从标准输入到标准输出" class="headerlink" title="从标准输入到标准输出"></a>从标准输入到标准输出</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /usr/bin | sort | tee ls.txt | uniq  | grep zip</span><br></pre></td></tr></table></figure>
+
+<p>将结果输出到ls.txt中</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/note/" rel="tag"># 笔记</a>
+              <a href="/tags/The-Linux-Command-Line/" rel="tag"># 快乐的Linux命令行</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html" rel="prev" title="快乐的Linux命令行笔记-查阅命令文档并创建命令别名">
+      <i class="fa fa-chevron-left"></i> 快乐的Linux命令行笔记-查阅命令文档并创建命令别名
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/my_project/shopping_mall/taps/shopping-mall-developNote-mybatis-automatic-generation.html" rel="next" title="商城开发笔记-小知识点-mybatis构建实体类">
+      商城开发笔记-小知识点-mybatis构建实体类 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">2.</span> <span class="nav-text">IO重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E5%91%BD%E4%BB%A4%E7%9A%84%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA-x2F-%E6%A0%87%E5%87%86%E9%94%99%E8%AF%AF%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">将命令的标准输出&#x2F;标准错误重定向到文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E5%91%BD%E4%BB%A4%E7%9A%84%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E5%92%8C%E9%94%99%E8%AF%AF%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">将命令的标准输出和错误重定向到指定文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E8%BE%93%E5%87%BA"><span class="nav-number">2.3.</span> <span class="nav-text">处理不需要的输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">2.4.</span> <span class="nav-text">标准输入重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.1.</span> <span class="nav-text">连接文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%B9%B6%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">创建一个文件并输入文件内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E9%81%93%E7%BA%BF"><span class="nav-number">2.4.2.</span> <span class="nav-text">管道线</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">2.4.2.1.1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%BB%E9%87%8D"><span class="nav-number">2.4.2.1.2.</span> <span class="nav-text">去重</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E6%96%87%E4%BB%B6%E5%AD%97%E8%8A%82%E6%95%B0"><span class="nav-number">2.4.2.1.3.</span> <span class="nav-text">打印文件字节数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E5%8C%B9%E9%85%8D%E8%A1%8C"><span class="nav-number">2.4.2.1.4.</span> <span class="nav-text">打印匹配行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E6%96%87%E4%BB%B6%E5%BC%80%E5%A4%B4%E9%83%A8%E5%88%86-x2F-%E7%BB%93%E5%B0%BE%E9%83%A8%E5%88%86"><span class="nav-number">2.4.2.1.5.</span> <span class="nav-text">打印文件开头部分&#x2F;结尾部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%8E%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E5%88%B0%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA"><span class="nav-number">2.4.2.1.6.</span> <span class="nav-text">从标准输入到标准输出</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="littleboyDK"
+      src="/images/personal/icon.png">
+  <p class="site-author-name" itemprop="name">littleboyDK</p>
+  <div class="site-description" itemprop="description">对前端特别感兴趣的后端工程师</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">littleboyDK</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

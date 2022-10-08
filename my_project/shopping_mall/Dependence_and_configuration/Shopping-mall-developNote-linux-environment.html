@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,17 +23,18 @@
   </script>
 
   <meta name="description" content="在Linux系统(CentOS)下搭建运行环境前言由于这篇文章, 我尝试着把我的项目放到linux系统上运行试试看, 然后就有了这篇总结。">
-<meta name="keywords" content="linux,商城开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="商城开发笔记-linux端环境搭建">
 <meta property="og:url" content="http://icecreamzhao.github.io/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-linux-environment.html">
 <meta property="og:site_name" content="LittleboyDK&#39;s Blog">
 <meta property="og:description" content="在Linux系统(CentOS)下搭建运行环境前言由于这篇文章, 我尝试着把我的项目放到linux系统上运行试试看, 然后就有了这篇总结。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-18T07:11:36.258Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-09T09:56:18.000Z">
+<meta property="article:modified_time" content="2021-10-14T08:18:54.363Z">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="商城开发">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="商城开发笔记-linux端环境搭建">
-<meta name="twitter:description" content="在Linux系统(CentOS)下搭建运行环境前言由于这篇文章, 我尝试着把我的项目放到linux系统上运行试试看, 然后就有了这篇总结。">
 
 <link rel="canonical" href="http://icecreamzhao.github.io/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-linux-environment.html">
 
@@ -222,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-18 15:11:36" itemprop="dateModified" datetime="2019-08-18T15:11:36+08:00">2019-08-18</time>
+                <time title="修改时间：2021-10-14 16:18:54" itemprop="dateModified" datetime="2021-10-14T16:18:54+08:00">2021-10-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -234,11 +235,11 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/develop-note/shopping-mall/" itemprop="url" rel="index"><span itemprop="name">商城</span></a>
+                  <a href="/categories/develop-note/%E5%95%86%E5%9F%8E/" itemprop="url" rel="index"><span itemprop="name">商城</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/develop-note/shopping-mall/config/" itemprop="url" rel="index"><span itemprop="name">配置篇</span></a>
+                  <a href="/categories/develop-note/%E5%95%86%E5%9F%8E/%E9%85%8D%E7%BD%AE%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">配置篇</span></a>
                 </span>
             </span>
 
@@ -254,7 +255,7 @@
 
       
         <h1 id="在Linux系统-CentOS-下搭建运行环境"><a href="#在Linux系统-CentOS-下搭建运行环境" class="headerlink" title="在Linux系统(CentOS)下搭建运行环境"></a>在Linux系统(CentOS)下搭建运行环境</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于<a href="/operation_system/windows/deploy-system.html">这篇文章</a>, 我尝试着把我的项目放到linux系统上运行试试看, 然后就有了这篇总结。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
 <li>一台已经装好linux系统的电脑</li>
@@ -267,7 +268,7 @@
 <blockquote>
 <p>startShoppingMall.sh</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">zookeeper=~/tools/zookeeper/bin</span><br><span class="line">web=~/git/shopping_mall/web</span><br><span class="line"></span><br><span class="line">sh $zookeeper/zkServer.sh</span><br><span class="line">gnome-terminal -t "service_project" -x bash -c "sh ./startService.sh;exec bash;"</span><br><span class="line"></span><br><span class="line">sleep 20s</span><br><span class="line"></span><br><span class="line">cd $web</span><br><span class="line">mvn tomcat7:run</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">zookeeper=~/tools/zookeeper/bin</span><br><span class="line">web=~/git/shopping_mall/web</span><br><span class="line"></span><br><span class="line">sh $zookeeper/zkServer.sh</span><br><span class="line">gnome-terminal -t &quot;service_project&quot; -x bash -c &quot;sh ./startService.sh;exec bash;&quot;</span><br><span class="line"></span><br><span class="line">sleep 20s</span><br><span class="line"></span><br><span class="line">cd $web</span><br><span class="line">mvn tomcat7:run</span><br></pre></td></tr></table></figure>
 
 <p>具体的思路是:</p>
 <ol>
@@ -280,38 +281,38 @@
 <blockquote>
 <p>startService.sh</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">service=~/git/shopping_mall/service</span><br><span class="line">cd $service</span><br><span class="line">mvn tomcat7:run</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">service=~/git/shopping_mall/service</span><br><span class="line">cd $service</span><br><span class="line">mvn tomcat7:run</span><br></pre></td></tr></table></figure>
 
 <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="jdk解压缩的问题"><a href="#jdk解压缩的问题" class="headerlink" title="jdk解压缩的问题"></a>jdk解压缩的问题</h3><p>oracle官网的jdk压缩包解压不了,  <a href="/operation_system/linux/linux-java-git-maven-zookeeper.html">这篇文章</a>里有讲。</p>
 <h3 id="启动项目不能访问的问题"><a href="#启动项目不能访问的问题" class="headerlink" title="启动项目不能访问的问题"></a>启动项目不能访问的问题</h3><ul>
 <li>启动项目之后访问不了, ubuntu没有这个问题, CentOS有, 因为CentOS自带防火墙, 需要将指定的端口设为白名单</li>
 </ul>
-<h4 id="查看防火墙状态"><a href="#查看防火墙状态" class="headerlink" title="查看防火墙状态"></a>查看防火墙状态</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> systemctl status firewalld</span></span><br></pre></td></tr></table></figure>
+<h4 id="查看防火墙状态"><a href="#查看防火墙状态" class="headerlink" title="查看防火墙状态"></a>查看防火墙状态</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl status firewalld</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="开启防火墙并设置开机自启"><a href="#开启防火墙并设置开机自启" class="headerlink" title="开启防火墙并设置开机自启"></a>开启防火墙并设置开机自启</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> systemctl start firewalld</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> systemctl <span class="built_in">enable</span> firewalld</span></span><br></pre></td></tr></table></figure>
+<h4 id="开启防火墙并设置开机自启"><a href="#开启防火墙并设置开机自启" class="headerlink" title="开启防火墙并设置开机自启"></a>开启防火墙并设置开机自启</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl start firewalld</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">systemctl <span class="built_in">enable</span> firewalld</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --zone=public --add-port=22/tcp --permanent</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --zone=public --add-port=22/tcp --permanent</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
 
-<h4 id="查看指定端口是否开放"><a href="#查看指定端口是否开放" class="headerlink" title="查看指定端口是否开放"></a>查看指定端口是否开放</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --zone=public --query-port=22/tcp</span></span><br></pre></td></tr></table></figure>
+<h4 id="查看指定端口是否开放"><a href="#查看指定端口是否开放" class="headerlink" title="查看指定端口是否开放"></a>查看指定端口是否开放</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --zone=public --query-port=22/tcp</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="查看所有开放端口"><a href="#查看所有开放端口" class="headerlink" title="查看所有开放端口"></a>查看所有开放端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --zone=public --list-ports</span></span><br></pre></td></tr></table></figure>
+<h4 id="查看所有开放端口"><a href="#查看所有开放端口" class="headerlink" title="查看所有开放端口"></a>查看所有开放端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --zone=public --list-ports</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="关掉开放的端口"><a href="#关掉开放的端口" class="headerlink" title="关掉开放的端口"></a>关掉开放的端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --zone=public --remove-port=22/tcp --permanent</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="关掉开放的端口"><a href="#关掉开放的端口" class="headerlink" title="关掉开放的端口"></a>关掉开放的端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --zone=public --remove-port=22/tcp --permanent</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
 
-<h4 id="批量开放端口"><a href="#批量开放端口" class="headerlink" title="批量开放端口"></a>批量开放端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --zone=public --add-port=100-500/tcp --permanent</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="批量开放端口"><a href="#批量开放端口" class="headerlink" title="批量开放端口"></a>批量开放端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --zone=public --add-port=100-500/tcp --permanent</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
 
-<h4 id="批量限制端口"><a href="#批量限制端口" class="headerlink" title="批量限制端口"></a>批量限制端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --zone=public --remove-port=100-500/tcp --permanent</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --reload</span></span><br></pre></td></tr></table></figure>
+<h4 id="批量限制端口"><a href="#批量限制端口" class="headerlink" title="批量限制端口"></a>批量限制端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --zone=public --remove-port=100-500/tcp --permanent</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --reload</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="开放ip"><a href="#开放ip" class="headerlink" title="开放ip"></a>开放ip</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --permanent --add-rich-rule=<span class="string">"rule family="</span>ipv4<span class="string">" source address="</span>192.168.0.200<span class="string">" port protocol="</span>tcp<span class="string">" port="</span>80<span class="string">" reject"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="开放ip"><a href="#开放ip" class="headerlink" title="开放ip"></a>开放ip</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --permanent --add-rich-rule=<span class="string">&quot;rule family=&quot;</span>ipv4<span class="string">&quot; source address=&quot;</span>192.168.0.200<span class="string">&quot; port protocol=&quot;</span>tcp<span class="string">&quot; port=&quot;</span>80<span class="string">&quot; reject&quot;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
 
 <p>限制指定ip访问指定端口</p>
-<h4 id="查看设置的规则"><a href="#查看设置的规则" class="headerlink" title="查看设置的规则"></a>查看设置的规则</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --zone=public --list-rich-rules</span></span><br></pre></td></tr></table></figure>
+<h4 id="查看设置的规则"><a href="#查看设置的规则" class="headerlink" title="查看设置的规则"></a>查看设置的规则</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --zone=public --list-rich-rules</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="解除ip限制"><a href="#解除ip限制" class="headerlink" title="解除ip限制"></a>解除ip限制</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --permanent --add-rich-rule=<span class="string">"rule family="</span>ipv4<span class="string">" source address="</span>192.168.0.200<span class="string">" port protocol="</span>tcp<span class="string">" port="</span>80<span class="string">" accept"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="解除ip限制"><a href="#解除ip限制" class="headerlink" title="解除ip限制"></a>解除ip限制</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --permanent --add-rich-rule=<span class="string">&quot;rule family=&quot;</span>ipv4<span class="string">&quot; source address=&quot;</span>192.168.0.200<span class="string">&quot; port protocol=&quot;</span>tcp<span class="string">&quot; port=&quot;</span>80<span class="string">&quot; accept&quot;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
 
-<h4 id="限制ip段"><a href="#限制ip段" class="headerlink" title="限制ip段"></a>限制ip段</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --permanent --add-rich-rule=<span class="string">"rule family="</span>ipv4<span class="string">" source address="</span>10.0.0.0/24<span class="string">" port protocol="</span>tcp<span class="string">" port="</span>80<span class="string">" reject"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="限制ip段"><a href="#限制ip段" class="headerlink" title="限制ip段"></a>限制ip段</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --permanent --add-rich-rule=<span class="string">&quot;rule family=&quot;</span>ipv4<span class="string">&quot; source address=&quot;</span>10.0.0.0/24<span class="string">&quot; port protocol=&quot;</span>tcp<span class="string">&quot; port=&quot;</span>80<span class="string">&quot; reject&quot;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
 
-<p>其中10.0.0.0/24表示为从10.0.0.0这个IP开始，24代表子网掩码为255.255.255.0，共包含256个地址，即从0-255共256个IP，即正好限制了这一整段的IP地址，具体的设置规则可参考下表</p>
+<p>其中10.0.0.0&#x2F;24表示为从10.0.0.0这个IP开始，24代表子网掩码为255.255.255.0，共包含256个地址，即从0-255共256个IP，即正好限制了这一整段的IP地址，具体的设置规则可参考下表</p>
 <table>
 <thead>
 <tr>
@@ -322,100 +323,100 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>/30</td>
+<td>&#x2F;30</td>
 <td>4</td>
 <td>255.255.255.252</td>
-<td>1/64</td>
+<td>1&#x2F;64</td>
 </tr>
 <tr>
-<td>/29</td>
+<td>&#x2F;29</td>
 <td>8</td>
 <td>255.255.255.248</td>
-<td>1/32</td>
+<td>1&#x2F;32</td>
 </tr>
 <tr>
-<td>/28</td>
+<td>&#x2F;28</td>
 <td>16</td>
 <td>255.255.255.240</td>
-<td>1/16</td>
+<td>1&#x2F;16</td>
 </tr>
 <tr>
-<td>/27</td>
+<td>&#x2F;27</td>
 <td>32</td>
 <td>255.255.255.224</td>
-<td>1/8</td>
+<td>1&#x2F;8</td>
 </tr>
 <tr>
-<td>/26</td>
+<td>&#x2F;26</td>
 <td>64</td>
 <td>255.255.255.192</td>
-<td>1/4</td>
+<td>1&#x2F;4</td>
 </tr>
 <tr>
-<td>/24</td>
+<td>&#x2F;24</td>
 <td>256</td>
 <td>255.255.255.0</td>
 <td>1</td>
 </tr>
 <tr>
-<td>/23</td>
+<td>&#x2F;23</td>
 <td>512</td>
 <td>255.255.254.0</td>
 <td>2</td>
 </tr>
 <tr>
-<td>/22</td>
+<td>&#x2F;22</td>
 <td>1024</td>
 <td>255.255.252.0</td>
 <td>4</td>
 </tr>
 <tr>
-<td>/21</td>
+<td>&#x2F;21</td>
 <td>2048</td>
 <td>255.255.248.0</td>
 <td>8</td>
 </tr>
 <tr>
-<td>/20</td>
+<td>&#x2F;20</td>
 <td>4096</td>
 <td>255.255.240.0</td>
 <td>16</td>
 </tr>
 <tr>
-<td>/19</td>
+<td>&#x2F;19</td>
 <td>8192</td>
 <td>255.255.224.0</td>
 <td>32</td>
 </tr>
 <tr>
-<td>/18</td>
+<td>&#x2F;18</td>
 <td>16384</td>
 <td>255.255.192.0</td>
 <td>64</td>
 </tr>
 <tr>
-<td>/17</td>
+<td>&#x2F;17</td>
 <td>32768</td>
 <td>255.255.128.0</td>
 <td>128</td>
 </tr>
 <tr>
-<td>/16</td>
+<td>&#x2F;16</td>
 <td>65536</td>
 <td>255.255.0.0</td>
 <td>256</td>
 </tr>
 </tbody></table>
-<h4 id="打开限制ip段"><a href="#打开限制ip段" class="headerlink" title="打开限制ip段"></a>打开限制ip段</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --permanent --add-rich-rule=<span class="string">"rule family="</span>ipv4<span class="string">" source address="</span>10.0.0.0/24<span class="string">" port protocol="</span>tcp<span class="string">" port="</span>80<span class="string">" accept"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="打开限制ip段"><a href="#打开限制ip段" class="headerlink" title="打开限制ip段"></a>打开限制ip段</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --permanent --add-rich-rule=<span class="string">&quot;rule family=&quot;</span>ipv4<span class="string">&quot; source address=&quot;</span>10.0.0.0/24<span class="string">&quot; port protocol=&quot;</span>tcp<span class="string">&quot; port=&quot;</span>80<span class="string">&quot; accept&quot;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">firewall-cmd --reload <span class="comment"># 重新载入使更改生效</span></span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>还有一种情况是端口已经被占用</li>
 </ul>
 <p>这种情况可以使用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> netstat -nl | grep 8080</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">netstat -<span class="built_in">nl</span> | grep 8080</span></span><br></pre></td></tr></table></figure>
 
 <p>来查看指定的端口号有没有被占用, 更多的选项请输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> man netstat</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">man netstat</span></span><br></pre></td></tr></table></figure>
 
 <p>来查看</p>
 
@@ -502,7 +503,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在Linux系统-CentOS-下搭建运行环境"><span class="nav-number">1.</span> <span class="nav-text">在Linux系统(CentOS)下搭建运行环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建环境"><span class="nav-number">1.3.</span> <span class="nav-text">搭建环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动项目"><span class="nav-number">1.4.</span> <span class="nav-text">启动项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">1.5.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jdk解压缩的问题"><span class="nav-number">1.5.1.</span> <span class="nav-text">jdk解压缩的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动项目不能访问的问题"><span class="nav-number">1.5.2.</span> <span class="nav-text">启动项目不能访问的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看防火墙状态"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">查看防火墙状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启防火墙并设置开机自启"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">开启防火墙并设置开机自启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开放端口"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">开放端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看指定端口是否开放"><span class="nav-number">1.5.2.4.</span> <span class="nav-text">查看指定端口是否开放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看所有开放端口"><span class="nav-number">1.5.2.5.</span> <span class="nav-text">查看所有开放端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关掉开放的端口"><span class="nav-number">1.5.2.6.</span> <span class="nav-text">关掉开放的端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#批量开放端口"><span class="nav-number">1.5.2.7.</span> <span class="nav-text">批量开放端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#批量限制端口"><span class="nav-number">1.5.2.8.</span> <span class="nav-text">批量限制端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开放ip"><span class="nav-number">1.5.2.9.</span> <span class="nav-text">开放ip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看设置的规则"><span class="nav-number">1.5.2.10.</span> <span class="nav-text">查看设置的规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解除ip限制"><span class="nav-number">1.5.2.11.</span> <span class="nav-text">解除ip限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#限制ip段"><span class="nav-number">1.5.2.12.</span> <span class="nav-text">限制ip段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打开限制ip段"><span class="nav-number">1.5.2.13.</span> <span class="nav-text">打开限制ip段</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F-CentOS-%E4%B8%8B%E6%90%AD%E5%BB%BA%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">在Linux系统(CentOS)下搭建运行环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">1.2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.</span> <span class="nav-text">搭建环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.4.</span> <span class="nav-text">启动项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.</span> <span class="nav-text">遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jdk%E8%A7%A3%E5%8E%8B%E7%BC%A9%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.1.</span> <span class="nav-text">jdk解压缩的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE%E4%B8%8D%E8%83%BD%E8%AE%BF%E9%97%AE%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.2.</span> <span class="nav-text">启动项目不能访问的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E9%98%B2%E7%81%AB%E5%A2%99%E7%8A%B6%E6%80%81"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">查看防火墙状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E9%98%B2%E7%81%AB%E5%A2%99%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">开启防火墙并设置开机自启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">开放端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%8C%87%E5%AE%9A%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE"><span class="nav-number">1.5.2.4.</span> <span class="nav-text">查看指定端口是否开放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.5.2.5.</span> <span class="nav-text">查看所有开放端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E6%8E%89%E5%BC%80%E6%94%BE%E7%9A%84%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.5.2.6.</span> <span class="nav-text">关掉开放的端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.5.2.7.</span> <span class="nav-text">批量开放端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E9%99%90%E5%88%B6%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.5.2.8.</span> <span class="nav-text">批量限制端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E6%94%BEip"><span class="nav-number">1.5.2.9.</span> <span class="nav-text">开放ip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%BE%E7%BD%AE%E7%9A%84%E8%A7%84%E5%88%99"><span class="nav-number">1.5.2.10.</span> <span class="nav-text">查看设置的规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%99%A4ip%E9%99%90%E5%88%B6"><span class="nav-number">1.5.2.11.</span> <span class="nav-text">解除ip限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%99%90%E5%88%B6ip%E6%AE%B5"><span class="nav-number">1.5.2.12.</span> <span class="nav-text">限制ip段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E9%99%90%E5%88%B6ip%E6%AE%B5"><span class="nav-number">1.5.2.13.</span> <span class="nav-text">打开限制ip段</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -518,18 +519,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -556,7 +557,7 @@
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -580,9 +581,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -591,7 +600,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,16 +23,15 @@
   </script>
 
   <meta name="description" content="对前端特别感兴趣的后端工程师">
-<meta name="keywords" content="后端,java,Spring,database,算法">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LittleboyDK&#39;s Blog">
 <meta property="og:url" content="http://icecreamzhao.github.io/page/8/index.html">
 <meta property="og:site_name" content="LittleboyDK&#39;s Blog">
 <meta property="og:description" content="对前端特别感兴趣的后端工程师">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="后端,java,Spring,database,算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LittleboyDK&#39;s Blog">
-<meta name="twitter:description" content="对前端特别感兴趣的后端工程师">
 
 <link rel="canonical" href="http://icecreamzhao.github.io/page/8/">
 
@@ -190,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/mobile/flutter/flutter-android-internet.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +203,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/mobile/flutter/flutter-android-internet.html" class="post-title-link" itemprop="url">flutter 打包之后安装到手机上无法访问网络</a>
+            <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html" class="post-title-link" itemprop="url">快乐的Linux命令行笔记-查阅命令文档并创建命令别名</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +213,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-10 16:52:48" itemprop="dateCreated datePublished" datetime="2020-02-10T16:52:48+08:00">2020-02-10</time>
+              <time title="创建时间：2018-12-01 20:17:10" itemprop="dateCreated datePublished" datetime="2018-12-01T20:17:10+08:00">2018-12-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-11 00:55:16" itemprop="dateModified" datetime="2020-02-11T00:55:16+08:00">2020-02-11</time>
+                <time title="修改时间：2022-10-07 21:02:37" itemprop="dateModified" datetime="2022-10-07T21:02:37+08:00">2022-10-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,11 +228,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mobile/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mobile/flutter/" itemprop="url" rel="index"><span itemprop="name">flutter</span></a>
+                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
                 </span>
             </span>
 
@@ -248,11 +251,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>在 <code>项目根目录/android/app/src/AndroidManifest.xml</code> 文件的第一层下添加一下内容:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>来申请网络权限。</p>
-
+          <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天学到了有关怎样查阅命令的帮助文档以及怎样创建属于自己的命令别名。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -271,7 +279,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/mobile/flutter/flutter-android-package.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -285,7 +293,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/mobile/flutter/flutter-android-package.html" class="post-title-link" itemprop="url">flutter apk 打包</a>
+            <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html" class="post-title-link" itemprop="url">快乐的Linux命令行笔记-重定向标准输入和输出以及处理查询结果</a>
         </h2>
 
         <div class="post-meta">
@@ -295,14 +303,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-10 16:36:49" itemprop="dateCreated datePublished" datetime="2020-02-10T16:36:49+08:00">2020-02-10</time>
+              <time title="创建时间：2018-12-02 11:43:17" itemprop="dateCreated datePublished" datetime="2018-12-02T11:43:17+08:00">2018-12-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-11 00:52:22" itemprop="dateModified" datetime="2020-02-11T00:52:22+08:00">2020-02-11</time>
+                <time title="修改时间：2022-10-07 21:02:48" itemprop="dateModified" datetime="2022-10-07T21:02:48+08:00">2022-10-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -310,11 +318,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mobile/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mobile/flutter/" itemprop="url" rel="index"><span itemprop="name">flutter</span></a>
+                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
                 </span>
             </span>
 
@@ -329,14 +341,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
-<li>创建签名文件</li>
-<li>在 gradle 中配置签名</li>
-<li>执行构建命令</li>
-</ol>
+          <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天学习了如何将标准输入和标准输出的概念, 并如何重定向到文件中, 以及一些处理结果的技巧, 比如排序, 去重等等。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/mobile/flutter/flutter-android-package.html#more" rel="contents">
+              <a class="btn" href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -359,7 +368,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -427,18 +436,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -465,7 +474,7 @@
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -489,9 +498,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -500,7 +517,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,16 +23,15 @@
   </script>
 
   <meta name="description" content="对前端特别感兴趣的后端工程师">
-<meta name="keywords" content="后端,java,Spring,database,算法">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LittleboyDK&#39;s Blog">
 <meta property="og:url" content="http://icecreamzhao.github.io/page/24/index.html">
 <meta property="og:site_name" content="LittleboyDK&#39;s Blog">
 <meta property="og:description" content="对前端特别感兴趣的后端工程师">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="后端,java,Spring,database,算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LittleboyDK&#39;s Blog">
-<meta name="twitter:description" content="对前端特别感兴趣的后端工程师">
 
 <link rel="canonical" href="http://icecreamzhao.github.io/page/24/">
 
@@ -190,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/java/fastdfs/fastdfs-java.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-15Day.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +203,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/java/fastdfs/fastdfs-java.html" class="post-title-link" itemprop="url">fastDFS和java</a>
+            <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-15Day.html" class="post-title-link" itemprop="url">快乐的Linux命令行笔记-查找文件</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +213,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-07-25 17:37:35" itemprop="dateCreated datePublished" datetime="2019-07-25T17:37:35+08:00">2019-07-25</time>
+              <time title="创建时间：2019-02-21 15:29:04" itemprop="dateCreated datePublished" datetime="2019-02-21T15:29:04+08:00">2019-02-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:20:14" itemprop="dateModified" datetime="2020-06-19T23:20:14+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-07 21:04:19" itemprop="dateModified" datetime="2022-10-07T21:04:19+08:00">2022-10-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,11 +228,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
                 </span>
             </span>
 
@@ -248,10 +251,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近一直再用fastDFS, <a href="/java/fastdfs/nginx-fastdfs-config.html">上一篇</a>讲了fastDFS如何配置, 那么这一篇我们来讲一讲如何使用Java来上传和下载文件。</p>
+          <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">第四天的笔记-重定向标准输入和输出以及处理查询结果</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-5Day.html">第五天的笔记-命令的展开</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-6Day.html">第六天的笔记-快捷键</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-7Day.html">第七天的笔记-文件权限</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-8Day.html">第八天的笔记-进程</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-9Day.html">第九天的笔记-修改shell环境</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-10Day.html">第十天的笔记-vim入门</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">第十一天的笔记-自定义shell提示符</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html">第十二天的笔记-软件包管理系统</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-13Day.html">第十三天的笔记-创建映像</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-14Day.html">第十四天的笔记-网络</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天主要学习了如何根据条件来查找文件。主要学习的是find命令。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/java/fastdfs/fastdfs-java.html#more" rel="contents">
+              <a class="btn" href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-15Day.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -275,7 +279,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/passwd_encode/sha256-java-js.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/blog_skill_experience/hexo/hexo-git-sync-linux.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -289,7 +293,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/passwd_encode/sha256-java-js.html" class="post-title-link" itemprop="url">js和java自带sha密码加密</a>
+            <a href="/blog_skill_experience/hexo/hexo-git-sync-linux.html" class="post-title-link" itemprop="url">hexo博客使用git同步遇到的一些问题[linux版]</a>
         </h2>
 
         <div class="post-meta">
@@ -299,14 +303,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-07-24 16:54:24" itemprop="dateCreated datePublished" datetime="2019-07-24T16:54:24+08:00">2019-07-24</time>
+              <time title="创建时间：2019-02-24 22:17:34" itemprop="dateCreated datePublished" datetime="2019-02-24T22:17:34+08:00">2019-02-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:30:44" itemprop="dateModified" datetime="2020-06-19T23:30:44+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-03 00:38:35" itemprop="dateModified" datetime="2022-10-03T00:38:35+08:00">2022-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -314,7 +318,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/encode/" itemprop="url" rel="index"><span itemprop="name">加密</span></a>
+                  <a href="/categories/blog-skill-experience/" itemprop="url" rel="index"><span itemprop="name">博客技巧/经验</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/blog-skill-experience/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -329,10 +337,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>用到了对数据库密码进行一个简单的加密的功能, 顺便总结一下。</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最早写博客的时候, 使用的是markdown, 工具使用的是<a href="https:://www.typora.io">typora</a>。因为本人没有苹果电脑, 这个工具在windows上还没有正式版, 在使用的时候遇到了各种各样的问题, 所以后来转战<a href="https://code.visualstudio.com/">visual studio code</a>。</p>
+<p>直到后来, 我通过一本书(这本书叫The Linux Command Line, 这里有它的<a href="bill66.github.io/TLCL/index.html">中文版</a>, 我还做了<a href="https://icecreamzhao.github.io/linux/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">读书笔记</a> )接触了Linux, 知道了vim, 就开始使用vim来写博客。</p>
+<p>一开始使用的是vim的windows版本, 这里是<a href="/hexo/hexo-git-sync-windows.html">我在windows上使用git同步博客遇到的一些问题</a>, 但是因为vim的windows版本是运行在windows的命令行中的, 而windows命令行在键入中文的时候删除拼音总是删不干净, 会留下第一个字的第一个拼音, 所以索性直接在Linux中使用原汁原味的vim来写博客, 这篇博客就是在Linux下使用vim写成的。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/passwd_encode/sha256-java-js.html#more" rel="contents">
+              <a class="btn" href="/blog_skill_experience/hexo/hexo-git-sync-linux.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -355,7 +365,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/23/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/25/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/23/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/25/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -423,18 +433,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -461,7 +471,7 @@
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -485,9 +495,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -496,7 +514,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

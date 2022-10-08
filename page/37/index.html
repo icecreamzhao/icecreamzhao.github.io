@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,16 +23,15 @@
   </script>
 
   <meta name="description" content="对前端特别感兴趣的后端工程师">
-<meta name="keywords" content="后端,java,Spring,database,算法">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LittleboyDK&#39;s Blog">
 <meta property="og:url" content="http://icecreamzhao.github.io/page/37/index.html">
 <meta property="og:site_name" content="LittleboyDK&#39;s Blog">
 <meta property="og:description" content="对前端特别感兴趣的后端工程师">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="后端,java,Spring,database,算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LittleboyDK&#39;s Blog">
-<meta name="twitter:description" content="对前端特别感兴趣的后端工程师">
 
 <link rel="canonical" href="http://icecreamzhao.github.io/page/37/">
 
@@ -190,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/java/spring/spring-family-meals/springboot-datasource-introduction.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/back_skill_experience/java/spring/spring-family-meals/springboot-jdbcTemplate.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +203,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/java/spring/spring-family-meals/springboot-datasource-introduction.html" class="post-title-link" itemprop="url">连接池介绍</a>
+            <a href="/back_skill_experience/java/spring/spring-family-meals/springboot-jdbcTemplate.html" class="post-title-link" itemprop="url">springboot jdbcTemplate介绍</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +213,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-05-19 17:46:41" itemprop="dateCreated datePublished" datetime="2019-05-19T17:46:41+08:00">2019-05-19</time>
+              <time title="创建时间：2019-05-20 17:48:06" itemprop="dateCreated datePublished" datetime="2019-05-20T17:48:06+08:00">2019-05-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:37:29" itemprop="dateModified" datetime="2020-06-19T23:37:29+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-07 21:22:41" itemprop="dateModified" datetime="2022-10-07T21:22:41+08:00">2022-10-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,15 +228,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/back-skill-experience/" itemprop="url" rel="index"><span itemprop="name">后端技巧/经验</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/back-skill-experience/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/java/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a>
+                  <a href="/categories/back-skill-experience/java/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a>
                 </span>
             </span>
 
@@ -252,15 +251,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本编博客介绍了两个SpringBoot的数据源。</p>
-<p>SpringBoot各个版本使用的数据源:</p>
-<ul>
-<li>1.0 使用的是tomcat的dataSource</li>
-<li>2.0 使用的是HikariCP</li>
-</ul>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本片博客主要介绍了JdbcTemplate的一些常用的方法。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/java/spring/spring-family-meals/springboot-datasource-introduction.html#more" rel="contents">
+              <a class="btn" href="/back_skill_experience/java/spring/spring-family-meals/springboot-jdbcTemplate.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -284,7 +278,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/java/spring/spring-family-meals/springboot-datasource-multi.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/back_skill_experience/java/spring/spring-family-meals/springboot-service-translation.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -298,7 +292,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/java/spring/spring-family-meals/springboot-datasource-multi.html" class="post-title-link" itemprop="url">springboot配置多数据源</a>
+            <a href="/back_skill_experience/java/spring/spring-family-meals/springboot-service-translation.html" class="post-title-link" itemprop="url">springboot事务介绍</a>
         </h2>
 
         <div class="post-meta">
@@ -308,14 +302,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-05-19 17:05:15" itemprop="dateCreated datePublished" datetime="2019-05-19T17:05:15+08:00">2019-05-19</time>
+              <time title="创建时间：2019-05-20 22:13:25" itemprop="dateCreated datePublished" datetime="2019-05-20T22:13:25+08:00">2019-05-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:36:20" itemprop="dateModified" datetime="2020-06-19T23:36:20+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-07 21:22:55" itemprop="dateModified" datetime="2022-10-07T21:22:55+08:00">2022-10-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -323,15 +317,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/back-skill-experience/" itemprop="url" rel="index"><span itemprop="name">后端技巧/经验</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/back-skill-experience/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/java/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a>
+                  <a href="/categories/back-skill-experience/java/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a>
                 </span>
             </span>
 
@@ -346,10 +340,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="/java/spring/spring-family-meals/springboot-datasource-single.html">上一篇</a>博客讨论了如何配置单数据源, 这一篇博客接着讨论如何配置多数据源。</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这一篇博客主要介绍了spring的事务。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/java/spring/spring-family-meals/springboot-datasource-multi.html#more" rel="contents">
+              <a class="btn" href="/back_skill_experience/java/spring/spring-family-meals/springboot-service-translation.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -372,7 +366,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/36/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><span class="page-number current">37</span><a class="page-number" href="/page/38/">38</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/38/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/36/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><span class="page-number current">37</span><a class="page-number" href="/page/38/">38</a><span class="space">&hellip;</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/38/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -440,18 +434,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -478,7 +472,7 @@
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -502,9 +496,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -513,7 +515,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

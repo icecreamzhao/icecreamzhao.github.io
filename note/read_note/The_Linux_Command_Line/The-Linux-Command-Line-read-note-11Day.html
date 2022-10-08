@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="第一天的笔记-基本的命令和使用方法第二天的笔记-操作文件第三天的笔记-查阅命令文档并创建命令别名第四天的笔记-重定向标准输入和输出以及处理查询结果第五天的笔记-命令的展开第六天的笔记-快捷键第七天的笔记-文件权限第八天的笔记-进程第九天的笔记-修改shell环境第十天的笔记-vim入门 总结今天学习了关于如何自定义shell提示符, 包括修改文本, 修改文本颜色, 修改背景颜色甚至是移动光标。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快乐的Linux命令行笔记-自定义shell提示符">
+<meta property="og:url" content="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">
+<meta property="og:site_name" content="LittleboyDK&#39;s Blog">
+<meta property="og:description" content="第一天的笔记-基本的命令和使用方法第二天的笔记-操作文件第三天的笔记-查阅命令文档并创建命令别名第四天的笔记-重定向标准输入和输出以及处理查询结果第五天的笔记-命令的展开第六天的笔记-快捷键第七天的笔记-文件权限第八天的笔记-进程第九天的笔记-修改shell环境第十天的笔记-vim入门 总结今天学习了关于如何自定义shell提示符, 包括修改文本, 修改文本颜色, 修改背景颜色甚至是移动光标。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-02-14T13:49:02.000Z">
+<meta property="article:modified_time" content="2022-10-07T13:03:44.825Z">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="快乐的Linux命令行">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>快乐的Linux命令行笔记-自定义shell提示符 | LittleboyDK's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LittleboyDK's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">特别不靠谱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/personal/icon.png">
+      <meta itemprop="name" content="littleboyDK">
+      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleboyDK's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          快乐的Linux命令行笔记-自定义shell提示符
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-14 21:49:02" itemprop="dateCreated datePublished" datetime="2019-02-14T21:49:02+08:00">2019-02-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-07 21:03:44" itemprop="dateModified" datetime="2022-10-07T21:03:44+08:00">2022-10-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">第四天的笔记-重定向标准输入和输出以及处理查询结果</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-5Day.html">第五天的笔记-命令的展开</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-6Day.html">第六天的笔记-快捷键</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-7Day.html">第七天的笔记-文件权限</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-8Day.html">第八天的笔记-进程</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-9Day.html">第九天的笔记-修改shell环境</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-10Day.html">第十天的笔记-vim入门</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天学习了关于如何自定义shell提示符, 包括修改文本, 修改文本颜色, 修改背景颜色甚至是移动光标。</p>
+<span id="more"></span>
+
+<h1 id="自定制shell提示符"><a href="#自定制shell提示符" class="headerlink" title="自定制shell提示符"></a>自定制shell提示符</h1><p>可以自定义linux命令行的提示符(就是每行命令的开始部分)。shell的提示符是由环境变量<code>PS1</code>来决定显示哪些内容的, 可以通过</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo PS1</span><br></pre></td></tr></table></figure>
+<p>来查看当前提示符中都包含哪些内容, 通过转义字符来显示。</p>
+<blockquote>
+<p>提示符中用到的转义字符</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">序列</th>
+<th align="left">显示值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\a</td>
+<td align="left">以ASCII码格式编码的铃声, 当遇到这个转义序列时, 计算机会发出蜂鸣声</td>
+</tr>
+<tr>
+<td align="left">\d</td>
+<td align="left">以日, 月, 天格式来表示当前日期, 例如: “Mon May 26”</td>
+</tr>
+<tr>
+<td align="left">\h</td>
+<td align="left">本地的主机名, 但不带末尾的域名</td>
+</tr>
+<tr>
+<td align="left">\H</td>
+<td align="left">完整的主机名</td>
+</tr>
+<tr>
+<td align="left">\j</td>
+<td align="left">运行在当前shell会话的工作数</td>
+</tr>
+<tr>
+<td align="left">\l</td>
+<td align="left">当前终端设备名</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">一个换行符</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">回车符</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td align="left">shell程序名</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">24小时制, hh:mm:ss 的格式表示当前时间</td>
+</tr>
+<tr>
+<td align="left">\T</td>
+<td align="left">以12小时制表示当前时间</td>
+</tr>
+<tr>
+<td align="left">@</td>
+<td align="left">以12小时制, am&#x2F;pm表示当前时间</td>
+</tr>
+<tr>
+<td align="left">\u</td>
+<td align="left">当前用户名</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">shell的version号</td>
+</tr>
+<tr>
+<td align="left">\V</td>
+<td align="left">shell的version, release号</td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td align="left">当前工作目录名</td>
+</tr>
+<tr>
+<td align="left">\W</td>
+<td align="left">当前工作目录名的最后部分</td>
+</tr>
+<tr>
+<td align="left">!</td>
+<td align="left">当前命令的最大历史行号</td>
+</tr>
+<tr>
+<td align="left">#</td>
+<td align="left">当前shell会话中已经执行的命令数量</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">如果拥有超级用户权限, 则会显示一个”$”符, 不然会显示一个”#”</td>
+</tr>
+<tr>
+<td align="left">[</td>
+<td align="left">标志着一系列非打印字符的开始, 这被用来以某种方式来操作终端仿真器, 比如说移动光标或者更改颜色</td>
+</tr>
+<tr>
+<td align="left">]</td>
+<td align="left">标志非打印字符的结束</td>
+</tr>
+</tbody></table>
+<p>可以通过改变<code>PS1</code>的值来改变提示符:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS1=&quot;\a&quot;</span><br></pre></td></tr></table></figure>
+
+<p>上面的语句可以将提示符改成蜂鸣声, 每次执行完一个语句计算机会发出声响。</p>
+<h1 id="使用转义字符来设置文本颜色"><a href="#使用转义字符来设置文本颜色" class="headerlink" title="使用转义字符来设置文本颜色"></a>使用转义字符来设置文本颜色</h1><table>
+<thead>
+<tr>
+<th align="left">序列</th>
+<th align="left">文本颜色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\033[0;30m</td>
+<td align="left">黑色</td>
+</tr>
+<tr>
+<td align="left">\033[0;31m</td>
+<td align="left">红色</td>
+</tr>
+<tr>
+<td align="left">\033[0;32m</td>
+<td align="left">绿色</td>
+</tr>
+<tr>
+<td align="left">\033[0;33m</td>
+<td align="left">棕色</td>
+</tr>
+<tr>
+<td align="left">\033[0;34m</td>
+<td align="left">蓝色</td>
+</tr>
+<tr>
+<td align="left">\033[0;35m</td>
+<td align="left">粉红</td>
+</tr>
+<tr>
+<td align="left">\033[0;36m</td>
+<td align="left">青色</td>
+</tr>
+<tr>
+<td align="left">\033[0;37m</td>
+<td align="left">浅灰色</td>
+</tr>
+<tr>
+<td align="left">\033[1;30m</td>
+<td align="left">深灰色</td>
+</tr>
+<tr>
+<td align="left">\033[1;31m</td>
+<td align="left">浅红色</td>
+</tr>
+<tr>
+<td align="left">\033[1;32m</td>
+<td align="left">浅绿色</td>
+</tr>
+<tr>
+<td align="left">\033[1;33m</td>
+<td align="left">黄色</td>
+</tr>
+<tr>
+<td align="left">\033[1;34m</td>
+<td align="left">浅蓝色</td>
+</tr>
+<tr>
+<td align="left">\033[1;35m</td>
+<td align="left">浅粉色</td>
+</tr>
+<tr>
+<td align="left">\033[1;36m</td>
+<td align="left">浅青色</td>
+</tr>
+<tr>
+<td align="left">\033[1;37m</td>
+<td align="left">白色</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>修改提示符为黄色</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS1=&quot;\[\033[1;33m\]\u@\h \W\$\[033[1;37m\]</span><br></pre></td></tr></table></figure>
+
+<p>上面的命令还会将<code>$</code>符后面的字符y的颜色变成白色。</p>
+<h1 id="修改背景颜色"><a href="#修改背景颜色" class="headerlink" title="修改背景颜色"></a>修改背景颜色</h1><table>
+<thead>
+<tr>
+<th align="left">序列</th>
+<th align="left">文本颜色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\033[0;40m</td>
+<td align="left">蓝色</td>
+</tr>
+<tr>
+<td align="left">\033[1;44m</td>
+<td align="left">黑色</td>
+</tr>
+<tr>
+<td align="left">\033[0;41m</td>
+<td align="left">红色</td>
+</tr>
+<tr>
+<td align="left">\033[1;45m</td>
+<td align="left">紫色</td>
+</tr>
+<tr>
+<td align="left">\033[0;42m</td>
+<td align="left">绿色</td>
+</tr>
+<tr>
+<td align="left">\033[1;46m</td>
+<td align="left">青色</td>
+</tr>
+<tr>
+<td align="left">\033[0;43m</td>
+<td align="left">棕色</td>
+</tr>
+<tr>
+<td align="left">\033[1;47m</td>
+<td align="left">浅灰色</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>将背景颜色修改为红色</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS1=&quot;\[\033[0;41m\]\u@\h \W\$\[\033[1;37m\]&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h1><table>
+<thead>
+<tr>
+<th align="left">序列</th>
+<th align="left">行动</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\033[l;cH</td>
+<td align="left">把光标移到第一行, 第c列</td>
+</tr>
+<tr>
+<td align="left">\033[nA</td>
+<td align="left">把光标向上移动n行</td>
+</tr>
+<tr>
+<td align="left">\033[nB</td>
+<td align="left">把光标向下移动n行</td>
+</tr>
+<tr>
+<td align="left">\033[nC</td>
+<td align="left">把光标向前移动n个字符</td>
+</tr>
+<tr>
+<td align="left">\033[nD</td>
+<td align="left">把光标向后移动n个字符</td>
+</tr>
+<tr>
+<td align="left">\033[2J</td>
+<td align="left">清空屏幕, 把光标移到左上角(第零行, 第零列)</td>
+</tr>
+<tr>
+<td align="left">\033[K</td>
+<td align="left">清空从光标位置到行末的内容</td>
+</tr>
+<tr>
+<td align="left">\033[s</td>
+<td align="left">存储当前光标位置</td>
+</tr>
+<tr>
+<td align="left">\033[u</td>
+<td align="left">唤醒之前存储的光标位置</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/note/" rel="tag"># 笔记</a>
+              <a href="/tags/The-Linux-Command-Line/" rel="tag"># 快乐的Linux命令行</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-10Day.html" rel="prev" title="快乐的Linux命令行笔记-vim入门">
+      <i class="fa fa-chevron-left"></i> 快乐的Linux命令行笔记-vim入门
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/sentiment/about-appearance-and-nature.html" rel="next" title="听《左耳听风》专栏第十九章产生的一些启发和思考">
+      听《左耳听风》专栏第十九章产生的一些启发和思考 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E5%88%B6shell%E6%8F%90%E7%A4%BA%E7%AC%A6"><span class="nav-number">2.</span> <span class="nav-text">自定制shell提示符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%E6%9D%A5%E8%AE%BE%E7%BD%AE%E6%96%87%E6%9C%AC%E9%A2%9C%E8%89%B2"><span class="nav-number">3.</span> <span class="nav-text">使用转义字符来设置文本颜色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2"><span class="nav-number">4.</span> <span class="nav-text">修改背景颜色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87"><span class="nav-number">5.</span> <span class="nav-text">移动光标</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="littleboyDK"
+      src="/images/personal/icon.png">
+  <p class="site-author-name" itemprop="name">littleboyDK</p>
+  <div class="site-description" itemprop="description">对前端特别感兴趣的后端工程师</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">littleboyDK</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

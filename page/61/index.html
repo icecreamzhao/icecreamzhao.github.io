@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,16 +23,15 @@
   </script>
 
   <meta name="description" content="对前端特别感兴趣的后端工程师">
-<meta name="keywords" content="后端,java,Spring,database,算法">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LittleboyDK&#39;s Blog">
 <meta property="og:url" content="http://icecreamzhao.github.io/page/61/index.html">
 <meta property="og:site_name" content="LittleboyDK&#39;s Blog">
 <meta property="og:description" content="对前端特别感兴趣的后端工程师">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="后端,java,Spring,database,算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LittleboyDK&#39;s Blog">
-<meta name="twitter:description" content="对前端特别感兴趣的后端工程师">
 
 <link rel="canonical" href="http://icecreamzhao.github.io/page/61/">
 
@@ -190,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/read-note/javascript-The-Definitive-Guide/javascript-The-Definitive-Guide-read-note-firstDay.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/web-site-framework/profermence-test-way-method.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +203,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/read-note/javascript-The-Definitive-Guide/javascript-The-Definitive-Guide-read-note-firstDay.html" class="post-title-link" itemprop="url">javascript权威指南读书笔记-第一天</a>
+            <a href="/note/read_note/web-site-framework/profermence-test-way-method.html" class="post-title-link" itemprop="url">性能测试方法和报告</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +213,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-12-13 21:01:45" itemprop="dateCreated datePublished" datetime="2018-12-13T21:01:45+08:00">2018-12-13</time>
+              <time title="创建时间：2019-12-15 19:38:46" itemprop="dateCreated datePublished" datetime="2019-12-15T19:38:46+08:00">2019-12-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:18:37" itemprop="dateModified" datetime="2020-06-19T23:18:37+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-07 21:05:07" itemprop="dateModified" datetime="2022-10-07T21:05:07+08:00">2022-10-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,11 +228,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/read-note/The-Definitive-Guide-read-note/" itemprop="url" rel="index"><span itemprop="name">JavaScript权威指南</span></a>
+                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">大型网站技术架构</span></a>
                 </span>
             </span>
 
@@ -248,18 +251,93 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h1><p>null 的类型是Object(可用typeof来得到结果), 而undefined的类型就是undefined</p>
-<p>undefined是一个预定义的全局属性, 而null是一个关键字</p>
-<p>通常如果想要给一个变量传入空值的话, 最佳选择是null</p>
-<h1 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">"test"</span>;</span><br><span class="line">s.len = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s.len);</span><br></pre></td></tr></table></figure>
-
-<p>output:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>在声明一个字符串类型的值时, JavaScript会这样做:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"test"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>而之后就会销毁这个对象, 所以给它定义属性也会被忽略, 同理, 数字和布尔值也是这样的做法。</p>
+          <h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h1><p>性能测试方法</p>
+<p>具体可分为性能测试, 负载测试, 压力测试, 稳定性测试。</p>
+<ul>
+<li>性能测试</li>
+</ul>
+<p>以系统设计初期规划的性能指标为预期目标, 对系统不断施加压力, 验证系统在资源可接受范围内, 是否能达到性能预期。</p>
+<ul>
+<li>负载测试</li>
+</ul>
+<p>对系统不断地增加并发请求以增加系统压力, 知道系统的某项或多项性能指标达到安全临界值, 如某种资源已经呈现饱和状态, 这时继续对系统施加压力, 系统的处理能力不但不能提高, 反而会下降。</p>
+<ul>
+<li>压力测试</li>
+</ul>
+<p>超过安全负载的情况下, 对系统继续施加压力, 直到系统崩溃或不能再处理任何请求, 以此来获得系统最大压力承受能力。</p>
+<ul>
+<li>稳定性测试</li>
+</ul>
+<p>被测试系统在特定硬件, 软件, 网络环境条件下, 给系统加载一定业务压力, 使系统运行一段较长时间, 以此检测系统是否稳定。在不同的生产环境, 不同时间点的请求压力是不均匀的, 呈波浪特性, 因此为了更好的模拟生产环境, 稳定性测试也应不均匀地对系统施加压力。</p>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>如何编写测试用例, 还是一个问题, 因为如果要实现测试自动化, 那么测试用例到底是由开发&#x2F;测试人员编写, 还是系统自动生成? 如果由开发&#x2F;测试人员编写, 那会是一个很大的工作量; 如果系统生成, 那么测试用例肯定和业务有关, 如何实现? 还是一个问题。</p>
+<h1 id="摘抄-1"><a href="#摘抄-1" class="headerlink" title="摘抄"></a>摘抄</h1><p>性能测试报告</p>
+<table>
+<thead>
+<tr>
+<th align="left">并发数</th>
+<th align="center">响应时间(ms)</th>
+<th align="center">TPS</th>
+<th align="center">错误率(%)</th>
+<th align="right">Load</th>
+<th align="right">内存(GB)</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">10</td>
+<td align="center">500</td>
+<td align="center">20</td>
+<td align="center">0</td>
+<td align="right">5</td>
+<td align="right">8</td>
+<td align="center">性能测试</td>
+</tr>
+<tr>
+<td align="left">20</td>
+<td align="center">800</td>
+<td align="center">30</td>
+<td align="center">0</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="center">性能测试</td>
+</tr>
+<tr>
+<td align="left">30</td>
+<td align="center">1000</td>
+<td align="center">40</td>
+<td align="center">2</td>
+<td align="right">15</td>
+<td align="right">14</td>
+<td align="center">性能测试</td>
+</tr>
+<tr>
+<td align="left">40</td>
+<td align="center">1200</td>
+<td align="center">45</td>
+<td align="center">20</td>
+<td align="right">30</td>
+<td align="right">16</td>
+<td align="center">负载测试</td>
+</tr>
+<tr>
+<td align="left">50</td>
+<td align="center">2000</td>
+<td align="center">30</td>
+<td align="center">40</td>
+<td align="right">50</td>
+<td align="right">16</td>
+<td align="center">压力测试</td>
+</tr>
+<tr>
+<td align="left">60</td>
+<td align="center">超时</td>
+<td align="center">0</td>
+<td align="center">100</td>
+<td align="right">不详</td>
+<td align="right">不祥</td>
+<td align="center">压力测试</td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -279,7 +357,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/js/webpack/webpack-first-step.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/back_skill_experience/java/log4j/log4j-config.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -293,7 +371,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/js/webpack/webpack-first-step.html" class="post-title-link" itemprop="url">webpack-起步</a>
+            <a href="/back_skill_experience/java/log4j/log4j-config.html" class="post-title-link" itemprop="url">Log4j 日志配置</a>
         </h2>
 
         <div class="post-meta">
@@ -303,14 +381,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-12-12 21:38:19" itemprop="dateCreated datePublished" datetime="2018-12-12T21:38:19+08:00">2018-12-12</time>
+              <time title="创建时间：2019-12-18 03:42:20" itemprop="dateCreated datePublished" datetime="2019-12-18T03:42:20+08:00">2019-12-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 22:54:58" itemprop="dateModified" datetime="2020-06-19T22:54:58+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-03 00:41:39" itemprop="dateModified" datetime="2022-10-03T00:41:39+08:00">2022-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -318,11 +396,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/front-code/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                  <a href="/categories/back-skill-experience/" itemprop="url" rel="index"><span itemprop="name">后端技巧/经验</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/front-code/webpack/" itemprop="url" rel="index"><span itemprop="name">webpack</span></a>
+                  <a href="/categories/back-skill-experience/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
             </span>
 
@@ -337,10 +415,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>从今天开始, 我要学习前端, 我觉得webpack应该是必经之路, 所以做一下笔记。</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这里是对于 Log4j 2 的<a href="http://logging.apache.org/log4j/2.x/manual/index.html">官方文档</a>的不完全翻译。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>EU SEMERER 项目中使用的 tracing API 经过无数次的增强, 多次改进和大量的工作演变成了 log4j。</p>
+<p>日志语句对于调试应用程序来说可能并不高级, 但是对于大型的多线程应用程序和分布式应用程序来说, 调试器可能并不像想象中那么好用, 在使用调试器的过程中, 很容易在复杂的数据结构和控制流程的细节上迷失方向, 而且日志可以永久保存以供日后研究。</p>
+<h2 id="Log4j-2"><a href="#Log4j-2" class="headerlink" title="Log4j 2"></a>Log4j 2</h2><p>Log4j 2 相较于 Log4j 和 Logback 相比有以下优势:</p>
+<ol>
+<li>Log4j 2 设计为课用</li>
+</ol>
+<ul>
+<li>Appenders</li>
+</ul>
+<p>禁用和使用日志请求只是Log4j的基本功能, Log4j日志系统还提供许多强大的功能, 比如允许把日志输出到不同的地方, 如控制台, 文件等, 可以根据天数或者文件大小产生新的文件, 可以以流的形式发送到其他地方等。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/js/webpack/webpack-first-step.html#more" rel="contents">
+              <a class="btn" href="/back_skill_experience/java/log4j/log4j-config.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -363,7 +451,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/60/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/60/">60</a><span class="page-number current">61</span><a class="page-number" href="/page/62/">62</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/62/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/60/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/60/">60</a><span class="page-number current">61</span><a class="page-number" href="/page/62/">62</a><span class="space">&hellip;</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/62/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -431,18 +519,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -469,7 +557,7 @@
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -493,9 +581,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -504,7 +600,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,16 +23,15 @@
   </script>
 
   <meta name="description" content="对前端特别感兴趣的后端工程师">
-<meta name="keywords" content="后端,java,Spring,database,算法">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LittleboyDK&#39;s Blog">
 <meta property="og:url" content="http://icecreamzhao.github.io/page/43/index.html">
 <meta property="og:site_name" content="LittleboyDK&#39;s Blog">
 <meta property="og:description" content="对前端特别感兴趣的后端工程师">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="后端,java,Spring,database,算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LittleboyDK&#39;s Blog">
-<meta name="twitter:description" content="对前端特别感兴趣的后端工程师">
 
 <link rel="canonical" href="http://icecreamzhao.github.io/page/43/">
 
@@ -190,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/js/miniProgram/first-step.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/blog_note/edit-makefile/edit-makefile-five.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +203,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/js/miniProgram/first-step.html" class="post-title-link" itemprop="url">微信小程序的目录结构以及各个文件的用处</a>
+            <a href="/note/blog_note/edit-makefile/edit-makefile-five.html" class="post-title-link" itemprop="url">《跟我一起写makefile (五)》摘抄</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +213,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-03-24 09:02:08" itemprop="dateCreated datePublished" datetime="2019-03-24T09:02:08+08:00">2019-03-24</time>
+              <time title="创建时间：2019-06-04 16:29:42" itemprop="dateCreated datePublished" datetime="2019-06-04T16:29:42+08:00">2019-06-04</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 22:52:46" itemprop="dateModified" datetime="2020-06-19T22:52:46+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-02 23:42:29" itemprop="dateModified" datetime="2022-10-02T23:42:29+08:00">2022-10-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,11 +228,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/front-code/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/front-code/mini-program/" itemprop="url" rel="index"><span itemprop="name">微信小程序</span></a>
+                  <a href="/categories/note/blog-note/" itemprop="url" rel="index"><span itemprop="name">读博客笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/blog-note/edit-makefile/" itemprop="url" rel="index"><span itemprop="name">跟我一起写makefile</span></a>
                 </span>
             </span>
 
@@ -248,10 +251,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本篇博客介绍了微信小程序的目录结构以及各个文件的作用。</p>
+          <h1 id="六、多目标"><a href="#六、多目标" class="headerlink" title="六、多目标"></a>六、多目标</h1><p>Makefile 的规则中的目标可以不止一个, 其支持多目标, 有可能我们的多目标同时依赖于一个文件, 并且其生成的命令大体类似, 于是我们就能把其合并起来。当然, 多个目标的生成规则的执行命令是同一个, 这可能会给我们带来麻烦, 不过好在我们可以使用一个自动化变量 “$@”, 这个变量表示这目前规则中所有的目标的集合, 看一个例子:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bigoutput littleoutput : text.g</span><br><span class="line">	generate text.g -$(subst output,,$@) &gt; $@</span><br></pre></td></tr></table></figure>
+
+<p>上述规则等价于:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bigoutput: text.g</span><br><span class="line">	generate text.g -big &gt; bigoutput</span><br><span class="line"></span><br><span class="line">littleoutput: text.g</span><br><span class="line">	generate text.g -little &gt; littleoutput</span><br></pre></td></tr></table></figure>
+
+<p>其中, <code>-$(subst output,,$@)</code> 中的 “$” 表示执行一个 Makefile 的函数, 函数名为 subst, 后面的为参数, 这里的这个函数是截取字符串的意思, “$@” 表示目标的集合, 就像一个数组, “$@” 依次取出目标, 并执行命令。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/js/miniProgram/first-step.html#more" rel="contents">
+              <a class="btn" href="/note/blog_note/edit-makefile/edit-makefile-five.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -275,7 +284,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/java/mq/rocketMQ/first-step.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/front_skill_experience/miniProgram/draw.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -289,7 +298,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/java/mq/rocketMQ/first-step.html" class="post-title-link" itemprop="url">rocketMQ的安装与配置</a>
+            <a href="/front_skill_experience/miniProgram/draw.html" class="post-title-link" itemprop="url">关于微信小程序的canvas</a>
         </h2>
 
         <div class="post-meta">
@@ -299,14 +308,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-03-21 11:32:26" itemprop="dateCreated datePublished" datetime="2019-03-21T11:32:26+08:00">2019-03-21</time>
+              <time title="创建时间：2019-06-09 10:45:14" itemprop="dateCreated datePublished" datetime="2019-06-09T10:45:14+08:00">2019-06-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:23:25" itemprop="dateModified" datetime="2020-06-19T23:23:25+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-03 10:26:28" itemprop="dateModified" datetime="2022-10-03T10:26:28+08:00">2022-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -314,19 +323,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/front-skill-experience/" itemprop="url" rel="index"><span itemprop="name">前端技巧/经验</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/java/mq/" itemprop="url" rel="index"><span itemprop="name">mq</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/java/mq/rocketMQ/" itemprop="url" rel="index"><span itemprop="name">rocketMQ</span></a>
+                  <a href="/categories/front-skill-experience/mini-program/" itemprop="url" rel="index"><span itemprop="name">微信小程序</span></a>
                 </span>
             </span>
 
@@ -341,29 +342,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>因工作需要实现待办事项功能, 所以接触到了mq, 并将安装和配置的过程记录下来。</p>
-<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p><a href="http://rocketmq.apache.org/">官网</a><br>这里是它的<a href="http://rocketmq.apache.org/release_notes/release-notes-4.4.0/">下载地址</a></p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>不得不说一句, 它的配置是真的坑, 搞了好长时间才弄明白怎么回事, 相关文档也比较少。</p>
-<h2 id="修改jvm内存大小"><a href="#修改jvm内存大小" class="headerlink" title="修改jvm内存大小"></a>修改jvm内存大小</h2><p>如果你下载好之后, 直接使用 <code>sh mqnamesrv &amp;</code> 命令启动的话, 那么八成会遇到jvm内存不足的错误提示。</p>
-<p>这里需要先修改 <code>bin/runserver.sh</code>, <code>bin/runbroker.sh</code>和<code>bin/tools.sh</code> 文件:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> JVM configuration 的第一句话</span></span><br><span class="line">JAVA_OPT="$&#123;JAVA_OPT&#125; -server -Xms4g -Xmx4g -Xmn2g -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m"</span><br></pre></td></tr></table></figure>
-
-<p>这里修改为适合自己电脑的内存大小。</p>
-<h2 id="修改broker默认启动内网的地址"><a href="#修改broker默认启动内网的地址" class="headerlink" title="修改broker默认启动内网的地址"></a>修改broker默认启动内网的地址</h2><p>其实到上面那一步就可以正常的启动了, 但是我在将rocketMQ配置到腾讯云并启动之后, 他就会报:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">"main"</span> org.apache.rocketmq.remoting.exception.RemotingTooMuchRequestException: sendDefaultImpl call timeout</span><br><span class="line">at org.apache.rocketmq.client.impl.producer.DefaultMQProducerImpl.sendDefaultImpl(DefaultMQProducerImpl.java:<span class="number">634</span>)</span><br><span class="line">	at org.apache.rocketmq.client.impl.producer.DefaultMQProducerImpl.send(DefaultMQProducerImpl.java:<span class="number">1279</span>)</span><br><span class="line">	at org.apache.rocketmq.client.impl.producer.DefaultMQProducerImpl.send(DefaultMQProducerImpl.java:<span class="number">1225</span>)</span><br><span class="line">	at org.apache.rocketmq.client.producer.DefaultMQProducer.send(DefaultMQProducer.java:<span class="number">283</span>)</span><br></pre></td></tr></table></figure>
-
-<p>在启动broker时会有broker的启动的地址, 启动时会有这样的提示:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The broker[broker-a, 127.0.0.1:10911] boot success. serializeType=JSON and name server is 127.0.0.1:9876</span><br></pre></td></tr></table></figure>
-
-<p>但是我们如果远程连接broker的话, 是不能直接使用内网地址来访问的, 所以这里就需要修改一下 <code>conf/broker.conf</code>:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在文件最后添加:</span></span><br><span class="line">brokerIP1 = 你的外网地址</span><br></pre></td></tr></table></figure>
-
-<p>然后在启动broker的时候可以这么写:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh mqbroker -n 127.0.0.1:9876 autoCreateTopicEnable=true -c ../conf/broker.conf</span><br></pre></td></tr></table></figure>
-
-<p>这样就可以正常的使用了。</p>
-<p><a href="https://blog.csdn.net/gwd1154978352/article/details/80829534">这里</a>是它的一些常用命令。</p>
-
+          <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#%E5%9C%A8canvas%E4%B8%8A%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87">在canvas上显示图片</a><br><a href="#%E5%9C%A8canvas%E4%B8%8A%E7%94%BB%E5%9B%BE">在canvas上画图</a></p>
+<h1 id="在canvas上显示图片"><a href="#在canvas上显示图片" class="headerlink" title="在canvas上显示图片"></a>在canvas上显示图片</h1><p>首先, 我们需要一个canvas的页面元素:</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/front_skill_experience/miniProgram/draw.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -381,7 +369,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/42/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><span class="page-number current">43</span><a class="page-number" href="/page/44/">44</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/44/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/42/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><span class="page-number current">43</span><a class="page-number" href="/page/44/">44</a><span class="space">&hellip;</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/44/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -449,18 +437,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -487,7 +475,7 @@
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -511,9 +499,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -522,7 +518,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

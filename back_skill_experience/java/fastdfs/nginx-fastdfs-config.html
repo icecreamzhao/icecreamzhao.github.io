@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言根据这篇博客, 我也是花了半天时间才配置好fastDFS和nginx, 那么话不多说, 开始吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fastDFS和ngnix的配置">
+<meta property="og:url" content="http://icecreamzhao.github.io/back_skill_experience/java/fastdfs/nginx-fastdfs-config.html">
+<meta property="og:site_name" content="LittleboyDK&#39;s Blog">
+<meta property="og:description" content="前言根据这篇博客, 我也是花了半天时间才配置好fastDFS和nginx, 那么话不多说, 开始吧。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-07T01:13:55.000Z">
+<meta property="article:modified_time" content="2022-10-02T16:40:35.822Z">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="fastdfs">
+<meta property="article:tag" content="nginx">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://icecreamzhao.github.io/back_skill_experience/java/fastdfs/nginx-fastdfs-config.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>fastDFS和ngnix的配置 | LittleboyDK's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LittleboyDK's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">特别不靠谱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/back_skill_experience/java/fastdfs/nginx-fastdfs-config.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/personal/icon.png">
+      <meta itemprop="name" content="littleboyDK">
+      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleboyDK's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          fastDFS和ngnix的配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-07 09:13:55" itemprop="dateCreated datePublished" datetime="2019-07-07T09:13:55+08:00">2019-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-03 00:40:35" itemprop="dateModified" datetime="2022-10-03T00:40:35+08:00">2022-10-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/back-skill-experience/" itemprop="url" rel="index"><span itemprop="name">后端技巧/经验</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/back-skill-experience/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>根据<a href="https://blog.csdn.net/qq_34301871/article/details/80060235">这篇博客</a>, 我也是花了半天时间才配置好fastDFS和nginx, 那么话不多说, 开始吧。</p>
+<span id="more"></span>
+
+<h1 id="下载物料"><a href="#下载物料" class="headerlink" title="下载物料"></a>下载物料</h1><p>首先下载<a href="https://github.com/happyfish100/fastdfs/releases">fastDFS的 5.11</a>版本。</p>
+<p>接着下载<a href="https://github.com/happyfish100/fastdfs-nginx-module/releases">fastdfs-nginx-module</a></p>
+<p>接着下载<a href="https://github.com/happyfish100/libfastcommon/releases">libfastcommon</a></p>
+<p>接着下载<a href="http://nginx.org/download/">nginx</a></p>
+<p>**注意, fastdfs 5.11版本对应fastdfs-nginx-module的1.20版本 **</p>
+<p><strong>fastdfs 5.10版本对应fastdfs-nginx-module的1.19版本</strong></p>
+<h1 id="系统环境准备"><a href="#系统环境准备" class="headerlink" title="系统环境准备"></a>系统环境准备</h1><p>下载所需工具的运行命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install zlib zlib-devel pcre pcre-devel gcc gcc-c++ openssl openssl-devel libevent libevent-devel perl unzip net-tools wget</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装libfastcommon"><a href="#安装libfastcommon" class="headerlink" title="安装libfastcommon"></a>安装libfastcommon</h1><blockquote>
+<p>约定: 之前的物料的下载路径是 <code>/home/littleboy/programmingTools/fastdfs</code><br>nginx的下载的路径是 <code>/home/littleboy/programmingTools/nginx</code></p>
+</blockquote>
+<p>首先跳转到物料所在路径:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/littleboy/programmingTools/fastdfs</span><br></pre></td></tr></table></figure>
+
+<p>解压 libfastcommon:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">unzip libfastcommon-1.0.39.zip</span><br><span class="line">cd  libfastcommon-1.0.39</span><br><span class="line">ll</span><br></pre></td></tr></table></figure>
+
+<p>可以看到一个make.sh。</p>
+<p>开始安装:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./make.sh</span><br><span class="line">./make.sh install</span><br></pre></td></tr></table></figure>
+
+<p>不出意外是不会报错的, 然后可以建立软连接:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.so</span><br><span class="line">ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so</span><br><span class="line">ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so</span><br><span class="line">ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so</span><br></pre></td></tr></table></figure>
+
+<p>libfastcommon 安装完毕。</p>
+<h1 id="安装fastdfs"><a href="#安装fastdfs" class="headerlink" title="安装fastdfs"></a>安装fastdfs</h1><p>现在的工作目录是: <code>/home/littleboy/programmingTools/fastdfs/libcommon-1.0.39</code></p>
+<p>回到上一级目录, 然后解压fastdfs:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">unzip fastdfs-5.11.zip</span><br><span class="line">cd fastdfs-5.11</span><br><span class="line">ll</span><br></pre></td></tr></table></figure>
+
+<p>同样的, 执行 make.sh:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./make.sh</span><br><span class="line">./make.sh install</span><br></pre></td></tr></table></figure>
+
+<p>不出意外应该也不会报错, 成功之后可以查看安装目录:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll /etc/fastdfs</span><br></pre></td></tr></table></figure>
+
+<p>可以看到:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--. 1 root root  1461 7月   6 11:10 client.conf.sample</span><br><span class="line">-rw-r--r--. 1 root root  7927 7月   6 11:10 storage.conf.sample</span><br><span class="line">-rw-r--r--. 1 root root  7389 7月   6 11:10 tracker.conf.sample</span><br></pre></td></tr></table></figure>
+
+<p>我们需要所有的文件都复制一份, 去掉sample:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp client.conf.sample client.conf</span><br><span class="line">cp storage.conf.sample storage.conf</span><br><span class="line">cp tracker.conf.sample tracker.conf</span><br></pre></td></tr></table></figure>
+
+<p>fastDFS安装完毕。</p>
+<h1 id="安装tracker"><a href="#安装tracker" class="headerlink" title="安装tracker"></a>安装tracker</h1><p>首先创建tracker工作目录。</p>
+<p>这个目录可以自定义, 用来保存tracker的data和log, 我将它保存在了: <code>/home/littleboy/programmingTools/fastdfs/fastdfs_tracker</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">mkdir fastdfs_tracker</span><br></pre></td></tr></table></figure>
+
+<p>配置tracker:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/fdfs/tracker.conf</span><br></pre></td></tr></table></figure>
+
+<p>找到下面几处修改:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">line4: disabled=false # 默认开启tracker</span><br><span class="line">line11: port=22122 # 默认端口号</span><br><span class="line">line22: base_path=/home/littleboy/programmingTools/fastdfs/fastdfs_tracker/ # tracker工作目录</span><br><span class="line">line260:  http.server_port=6666 # tracker 服务器端口号, 默认8080</span><br></pre></td></tr></table></figure>
+
+<p>保存修改。</p>
+<p>启动tracker:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service fdfs_trackerd start</span><br></pre></td></tr></table></figure>
+
+<p>如果不能启动则试试:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start fdfs_trackerd</span><br></pre></td></tr></table></figure>
+
+<p>成功后可以看见:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Starting fdfs_trackerd (via systemctl):                    [  OK  ]</span><br></pre></td></tr></table></figure>
+
+<p>跳转到 tracker 工作目录下可以看到多了data和log文件夹, 然后我们需要将这个加入开机启动, 首先需要给执行权限:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/rc.d/rc.total</span><br><span class="line">vi /etc/rc.d/rc.total</span><br></pre></td></tr></table></figure>
+
+<p>在这个文件最后加上一句话即可:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service fdfs_trackerd start</span><br></pre></td></tr></table></figure>
+
+<p>然后我们查看一下tracker端口监听的情况:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -unltp|grep fdfs</span><br></pre></td></tr></table></figure>
+
+<p>可以看到22122端口监听成功。</p>
+<h1 id="安装storage"><a href="#安装storage" class="headerlink" title="安装storage"></a>安装storage</h1><p>为storage配置工作目录, 由于storage还需要一个目录来存储数据, 所以需要另外多建立一个目录: <code>fastdfs_storage_data</code>。</p>
+<p>修改 storage 的配置文件——storage.conf:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/fdfs/storage.conf</span><br></pre></td></tr></table></figure>
+
+<p>找到下面几处修改即可:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">line4: disabled=false # 默认开启</span><br><span class="line">line11: group_name=group1 # 组名</span><br><span class="line">line24: port=23000 # storage端口, 同一个组的stroage的端口号必须一致</span><br><span class="line">line41: base_path=/home/littleboy/programmingTools/fasdfs/fastdfs_storage # 配置storage的工作目录 </span><br><span class="line">line105: store_path_count=1 # 存储路径个数, 这里要和store_path的个数相匹配</span><br><span class="line">line109: store_path0=/home/littleboy/programmingTools/fasdfs/fastdfs_storage_data # 配置storage的存储路径</span><br><span class="line">line118: tracker_server=192.168.1.3:22122 # 配置tracker服务器的ip</span><br><span class="line">line284: http.server_port=8888 # 配置http的端口号, 可以通过这个段口访问stroage</span><br></pre></td></tr></table></figure>
+
+<p>保存之后, 创建软连接:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/bin/fdfs_storaged /usr/local/bin</span><br></pre></td></tr></table></figure>
+
+<p>启动storage:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service fdfs_storaged start</span><br><span class="line"># 如果不能启动可以试试:</span><br><span class="line">systemctl start fdfs_storaged</span><br></pre></td></tr></table></figure>
+
+<p>可以看到:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Starting fdfs_storaged (via systemctl):                    [  OK  ]</span><br></pre></td></tr></table></figure>
+
+<p>同样, 在<code>/etc/rc.d/rc.local</code>加上启动语句就可以开机自启。</p>
+<p>查看storage是否启动:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -unltp | grep fdfs</span><br></pre></td></tr></table></figure>
+
+<p>至此, fastdfs配置完成, 最后我们可以查看storage是否被注册到了tracker里去:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/fdfs_monitor /etc/fdfs/storage.conf</span><br></pre></td></tr></table></figure>
+
+<p>如果成功可以看到 <code>ip_addr = 192.168.1.3 (localhost.localdomain)  ACTIVE</code> 字样。</p>
+<p>torage安装配置完毕。</p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>先修改一下客户端配置文件:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/fdfs/client.conf</span><br><span class="line"></span><br><span class="line">line10: base_path=/home/littleboy/programmingTools/fasdfs/fastdfs_tracker # tracker服务器文件路径</span><br><span class="line"></span><br><span class="line">line13: tracker_server=192.168.1.3:22122 # tracker服务器ip和端口号</span><br><span class="line"></span><br><span class="line">line57: http.tracker_server_port=6666 # tracker http端口号</span><br></pre></td></tr></table></figure>
+
+<p>接下来上传一张图片到centos7测试。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/fdfs_upload_file /etc/fdfs/client.conf /root/测试1.png</span><br></pre></td></tr></table></figure>
+
+<p>成功之后会返回图片的路径。</p>
+<blockquote>
+<p>wheel&#x2F;M00&#x2F;00&#x2F;00&#x2F;wKgBA10ipjGAT1AHAABd0Kc3bLM592.jpg</p>
+</blockquote>
+<p>我们可以去刚才的路径查看是否上传成功:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home/littleboy/programmingTools/fasdfs/fastdfs_storage_data/data/00/00</span><br><span class="line">ll</span><br></pre></td></tr></table></figure>
+
+<p>data下有256个1级目录, 每级目录下又有256个2级子目录, 总共65536个文件, 新文件会以hash的方式被路由到其中某个子目录下, 然后将文件数据直接作为一个本地文件存储到该目录中。</p>
+<h1 id="FastDFS的nginx模块安装"><a href="#FastDFS的nginx模块安装" class="headerlink" title="FastDFS的nginx模块安装"></a>FastDFS的nginx模块安装</h1><p>如果我们直接使用 <code>http://127.0.0.1:9999/wheel/M00/00/00wKgBA10ipjGAT1AHAABd0Kc3bLM592.jpg</code>去访问图片, 会发现访问不到, 因为在fastDFS 4.05的时候, 就已经 remove embed HTTP support:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Version 4.05  2012-12-30</span><br><span class="line"> * client/fdfs_upload_file.c can specify storage ip port and store path index</span><br><span class="line"> * add connection pool</span><br><span class="line"> * client load storage ids config</span><br><span class="line"> * common/ini_file_reader.c does NOT call chdir</span><br><span class="line"> * keep the mtime of file same</span><br><span class="line"> * use g_current_time instead of call time function</span><br><span class="line"> * remove embed HTTP support</span><br></pre></td></tr></table></figure>
+
+<p>我们在使用fastDFS部署一个分布式文件系统的时候, 通过fastDFS的客户端API来进行文件的上传, 下载和删除等操作。同时通过fastDFS的HTTP服务器来提供HTTP访问服务。但是fastDFS的HTTP服务较为简单, 无法提供负载均衡等高性能的服务, 所以fastDFS的开发者——淘宝的架构师余庆同学, 为我们提供了nginx上使用的fastDFS模块。</p>
+<p>fastDFS通过tracker服务器, 将文件放在storage服务器存储, 但是同组之间的服务器需要复制文件, 有延迟的问题。假设tracker服务器将文件上传到了192.168.1.3, 文件ID已经返回给客户端, 这时, 后台会将这个文件复制到192.168.1.3, 如果复制没有完成, 客户端就用这个ID在这台服务器上获取文件, 肯定会出现错误。这个fastdfs-nginx-module可以重定向连接到源服务器获取文件, 避免客户端由于复制延迟的问题, 出现错误。</p>
+<h2 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h2><p>在安装nginx之前要安装nginx所需要的依赖:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install pcre pcre-devel</span><br><span class="line">yum -y install zlib zlib-devel</span><br><span class="line">yum -y install openssl openssl-devel</span><br></pre></td></tr></table></figure>
+
+<p>解压nginx和fastdfs-nginx-module:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf nginx-1.12.0.tar.gz</span><br><span class="line">unzip fastdfs-nginx-module-1.20.zip</span><br></pre></td></tr></table></figure>
+
+<p>然后进入nginx安装目录, 添加fastdfs-nginx-module:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --add-module=/home/littleboy/programmingTools/fastdfs/fastdfs-nginx-module-1.20/src</span><br></pre></td></tr></table></figure>
+
+<p>OK, 大家注意, 这里如果继续make的话, 大概率会报<code>fdfs_define.h:15:27: 致命错误：common_define.h：没有那个文件或目录</code> 这个错, 那么就要感谢<a href="https://blog.csdn.net/zzzgd_666/article/details/81911892">这篇博客</a>的作者了, 那么总是解决办法就是:<br>修改<code>fastdfs-nginx-module-1.20/src/config</code>文件:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi fastdfs-nginx-module-1.20/src/config</span><br><span class="line"></span><br><span class="line">line6: ngx_module_incs=&quot;/usr/include/fastdfs /usr/include/fastcommon/&quot;</span><br><span class="line">line15: CORE_INCS=&quot;$CORE_INCS /usr/include/fastdfs /usr/include/fastcommon/&quot;</span><br></pre></td></tr></table></figure>
+
+<p>改了这两行之后, 重新 configure 一下, 然后执行:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>nginx的默认目录是&#x2F;usr&#x2F;local&#x2F;nginx, 配置storage nginx:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/conf</span><br><span class="line">vi nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>注意:</p>
+<p>这里是我遇到的第二个坑:</p>
+<p>首先第一行:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">line 2: user nobody;</span><br><span class="line"># 改成:</span><br><span class="line">user root;</span><br><span class="line">line 36: listen 9999;</span><br><span class="line">line 48:</span><br><span class="line">location /wheel/M00 &#123;</span><br><span class="line">    root /home/littleboy/programmingTools/fastdfs/fastdfs_storage_data/data;</span><br><span class="line">    ngx_fastdfs_module;</span><br><span class="line">    proxy_connect_timeout 300;</span><br><span class="line">    proxy_read_timeout 300;</span><br><span class="line">    proxy_send_timeout 300;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改一下http.conf:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 修改为已经存在的一个html或者图片之类的。</span><br><span class="line">http.anti_steal.token_check_fail=/home/fastdfs/anti-steal.jpg</span><br></pre></td></tr></table></figure>
+
+<p>然后进入fastDFS安装时解压过的目录, 将http.conf和mime.types拷贝到&#x2F;etc&#x2F;fdfs目录下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/littleboy/prorammingTools/fastdfs/fastdfs-5.11/conf</span><br><span class="line">cp http.conf /etc/fdfs</span><br><span class="line">cp http.conf /etc/fdfs</span><br><span class="line">cp mime.types /etc/fdfs</span><br></pre></td></tr></table></figure>
+
+<p>另外还需要把fastsdfs-nginx-module安装目录的src下的mod-fastdfs.conf也拷贝过来:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /home/littleboy/programmingTools/fastdfs/fastdfs-nginx-module-1.20/src/mod_fastdfs.conf /etc/fdfs</span><br></pre></td></tr></table></figure>
+
+<p>修改mod_fastdfs.conf:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/fdfs/mod_fastdfs.conf</span><br></pre></td></tr></table></figure>
+
+<p>对一下几行进行修改:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">line10: base_path=/home/littleboy/programmingTools/fastdfs/fastdfs_storage</span><br><span class="line">line40: tracker_server=192.168.1.3:22122</span><br><span class="line">line44: storage_server_port=23000</span><br><span class="line">line53: url_have_group_name = true</span><br><span class="line">line62: store_path0=/home/littleboy/programmingTools/fasdfs/fastdfs_storage_data</span><br><span class="line">line113: group_count = 1</span><br><span class="line"></span><br><span class="line"># 在文件的最后设置group</span><br><span class="line">[group1]</span><br><span class="line">group_name=wheel</span><br><span class="line">storage_server_port=23000</span><br><span class="line">store_path_count=2</span><br><span class="line">store_path0=/home/littleboy/programmingTools/fasdfs/fastdfs_storage_data</span><br><span class="line">store_path1=/home/littleboy/programmingTools/fasdfs/fastdfs_storage_data</span><br></pre></td></tr></table></figure>
+
+<p>创建M00至storage存储目录的符号连接:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /home/littleboy/programmingTools/fastdfs/fastdfs_storage_data/data/ /home/littleboy/programmingTools/fastdfs/fastdfs_storage_data/M00</span><br></pre></td></tr></table></figure>
+
+<p>启动nginx:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
+
+<p>访问127.0.0.1:9999, 可以看到<code>welcome to nginx</code>,接下来我们还要配置tracker的nginx。</p>
+<h2 id="配置tracker-nginx"><a href="#配置tracker-nginx" class="headerlink" title="配置tracker nginx"></a>配置tracker nginx</h2><p>在解压一个nginx:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir nginx-1.12.0-2</span><br><span class="line">cd nginx-1.12.0-2</span><br><span class="line">tar -zxf nginx-1.12.0.tar.gz nginx-1.12.0</span><br></pre></td></tr></table></figure>
+
+<p>然后再configur一下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx2 --add-module=/home/littleboy/programmingTools/fastdfs/fastdfs-nginx-module-1.20/src</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>接下来还是修改nginx.conf:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/nginx2/conf/nginx.conf</span><br><span class="line"></span><br><span class="line">line2: user root;</span><br><span class="line">line35: # 这里加入一个upstream, 指向tracker的nginx地址:</span><br><span class="line">upstream fdfs_wheel &#123;</span><br><span class="line">    server 192.168.1.3:9999;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> server &#123;</span><br><span class="line">        listen       9989;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /wheel/M00 &#123;</span><br><span class="line">            proxy_pass http://fdfs_wheel;</span><br><span class="line">        &#125;</span><br><span class="line">        # 省略下面的代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动nginx:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx2/sbin/nginx</span><br></pre></td></tr></table></figure>
+
+<p>现在访问<code>192.168.1.3:9999/wheel/M00/00/00/wKgBA10ipjGAT1AHAABd0Kc3bLM592.jpg</code>, 应该就可以访问到图片了。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>不容易啊不容易。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/fastdfs/" rel="tag"># fastdfs</a>
+              <a href="/tags/nginx/" rel="tag"># nginx</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/note/blog_note/edit-makefile/edit-makefile-seven.html" rel="prev" title="《跟我一起写makefile (七)》摘抄">
+      <i class="fa fa-chevron-left"></i> 《跟我一起写makefile (七)》摘抄
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/config_skill_experience/develop__tool_config/mysql/mysql-charset.html" rel="next" title="mysql创建数据库时遇到的字符集的问题">
+      mysql创建数据库时遇到的字符集的问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E7%89%A9%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">下载物料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">3.</span> <span class="nav-text">系统环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85libfastcommon"><span class="nav-number">4.</span> <span class="nav-text">安装libfastcommon</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85fastdfs"><span class="nav-number">5.</span> <span class="nav-text">安装fastdfs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85tracker"><span class="nav-number">6.</span> <span class="nav-text">安装tracker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85storage"><span class="nav-number">7.</span> <span class="nav-text">安装storage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">8.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FastDFS%E7%9A%84nginx%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85"><span class="nav-number">9.</span> <span class="nav-text">FastDFS的nginx模块安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx%E5%AE%89%E8%A3%85"><span class="nav-number">9.1.</span> <span class="nav-text">nginx安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEtracker-nginx"><span class="nav-number">9.2.</span> <span class="nav-text">配置tracker nginx</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="littleboyDK"
+      src="/images/personal/icon.png">
+  <p class="site-author-name" itemprop="name">littleboyDK</p>
+  <div class="site-description" itemprop="description">对前端特别感兴趣的后端工程师</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">littleboyDK</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

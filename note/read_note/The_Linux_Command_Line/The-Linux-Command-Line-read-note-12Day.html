@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="第一天的笔记-基本的命令和使用方法第二天的笔记-操作文件第三天的笔记-查阅命令文档并创建命令别名第四天的笔记-重定向标准输入和输出以及处理查询结果第五天的笔记-命令的展开第六天的笔记-快捷键第七天的笔记-文件权限第八天的笔记-进程第九天的笔记-修改shell环境第十天的笔记-vim入门第十一天的笔记-自定义shell提示符 总结今天主要学习了如何使用包管理系统来进行软件的安装, 下载和更新。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快乐的Linux命令行笔记-软件包管理系统">
+<meta property="og:url" content="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html">
+<meta property="og:site_name" content="LittleboyDK&#39;s Blog">
+<meta property="og:description" content="第一天的笔记-基本的命令和使用方法第二天的笔记-操作文件第三天的笔记-查阅命令文档并创建命令别名第四天的笔记-重定向标准输入和输出以及处理查询结果第五天的笔记-命令的展开第六天的笔记-快捷键第七天的笔记-文件权限第八天的笔记-进程第九天的笔记-修改shell环境第十天的笔记-vim入门第十一天的笔记-自定义shell提示符 总结今天主要学习了如何使用包管理系统来进行软件的安装, 下载和更新。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-02-17T13:28:56.000Z">
+<meta property="article:modified_time" content="2022-10-07T13:03:55.013Z">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="快乐的Linux命令行">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>快乐的Linux命令行笔记-软件包管理系统 | LittleboyDK's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LittleboyDK's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">特别不靠谱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/personal/icon.png">
+      <meta itemprop="name" content="littleboyDK">
+      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleboyDK's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          快乐的Linux命令行笔记-软件包管理系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-17 21:28:56" itemprop="dateCreated datePublished" datetime="2019-02-17T21:28:56+08:00">2019-02-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-07 21:03:55" itemprop="dateModified" datetime="2022-10-07T21:03:55+08:00">2022-10-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">第四天的笔记-重定向标准输入和输出以及处理查询结果</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-5Day.html">第五天的笔记-命令的展开</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-6Day.html">第六天的笔记-快捷键</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-7Day.html">第七天的笔记-文件权限</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-8Day.html">第八天的笔记-进程</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-9Day.html">第九天的笔记-修改shell环境</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-10Day.html">第十天的笔记-vim入门</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">第十一天的笔记-自定义shell提示符</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天主要学习了如何使用包管理系统来进行软件的安装, 下载和更新。</p>
+<span id="more"></span>
+<h1 id="软件包管理"><a href="#软件包管理" class="headerlink" title="软件包管理"></a>软件包管理</h1><blockquote>
+<p>一般而言, 大多数发行版分别属于两大包管理技术阵营: Debian的”.deb”和红帽的”.rpm”。</p>
+</blockquote>
+<p>主要的包管理系统</p>
+<table>
+<thead>
+<tr>
+<th align="left">包管理系统</th>
+<th align="left">发行版(部分列表)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian Style (.deb)</td>
+<td align="left">Debian, Ubuntu, Xandros, Linspire</td>
+</tr>
+<tr>
+<td align="left">Red Hat Style (.rpm)</td>
+<td align="left">Fedora, CentOS, Red Hat Enterprice Linux, OpenSUSE, Mandriva, PCLinuxOS</td>
+</tr>
+</tbody></table>
+<h1 id="软件包管理系统的工作方式"><a href="#软件包管理系统的工作方式" class="headerlink" title="软件包管理系统的工作方式"></a>软件包管理系统的工作方式</h1><p>大多数软件由发行商以<code>包文件</code>的形式提供, 剩下的则以源码形式存在, 可以手动编译安装。</p>
+<h1 id="包文件"><a href="#包文件" class="headerlink" title="包文件"></a>包文件</h1><p>包文件是一个构成软件包的文件压缩集合。</p>
+<p>一个软件包可能由大量程序以及支持这些程序的数据文件组成。除了安装文件之外, 软件包文件也包括关于这个包的源数据。</p>
+<h1 id="资源库"><a href="#资源库" class="headerlink" title="资源库"></a>资源库</h1><p>资源库是一个将专门为这个系统开发的所有的软件包集中的一个位置。</p>
+<p>而且一个系统有可能维护着不同的几个资源库, 比如通常会有一个”测试”资源库, 其中包含刚刚建立的软件包, 供测试人员和一些想要体验最新功能的用户使用和测试。还会有一个”开发”资源库, 这个资源库中保存着注定要包含到下一个主要版本中的半成品软件包。</p>
+<p>另外还会有包含第三方的资源库, 有些软件包有可能会因为法律, 专利或者DRM反规避问题而不能包含到发行版中。如果想使用他们, 需要手动将他们包含到软件包管理系统的配置文件中。</p>
+<h1 id="依赖性"><a href="#依赖性" class="headerlink" title="依赖性"></a>依赖性</h1><p>软件包管理系统会提供一些依赖项解析方法, 确保安装软件包时, 其所有的依赖也被安装。</p>
+<h1 id="上层和底层软件包工具"><a href="#上层和底层软件包工具" class="headerlink" title="上层和底层软件包工具"></a>上层和底层软件包工具</h1><p>软件包工具分为上层和底层, 底层大致分为两种, 上面已经介绍过了。而上层工具会有很多种。</p>
+<blockquote>
+<p>包管理工具</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">发行版</th>
+<th align="center">底层工具</th>
+<th align="left">上层工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian-style</td>
+<td align="center">dpkg</td>
+<td align="left">apt-get, aptitude</td>
+</tr>
+<tr>
+<td align="left">fedora, Red Hat Enterprise Linux, CentOS</td>
+<td align="center">rpm</td>
+<td align="left">yum</td>
+</tr>
+</tbody></table>
+<h1 id="软件包查找工具"><a href="#软件包查找工具" class="headerlink" title="软件包查找工具"></a>软件包查找工具</h1><p>| 风格 | 命令 |<br>| :—– | :——: | :——- |<br>| Debian | apt-get update; apt-cache search serarch_string |<br>| Red Hat | yum search search_string |</p>
+<blockquote>
+<p>使用yum搜索emacs文本编译器</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search emacs</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用apt搜索</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update; apt-cache search emacs</span><br></pre></td></tr></table></figure>
+
+<h1 id="从资源库中安装一个软件包"><a href="#从资源库中安装一个软件包" class="headerlink" title="从资源库中安装一个软件包"></a>从资源库中安装一个软件包</h1><table>
+<thead>
+<tr>
+<th align="left">风格</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian</td>
+<td align="left">apt-get update; apt-get install package_name</td>
+</tr>
+<tr>
+<td align="left">Red Hat</td>
+<td align="left">yum install package_name</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>使用apt来安装emacs文本编译器</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update; apt-get install emacs</span><br></pre></td></tr></table></figure>
+
+<h1 id="通过软件包文件来安装软件"><a href="#通过软件包文件来安装软件" class="headerlink" title="通过软件包文件来安装软件"></a>通过软件包文件来安装软件</h1><blockquote>
+<p>使用底层工具来直接安装软件包(没有经过依赖解析)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">风格</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian</td>
+<td align="left">dpkg –install package_file</td>
+</tr>
+<tr>
+<td align="left">Ret Hat</td>
+<td align="left">rpm -i package_file</td>
+</tr>
+</tbody></table>
+<h1 id="卸载软件"><a href="#卸载软件" class="headerlink" title="卸载软件"></a>卸载软件</h1><table>
+<thead>
+<tr>
+<th align="left">风格</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian</td>
+<td align="left">apt-get remove package_name</td>
+</tr>
+<tr>
+<td align="left">Red Hat</td>
+<td align="left">yum erase package_name</td>
+</tr>
+</tbody></table>
+<h1 id="经过资源库来更新软件包"><a href="#经过资源库来更新软件包" class="headerlink" title="经过资源库来更新软件包"></a>经过资源库来更新软件包</h1><table>
+<thead>
+<tr>
+<th align="left">风格</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian</td>
+<td align="left">apt-get update; apt-get upgrade</td>
+</tr>
+<tr>
+<td align="left">Red Hat</td>
+<td align="left">yum update</td>
+</tr>
+</tbody></table>
+<h1 id="通过软件包文件来升级软件"><a href="#通过软件包文件来升级软件" class="headerlink" title="通过软件包文件来升级软件"></a>通过软件包文件来升级软件</h1><table>
+<thead>
+<tr>
+<th align="left">风格</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian</td>
+<td align="left">dpkg –install package_file</td>
+</tr>
+<tr>
+<td align="left">Red Hat</td>
+<td align="left">rpm -U package_file</td>
+</tr>
+</tbody></table>
+<h1 id="软件包的安装列表"><a href="#软件包的安装列表" class="headerlink" title="软件包的安装列表"></a>软件包的安装列表</h1><table>
+<thead>
+<tr>
+<th align="left">风格</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian</td>
+<td align="left">dpkg –list</td>
+</tr>
+<tr>
+<td align="left">Red Hat</td>
+<td align="left">rpm -qa</td>
+</tr>
+</tbody></table>
+<h1 id="确定是否安装了一个软件包"><a href="#确定是否安装了一个软件包" class="headerlink" title="确定是否安装了一个软件包"></a>确定是否安装了一个软件包</h1><table>
+<thead>
+<tr>
+<th align="left">风格</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian</td>
+<td align="left">dpkg –status package_name</td>
+</tr>
+<tr>
+<td align="left">Red Hat</td>
+<td align="left">rpm -q package_name</td>
+</tr>
+</tbody></table>
+<h1 id="显示安装软件包的信息"><a href="#显示安装软件包的信息" class="headerlink" title="显示安装软件包的信息"></a>显示安装软件包的信息</h1><table>
+<thead>
+<tr>
+<th align="left">风格</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian</td>
+<td align="left">apt-cache show package_name</td>
+</tr>
+<tr>
+<td align="left">Red Hat</td>
+<td align="left">yum info package_name</td>
+</tr>
+</tbody></table>
+<h1 id="查看安装了某个文件的软件包"><a href="#查看安装了某个文件的软件包" class="headerlink" title="查看安装了某个文件的软件包"></a>查看安装了某个文件的软件包</h1><table>
+<thead>
+<tr>
+<th align="left">风格</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Debian</td>
+<td align="left">dpkg –search file_name</td>
+</tr>
+<tr>
+<td align="left">Red Hat</td>
+<td align="left">rpm -qf file_name</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>在Red Hat系统中, 查看那个软件包安装了<code>/usr/bin/vim</code>这个文件</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qf /usr/bin/vim</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/note/" rel="tag"># 笔记</a>
+              <a href="/tags/The-Linux-Command-Line/" rel="tag"># 快乐的Linux命令行</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/sentiment/about-appearance-and-nature.html" rel="prev" title="听《左耳听风》专栏第十九章产生的一些启发和思考">
+      <i class="fa fa-chevron-left"></i> 听《左耳听风》专栏第十九章产生的一些启发和思考
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-13Day.html" rel="next" title="快乐的Linux命令行笔记-创建映像">
+      快乐的Linux命令行笔记-创建映像 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">软件包管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">软件包管理系统的工作方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%85%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">包文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E5%BA%93"><span class="nav-number">5.</span> <span class="nav-text">资源库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">依赖性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8A%E5%B1%82%E5%92%8C%E5%BA%95%E5%B1%82%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%B7%A5%E5%85%B7"><span class="nav-number">7.</span> <span class="nav-text">上层和底层软件包工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85%E6%9F%A5%E6%89%BE%E5%B7%A5%E5%85%B7"><span class="nav-number">8.</span> <span class="nav-text">软件包查找工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E8%B5%84%E6%BA%90%E5%BA%93%E4%B8%AD%E5%AE%89%E8%A3%85%E4%B8%80%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="nav-number">9.</span> <span class="nav-text">从资源库中安装一个软件包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E8%BD%AF%E4%BB%B6%E5%8C%85%E6%96%87%E4%BB%B6%E6%9D%A5%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="nav-number">10.</span> <span class="nav-text">通过软件包文件来安装软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6"><span class="nav-number">11.</span> <span class="nav-text">卸载软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E8%BF%87%E8%B5%84%E6%BA%90%E5%BA%93%E6%9D%A5%E6%9B%B4%E6%96%B0%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="nav-number">12.</span> <span class="nav-text">经过资源库来更新软件包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E8%BD%AF%E4%BB%B6%E5%8C%85%E6%96%87%E4%BB%B6%E6%9D%A5%E5%8D%87%E7%BA%A7%E8%BD%AF%E4%BB%B6"><span class="nav-number">13.</span> <span class="nav-text">通过软件包文件来升级软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%9A%84%E5%AE%89%E8%A3%85%E5%88%97%E8%A1%A8"><span class="nav-number">14.</span> <span class="nav-text">软件包的安装列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E4%BA%86%E4%B8%80%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="nav-number">15.</span> <span class="nav-text">确定是否安装了一个软件包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">16.</span> <span class="nav-text">显示安装软件包的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%AE%89%E8%A3%85%E4%BA%86%E6%9F%90%E4%B8%AA%E6%96%87%E4%BB%B6%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="nav-number">17.</span> <span class="nav-text">查看安装了某个文件的软件包</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="littleboyDK"
+      src="/images/personal/icon.png">
+  <p class="site-author-name" itemprop="name">littleboyDK</p>
+  <div class="site-description" itemprop="description">对前端特别感兴趣的后端工程师</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">littleboyDK</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

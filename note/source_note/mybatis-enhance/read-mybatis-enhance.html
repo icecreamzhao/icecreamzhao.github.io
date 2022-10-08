@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言mybatis 和 hibernate 是最受欢迎的orm框架之二, 但是我一直觉得hibernate这个框架对于我来说还是太重了, 而且稍有不注意性能上就会损失巨大, 所以mybatis成为了我的首选。但是hibernate有一个功能我非常喜欢, 就是可以根据实体类自动建表, 那我就想mybatis可不可以也做到这一点呢? 那么就让我来介绍一下ACTable这个开源工具, 他可以让mybat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读mybatis-enhance开源项目">
+<meta property="og:url" content="http://icecreamzhao.github.io/note/source_note/mybatis-enhance/read-mybatis-enhance.html">
+<meta property="og:site_name" content="LittleboyDK&#39;s Blog">
+<meta property="og:description" content="前言mybatis 和 hibernate 是最受欢迎的orm框架之二, 但是我一直觉得hibernate这个框架对于我来说还是太重了, 而且稍有不注意性能上就会损失巨大, 所以mybatis成为了我的首选。但是hibernate有一个功能我非常喜欢, 就是可以根据实体类自动建表, 那我就想mybatis可不可以也做到这一点呢? 那么就让我来介绍一下ACTable这个开源工具, 他可以让mybat">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-01-12T06:12:43.000Z">
+<meta property="article:modified_time" content="2022-10-03T02:21:26.558Z">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="mybatis">
+<meta property="article:tag" content="开源项目">
+<meta property="article:tag" content="mybatis-enhance">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://icecreamzhao.github.io/note/source_note/mybatis-enhance/read-mybatis-enhance.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>读mybatis-enhance开源项目 | LittleboyDK's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LittleboyDK's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">特别不靠谱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/source_note/mybatis-enhance/read-mybatis-enhance.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/personal/icon.png">
+      <meta itemprop="name" content="littleboyDK">
+      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleboyDK's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          读mybatis-enhance开源项目
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-12 14:12:43" itemprop="dateCreated datePublished" datetime="2019-01-12T14:12:43+08:00">2019-01-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-03 10:21:26" itemprop="dateModified" datetime="2022-10-03T10:21:26+08:00">2022-10-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/source-note/" itemprop="url" rel="index"><span itemprop="name">解读源码笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/source-note/mybatis-enhance/" itemprop="url" rel="index"><span itemprop="name">mybatis-enhance</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>mybatis 和 hibernate 是最受欢迎的orm框架之二, 但是我一直觉得hibernate这个框架对于我来说还是太重了, 而且稍有不注意性能上就会损失巨大, 所以mybatis成为了我的首选。<br>但是hibernate有一个功能我非常喜欢, 就是可以根据实体类自动建表, 那我就想mybatis可不可以也做到这一点呢? 那么就让我来介绍一下<a href="http://git.oschina.net/sunchenbin/mybatis-enhance">ACTable</a>这个开源工具, 他可以让mybatis实现自动建表的功能, 具体的使用方法大家可以通过上面的链接查看, 这篇博客主要是来记录一下这个工具的实现思路。</p>
+<span id="more"></span>
+
+<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><h2 id="注解层"><a href="#注解层" class="headerlink" title="注解层"></a>注解层</h2><p>这个工具有三个注解, 分别是 <code>Column</code>, <code>LengthCount</code> 和 <code>Table</code></p>
+<ul>
+<li>Column 是注解到字段上的, 用来指定字段的名字, 类型, 长度等</li>
+<li>LengthCount 是用来标记数据库类型的长度</li>
+<li>Table 用来指定表名</li>
+</ul>
+<h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><p>在<code>manager.handler.StartUpHandler</code> 中定义了入口方法 <code>startHandler()</code>, 该方法使用了<code>@PostConstruct</code>注解, 该注解是Spring的注解, 使用了该注解的方法会在依赖注入(<code>@Autowired</code>)之后自动执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">startHandler</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 执行mysql的处理方法</span></span><br><span class="line">	<span class="keyword">if</span> (MYSQL.equals(databaseType)) &#123;</span><br><span class="line">		</span><br><span class="line">		log.info(<span class="string">&quot;databaseType=mysql，开始执行mysql的处理方法&quot;</span>);</span><br><span class="line">		</span><br><span class="line">		sysMysqlCreateTableManager.createMysqlTable();</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		</span><br><span class="line">		log.info(<span class="string">&quot;没有找到符合条件的处理方法！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到该方法调用了<code>SysMysqlCreateTableManager</code>这个类的<code>createMysqlTable()</code>方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">createMysqlTable</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 不做任何事情</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="string">&quot;none&quot;</span>.equals(tableAuto)) &#123;</span><br><span class="line">		log.info(<span class="string">&quot;配置mybatis.table.auto=none，不需要做任何事情&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取Mysql的类型，以及类型需要设置几个长度</span></span><br><span class="line">	Map&lt;String, Object&gt; mySqlTypeAndLengthMap = mySqlTypeAndLengthMap();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 从包package中获取所有的Class</span></span><br><span class="line">	Set&lt;Class&lt;?&gt;&gt; classes = ClassTools.getClasses(pack);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用于存需要创建的表名+结构</span></span><br><span class="line">	Map&lt;String, List&lt;Object&gt;&gt; newTableMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, List&lt;Object&gt;&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用于存需要更新字段类型等的表名+结构</span></span><br><span class="line">	Map&lt;String, List&lt;Object&gt;&gt; modifyTableMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, List&lt;Object&gt;&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用于存需要增加字段的表名+结构</span></span><br><span class="line">	Map&lt;String, List&lt;Object&gt;&gt; addTableMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, List&lt;Object&gt;&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用于存需要删除字段的表名+结构</span></span><br><span class="line">	Map&lt;String, List&lt;Object&gt;&gt; removeTableMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, List&lt;Object&gt;&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用于存需要删除主键的表名+结构</span></span><br><span class="line">	Map&lt;String, List&lt;Object&gt;&gt; dropKeyTableMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, List&lt;Object&gt;&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用于存需要删除唯一约束的表名+结构</span></span><br><span class="line">	Map&lt;String, List&lt;Object&gt;&gt; dropUniqueTableMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, List&lt;Object&gt;&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 构建出全部表的增删改的map</span></span><br><span class="line">	allTableMapConstruct(mySqlTypeAndLengthMap, classes, newTableMap, modifyTableMap, addTableMap, removeTableMap,</span><br><span class="line">			dropKeyTableMap, dropUniqueTableMap);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 根据传入的map，分别去创建或修改表结构</span></span><br><span class="line">	createOrModifyTableConstruct(newTableMap, modifyTableMap, addTableMap, removeTableMap, dropKeyTableMap,</span><br><span class="line">			dropUniqueTableMap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>嗯, 注释写的已经非常清楚了, 首先检测用户配置的状态是什么, 然后构建操作表的sql, 最后进行实际操作。<br>值得注意的是, 这里有一个操作可以根据用户配置的包名来获取到所有实体类的Class, <a href="/java/read-open-source-java-version-project/read-mybatis-enhance-ClassTools.html">这篇博文</a>对这里进行了分析。</p>
+<h2 id="构建出全部表的增删改的map"><a href="#构建出全部表的增删改的map" class="headerlink" title="构建出全部表的增删改的map"></a>构建出全部表的增删改的map</h2><p>看完了大体的思路, 接下来就来看看是怎么具体实现的。<br>首先来看看他是怎么构建出全部表的增删改的map的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 构建出全部表的增删改的map</span></span><br><span class="line"><span class="comment">* </span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> mySqlTypeAndLengthMap</span></span><br><span class="line"><span class="comment">*            获取Mysql的类型，以及类型需要设置几个长度</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> classes</span></span><br><span class="line"><span class="comment">*            从包package中获取所有的Class</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> newTableMap</span></span><br><span class="line"><span class="comment">*            用于存需要创建的表名+结构</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> modifyTableMap</span></span><br><span class="line"><span class="comment">*            用于存需要更新字段类型等的表名+结构</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> addTableMap</span></span><br><span class="line"><span class="comment">*            用于存需要增加字段的表名+结构</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> removeTableMap</span></span><br><span class="line"><span class="comment">*            用于存需要删除字段的表名+结构</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> dropKeyTableMap</span></span><br><span class="line"><span class="comment">*            用于存需要删除主键的表名+结构</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> dropUniqueTableMap</span></span><br><span class="line"><span class="comment">*            用于存需要删除唯一约束的表名+结构</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">allTableMapConstruct</span><span class="params">(Map&lt;String, Object&gt; mySqlTypeAndLengthMap, Set&lt;Class&lt;?&gt;&gt; classes,</span></span><br><span class="line"><span class="params">		Map&lt;String, List&lt;Object&gt;&gt; newTableMap, Map&lt;String, List&lt;Object&gt;&gt; modifyTableMap,</span></span><br><span class="line"><span class="params">		Map&lt;String, List&lt;Object&gt;&gt; addTableMap, Map&lt;String, List&lt;Object&gt;&gt; removeTableMap,</span></span><br><span class="line"><span class="params">		Map&lt;String, List&lt;Object&gt;&gt; dropKeyTableMap, Map&lt;String, List&lt;Object&gt;&gt; dropUniqueTableMap)</span> &#123;</span><br><span class="line">	<span class="keyword">for</span> (Class&lt;?&gt; clas : classes) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="type">Table</span> <span class="variable">table</span> <span class="operator">=</span> clas.getAnnotation(Table.class);</span><br><span class="line">		<span class="comment">// 没有打注解不需要创建变量</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="literal">null</span> == table) &#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 用于存新增表的字段</span></span><br><span class="line">		List&lt;Object&gt; newFieldList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Object&gt;();</span><br><span class="line">		<span class="comment">// 用于存删除的字段</span></span><br><span class="line">		List&lt;Object&gt; removeFieldList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Object&gt;();</span><br><span class="line">		<span class="comment">// 用于存新增的字段</span></span><br><span class="line">		List&lt;Object&gt; addFieldList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Object&gt;();</span><br><span class="line">		<span class="comment">// 用于存修改的字段</span></span><br><span class="line">		List&lt;Object&gt; modifyFieldList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Object&gt;();</span><br><span class="line">		<span class="comment">// 用于存删除主键的字段</span></span><br><span class="line">		List&lt;Object&gt; dropKeyFieldList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Object&gt;();</span><br><span class="line">		<span class="comment">// 用于存删除唯一约束的字段</span></span><br><span class="line">		List&lt;Object&gt; dropUniqueFieldList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Object&gt;();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 迭代出所有model的所有fields存到newFieldList中</span></span><br><span class="line">		tableFieldsConstruct(mySqlTypeAndLengthMap, clas, newFieldList);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 如果配置文件配置的是create，表示将所有的表删掉重新创建</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;create&quot;</span>.equals(tableAuto)) &#123;</span><br><span class="line">			createMysqlTablesMapper.dorpTableByName(table.name());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 先查该表是否以存在</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">exist</span> <span class="operator">=</span> createMysqlTablesMapper.findTableCountByTableName(table.name());</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 不存在时</span></span><br><span class="line">		<span class="keyword">if</span> (exist == <span class="number">0</span>) &#123;</span><br><span class="line">			newTableMap.put(table.name(), newFieldList);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 已存在时理论上做修改的操作，这里查出该表的结构</span></span><br><span class="line">			List&lt;SysMysqlColumns&gt; tableColumnList = createMysqlTablesMapper</span><br><span class="line">					.findTableEnsembleByTableName(table.name());</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 从sysColumns中取出我们需要比较的列的List</span></span><br><span class="line">			<span class="comment">// 先取出name用来筛选出增加和删除的字段</span></span><br><span class="line">			List&lt;String&gt; columnNames = ClassTools.getPropertyValueList(tableColumnList,</span><br><span class="line">					SysMysqlColumns.COLUMN_NAME_KEY);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 验证对比从model中解析的fieldList与从数据库查出来的columnList</span></span><br><span class="line">			<span class="comment">// 1. 找出增加的字段</span></span><br><span class="line">			<span class="comment">// 2. 找出删除的字段</span></span><br><span class="line">			<span class="comment">// 3. 找出更新的字段</span></span><br><span class="line">			buildAddAndRemoveAndModifyFields(mySqlTypeAndLengthMap, modifyTableMap, addTableMap, removeTableMap,</span><br><span class="line">				dropKeyTableMap, dropUniqueTableMap, table, newFieldList, removeFieldList, addFieldList,</span><br><span class="line">				modifyFieldList, dropKeyFieldList, dropUniqueFieldList, tableColumnList, columnNames);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先遍历实体类class集合, 检测是否声明了<code>@Table</code>注解, 这里利用了反射机制, 使用了Class类的<code>getAnnotation(Class&lt;?&gt;)</code>方法, 检测该类是否声明了参数中传入的注解。<br>接着声明了一些集合, 分别用来存储新增表的字段, 删除的字段, 修改的字段, 新增的字段, 删除主键的字段以及删除唯一约束的字段。<br>然后将所有的实体类的字段获取到, <a href="/">这篇博文</a>对这里进行了分析。<br>接着如果用户声明的策略是create, 则删除所有的表重新创建。<br>接着判断表是否存在, 当表不存在时, 直接使用所有的字段和表名初始化集合。当表已经存在时, 将已经存在的表的结构和实体类中声明的表的结构进行对比, 将所有需要修改的字段初始化到集合中。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/mybatis/" rel="tag"># mybatis</a>
+              <a href="/tags/open-source/" rel="tag"># 开源项目</a>
+              <a href="/tags/mybatis-enhance/" rel="tag"># mybatis-enhance</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/config_skill_experience/develop__tool_config/mysql/mysql-setup.html" rel="prev" title="安装解压版mysql">
+      <i class="fa fa-chevron-left"></i> 安装解压版mysql
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/note/source_note/mybatis-enhance/read-mybatis-enhance-ClassTools.html" rel="next" title="mybatis-enhance 的 ClassTools">
+      mybatis-enhance 的 ClassTools <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E8%A7%A3%E5%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">注解层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3"><span class="nav-number">2.2.</span> <span class="nav-text">入口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%87%BA%E5%85%A8%E9%83%A8%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E7%9A%84map"><span class="nav-number">2.3.</span> <span class="nav-text">构建出全部表的增删改的map</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="littleboyDK"
+      src="/images/personal/icon.png">
+  <p class="site-author-name" itemprop="name">littleboyDK</p>
+  <div class="site-description" itemprop="description">对前端特别感兴趣的后端工程师</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">littleboyDK</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

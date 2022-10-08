@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,16 +23,15 @@
   </script>
 
   <meta name="description" content="对前端特别感兴趣的后端工程师">
-<meta name="keywords" content="后端,java,Spring,database,算法">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LittleboyDK&#39;s Blog">
 <meta property="og:url" content="http://icecreamzhao.github.io/page/39/index.html">
 <meta property="og:site_name" content="LittleboyDK&#39;s Blog">
 <meta property="og:description" content="对前端特别感兴趣的后端工程师">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="littleboyDK">
+<meta property="article:tag" content="后端,java,Spring,database,算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LittleboyDK&#39;s Blog">
-<meta name="twitter:description" content="对前端特别感兴趣的后端工程师">
 
 <link rel="canonical" href="http://icecreamzhao.github.io/page/39/">
 
@@ -190,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/java/javaBased/java-linux-mkdir.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/blog_note/edit-makefile/edit-makefile.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -204,7 +203,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/java/javaBased/java-linux-mkdir.html" class="post-title-link" itemprop="url">java在linux系统上创建目录遇到的问题</a>
+            <a href="/note/blog_note/edit-makefile/edit-makefile.html" class="post-title-link" itemprop="url">c++的Makefile文件的编写</a>
         </h2>
 
         <div class="post-meta">
@@ -214,14 +213,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-05-16 23:36:00" itemprop="dateCreated datePublished" datetime="2019-05-16T23:36:00+08:00">2019-05-16</time>
+              <time title="创建时间：2019-05-26 19:19:53" itemprop="dateCreated datePublished" datetime="2019-05-26T19:19:53+08:00">2019-05-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:21:20" itemprop="dateModified" datetime="2020-06-19T23:21:20+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-02 23:41:31" itemprop="dateModified" datetime="2022-10-02T23:41:31+08:00">2022-10-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,11 +228,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/note/blog-note/" itemprop="url" rel="index"><span itemprop="name">读博客笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/blog-note/edit-makefile/" itemprop="url" rel="index"><span itemprop="name">跟我一起写makefile</span></a>
                 </span>
             </span>
 
@@ -248,10 +251,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>如何在linux系统中创建多级目录, 比如<code>/home/usr/programTools/test.sh</code>?</p>
+          <h1 id="什么是Makefile"><a href="#什么是Makefile" class="headerlink" title="什么是Makefile"></a>什么是Makefile</h1><p>Makefile文件描述了整个工程的编译, 连接等规则。其中包括: 工程中的那些源文件需要编译以及如何编译, 需要创建那些库文件以及如何创建这些库文件, 如何最后产生可执行文件。为工程编写Makefile的好处是能够使用一行命令来完成自动化编译, 一旦提供正确的Makefile, 编译整个工程所要做的唯一的一件事就是在shell下输入make命令, 整个工程会根据Makefile文件自动编译。</p>
+<h1 id="编译与链接"><a href="#编译与链接" class="headerlink" title="编译与链接"></a>编译与链接</h1><p>C或C++, 首先要把源文件编译成中间代码文件, 在Windows下后缀名为.obj, UNIX下为.o, 即Object file, 这个工作叫做编译(compile), 然后再把大量的Object file合成可执行文件, 这个动作叫做链接。</p>
+<p>编译时, 编译器会检查语法, 函数与变量的声明, 对于后者, 通常需要指定头文件的所在位置, 一般来说, 每个源文件都应该对应一个中间目标文件(Object file)。</p>
+<p>链接时, 主要是连接函数和全局变量, 可以直接使用中间目标文件进行链接, 在大多数时候, 由于中间目标文件太多, 而在链接时需要指出中间目标文件名, 在编写Makefile时很不方便, 所以可以将中间目标文件打包, 在Windows下叫做”库文件”(.lib文件), 在UNIX下是”Archive File”(.a文件)。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/java/javaBased/java-linux-mkdir.html#more" rel="contents">
+              <a class="btn" href="/note/blog_note/edit-makefile/edit-makefile.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -275,7 +281,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/java/spring/springboot/jpa/springboot-jpa-update-Not-supported-for-DML-operations.html">
+    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/blog_skill_experience/hexo/modify-new-post.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/personal/icon.png">
@@ -289,7 +295,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/java/spring/springboot/jpa/springboot-jpa-update-Not-supported-for-DML-operations.html" class="post-title-link" itemprop="url">springboot jpa update操作时报 Not supported for DML operations</a>
+            <a href="/blog_skill_experience/hexo/modify-new-post.html" class="post-title-link" itemprop="url">记一次修改hexo新建文件的方式</a>
         </h2>
 
         <div class="post-meta">
@@ -299,14 +305,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-05-16 23:27:08" itemprop="dateCreated datePublished" datetime="2019-05-16T23:27:08+08:00">2019-05-16</time>
+              <time title="创建时间：2019-05-28 01:09:19" itemprop="dateCreated datePublished" datetime="2019-05-28T01:09:19+08:00">2019-05-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 23:25:50" itemprop="dateModified" datetime="2020-06-19T23:25:50+08:00">2020-06-19</time>
+                <time title="修改时间：2022-10-03 00:39:17" itemprop="dateModified" datetime="2022-10-03T00:39:17+08:00">2022-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -314,11 +320,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/blog-skill-experience/" itemprop="url" rel="index"><span itemprop="name">博客技巧/经验</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/back-code/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/blog-skill-experience/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -333,10 +339,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在使用jpa进行update操作时, 报Not supported for DML operations 错误</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>众所周知, 使用hexo新建一篇博客的命令是 <code>hexo new &quot;博客名&quot;</code>, 新建的博客文件会被放到 <code>source/_posts</code> 下, 然后我尝试了一下直接加入目录, 比如: <code>hexo new &quot;目录/博客&quot;</code>, 发现hexo会自动将 <code>/</code> 符号替换成 <code>-</code>, 我打算改回来。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/java/spring/springboot/jpa/springboot-jpa-update-Not-supported-for-DML-operations.html#more" rel="contents">
+              <a class="btn" href="/blog_skill_experience/hexo/modify-new-post.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -359,7 +365,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/38/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><span class="page-number current">39</span><a class="page-number" href="/page/40/">40</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/40/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/38/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><span class="page-number current">39</span><a class="page-number" href="/page/40/">40</a><span class="space">&hellip;</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/40/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -427,18 +433,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">144</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -465,7 +471,7 @@
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -489,9 +495,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -500,7 +514,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 
