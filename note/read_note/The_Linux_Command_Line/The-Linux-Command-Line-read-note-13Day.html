@@ -1,28 +1,22 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-minimal.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="第一天的笔记-基本的命令和使用方法第二天的笔记-操作文件第三天的笔记-查阅命令文档并创建命令别名第四天的笔记-重定向标准输入和输出以及处理查询结果第五天的笔记-命令的展开第六天的笔记-快捷键第七天的笔记-文件权限第八天的笔记-进程第九天的笔记-修改shell环境第十天的笔记-vim入门第十一天的笔记-自定义shell提示符第十二天的笔记-软件包管理系统 总结今天学习了如何挂载和卸载设备, 创建映像">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="littleboyDK">
+  <meta name="keywords" content="后端,java,Spring,database,算法">
+  
+    <meta name="description" content="第一天的笔记-基本的命令和使用方法第二天的笔记-操作文件第三天的笔记-查阅命令文档并创建命令别名第四天的笔记-重定向标准输入和输出以及处理查询结果第五天的笔记-命令的展开第六天的笔记-快捷键第七天的笔记-文件权限第八天的笔记-进程第九天的笔记-修改shell环境第十天的笔记-vim入门第十一天的笔记-自定义shell提示符第十二天的笔记-软件包管理系统 总结今天学习了如何挂载和卸载设备, 创建映像">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快乐的Linux命令行笔记-创建映像">
 <meta property="og:url" content="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-13Day.html">
@@ -35,231 +29,257 @@
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="快乐的Linux命令行">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>快乐的Linux命令行笔记-创建映像 - LittleboyDK&#39;s Blog</title>
 
-<link rel="canonical" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-13Day.html">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>快乐的Linux命令行笔记-创建映像 | LittleboyDK's Blog</title>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+<body>
+  
 
-</head>
+  <header>
+    
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">LittleboyDK's Blog</h1>
-      <span class="logo-line-after"><i></i></span>
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
     </a>
-      <p class="site-subtitle" itemprop="description">特别不靠谱</p>
-  </div>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-        <li class="menu-item menu-item-books">
-
-    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
   
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-13Day.html">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/personal/icon.png">
-      <meta itemprop="name" content="littleboyDK">
-      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleboyDK's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          快乐的Linux命令行笔记-创建映像
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-02-18 23:12:32" itemprop="dateCreated datePublished" datetime="2019-02-18T23:12:32+08:00">2019-02-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-07 21:04:00" itemprop="dateModified" datetime="2022-10-07T21:04:00+08:00">2022-10-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/read-note/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/read-note/The-Linux-Command-Line/" itemprop="url" rel="index"><span itemprop="name">快乐的Linux命令行</span></a>
-                </span>
-            </span>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-
+            <span id="subtitle" data-typed-text="快乐的Linux命令行笔记-创建映像"></span>
+          
         </div>
-      </header>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-02-18 23:12" pubdate>
+          2019年2月18日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
 
     
     
-    
-    <div class="post-body" itemprop="articleBody">
+  </div>
+
+
+        
+      </div>
 
       
-        <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">第四天的笔记-重定向标准输入和输出以及处理查询结果</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-5Day.html">第五天的笔记-命令的展开</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-6Day.html">第六天的笔记-快捷键</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-7Day.html">第七天的笔记-文件权限</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-8Day.html">第八天的笔记-进程</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-9Day.html">第九天的笔记-修改shell环境</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-10Day.html">第十天的笔记-vim入门</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">第十一天的笔记-自定义shell提示符</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html">第十二天的笔记-软件包管理系统</a></p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">快乐的Linux命令行笔记-创建映像</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-1Day.html">第一天的笔记-基本的命令和使用方法</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-2Day.html">第二天的笔记-操作文件</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-3Day.html">第三天的笔记-查阅命令文档并创建命令别名</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-4Day.html">第四天的笔记-重定向标准输入和输出以及处理查询结果</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-5Day.html">第五天的笔记-命令的展开</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-6Day.html">第六天的笔记-快捷键</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-7Day.html">第七天的笔记-文件权限</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-8Day.html">第八天的笔记-进程</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-9Day.html">第九天的笔记-修改shell环境</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-10Day.html">第十天的笔记-vim入门</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html">第十一天的笔记-自定义shell提示符</a><br><a href="/read-note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html">第十二天的笔记-软件包管理系统</a></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天学习了如何挂载和卸载设备, 创建映像文件, 将映像文件写入到CD-ROM中, 使用md5检测文件完整性。</p>
 <span id="more"></span> 
 <h1 id="挂载和卸载存储设备"><a href="#挂载和卸载存储设备" class="headerlink" title="挂载和卸载存储设备"></a>挂载和卸载存储设备</h1><p>在<code>/etc/fstab</code>中, 列出了系统启动时要挂载的设备, 例如(来自Fedora 7系统的文件实例):</p>
-<pre><code>LABEL=/12       /       ext3        defaults        1       1
+<pre><code class="hljs">LABEL=/12       /       ext3        defaults        1       1
 LABEL=/home     /home   ext3        defaults        1       2
 LABEL=/boot     /boot   ext3        defaults        1       2
 </code></pre>
@@ -306,18 +326,18 @@ LABEL=/boot     /boot   ext3        defaults        1       2
 </tr>
 </tbody></table>
 <h2 id="查看挂载的文件系统列表"><a href="#查看挂载的文件系统列表" class="headerlink" title="查看挂载的文件系统列表"></a>查看挂载的文件系统列表</h2><p>使用mount命令来查看当前挂载的文件系统</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mount<br></code></pre></td></tr></table></figure>
 <p>显示的列表的格式是:设备 on 挂载点(文件路径) type 文件系统类型 (选项), 比如:</p>
 <p>pstore on &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;perf_event type cgroup (rw,nosuid,modev,noexec,relatime,hugetlb)</p>
 <h2 id="挂载和卸载设备"><a href="#挂载和卸载设备" class="headerlink" title="挂载和卸载设备"></a>挂载和卸载设备</h2><p>首先插入一个移动设备, 系统会自动挂载该设备。</p>
 <p>使用<code>mount</code>命令来查看刚刚挂载的设备名。</p>
 <p>之后卸载这个设备, 重新挂载到另一个位置。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/hdc</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建一个文件夹用来挂载该设备</span></span><br><span class="line">mkdir /mnt/cdrom</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-t 选项用来指定文件系统类型</span></span><br><span class="line">mount -t iso9660 /dev/hdc /mnt/cdrom</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">umount /dev/hdc<br><span class="hljs-meta">#</span><span class="bash"> 创建一个文件夹用来挂载该设备</span><br>mkdir /mnt/cdrom<br><span class="hljs-meta">#</span><span class="bash"> -t 选项用来指定文件系统类型</span><br>mount -t iso9660 /dev/hdc /mnt/cdrom<br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>注意, 卸载需要使用超级用户权限。</p>
 </blockquote>
 <p>然后就可以cd到该文件夹下, 查看该设备中的文件。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt/cdrom</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /mnt/cdrom<br>ls<br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>在早期, 当人们编辑完文档需要打印时, 虽然电脑读取速度很快, 可是打印机的接受速度很慢, 在打印的过程中电脑什么也做不了, 所以加入了缓存。计算机先将文档快速的输入到缓存中去, 之后计算机可以做其他事情, 而缓存中的文档则以打印机可以接受的速度进行输入。<br>现在不只是打印机这样做, 计算机中也有缓存。操作系统会尽可能的将数据写入到内存中, 之后在合适的时间进行真正的写入到物理设备中。在执行卸载操作之前, 操作系统会将内存中所有应该被写入到物理设备中的数据写入, 在进行卸载, 而如果不执行卸载操作则会导致文件损坏。</p>
 </blockquote>
@@ -325,7 +345,7 @@ LABEL=/boot     /boot   ext3        defaults        1       2
 <blockquote>
 <p>查看所有设备</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ls /dev<br></code></pre></td></tr></table></figure>
 
 <p>Linux 存储设备名称</p>
 <table>
@@ -359,53 +379,53 @@ LABEL=/boot     /boot   ext3        defaults        1       2
 <blockquote>
 <p>查看刚刚插入的设备名称的方法</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动一个实时查看文件</span></span><br><span class="line">sudo tail -f /var/log/messages</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">插入这个设备</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当日志停止滚动时, 输入ctrl-c, 查看日志, 有一行日志会显示该设备的名字, 使用这个名字挂载设备</span></span><br><span class="line">mkdir /mnt/flash</span><br><span class="line">mount /dev/sdb1 /mnt/flash</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 启动一个实时查看文件</span><br>sudo tail -f /var/log/messages<br><span class="hljs-meta">#</span><span class="bash"> 插入这个设备</span><br><span class="hljs-meta">#</span><span class="bash"> 当日志停止滚动时, 输入ctrl-c, 查看日志, 有一行日志会显示该设备的名字, 使用这个名字挂载设备</span><br>mkdir /mnt/flash<br>mount /dev/sdb1 /mnt/flash<br></code></pre></td></tr></table></figure>
 
 <h1 id="创建新的文件系统"><a href="#创建新的文件系统" class="headerlink" title="创建新的文件系统"></a>创建新的文件系统</h1><p>即格式化移动设备。</p>
-<h2 id="使用fdisk来操作分区"><a href="#使用fdisk来操作分区" class="headerlink" title="使用fdisk来操作分区"></a>使用fdisk来操作分区</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">卸载设备, 这里指定的是分区号</span></span><br><span class="line">sudo umount /dev/sdb1</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">调用fdisk, 这里指定的是设备名称</span></span><br><span class="line">sudo fdisk /dev/sdb</span><br></pre></td></tr></table></figure>
+<h2 id="使用fdisk来操作分区"><a href="#使用fdisk来操作分区" class="headerlink" title="使用fdisk来操作分区"></a>使用fdisk来操作分区</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 卸载设备, 这里指定的是分区号</span><br>sudo umount /dev/sdb1<br><span class="hljs-meta">#</span><span class="bash"> 调用fdisk, 这里指定的是设备名称</span><br>sudo fdisk /dev/sdb<br></code></pre></td></tr></table></figure>
 
 <p>之后会显示fdisk的命令:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help):</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">Command (m for help):<br></code></pre></td></tr></table></figure>
 
 <p>输入<code>p</code>会打印这个设备的分区表</p>
 <p>输入<code>l</code>会打印所有可用的<strong>分区类型</strong>列表, 可以看到83是针对Linux系统的ID号</p>
 <p>输入<code>t</code>来更改分区ID号, 例如:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help): t</span><br><span class="line">Selected partition 1</span><br><span class="line">Hex code (type L to list codes): 83</span><br><span class="line">Changed system type of partition 1 to 83 (Linux)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">Command (m for help): t<br>Selected partition 1<br>Hex code (type L to list codes): 83<br>Changed system type of partition 1 to 83 (Linux)<br></code></pre></td></tr></table></figure>
 
 <p>输入<code>w</code>将修改过的设置从内存写入到物理设备</p>
-<h2 id="使用mkfs命令创建一个新的文件系统"><a href="#使用mkfs命令创建一个新的文件系统" class="headerlink" title="使用mkfs命令创建一个新的文件系统"></a>使用mkfs命令创建一个新的文件系统</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs -t ext3 /dev/sdb1</span><br></pre></td></tr></table></figure>
+<h2 id="使用mkfs命令创建一个新的文件系统"><a href="#使用mkfs命令创建一个新的文件系统" class="headerlink" title="使用mkfs命令创建一个新的文件系统"></a>使用mkfs命令创建一个新的文件系统</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo mkfs -t ext3 /dev/sdb1<br></code></pre></td></tr></table></figure>
 
 <p><code>-t</code>来指定文件系统类型, 紧跟着的是需要格式化的分区</p>
 <p><a href="https://www.cnblogs.com/daduryi/p/6619028.html?utm_source=itdadao&utm_medium=referral">这篇博客</a>介绍了各个文件系统类型。</p>
 <h2 id="测试和修复文件系统"><a href="#测试和修复文件系统" class="headerlink" title="测试和修复文件系统"></a>测试和修复文件系统</h2><p>使用fsck命令检查驱动器(需要先执行卸载)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fsck /dev/sdb1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo fsck /dev/sdb1<br></code></pre></td></tr></table></figure>
 
 <h2 id="格式化软盘"><a href="#格式化软盘" class="headerlink" title="格式化软盘"></a>格式化软盘</h2><p>步骤:<br>将软盘进行低级格式化<br>创建何使的文件系统</p>
 <p>使用fdformat来格式化软盘。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定软盘设备名称</span></span><br><span class="line">sudo fdformat /dev/fd0</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 指定软盘设备名称</span><br>sudo fdformat /dev/fd0<br></code></pre></td></tr></table></figure>
 
 <p>接下来创建一个FAT文件系统</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs -t msdos /dev/fd0</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo mkfs -t msdos /dev/fd0<br></code></pre></td></tr></table></figure>
 
-<h2 id="移动或复制整个设备中的所有数据"><a href="#移动或复制整个设备中的所有数据" class="headerlink" title="移动或复制整个设备中的所有数据"></a>移动或复制整个设备中的所有数据</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=input_file of=output_file [bs=block_size [count=blocks]]</span><br></pre></td></tr></table></figure>
+<h2 id="移动或复制整个设备中的所有数据"><a href="#移动或复制整个设备中的所有数据" class="headerlink" title="移动或复制整个设备中的所有数据"></a>移动或复制整个设备中的所有数据</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">dd if=input_file of=output_file [bs=block_size [count=blocks]]<br></code></pre></td></tr></table></figure>
 
 <p>如果有两个相同容量的USB闪存驱动器, 并且要精确的把第一个驱动器中的内容复制给第二个(&#x2F;dev&#x2F;sdb, &#x2F;dev&#x2F;sdc)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/sdb of=/dev/sdc</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">dd if=/dev/sdb of=/dev/sdc<br></code></pre></td></tr></table></figure>
 
 <p>将驱动器中的内容复制到一个普通文件中:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/sdb of=flash_drive.img</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">dd if=/dev/sdb of=flash_drive.img<br></code></pre></td></tr></table></figure>
 
 <h2 id="创建-CD-ROM-映像"><a href="#创建-CD-ROM-映像" class="headerlink" title="创建 CD-ROM 映像"></a>创建 CD-ROM 映像</h2><p>步骤:</p>
 <ul>
 <li>构建一个 ISO映像文件</li>
 <li>将这个映像文件写入到CD-ROM媒介中</li>
 </ul>
-<h3 id="制作ISO映像文件"><a href="#制作ISO映像文件" class="headerlink" title="制作ISO映像文件"></a>制作ISO映像文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/cdrom of=ubuntu.iso</span><br></pre></td></tr></table></figure>
+<h3 id="制作ISO映像文件"><a href="#制作ISO映像文件" class="headerlink" title="制作ISO映像文件"></a>制作ISO映像文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">dd if=/dev/cdrom of=ubuntu.iso<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>对于音频CD, 可以使用cdrdao命令</p>
 </blockquote>
-<h3 id="使用某一个目录来创建映像文件"><a href="#使用某一个目录来创建映像文件" class="headerlink" title="使用某一个目录来创建映像文件"></a>使用某一个目录来创建映像文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genisoimage -o cd-rom.iso -R -J ~/cd-rom-files</span><br></pre></td></tr></table></figure>
+<h3 id="使用某一个目录来创建映像文件"><a href="#使用某一个目录来创建映像文件" class="headerlink" title="使用某一个目录来创建映像文件"></a>使用某一个目录来创建映像文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">genisoimage -o cd-rom.iso -R -J ~/cd-rom-files<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><code>-R</code>选项添加元数据为Rock Ridge扩展, 这允许使用长文件名和 <code>POSIX</code>风格的文件权限</li>
@@ -417,226 +437,408 @@ LABEL=/boot     /boot   ext3        defaults        1       2
 <h3 id="将ISO写入CD-ROM中"><a href="#将ISO写入CD-ROM中" class="headerlink" title="将ISO写入CD-ROM中"></a>将ISO写入CD-ROM中</h3><blockquote>
 <p>直接挂载一个ISO镜像</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /mnt/iso_image</span><br><span class="line">mount -t iso9660 -o loop image.iso /mnt/iso_image</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir /mnt/iso_image<br>mount -t iso9660 -o loop image.iso /mnt/iso_image<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>清除一张可重写入的CD-ROM</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wodim dev=/dev/cdrw black=fast</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wodim dev=/dev/cdrw black=fast<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>写入镜像</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wodim dev=/dev/cdrw image.iso</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wodim dev=/dev/cdrw image.iso<br></code></pre></td></tr></table></figure>
 
 <h1 id="使用md5sum校验文件的完整性"><a href="#使用md5sum校验文件的完整性" class="headerlink" title="使用md5sum校验文件的完整性"></a>使用md5sum校验文件的完整性</h1><p>每一个文件都有一个独一无二的md5sum, 除非两个文件一摸一样。</p>
 <p>可以通过md5sum命令来查看生成的数字, 是否与提供者所提供的数字完全一样。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5sum image.iso</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">md5sum image.iso<br></code></pre></td></tr></table></figure>
 
 <p>最后有一个比较复杂的检查文件完整性的命令:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5sum dvd-image.iso; dd if=/dev/dvd bs=2048 count=$(( $( stat -c &quot;%s&quot; dvd-image.iso) /2048 ))</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">md5sum dvd-image.iso; dd if=/dev/dvd bs=2048 count=$(( $( stat -c &quot;%s&quot; dvd-image.iso) /2048 ))<br></code></pre></td></tr></table></figure>
 
 <p><a href="https://blog.csdn.net/paicmis/article/details/60479639">这里是有关stat命令的介绍</a></p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/note/" class="category-chain-item">笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/note/read-note/" class="category-chain-item">读书笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/note/read-note/The-Linux-Command-Line/" class="category-chain-item">快乐的Linux命令行</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/">#linux</a>
+      
+        <a href="/tags/note/">#笔记</a>
+      
+        <a href="/tags/The-Linux-Command-Line/">#快乐的Linux命令行</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>快乐的Linux命令行笔记-创建映像</div>
+      <div>http://icecreamzhao.github.io/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-13Day.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>littleboyDK</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年2月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-14Day.html" title="快乐的Linux命令行笔记-网络">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">快乐的Linux命令行笔记-网络</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html" title="快乐的Linux命令行笔记-软件包管理系统">
+                        <span class="hidden-mobile">快乐的Linux命令行笔记-软件包管理系统</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
     </div>
 
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/linux/" rel="tag"># linux</a>
-              <a href="/tags/note/" rel="tag"># 笔记</a>
-              <a href="/tags/The-Linux-Command-Line/" rel="tag"># 快乐的Linux命令行</a>
-          </div>
-
-        
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
 
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-12Day.html" rel="prev" title="快乐的Linux命令行笔记-软件包管理系统">
-      <i class="fa fa-chevron-left"></i> 快乐的Linux命令行笔记-软件包管理系统
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-14Day.html" rel="next" title="快乐的Linux命令行笔记-网络">
-      快乐的Linux命令行笔记-网络 <i class="fa fa-chevron-right"></i>
-    </a></div>
+
+  </aside>
+
+
     </div>
-      </footer>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
-  </article>
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
   
   
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-          </div>
-          
 
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
       }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
     });
-  }
+  });
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
+  <script>Fluid.plugins.codeWidget();</script>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E5%92%8C%E5%8D%B8%E8%BD%BD%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87"><span class="nav-number">2.</span> <span class="nav-text">挂载和卸载存储设备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%88%97%E8%A1%A8"><span class="nav-number">2.1.</span> <span class="nav-text">查看挂载的文件系统列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E5%92%8C%E5%8D%B8%E8%BD%BD%E8%AE%BE%E5%A4%87"><span class="nav-number">2.2.</span> <span class="nav-text">挂载和卸载设备</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E8%AE%BE%E5%A4%87%E5%90%8D%E7%A7%B0"><span class="nav-number">3.</span> <span class="nav-text">确定设备名称</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.</span> <span class="nav-text">创建新的文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8fdisk%E6%9D%A5%E6%93%8D%E4%BD%9C%E5%88%86%E5%8C%BA"><span class="nav-number">4.1.</span> <span class="nav-text">使用fdisk来操作分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8mkfs%E5%91%BD%E4%BB%A4%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.2.</span> <span class="nav-text">使用mkfs命令创建一个新的文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BF%AE%E5%A4%8D%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.3.</span> <span class="nav-text">测试和修复文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BD%AF%E7%9B%98"><span class="nav-number">4.4.</span> <span class="nav-text">格式化软盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E6%88%96%E5%A4%8D%E5%88%B6%E6%95%B4%E4%B8%AA%E8%AE%BE%E5%A4%87%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="nav-number">4.5.</span> <span class="nav-text">移动或复制整个设备中的所有数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-CD-ROM-%E6%98%A0%E5%83%8F"><span class="nav-number">4.6.</span> <span class="nav-text">创建 CD-ROM 映像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B6%E4%BD%9CISO%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6"><span class="nav-number">4.6.1.</span> <span class="nav-text">制作ISO映像文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9F%90%E4%B8%80%E4%B8%AA%E7%9B%AE%E5%BD%95%E6%9D%A5%E5%88%9B%E5%BB%BA%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6"><span class="nav-number">4.6.2.</span> <span class="nav-text">使用某一个目录来创建映像文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86ISO%E5%86%99%E5%85%A5CD-ROM%E4%B8%AD"><span class="nav-number">4.6.3.</span> <span class="nav-text">将ISO写入CD-ROM中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8md5sum%E6%A0%A1%E9%AA%8C%E6%96%87%E4%BB%B6%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">使用md5sum校验文件的完整性</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="littleboyDK"
-      src="/images/personal/icon.png">
-  <p class="site-author-name" itemprop="name">littleboyDK</p>
-  <div class="site-description" itemprop="description">对前端特别感兴趣的后端工程师</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">147</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">58</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">81</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 2017 – 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">littleboyDK</span>
-</div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
 
-<script src="/js/utils.js"></script>
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
 
-<script src="/js/motion.js"></script>
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
 
 
-<script src="/js/schemes/pisces.js"></script>
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
-<script src="/js/next-boot.js"></script>
 
 
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
 
 
   
 
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

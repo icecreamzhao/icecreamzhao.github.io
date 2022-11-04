@@ -1,28 +1,22 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-minimal.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="目标 创建用户表 编写添加用户功能  创建用户表由于我们已经使用了actable框架, 可以实现通过实体类自动创建表, 所以我们只需要设计好实体类就可以了。 我们在 pojo 模块中新建 BasePojo.java 用来充当我们的实体类基类。">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="littleboyDK">
+  <meta name="keywords" content="后端,java,Spring,database,算法">
+  
+    <meta name="description" content="目标 创建用户表 编写添加用户功能  创建用户表由于我们已经使用了actable框架, 可以实现通过实体类自动创建表, 所以我们只需要设计好实体类就可以了。 我们在 pojo 模块中新建 BasePojo.java 用来充当我们的实体类基类。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="商城开发笔记-注册">
 <meta property="og:url" content="http://icecreamzhao.github.io/my_project/shopping_mall/crud/Shopping-mall-developNote-register.html">
@@ -33,227 +27,253 @@
 <meta property="article:modified_time" content="2021-10-14T08:18:54.515Z">
 <meta property="article:author" content="littleboyDK">
 <meta property="article:tag" content="商城开发">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>商城开发笔记-注册 - LittleboyDK&#39;s Blog</title>
 
-<link rel="canonical" href="http://icecreamzhao.github.io/my_project/shopping_mall/crud/Shopping-mall-developNote-register.html">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>商城开发笔记-注册 | LittleboyDK's Blog</title>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+<body>
+  
 
-</head>
+  <header>
+    
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">LittleboyDK's Blog</h1>
-      <span class="logo-line-after"><i></i></span>
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
     </a>
-      <p class="site-subtitle" itemprop="description">特别不靠谱</p>
-  </div>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-        <li class="menu-item menu-item-books">
-
-    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>阅读</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
   
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecreamzhao.github.io/my_project/shopping_mall/crud/Shopping-mall-developNote-register.html">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/personal/icon.png">
-      <meta itemprop="name" content="littleboyDK">
-      <meta itemprop="description" content="对前端特别感兴趣的后端工程师">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleboyDK's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          商城开发笔记-注册
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-29 13:39:32" itemprop="dateCreated datePublished" datetime="2019-10-29T13:39:32+08:00">2019-10-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-14 16:18:54" itemprop="dateModified" datetime="2021-10-14T16:18:54+08:00">2021-10-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/develop-note/" itemprop="url" rel="index"><span itemprop="name">开发笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/develop-note/%E5%95%86%E5%9F%8E/" itemprop="url" rel="index"><span itemprop="name">商城</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/develop-note/%E5%95%86%E5%9F%8E/%E5%8A%9F%E8%83%BD%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">功能篇</span></a>
-                </span>
-            </span>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-
+            <span id="subtitle" data-typed-text="商城开发笔记-注册"></span>
+          
         </div>
-      </header>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-10-29 13:39" pubdate>
+          2019年10月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          79 分钟
+        
+      </span>
+    
 
     
     
-    
-    <div class="post-body" itemprop="articleBody">
+  </div>
+
+
+        
+      </div>
 
       
-        <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><ul>
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">商城开发笔记-注册</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><ul>
 <li>创建用户表</li>
 <li>编写添加用户功能</li>
 </ul>
@@ -262,233 +282,413 @@
 <span id="more"></span>
 
 <p>BasePojo.java:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.littleboy.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.gitee.sunchenbin.mybatis.actable.annotation.Column;</span><br><span class="line"><span class="keyword">import</span> com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;</span><br><span class="line"><span class="keyword">import</span> com.littleboy.common.annotation.CreateTime;</span><br><span class="line"><span class="keyword">import</span> com.littleboy.common.annotation.UpdateTime;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.sql.Timestamp;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BasePojo</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">	<span class="meta">@Column(name = &quot;id&quot;, type = MySqlTypeConstant.VARCHAR, length = 32, isKey = true, comment = &quot;主键&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@CreateTime</span></span><br><span class="line">	<span class="meta">@Column(name = &quot;create_time&quot;, type = MySqlTypeConstant.TIMESTAMP, isNull = false, comment = &quot;创建时间&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> Timestamp createTime;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@UpdateTime</span></span><br><span class="line">	<span class="meta">@Column(name = &quot;update_time&quot;, type = MySqlTypeConstant.TIMESTAMP, isNull = false, comment = &quot;更新时间&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> Timestamp updateTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.littleboy.pojo;<br><br><span class="hljs-keyword">import</span> com.gitee.sunchenbin.mybatis.actable.annotation.Column;<br><span class="hljs-keyword">import</span> com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;<br><span class="hljs-keyword">import</span> com.littleboy.common.annotation.CreateTime;<br><span class="hljs-keyword">import</span> com.littleboy.common.annotation.UpdateTime;<br><span class="hljs-keyword">import</span> lombok.AllArgsConstructor;<br><span class="hljs-keyword">import</span> lombok.Data;<br><span class="hljs-keyword">import</span> lombok.NoArgsConstructor;<br><br><span class="hljs-keyword">import</span> java.io.Serializable;<br><span class="hljs-keyword">import</span> java.sql.Timestamp;<br><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@NoArgsConstructor</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasePojo</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;<br>	<span class="hljs-meta">@Column(name = &quot;id&quot;, type = MySqlTypeConstant.VARCHAR, length = 32, isKey = true, comment = &quot;主键&quot;)</span><br>	<span class="hljs-keyword">private</span> String id;<br><br>	<span class="hljs-meta">@CreateTime</span><br>	<span class="hljs-meta">@Column(name = &quot;create_time&quot;, type = MySqlTypeConstant.TIMESTAMP, isNull = false, comment = &quot;创建时间&quot;)</span><br>	<span class="hljs-keyword">private</span> Timestamp createTime;<br><br>	<span class="hljs-meta">@UpdateTime</span><br>	<span class="hljs-meta">@Column(name = &quot;update_time&quot;, type = MySqlTypeConstant.TIMESTAMP, isNull = false, comment = &quot;更新时间&quot;)</span><br>	<span class="hljs-keyword">private</span> Timestamp updateTime;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>OK, 这样只要继承了这个类的实体类都会拥有 createTime 和 updateTime 字段了, 这里 <code>@CreateTime</code> 和 <code>@UpdateTime</code> 可能会报错, 别急, 我们马上来实现他们。</p>
 <p>接下来我们要写两个注解, 用来在插入或者更新表时自动添加或者更新时间戳。在 common 模块中新建 <code>annotation</code> 和 <code>interceptor</code> 包, 在 <code>annotation</code> 中新建两个注解:<br>CreateTime.java:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.littleboy.common.annotation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.FIELD&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> CreateTime &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.littleboy.common.annotation;<br><br><span class="hljs-keyword">import</span> java.lang.annotation.ElementType;<br><span class="hljs-keyword">import</span> java.lang.annotation.Retention;<br><span class="hljs-keyword">import</span> java.lang.annotation.RetentionPolicy;<br><span class="hljs-keyword">import</span> java.lang.annotation.Target;<br><br><span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="hljs-meta">@Target(&#123;ElementType.FIELD&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> CreateTime &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>UpdateTime.java:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.littleboy.common.annotation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.FIELD&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> UpdateTime &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.littleboy.common.annotation;<br><br><span class="hljs-keyword">import</span> java.lang.annotation.ElementType;<br><span class="hljs-keyword">import</span> java.lang.annotation.Retention;<br><span class="hljs-keyword">import</span> java.lang.annotation.RetentionPolicy;<br><span class="hljs-keyword">import</span> java.lang.annotation.Target;<br><br><span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="hljs-meta">@Target(&#123;ElementType.FIELD&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> UpdateTime &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>mybatis 有一个拦截器, 可以在执行 sql 之前做自己想做的事, 那么思路就比较清晰了, 在插入或者更新的时候, 检测每一个实体类的字段有没有加入 <code>@CreateTime</code> 和 <code>@UpdateTime</code>, 如果有, 则将该字段设置好当前时间就可以了。那么具体的实现步骤如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.littleboy.common.interceptor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.littleboy.common.annotation.CreateTime;</span><br><span class="line"><span class="keyword">import</span> com.littleboy.common.annotation.UpdateTime;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.ArrayUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.binding.MapperMethod;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.executor.Executor;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.mapping.MappedStatement;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.mapping.SqlCommandType;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.plugin.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.sql.Timestamp;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Intercepts(&#123;@Signature(type = Executor.class, method = &quot;update&quot;, args = &#123;MappedStatement.class, Object.class&#125;)&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DateTimeInterceptor</span> <span class="keyword">implements</span> <span class="title class_">Interceptor</span> &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">intercept</span><span class="params">(Invocation invocation)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">		<span class="type">MappedStatement</span> <span class="variable">mappedStatement</span> <span class="operator">=</span> (MappedStatement)invocation.getArgs()[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 获取 SQL</span></span><br><span class="line">		<span class="type">SqlCommandType</span> <span class="variable">sqlCommandType</span> <span class="operator">=</span> mappedStatement.getSqlCommandType();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 获取参数</span></span><br><span class="line">		<span class="type">Object</span> <span class="variable">parameter</span> <span class="operator">=</span> invocation.getArgs()[<span class="number">1</span>];</span><br><span class="line">		<span class="type">Object</span> <span class="variable">param</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 获取私有成员变量</span></span><br><span class="line">		<span class="keyword">if</span> (((MapperMethod.ParamMap)parameter).size() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="type">Iterator</span> <span class="variable">iterator</span> <span class="operator">=</span> ((MapperMethod.ParamMap)parameter).keySet().iterator();</span><br><span class="line">			<span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">				param = ((MapperMethod.ParamMap)parameter).get(iterator.next());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Field[] declaredFields = getAllFields(param);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (Field field : declaredFields) &#123;</span><br><span class="line">			field.setAccessible(<span class="literal">true</span>);</span><br><span class="line">			<span class="keyword">if</span> (field.getAnnotation(CreateTime.class) != <span class="literal">null</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (SqlCommandType.INSERT.equals(sqlCommandType)) &#123;</span><br><span class="line">					<span class="comment">// insert语句插入createTime</span></span><br><span class="line">					<span class="comment">// 这里设置时间，当然时间格式可以自定。比如转成String类型</span></span><br><span class="line">					field.set(param, Timestamp.valueOf(<span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>).format(<span class="keyword">new</span> <span class="title class_">Date</span>())));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (field.getAnnotation(UpdateTime.class) != <span class="literal">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span> (SqlCommandType.INSERT.equals(sqlCommandType)</span><br><span class="line">						|| SqlCommandType.UPDATE.equals(sqlCommandType)) &#123;</span><br><span class="line">					<span class="comment">// insert 或update语句插入updateTime</span></span><br><span class="line">					field.set(param, Timestamp.valueOf(<span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>).format(<span class="keyword">new</span> <span class="title class_">Date</span>())));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> invocation.proceed();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 递归获取该类以及该类的父类所有的注解</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> obj 需要获取的类的实例</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> &lt;T&gt; 类型</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 全部的注解</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> &lt;T&gt; Field[] getAllFields(T obj) &#123;</span><br><span class="line">		Field[] declaredFields = obj.getClass().getDeclaredFields();</span><br><span class="line">		declaredFields = recursionParents(obj.getClass(), declaredFields);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> declaredFields;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 递归获取父类的注解</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> clas   反射的class</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> fields 全部注解</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 全部的注解</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> Field[] recursionParents(Class&lt;?&gt; clas, Field[] fields) &#123;</span><br><span class="line">		<span class="keyword">if</span> (clas.getSuperclass() != <span class="literal">null</span>) &#123;</span><br><span class="line">			<span class="type">Class</span> <span class="variable">clasSup</span> <span class="operator">=</span> clas.getSuperclass();</span><br><span class="line">			fields = ArrayUtils.addAll(fields, clasSup.getDeclaredFields());</span><br><span class="line">			fields = recursionParents(clasSup, fields);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> fields;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">plugin</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> Plugin.wrap(o, <span class="built_in">this</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setProperties</span><span class="params">(Properties properties)</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.littleboy.common.interceptor;<br><br><span class="hljs-keyword">import</span> com.littleboy.common.annotation.CreateTime;<br><span class="hljs-keyword">import</span> com.littleboy.common.annotation.UpdateTime;<br><span class="hljs-keyword">import</span> org.apache.commons.lang3.ArrayUtils;<br><span class="hljs-keyword">import</span> org.apache.ibatis.binding.MapperMethod;<br><span class="hljs-keyword">import</span> org.apache.ibatis.executor.Executor;<br><span class="hljs-keyword">import</span> org.apache.ibatis.mapping.MappedStatement;<br><span class="hljs-keyword">import</span> org.apache.ibatis.mapping.SqlCommandType;<br><span class="hljs-keyword">import</span> org.apache.ibatis.plugin.*;<br><br><span class="hljs-keyword">import</span> java.lang.reflect.Field;<br><span class="hljs-keyword">import</span> java.sql.Timestamp;<br><span class="hljs-keyword">import</span> java.text.SimpleDateFormat;<br><span class="hljs-keyword">import</span> java.util.Date;<br><span class="hljs-keyword">import</span> java.util.Iterator;<br><span class="hljs-keyword">import</span> java.util.Properties;<br><br><span class="hljs-meta">@Intercepts(&#123;@Signature(type = Executor.class, method = &quot;update&quot;, args = &#123;MappedStatement.class, Object.class&#125;)&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DateTimeInterceptor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Interceptor</span> </span>&#123;<br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">intercept</span><span class="hljs-params">(Invocation invocation)</span> <span class="hljs-keyword">throws</span> Throwable </span>&#123;<br>		MappedStatement mappedStatement = (MappedStatement)invocation.getArgs()[<span class="hljs-number">0</span>];<br><br>		<span class="hljs-comment">// 获取 SQL</span><br>		SqlCommandType sqlCommandType = mappedStatement.getSqlCommandType();<br><br>		<span class="hljs-comment">// 获取参数</span><br>		Object parameter = invocation.getArgs()[<span class="hljs-number">1</span>];<br>		Object param = <span class="hljs-keyword">null</span>;<br><br>		<span class="hljs-comment">// 获取私有成员变量</span><br>		<span class="hljs-keyword">if</span> (((MapperMethod.ParamMap)parameter).size() &gt; <span class="hljs-number">1</span>) &#123;<br>			Iterator iterator = ((MapperMethod.ParamMap)parameter).keySet().iterator();<br>			<span class="hljs-keyword">while</span> (iterator.hasNext()) &#123;<br>				param = ((MapperMethod.ParamMap)parameter).get(iterator.next());<br>			&#125;<br>		&#125;<br>		Field[] declaredFields = getAllFields(param);<br><br>		<span class="hljs-keyword">for</span> (Field field : declaredFields) &#123;<br>			field.setAccessible(<span class="hljs-keyword">true</span>);<br>			<span class="hljs-keyword">if</span> (field.getAnnotation(CreateTime.class) != <span class="hljs-keyword">null</span>) &#123;<br>				<span class="hljs-keyword">if</span> (SqlCommandType.INSERT.equals(sqlCommandType)) &#123;<br>					<span class="hljs-comment">// insert语句插入createTime</span><br>					<span class="hljs-comment">// 这里设置时间，当然时间格式可以自定。比如转成String类型</span><br>					field.set(param, Timestamp.valueOf(<span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>).format(<span class="hljs-keyword">new</span> Date())));<br>				&#125;<br>			&#125;<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (field.getAnnotation(UpdateTime.class) != <span class="hljs-keyword">null</span>) &#123;<br><br>				<span class="hljs-keyword">if</span> (SqlCommandType.INSERT.equals(sqlCommandType)<br>						|| SqlCommandType.UPDATE.equals(sqlCommandType)) &#123;<br>					<span class="hljs-comment">// insert 或update语句插入updateTime</span><br>					field.set(param, Timestamp.valueOf(<span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>).format(<span class="hljs-keyword">new</span> Date())));<br>				&#125;<br>			&#125;<br>		&#125;<br><br>		<span class="hljs-keyword">return</span> invocation.proceed();<br>	&#125;<br><br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	 * 递归获取该类以及该类的父类所有的注解</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> obj 需要获取的类的实例</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> &lt;T&gt; 类型</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@return</span> 全部的注解</span><br><span class="hljs-comment">	 */</span><br>	<span class="hljs-keyword">private</span> &lt;T&gt; Field[] getAllFields(T obj) &#123;<br>		Field[] declaredFields = obj.getClass().getDeclaredFields();<br>		declaredFields = recursionParents(obj.getClass(), declaredFields);<br><br>		<span class="hljs-keyword">return</span> declaredFields;<br>	&#125;<br><br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	 * 递归获取父类的注解</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> clas   反射的class</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> fields 全部注解</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@return</span> 全部的注解</span><br><span class="hljs-comment">	 */</span><br>	<span class="hljs-keyword">private</span> Field[] recursionParents(Class&lt;?&gt; clas, Field[] fields) &#123;<br>		<span class="hljs-keyword">if</span> (clas.getSuperclass() != <span class="hljs-keyword">null</span>) &#123;<br>			Class clasSup = clas.getSuperclass();<br>			fields = ArrayUtils.addAll(fields, clasSup.getDeclaredFields());<br>			fields = recursionParents(clasSup, fields);<br>		&#125;<br>		<span class="hljs-keyword">return</span> fields;<br>	&#125;<br><br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">plugin</span><span class="hljs-params">(Object o)</span> </span>&#123;<br>		<span class="hljs-keyword">return</span> Plugin.wrap(o, <span class="hljs-keyword">this</span>);<br>	&#125;<br><br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setProperties</span><span class="hljs-params">(Properties properties)</span> </span>&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>ok, 基类实现好了, 接下来开始设计用户实体类:</p>
 <p>SXUser.java:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.littleboy.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.gitee.sunchenbin.mybatis.actable.annotation.Column;</span><br><span class="line"><span class="keyword">import</span> com.gitee.sunchenbin.mybatis.actable.annotation.Table;</span><br><span class="line"><span class="keyword">import</span> com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Timestamp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.littleboy.common.annotation.CreateTime;</span><br><span class="line"><span class="keyword">import</span> lombok.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@ToString(callSuper = true)</span></span><br><span class="line"><span class="meta">@Table(name = &quot;sx_user&quot;, comment = &quot;用户表&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SXUser</span> <span class="keyword">extends</span> <span class="title class_">BasePojo</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Column(name = &quot;account&quot;, type = MySqlTypeConstant.VARCHAR, length = 20, isNull = false, comment = &quot;账号(手机号)&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> String account;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Column(name = &quot;passwd&quot;, type = MySqlTypeConstant.VARCHAR, length = 60, isNull = false, comment = &quot;密码&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> String passwd;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Column(name = &quot;name&quot;, type = MySqlTypeConstant.VARCHAR, length = 10, isNull = false, comment = &quot;真实姓名&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Column(name = &quot;status&quot;, type = MySqlTypeConstant.SMALLINT, defaultValue = &quot;0&quot;, isNull = false, comment = &quot;-1 不可用 0 刚注册,未完善资料 1 完善了资料,未审核 2 审核过&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> status;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Column(name = &quot;type&quot;, type = MySqlTypeConstant.TINYINT, defaultValue = &quot;1&quot;, isNull = false, comment = &quot;1买家 2卖家&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> type;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@CreateTime</span></span><br><span class="line">	<span class="meta">@Column(name = &quot;last_login_time&quot;, type = MySqlTypeConstant.TIMESTAMP,isNull = false, comment = &quot;最后一次登录时间&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> Timestamp lastLoginTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.littleboy.pojo;<br><br><span class="hljs-keyword">import</span> com.gitee.sunchenbin.mybatis.actable.annotation.Column;<br><span class="hljs-keyword">import</span> com.gitee.sunchenbin.mybatis.actable.annotation.Table;<br><span class="hljs-keyword">import</span> com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;<br><br><span class="hljs-keyword">import</span> java.sql.Timestamp;<br><br><span class="hljs-keyword">import</span> com.littleboy.common.annotation.CreateTime;<br><span class="hljs-keyword">import</span> lombok.*;<br><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Builder</span><br><span class="hljs-meta">@NoArgsConstructor</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-meta">@ToString(callSuper = true)</span><br><span class="hljs-meta">@Table(name = &quot;sx_user&quot;, comment = &quot;用户表&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SXUser</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BasePojo</span> </span>&#123;<br><br>	<span class="hljs-meta">@Column(name = &quot;account&quot;, type = MySqlTypeConstant.VARCHAR, length = 20, isNull = false, comment = &quot;账号(手机号)&quot;)</span><br>	<span class="hljs-keyword">private</span> String account;<br><br>	<span class="hljs-meta">@Column(name = &quot;passwd&quot;, type = MySqlTypeConstant.VARCHAR, length = 60, isNull = false, comment = &quot;密码&quot;)</span><br>	<span class="hljs-keyword">private</span> String passwd;<br><br>	<span class="hljs-meta">@Column(name = &quot;name&quot;, type = MySqlTypeConstant.VARCHAR, length = 10, isNull = false, comment = &quot;真实姓名&quot;)</span><br>	<span class="hljs-keyword">private</span> String name;<br><br>	<span class="hljs-meta">@Column(name = &quot;status&quot;, type = MySqlTypeConstant.SMALLINT, defaultValue = &quot;0&quot;, isNull = false, comment = &quot;-1 不可用 0 刚注册,未完善资料 1 完善了资料,未审核 2 审核过&quot;)</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> status;<br><br>	<span class="hljs-meta">@Column(name = &quot;type&quot;, type = MySqlTypeConstant.TINYINT, defaultValue = &quot;1&quot;, isNull = false, comment = &quot;1买家 2卖家&quot;)</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> type;<br><br>	<span class="hljs-meta">@CreateTime</span><br>	<span class="hljs-meta">@Column(name = &quot;last_login_time&quot;, type = MySqlTypeConstant.TIMESTAMP,isNull = false, comment = &quot;最后一次登录时间&quot;)</span><br>	<span class="hljs-keyword">private</span> Timestamp lastLoginTime;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>ok, 用户表设计好了, 接下来就是编写添加用户的功能了。</p>
 <h1 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h1><p>首先编写 dao 层:</p>
 <p>dao.SXUserMapper.java:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.littleboy.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.littleboy.pojo.SXUser;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Param;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">SXUserMapper</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过id获取用户</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id 用户id</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 获取到的用户</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    SXUser <span class="title function_">getUserById</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> String id)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过手机号获取用户</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> account 手机号</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 获取到的用户</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    SXUser <span class="title function_">getUserByAccount</span><span class="params">(<span class="meta">@Param(&quot;account&quot;)</span> String account)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 插入一条用户记录</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user 用户记录</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">insertUser</span><span class="params">(<span class="meta">@Param(&quot;user&quot;)</span> SXUser user)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.littleboy.dao;<br><br><span class="hljs-keyword">import</span> com.littleboy.pojo.SXUser;<br><span class="hljs-keyword">import</span> org.apache.ibatis.annotations.Param;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">SXUserMapper</span> </span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 通过id获取用户</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> id 用户id</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 获取到的用户</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function">SXUser <span class="hljs-title">getUserById</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;id&quot;)</span> String id)</span></span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 通过手机号获取用户</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> account 手机号</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 获取到的用户</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function">SXUser <span class="hljs-title">getUserByAccount</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;account&quot;)</span> String account)</span></span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 插入一条用户记录</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> user 用户记录</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insertUser</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;user&quot;)</span> SXUser user)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>接下来是对应的 xml:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span> <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.littleboy.dao.SXUserMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;SXUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;String&quot;</span>&gt;</span></span><br><span class="line">        select * from sx_user where sx_user.id = #&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserByAccount&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;SXUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;String&quot;</span>&gt;</span></span><br><span class="line">        select * from sx_user where sx_user.account = #&#123;name&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;insertUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.littleboy.pojo.SXUser&quot;</span>&gt;</span></span><br><span class="line">        insert sx_user(id, account, passwd, name, create_time, update_time, last_login_time)</span><br><span class="line">        values (#&#123;user.id&#125;, #&#123;user.account&#125;, #&#123;user.passwd&#125;, #&#123;user.name&#125;, #&#123;user.createTime&#125;, #&#123;user.updateTime&#125;, #&#123;user.lastLoginTime&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">mapper</span> <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span> <span class="hljs-meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span> &gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;com.littleboy.dao.SXUserMapper&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getUserById&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;SXUser&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;String&quot;</span>&gt;</span><br>        select * from sx_user where sx_user.id = #&#123;id&#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getUserByAccount&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;SXUser&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;String&quot;</span>&gt;</span><br>        select * from sx_user where sx_user.account = #&#123;name&#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;insertUser&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;com.littleboy.pojo.SXUser&quot;</span>&gt;</span><br>        insert sx_user(id, account, passwd, name, create_time, update_time, last_login_time)<br>        values (#&#123;user.id&#125;, #&#123;user.account&#125;, #&#123;user.passwd&#125;, #&#123;user.name&#125;, #&#123;user.createTime&#125;, #&#123;user.updateTime&#125;, #&#123;user.lastLoginTime&#125;)<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>服务层省略, 代码可以查看 <a href="https://gitee.com/littleboydk/shopping_mall">码云-商城源码</a>。</p>
 <p>controller层:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.littleboy.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.littleboy.dto.ReturnInfo;</span><br><span class="line"><span class="keyword">import</span> com.littleboy.dto.UserDto;</span><br><span class="line"><span class="keyword">import</span> com.littleboy.pojo.SXUser;</span><br><span class="line"><span class="keyword">import</span> com.littleboy.service.SXUserService;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.StringUtils;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/user&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SXUserService mSXUserService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户注册</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userDto 用户注册信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 用户注册成功的信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping(value = &quot;/register&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> ReturnInfo <span class="title function_">register</span><span class="params">(<span class="meta">@RequestBody</span> UserDto userDto)</span> &#123;</span><br><span class="line">        System.out.println(userDto);</span><br><span class="line">        ReturnInfo&lt;UserDto&gt; returnInfo = <span class="keyword">new</span> <span class="title class_">ReturnInfo</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.isAllEmpty(userDto.getAccount()) &amp;&amp;</span><br><span class="line">                !StringUtils.isAllEmpty(userDto.getPasswd()) &amp;&amp;</span><br><span class="line">                !StringUtils.isAllEmpty(userDto.getName())) &#123;</span><br><span class="line"></span><br><span class="line">            mSXUserService.insertUser(</span><br><span class="line">                    SXUser.builder()</span><br><span class="line">                            .account(userDto.getAccount())</span><br><span class="line">                            .passwd(<span class="keyword">new</span> <span class="title class_">BCryptPasswordEncoder</span>().encode(userDto.getPasswd()))</span><br><span class="line">                            .name(userDto.getName()).build());</span><br><span class="line"></span><br><span class="line">            returnInfo.setObject(userDto);</span><br><span class="line">            returnInfo.setReturnInfo(<span class="string">&quot;恭喜你, 注册成功! &quot;</span>);</span><br><span class="line">            returnInfo.setStatus(<span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            returnInfo.setStatus(-<span class="number">1</span>);</span><br><span class="line">            returnInfo.setReturnInfo(<span class="string">&quot;很抱歉, 注册失败, 请检查您填写的信息是否正确&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> returnInfo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.littleboy.controller;<br><br><span class="hljs-keyword">import</span> com.littleboy.dto.ReturnInfo;<br><span class="hljs-keyword">import</span> com.littleboy.dto.UserDto;<br><span class="hljs-keyword">import</span> com.littleboy.pojo.SXUser;<br><span class="hljs-keyword">import</span> com.littleboy.service.SXUserService;<br><span class="hljs-keyword">import</span> org.apache.commons.lang3.StringUtils;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.*;<br><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(value = &quot;/user&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>&#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> SXUserService mSXUserService;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 用户注册</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> userDto 用户注册信息</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 用户注册成功的信息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@PostMapping(value = &quot;/register&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> ReturnInfo <span class="hljs-title">register</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> UserDto userDto)</span> </span>&#123;<br>        System.out.println(userDto);<br>        ReturnInfo&lt;UserDto&gt; returnInfo = <span class="hljs-keyword">new</span> ReturnInfo&lt;&gt;();<br>        <span class="hljs-keyword">if</span> (!StringUtils.isAllEmpty(userDto.getAccount()) &amp;&amp;<br>                !StringUtils.isAllEmpty(userDto.getPasswd()) &amp;&amp;<br>                !StringUtils.isAllEmpty(userDto.getName())) &#123;<br><br>            mSXUserService.insertUser(<br>                    SXUser.builder()<br>                            .account(userDto.getAccount())<br>                            .passwd(<span class="hljs-keyword">new</span> BCryptPasswordEncoder().encode(userDto.getPasswd()))<br>                            .name(userDto.getName()).build());<br><br>            returnInfo.setObject(userDto);<br>            returnInfo.setReturnInfo(<span class="hljs-string">&quot;恭喜你, 注册成功! &quot;</span>);<br>            returnInfo.setStatus(<span class="hljs-number">1</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            returnInfo.setStatus(-<span class="hljs-number">1</span>);<br>            returnInfo.setReturnInfo(<span class="hljs-string">&quot;很抱歉, 注册失败, 请检查您填写的信息是否正确&quot;</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> returnInfo;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
 <p>这里使用了 SpringSecurity 的密码加密方式, 嗯, 接口搞定, 写个测试用例测试一下:</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/develop-note/" class="category-chain-item">开发笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/develop-note/%E5%95%86%E5%9F%8E/" class="category-chain-item">商城</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/develop-note/%E5%95%86%E5%9F%8E/%E5%8A%9F%E8%83%BD%E7%AF%87/" class="category-chain-item">功能篇</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/shopping-mall/">#商城开发</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>商城开发笔记-注册</div>
+      <div>http://icecreamzhao.github.io/my_project/shopping_mall/crud/Shopping-mall-developNote-register.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>littleboyDK</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年10月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/script_skill_experience/python/use-shell-in-python.html" title="在 python 中使用 bash">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在 python 中使用 bash</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-parent-depend-addSwagger.html" title="商城开发笔记-给parent配置添加swagger依赖">
+                        <span class="hidden-mobile">商城开发笔记-给parent配置添加swagger依赖</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
     </div>
 
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/shopping-mall/" rel="tag"># 商城开发</a>
-          </div>
-
-        
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
 
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-parent-depend-addSwagger.html" rel="prev" title="商城开发笔记-给parent配置添加swagger依赖">
-      <i class="fa fa-chevron-left"></i> 商城开发笔记-给parent配置添加swagger依赖
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/script_skill_experience/python/use-shell-in-python.html" rel="next" title="在 python 中使用 bash">
-      在 python 中使用 bash <i class="fa fa-chevron-right"></i>
-    </a></div>
+
+  </aside>
+
+
     </div>
-      </footer>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
-  </article>
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
   
   
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-          </div>
-          
 
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
       }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
     });
-  }
+  });
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
+  <script>Fluid.plugins.codeWidget();</script>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">创建用户表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="nav-number">3.</span> <span class="nav-text">添加用户</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="littleboyDK"
-      src="/images/personal/icon.png">
-  <p class="site-author-name" itemprop="name">littleboyDK</p>
-  <div class="site-description" itemprop="description">对前端特别感兴趣的后端工程师</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">147</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">58</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">81</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 2017 – 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">littleboyDK</span>
-</div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
 
-<script src="/js/utils.js"></script>
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
 
-<script src="/js/motion.js"></script>
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
 
 
-<script src="/js/schemes/pisces.js"></script>
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
-<script src="/js/next-boot.js"></script>
 
 
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
 
 
   
 
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
