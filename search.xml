@@ -4,7 +4,7 @@
     <title>welcome</title>
     <url>/welcome.html</url>
     <content><![CDATA[<p>你好, 这里是littleboyDK, 欢迎来到我的博客, 我会不定时的把我的技术博文发布到我的博客当中去, 希望能帮助到更多的人! 谢谢。</p>
-<p>如果有什么想和我交流的问题，可以通过 <a href="mailto:&#x64;&#x61;&#104;&#x61;&#122;&#105;&#x64;&#107;&#x40;&#49;&#x36;&#x33;&#46;&#x63;&#111;&#109;">&#x64;&#x61;&#104;&#x61;&#122;&#105;&#x64;&#107;&#x40;&#49;&#x36;&#x33;&#46;&#x63;&#111;&#109;</a></p>
+<p>如果有什么想和我交流的问题，可以通过 <a href="mailto:&#100;&#97;&#104;&#x61;&#122;&#x69;&#x64;&#x6b;&#64;&#x31;&#54;&#x33;&#x2e;&#x63;&#111;&#109;">&#100;&#97;&#104;&#x61;&#122;&#x69;&#x64;&#x6b;&#64;&#x31;&#54;&#x33;&#x2e;&#x63;&#111;&#109;</a></p>
 <p> 来联系我, 欢迎打扰!</p>
 ]]></content>
       <tags>
@@ -127,10 +127,6 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       <categories>
         <category>感悟</category>
       </categories>
-      <tags>
-        <tag>想法</tag>
-        <tag>启发</tag>
-      </tags>
   </entry>
   <entry>
     <title>16位cpu标准寄存器说明</title>
@@ -571,6 +567,47 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       </tags>
   </entry>
   <entry>
+    <title>关于微信小程序的canvas</title>
+    <url>/front_skill_experience/miniProgram/draw.html</url>
+    <content><![CDATA[<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#%E5%9C%A8canvas%E4%B8%8A%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87">在canvas上显示图片</a><br><a href="#%E5%9C%A8canvas%E4%B8%8A%E7%94%BB%E5%9B%BE">在canvas上画图</a></p>
+<h1 id="在canvas上显示图片"><a href="#在canvas上显示图片" class="headerlink" title="在canvas上显示图片"></a>在canvas上显示图片</h1><p>首先, 我们需要一个canvas的页面元素:</p>
+<span id="more"></span>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- canvas.wxml --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: &#123;&#123;canvasWidth&#125;&#125;px; height: &#123;&#123;canvasHeight&#125;&#125;px;&quot;</span> <span class="hljs-attr">canvas-id</span>=<span class="hljs-string">&quot;firstCanvas&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里我们采用了canvas自适应屏幕的方案</p>
+</blockquote>
+<p>然后js里我们需要这些数据:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">Page(&#123;<br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-attr">pictureUrlTmp</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>    <span class="hljs-attr">pictureUrl</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>    <span class="hljs-attr">canvasHeight</span>: <span class="hljs-number">0</span>,<br>    <span class="hljs-attr">canvasWidth</span>: <span class="hljs-number">0</span>,<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>pictureUrlTmp 是本地缓存图片的路径</p>
+</blockquote>
+<p>这里需要说明, 在真机上经过测试之后发现, 显示图片需要先将图片下载下来, 缓存到本地之后才可以正常显示。</p>
+<p>那么我们就来写一个downloadFile的方法:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">downloadF: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">appPictureUrl, that</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>    wx.downloadFile(&#123;<br>      <span class="hljs-attr">url</span>: appPictureUrl,<br>      <span class="hljs-function"><span class="hljs-title">success</span>(<span class="hljs-params">res</span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (res.statusCode == <span class="hljs-number">200</span>) &#123;<br>          <span class="hljs-built_in">console</span>.log(res.tempFilePath)<br>          that.setData(&#123;<br>            <span class="hljs-attr">pictureUrlTmp</span>: res.tempFilePath,<br>            <span class="hljs-attr">pictureUrl</span>: appPictureUrl<br>          &#125;)<br>          resolve(res.tempFilePath);<br>        &#125;<br>      &#125;<br>    &#125;)<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>由于我们需要先将文件下载好, 在显示, 所以我们这里使用了promise。</p>
+<p>接下来我们需要将图片显示出来:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">onReady: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> that = <span class="hljs-built_in">this</span><br>  <span class="hljs-keyword">var</span> myCanvasWidth<br>  <span class="hljs-keyword">var</span> myCanvasHeight<br>  wx.getSystemInfo(&#123;<br>    <span class="hljs-comment">//获取系统信息成功，将系统窗口的宽高赋给页面的宽高  </span><br>    <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>&#123;<br>      myCanvasHeight = res.windowHeight<br>      myCanvasWidth = res.windowWidth<br>    &#125;<br>  &#125;)<br>  that.setData(&#123;<br>    <span class="hljs-attr">canvasWidth</span>: myCanvasWidth,<br>    <span class="hljs-attr">canvasHeight</span>: myCanvasHeight<br>  &#125;)<br><br>  <span class="hljs-keyword">var</span> context = wx.createCanvasContext(<span class="hljs-string">&#x27;firstCanvas&#x27;</span>, <span class="hljs-built_in">this</span>)<br>  that.downloadF(appPictureUrl, that).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(res)<br>    context.drawImage(that.__data__.pictureUrlTmp, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, myCanvasWidth, myCanvasHeight))<br>    context.stroke()<br>    context.draw()<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里将全局变量的pictureUrl下载下来, 然后画到画布上</p>
+</blockquote>
+<h1 id="在canvas上画图"><a href="#在canvas上画图" class="headerlink" title="在canvas上画图"></a>在canvas上画图</h1><p>这个官方文档比较全, 我这边只是简单做个介绍。这里是<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/CanvasContext.html">官方文档地址</a>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 按照上面的步骤已经获取到了context:</span><br><br>context.setStrokeStyle(<span class="hljs-string">&#x27;#000&#x27;</span>)<br>context.setLineWidth(<span class="hljs-number">2</span>)<br>context.moveTo(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>context.lineTo(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>);<br>context.stroke()<br>context.draw()<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>前端技巧/经验</category>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+        <tag>canvas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序的目录结构以及各个文件的用处</title>
     <url>/front_skill_experience/miniProgram/first-step.html</url>
     <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本篇博客介绍了微信小程序的目录结构以及各个文件的作用。</p>
@@ -616,47 +653,6 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       </categories>
       <tags>
         <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于微信小程序的canvas</title>
-    <url>/front_skill_experience/miniProgram/draw.html</url>
-    <content><![CDATA[<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><a href="#%E5%9C%A8canvas%E4%B8%8A%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87">在canvas上显示图片</a><br><a href="#%E5%9C%A8canvas%E4%B8%8A%E7%94%BB%E5%9B%BE">在canvas上画图</a></p>
-<h1 id="在canvas上显示图片"><a href="#在canvas上显示图片" class="headerlink" title="在canvas上显示图片"></a>在canvas上显示图片</h1><p>首先, 我们需要一个canvas的页面元素:</p>
-<span id="more"></span>
-
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- canvas.wxml --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: &#123;&#123;canvasWidth&#125;&#125;px; height: &#123;&#123;canvasHeight&#125;&#125;px;&quot;</span> <span class="hljs-attr">canvas-id</span>=<span class="hljs-string">&quot;firstCanvas&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里我们采用了canvas自适应屏幕的方案</p>
-</blockquote>
-<p>然后js里我们需要这些数据:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">Page(&#123;<br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-attr">pictureUrlTmp</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>    <span class="hljs-attr">pictureUrl</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>    <span class="hljs-attr">canvasHeight</span>: <span class="hljs-number">0</span>,<br>    <span class="hljs-attr">canvasWidth</span>: <span class="hljs-number">0</span>,<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>pictureUrlTmp 是本地缓存图片的路径</p>
-</blockquote>
-<p>这里需要说明, 在真机上经过测试之后发现, 显示图片需要先将图片下载下来, 缓存到本地之后才可以正常显示。</p>
-<p>那么我们就来写一个downloadFile的方法:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">downloadF: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">appPictureUrl, that</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>    wx.downloadFile(&#123;<br>      <span class="hljs-attr">url</span>: appPictureUrl,<br>      <span class="hljs-function"><span class="hljs-title">success</span>(<span class="hljs-params">res</span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (res.statusCode == <span class="hljs-number">200</span>) &#123;<br>          <span class="hljs-built_in">console</span>.log(res.tempFilePath)<br>          that.setData(&#123;<br>            <span class="hljs-attr">pictureUrlTmp</span>: res.tempFilePath,<br>            <span class="hljs-attr">pictureUrl</span>: appPictureUrl<br>          &#125;)<br>          resolve(res.tempFilePath);<br>        &#125;<br>      &#125;<br>    &#125;)<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>由于我们需要先将文件下载好, 在显示, 所以我们这里使用了promise。</p>
-<p>接下来我们需要将图片显示出来:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">onReady: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> that = <span class="hljs-built_in">this</span><br>  <span class="hljs-keyword">var</span> myCanvasWidth<br>  <span class="hljs-keyword">var</span> myCanvasHeight<br>  wx.getSystemInfo(&#123;<br>    <span class="hljs-comment">//获取系统信息成功，将系统窗口的宽高赋给页面的宽高  </span><br>    <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>&#123;<br>      myCanvasHeight = res.windowHeight<br>      myCanvasWidth = res.windowWidth<br>    &#125;<br>  &#125;)<br>  that.setData(&#123;<br>    <span class="hljs-attr">canvasWidth</span>: myCanvasWidth,<br>    <span class="hljs-attr">canvasHeight</span>: myCanvasHeight<br>  &#125;)<br><br>  <span class="hljs-keyword">var</span> context = wx.createCanvasContext(<span class="hljs-string">&#x27;firstCanvas&#x27;</span>, <span class="hljs-built_in">this</span>)<br>  that.downloadF(appPictureUrl, that).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(res)<br>    context.drawImage(that.__data__.pictureUrlTmp, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, myCanvasWidth, myCanvasHeight))<br>    context.stroke()<br>    context.draw()<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里将全局变量的pictureUrl下载下来, 然后画到画布上</p>
-</blockquote>
-<h1 id="在canvas上画图"><a href="#在canvas上画图" class="headerlink" title="在canvas上画图"></a>在canvas上画图</h1><p>这个官方文档比较全, 我这边只是简单做个介绍。这里是<a href="https://developers.weixin.qq.com/miniprogram/dev/api/canvas/CanvasContext.html">官方文档地址</a>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 按照上面的步骤已经获取到了context:</span><br><br>context.setStrokeStyle(<span class="hljs-string">&#x27;#000&#x27;</span>)<br>context.setLineWidth(<span class="hljs-number">2</span>)<br>context.moveTo(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>context.lineTo(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>);<br>context.stroke()<br>context.draw()<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>前端技巧/经验</category>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
-        <tag>canvas</tag>
       </tags>
   </entry>
   <entry>
@@ -1009,56 +1005,6 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       </tags>
   </entry>
   <entry>
-    <title>http-connect-failed-EHOSTUNREACH</title>
-    <url>/mobile_skill_experience/android/http-connect-failed-EHOSTUNREACH.html</url>
-    <content><![CDATA[<p>提示访问不到服务器</p>
-<p>解决方式: 切换到其他wifi网络, 在切回来, 就好了。。</p>
-]]></content>
-      <categories>
-        <category>移动开发技巧/经验</category>
-        <category>android</category>
-      </categories>
-      <tags>
-        <tag>踩坑</tag>
-        <tag>android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于flutter的listview控件需要注意的地方</title>
-    <url>/mobile_skill_experience/flutter/about-listview.html</url>
-    <content><![CDATA[<h1 id="构造一个listview"><a href="#构造一个listview" class="headerlink" title="构造一个listview"></a>构造一个listview</h1><p>官方文档给出了四中可以构造listview的方法, 下面是原文:</p>
-<ol>
-<li>The default constructor takes an explicit List<Widget> of children. This constructor is appropriate for list views with a small number of children because constructing the list requires doing work for every child that could possibly be displayed in the list view instead of just those children that are actually visible.</li>
-</ol>
-<span id="more"></span>
-<ol start="2">
-<li><p>The listView.builder constructor takes an IndexedWidgetBuilder, which builds the children on demand. This constructor is appropriate for list views with a large (or infinite) number of children because the builder is called only for those children that are actually visible.</p>
-</li>
-<li><p>The ListView.separated constructor takes two IndexedWidgetBuilders: <code>itemBuilder</code> builds child items on demand, and <code>separatorBuilder</code> similarly builds separator children which appear in between the child items. This constructor is appropriate for list views with a fixed number of children.</p>
-</li>
-<li><p>The ListView.custom constructor takes a SliverChildDelegate, which provides the ability to customize additional aspects of the child model. For example, a SliverChildDelegate can control the algorithm used to estimate the size of children that are not actually visible.</p>
-</li>
-</ol>
-<p>简单的翻译一下, 第一段的意思是说:</p>
-<p>直接使用默认的构造器, 但是这种方式只适用于承载较少的子部件。</p>
-<p>第二种方式是使用ListView的builder方法, 这种方式的好处是, 只有呈现在屏幕上的子部件才会调用这个方法, 所以比较适用于非常多的部件。</p>
-<p>第三种方式是使用separated, 这种方式适用于带有固定的子部件的列表。</p>
-<p>最后一种方式可以自己定义显示子部件的算法。</p>
-<p>那么我们先使用第一种方式试试看:</p>
-<figure class="highlight dart"><table><tr><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/material.dart&#x27;</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DefaultConstructor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> Scaffold(<br>      body: ListView(<br>        children: &lt;Widget&gt;[<br>          Text(<span class="hljs-string">&#x27;内容一&#x27;</span>),<br>          Text(<span class="hljs-string">&#x27;内容二&#x27;</span>),<br>          Text(<span class="hljs-string">&#x27;内容三&#x27;</span>),<br>          Text(<span class="hljs-string">&#x27;内容四&#x27;</span>),<br>          Text(<span class="hljs-string">&#x27;内容五&#x27;</span>),<br>          Text(<span class="hljs-string">&#x27;内容六&#x27;</span>),<br>        ],<br>      ),<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>大概是这种效果:</p>
-<p><img src="/images/mobile/flutter/flutter_listview_default_constructor.png" alt="listview效果"></p>
-]]></content>
-      <categories>
-        <category>移动开发技巧/经验</category>
-        <category>flutter</category>
-      </categories>
-      <tags>
-        <tag>flutter</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>gradle 和 gradle 插件版本对应关系</title>
     <url>/mobile_skill_experience/android/gradle-plugin-version.html</url>
     <content><![CDATA[<h1 id="android-Gradle-插件版本"><a href="#android-Gradle-插件版本" class="headerlink" title="android Gradle 插件版本"></a>android Gradle 插件版本</h1><p>可以在顶级 <code>build.gradle</code> 文件中指定 gradle 插件版本:</p>
@@ -1135,6 +1081,56 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       <tags>
         <tag>android</tag>
         <tag>gradle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>http-connect-failed-EHOSTUNREACH</title>
+    <url>/mobile_skill_experience/android/http-connect-failed-EHOSTUNREACH.html</url>
+    <content><![CDATA[<p>提示访问不到服务器</p>
+<p>解决方式: 切换到其他wifi网络, 在切回来, 就好了。。</p>
+]]></content>
+      <categories>
+        <category>移动开发技巧/经验</category>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>踩坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于flutter的listview控件需要注意的地方</title>
+    <url>/mobile_skill_experience/flutter/about-listview.html</url>
+    <content><![CDATA[<h1 id="构造一个listview"><a href="#构造一个listview" class="headerlink" title="构造一个listview"></a>构造一个listview</h1><p>官方文档给出了四中可以构造listview的方法, 下面是原文:</p>
+<ol>
+<li>The default constructor takes an explicit List<Widget> of children. This constructor is appropriate for list views with a small number of children because constructing the list requires doing work for every child that could possibly be displayed in the list view instead of just those children that are actually visible.</li>
+</ol>
+<span id="more"></span>
+<ol start="2">
+<li><p>The listView.builder constructor takes an IndexedWidgetBuilder, which builds the children on demand. This constructor is appropriate for list views with a large (or infinite) number of children because the builder is called only for those children that are actually visible.</p>
+</li>
+<li><p>The ListView.separated constructor takes two IndexedWidgetBuilders: <code>itemBuilder</code> builds child items on demand, and <code>separatorBuilder</code> similarly builds separator children which appear in between the child items. This constructor is appropriate for list views with a fixed number of children.</p>
+</li>
+<li><p>The ListView.custom constructor takes a SliverChildDelegate, which provides the ability to customize additional aspects of the child model. For example, a SliverChildDelegate can control the algorithm used to estimate the size of children that are not actually visible.</p>
+</li>
+</ol>
+<p>简单的翻译一下, 第一段的意思是说:</p>
+<p>直接使用默认的构造器, 但是这种方式只适用于承载较少的子部件。</p>
+<p>第二种方式是使用ListView的builder方法, 这种方式的好处是, 只有呈现在屏幕上的子部件才会调用这个方法, 所以比较适用于非常多的部件。</p>
+<p>第三种方式是使用separated, 这种方式适用于带有固定的子部件的列表。</p>
+<p>最后一种方式可以自己定义显示子部件的算法。</p>
+<p>那么我们先使用第一种方式试试看:</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:flutter/material.dart&#x27;</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DefaultConstructor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>&#123;<br>  <span class="hljs-meta">@override</span><br>  Widget build(BuildContext context) &#123;<br>    <span class="hljs-keyword">return</span> Scaffold(<br>      body: ListView(<br>        children: &lt;Widget&gt;[<br>          Text(<span class="hljs-string">&#x27;内容一&#x27;</span>),<br>          Text(<span class="hljs-string">&#x27;内容二&#x27;</span>),<br>          Text(<span class="hljs-string">&#x27;内容三&#x27;</span>),<br>          Text(<span class="hljs-string">&#x27;内容四&#x27;</span>),<br>          Text(<span class="hljs-string">&#x27;内容五&#x27;</span>),<br>          Text(<span class="hljs-string">&#x27;内容六&#x27;</span>),<br>        ],<br>      ),<br>    );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>大概是这种效果:</p>
+<p><img src="/images/mobile/flutter/flutter_listview_default_constructor.png" alt="listview效果"></p>
+]]></content>
+      <categories>
+        <category>移动开发技巧/经验</category>
+        <category>flutter</category>
+      </categories>
+      <tags>
+        <tag>flutter</tag>
       </tags>
   </entry>
   <entry>
@@ -1925,35 +1921,6 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       </tags>
   </entry>
   <entry>
-    <title>使用cocoscreator遇到的一些问题</title>
-    <url>/front_skill_experience/cocos/cocoscreator/cocoscreator-intructration.html</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近接手了一个使用 cocoscreator 的活, 由于之前没有接触过, 所以遇到了很多问题, 但是最后也都解决了, 今天想来记录一下。</p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ul>
-<li>制作一个类系统弹窗, 并使背景置灰。</li>
-</ul>
-<p>遇到这个需求时, 我的第一个反应是上官网找找有没有可以直接使用的弹窗组件。但是其实并没有这种东西, 所以需要自己搞一个。</p>
-<span id="more"></span>
-
-<p>那么怎么搞? 其实难点只在于使背景置灰和屏蔽其他地方的click事件。那么我的思路是, 搞一个覆盖全屏幕的父组件, 由于cocoscreator是组件在上面的话, 那么在屏幕上的z轴就会在下面。所以首先应该放置灰层, 这个组件需要有 Sprite 和 Button, 直接将 Sprite 大小设置成覆盖全屏幕并设置为半透明(Opacity 属性和 color 属性就可以模拟置灰层), 然后给 Button 一个 click events, 但是并不给它指定的事件, 这样其他组件的点击事件就会被屏蔽, 其他的就好说了, 直接用组件拼一个弹窗就可以了。</p>
-<p>我知道这样搞其实很low, 比较好的方式其实是通过代码来进行动态加工组件, 等有空的时候吧, 先加一个 &#x2F;&#x2F;TODO, 哈哈。</p>
-<ul>
-<li>如何使用本地代码</li>
-</ul>
-<p>就是比如 android 平台有个本地方法, 如何在 cocoscreator 中调用? 其实很简单:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (cc.sys.isNative) &#123;<br>	<span class="hljs-keyword">if</span> (cc.sys.os == cc.sys.OS_ANDROID) &#123;<br>		jsb.reflection.callStaticMethod(<span class="hljs-string">&#x27;AppActivity&#x27;</span>, <span class="hljs-string">&#x27;test()&#x27;</span>, <span class="hljs-string">&#x27;(Ljava/lang/String;)V&#x27;</span>, args + <span class="hljs-string">&#x27;&#x27;</span>)<br>	&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cc.sys.os == cc.sys.OS_IOS) &#123;<br>		jsb.reflection.callStaticMethod(<span class="hljs-string">&#x27;LxbFunctionMgr&#x27;</span>, <span class="hljs-string">&#x27;openUrl:&#x27;</span>, args + <span class="hljs-string">&#x27;&#x27;</span>)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>这样不需要注释也可以看懂, <code>callStaticMethod</code> 方法参数依次是要调用的类, 要调用的方法, 参数类型和参数。</p>
-<ul>
-<li>记录一些cocoscreator的demo</li>
-</ul>
-<p><a href="https://docs.cocos.com/">cocoscreator官方文档</a><br><a href="https://github.com/Leo501/CocosCreatorTutorial">cocoscreator教程demo集合</a><br><a href="https://github.com/shahdza/Cocos_LearningTest">cocoscreator学习笔记</a></p>
-]]></content>
-      <tags>
-        <tag>android</tag>
-        <tag>cocos</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用git搭建服务器</title>
     <url>/config_skill_experience/develop__tool_config/git/git-server.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>当我们想使用git来管理源码, 但是又不想将代码上传至github或者其他的托管平台时, 可以尝试着自己搭建一个git服务器作为私有仓库。</p>
@@ -2252,7 +2219,6 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       </categories>
       <tags>
         <tag>nginx</tag>
-        <tag>跨域</tag>
       </tags>
   </entry>
   <entry>
@@ -2496,6 +2462,26 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       </categories>
       <tags>
         <tag>rocketMQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>archlinux使用xfce4如何更时区</title>
+    <url>/config_skill_experience/system_config/linux/arch-xfce4-change-timezone.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天闲来无事折腾一下尘封已久的树莓派, 系统是arch系统, 桌面使用xfce4。</p>
+<h1 id="更改方式"><a href="#更改方式" class="headerlink" title="更改方式"></a>更改方式</h1><p>首先查看都有哪些时区:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">timedatectl | grep <span class="hljs-built_in">local</span><br></code></pre></td></tr></table></figure>
+
+<p>接着根据所在时区更改:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">timedatectl set-timezone Asia/Shanghai<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>配置技巧/经验</category>
+        <category>系统配置</category>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>archlinux</tag>
+        <tag>timezone</tag>
       </tags>
   </entry>
   <entry>
@@ -3413,6 +3399,35 @@ server --在回调函数中对返回值进行签名校验, 并根据其他的参
       </categories>
       <tags>
         <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用cocoscreator遇到的一些问题</title>
+    <url>/front_skill_experience/cocos/cocoscreator/cocoscreator-intructration.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近接手了一个使用 cocoscreator 的活, 由于之前没有接触过, 所以遇到了很多问题, 但是最后也都解决了, 今天想来记录一下。</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ul>
+<li>制作一个类系统弹窗, 并使背景置灰。</li>
+</ul>
+<p>遇到这个需求时, 我的第一个反应是上官网找找有没有可以直接使用的弹窗组件。但是其实并没有这种东西, 所以需要自己搞一个。</p>
+<span id="more"></span>
+
+<p>那么怎么搞? 其实难点只在于使背景置灰和屏蔽其他地方的click事件。那么我的思路是, 搞一个覆盖全屏幕的父组件, 由于cocoscreator是组件在上面的话, 那么在屏幕上的z轴就会在下面。所以首先应该放置灰层, 这个组件需要有 Sprite 和 Button, 直接将 Sprite 大小设置成覆盖全屏幕并设置为半透明(Opacity 属性和 color 属性就可以模拟置灰层), 然后给 Button 一个 click events, 但是并不给它指定的事件, 这样其他组件的点击事件就会被屏蔽, 其他的就好说了, 直接用组件拼一个弹窗就可以了。</p>
+<p>我知道这样搞其实很low, 比较好的方式其实是通过代码来进行动态加工组件, 等有空的时候吧, 先加一个 &#x2F;&#x2F;TODO, 哈哈。</p>
+<ul>
+<li>如何使用本地代码</li>
+</ul>
+<p>就是比如 android 平台有个本地方法, 如何在 cocoscreator 中调用? 其实很简单:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (cc.sys.isNative) &#123;<br>	<span class="hljs-keyword">if</span> (cc.sys.os == cc.sys.OS_ANDROID) &#123;<br>		jsb.reflection.callStaticMethod(<span class="hljs-string">&#x27;AppActivity&#x27;</span>, <span class="hljs-string">&#x27;test()&#x27;</span>, <span class="hljs-string">&#x27;(Ljava/lang/String;)V&#x27;</span>, args + <span class="hljs-string">&#x27;&#x27;</span>)<br>	&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cc.sys.os == cc.sys.OS_IOS) &#123;<br>		jsb.reflection.callStaticMethod(<span class="hljs-string">&#x27;LxbFunctionMgr&#x27;</span>, <span class="hljs-string">&#x27;openUrl:&#x27;</span>, args + <span class="hljs-string">&#x27;&#x27;</span>)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样不需要注释也可以看懂, <code>callStaticMethod</code> 方法参数依次是要调用的类, 要调用的方法, 参数类型和参数。</p>
+<ul>
+<li>记录一些cocoscreator的demo</li>
+</ul>
+<p><a href="https://docs.cocos.com/">cocoscreator官方文档</a><br><a href="https://github.com/Leo501/CocosCreatorTutorial">cocoscreator教程demo集合</a><br><a href="https://github.com/shahdza/Cocos_LearningTest">cocoscreator学习笔记</a></p>
+]]></content>
+      <tags>
+        <tag>android</tag>
+        <tag>cocos</tag>
       </tags>
   </entry>
   <entry>
@@ -5047,12 +5062,12 @@ vpath % blish
 ]]></content>
       <categories>
         <category>笔记</category>
-        <category>最好的c++教程</category>
+        <category>读书笔记</category>
+        <category>最好的cpp教程</category>
       </categories>
       <tags>
         <tag>c++</tag>
         <tag>笔记</tag>
-        <tag>最好的c++教程</tag>
       </tags>
   </entry>
   <entry>
@@ -8742,6 +8757,32 @@ default     192.168.1.1 0.0.0.0         UG      0   0       0       eth0
       </tags>
   </entry>
   <entry>
+    <title>使用缓存来解决性能问题</title>
+    <url>/note/read_note/web-site-framework/use-cache.html</url>
+    <content><![CDATA[<h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h1><p>网站数据访问通常遵循二八定律, 即80%的访问落在20%的数据上, 因此利用 Hash 表和内存的高速访问特性, 将20%的数据缓存起来。</p>
+<p>不要将频繁修改的数据放到缓存中</p>
+<p>遵守二八定律, 将80%的请求访问的数据放到缓存中</p>
+<p>数据不一致与脏读</p>
+<span id="more"></span>
+
+<p><strong>一般会对缓存的数据设置失效时间, 一旦超过失效时间, 就要从数据库中重新加载。因此应用要容忍一定时间的数据不一致, 如卖家已经编辑了商品属性, 但是需要过一段时间才能被买家看到。</strong></p>
+<p>缓存可用性</p>
+<p>当缓存服务器崩溃时, 数据库会因为完全不能承受如此大的压力而宕机, 进而导致整个网站不可用。这种情况被称作缓存雪崩。<br>解决方案是, 通过分布式缓存服务器集群, 将缓存数据库分布到多台服务器上, 当一台缓存服务器宕机的时候, 只有部分缓存数据丢失, 重新从数据库中加载这部分数据不会对数据库产生很大影响。</p>
+<h2 id="分布式缓存架构"><a href="#分布式缓存架构" class="headerlink" title="分布式缓存架构"></a>分布式缓存架构</h2><p>两种架构方式:<br>一种以 JBoss Cache 为代表的需要更新同步的分布式缓存, 一种是以 Memcached 为代表的不互相通信的分布式缓存。</p>
+<p>JBoss Cache 的分布式缓存在集群中所有服务器中保存相同的缓存数据, 当某台服务器有缓存数据更新的时候, 会通知其他服务器更新缓存数据。这种方案更多见于企业应用系统中, 很少在大型网站上使用。。</p>
+<p>Memcached 采用集中式缓存集群管理, 应用程序通过一致性 Hash 等路由算法选择缓存服务器远程访问缓存数据, 缓存服务器之间不通信。<br>Memcached 服务端通信模块基于 Libevent, 一个支持事件触发的网络通信程序库。<br>Memcached 的内存管理采用了固定空间分配的方式, Memcached 将内存空间分为一组 slab, 每个 slab 包含一组 chunk, 每个 chunk 的大小是固定的, 拥有相同大小 chunk 的 slab 被组织在一起, 叫做 slab class, 存储数据时根据数据的 size 大小, 寻找一个大于 size 的最小 chunk 将数据写入。</p>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>这里可以去了解一下 Libevent, </p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>读书笔记</category>
+        <category>大型网站技术架构</category>
+      </categories>
+      <tags>
+        <tag>缓存</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mybatis-enhance 的 ClassTools</title>
     <url>/note/source_note/mybatis-enhance/read-mybatis-enhance-ClassTools.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇博客专门就<code>mybatis-enhance</code>的ClassTools类进行分析, 请先移步<a href="/java/read-open-source-java-version-project/read-mybatis-enhance.html">读mybatis-enhance开源项目</a>。</p>
@@ -8767,32 +8808,6 @@ default     192.168.1.1 0.0.0.0         UG      0   0       0       eth0
         <tag>mybatis</tag>
         <tag>开源项目</tag>
         <tag>mybatis-enhance</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用缓存来解决性能问题</title>
-    <url>/note/read_note/web-site-framework/use-cache.html</url>
-    <content><![CDATA[<h1 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h1><p>网站数据访问通常遵循二八定律, 即80%的访问落在20%的数据上, 因此利用 Hash 表和内存的高速访问特性, 将20%的数据缓存起来。</p>
-<p>不要将频繁修改的数据放到缓存中</p>
-<p>遵守二八定律, 将80%的请求访问的数据放到缓存中</p>
-<p>数据不一致与脏读</p>
-<span id="more"></span>
-
-<p><strong>一般会对缓存的数据设置失效时间, 一旦超过失效时间, 就要从数据库中重新加载。因此应用要容忍一定时间的数据不一致, 如卖家已经编辑了商品属性, 但是需要过一段时间才能被买家看到。</strong></p>
-<p>缓存可用性</p>
-<p>当缓存服务器崩溃时, 数据库会因为完全不能承受如此大的压力而宕机, 进而导致整个网站不可用。这种情况被称作缓存雪崩。<br>解决方案是, 通过分布式缓存服务器集群, 将缓存数据库分布到多台服务器上, 当一台缓存服务器宕机的时候, 只有部分缓存数据丢失, 重新从数据库中加载这部分数据不会对数据库产生很大影响。</p>
-<h2 id="分布式缓存架构"><a href="#分布式缓存架构" class="headerlink" title="分布式缓存架构"></a>分布式缓存架构</h2><p>两种架构方式:<br>一种以 JBoss Cache 为代表的需要更新同步的分布式缓存, 一种是以 Memcached 为代表的不互相通信的分布式缓存。</p>
-<p>JBoss Cache 的分布式缓存在集群中所有服务器中保存相同的缓存数据, 当某台服务器有缓存数据更新的时候, 会通知其他服务器更新缓存数据。这种方案更多见于企业应用系统中, 很少在大型网站上使用。。</p>
-<p>Memcached 采用集中式缓存集群管理, 应用程序通过一致性 Hash 等路由算法选择缓存服务器远程访问缓存数据, 缓存服务器之间不通信。<br>Memcached 服务端通信模块基于 Libevent, 一个支持事件触发的网络通信程序库。<br>Memcached 的内存管理采用了固定空间分配的方式, Memcached 将内存空间分为一组 slab, 每个 slab 包含一组 chunk, 每个 chunk 的大小是固定的, 拥有相同大小 chunk 的 slab 被组织在一起, 叫做 slab class, 存储数据时根据数据的 size 大小, 寻找一个大于 size 的最小 chunk 将数据写入。</p>
-<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>这里可以去了解一下 Libevent, </p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-        <category>读书笔记</category>
-        <category>大型网站技术架构</category>
-      </categories>
-      <tags>
-        <tag>缓存</tag>
       </tags>
   </entry>
   <entry>

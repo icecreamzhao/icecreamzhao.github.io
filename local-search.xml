@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>archlinux使用xfce4如何更时区</title>
+    <link href="/config_skill_experience/system_config/linux/arch-xfce4-change-timezone.html"/>
+    <url>/config_skill_experience/system_config/linux/arch-xfce4-change-timezone.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天闲来无事折腾一下尘封已久的树莓派, 系统是arch系统, 桌面使用xfce4。</p><h1 id="更改方式"><a href="#更改方式" class="headerlink" title="更改方式"></a>更改方式</h1><p>首先查看都有哪些时区:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">timedatectl | grep <span class="hljs-built_in">local</span><br></code></pre></td></tr></table></figure><p>接着根据所在时区更改:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">timedatectl set-timezone Asia/Shanghai<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>配置技巧/经验</category>
+      
+      <category>系统配置</category>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>archlinux</tag>
+      
+      <tag>timezone</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Flutter 按钮二三事</title>
     <link href="/mobile_skill_experience/flutter/flutter-button.html"/>
     <url>/mobile_skill_experience/flutter/flutter-button.html</url>
@@ -140,9 +171,9 @@
     
     <tags>
       
-      <tag>踩坑</tag>
-      
       <tag>android</tag>
+      
+      <tag>踩坑</tag>
       
     </tags>
     
@@ -356,8 +387,6 @@
     <tags>
       
       <tag>nginx</tag>
-      
-      <tag>跨域</tag>
       
     </tags>
     
@@ -1035,7 +1064,9 @@
       
       <category>笔记</category>
       
-      <category>最好的c++教程</category>
+      <category>读书笔记</category>
+      
+      <category>最好的cpp教程</category>
       
     </categories>
     
@@ -1045,8 +1076,6 @@
       <tag>c++</tag>
       
       <tag>笔记</tag>
-      
-      <tag>最好的c++教程</tag>
       
     </tags>
     
@@ -3046,14 +3075,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>想法</tag>
-      
-      <tag>启发</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4310,7 +4331,7 @@
     <link href="/welcome.html"/>
     <url>/welcome.html</url>
     
-    <content type="html"><![CDATA[<p>你好, 这里是littleboyDK, 欢迎来到我的博客, 我会不定时的把我的技术博文发布到我的博客当中去, 希望能帮助到更多的人! 谢谢。</p><p>如果有什么想和我交流的问题，可以通过 <a href="mailto:&#x64;&#x61;&#104;&#x61;&#122;&#105;&#x64;&#107;&#x40;&#49;&#x36;&#x33;&#46;&#x63;&#111;&#109;">&#x64;&#x61;&#104;&#x61;&#122;&#105;&#x64;&#107;&#x40;&#49;&#x36;&#x33;&#46;&#x63;&#111;&#109;</a></p><p> 来联系我, 欢迎打扰!</p>]]></content>
+    <content type="html"><![CDATA[<p>你好, 这里是littleboyDK, 欢迎来到我的博客, 我会不定时的把我的技术博文发布到我的博客当中去, 希望能帮助到更多的人! 谢谢。</p><p>如果有什么想和我交流的问题，可以通过 <a href="mailto:&#100;&#97;&#104;&#x61;&#122;&#x69;&#x64;&#x6b;&#64;&#x31;&#54;&#x33;&#x2e;&#x63;&#111;&#109;">&#100;&#97;&#104;&#x61;&#122;&#x69;&#x64;&#x6b;&#64;&#x31;&#54;&#x33;&#x2e;&#x63;&#111;&#109;</a></p><p> 来联系我, 欢迎打扰!</p>]]></content>
     
     
     

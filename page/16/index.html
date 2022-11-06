@@ -61,7 +61,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","version":"1.9.3","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -87,7 +87,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>littleboydk</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="欢迎! 这里是一个努力变得靠谱的小伙子"></span>
+            <span id="subtitle">欢迎! 这里是一个努力变得靠谱的小伙子</span>
           
         </div>
 
@@ -226,15 +226,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/front_skill_experience/miniProgram/some-skills.html" target="_self">
-          微信小程序的一些技巧
+        <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html" target="_self">
+          商城开发笔记-pojo,dao,interface,service的依赖
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/front_skill_experience/miniProgram/some-skills.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-pojo-dao-interface-service-depend.html" target="_self">
         <div>
-          前言最近工作上遇到了关于一些微信小程序开发的业务, 今天把遇到的问题总结一下。 目录 小程序设置tabbar选中颜色 将溢出的文本用省略号代替 特定区域滚动到顶部时固定 微信小程序select下拉框实现 wx.navigateBack() 携带参数返回 微信小程序 选择器picker的使用
+          pojo的依赖pojo是用来存放实体类的工程, 它什么依赖也不需要, 只需要将打包方式改成jar就可以。   dao的依赖他的打包方式同样是jar, 而且因为和数据库打交道, 所以需要将mybatis的依赖添加进来
         </div>
       </a>
 
@@ -242,8 +242,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-01 13:18" pubdate>
-              2019-08-01
+            <time datetime="2018-11-21 19:37" pubdate>
+              2018-11-21
             </time>
           </div>
         
@@ -258,13 +258,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/front-skill-experience/" class="category-chain-item">前端技巧/经验</a>
+  <a href="/categories/develop-note/" class="category-chain-item">开发笔记</a>
   
   
     <span>></span>
     
-  <a href="/categories/front-skill-experience/mini-program/" class="category-chain-item">微信小程序</a>
+  <a href="/categories/develop-note/shopping-mall/" class="category-chain-item">商城</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/develop-note/shopping-mall/config/" class="category-chain-item">配置篇</a>
+  
+  
+
   
 
   
@@ -280,7 +287,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/mini-program/">#微信小程序</a>
+              <a href="/tags/shopping-mall/">#商城开发</a>
             
           </div>
         
@@ -294,15 +301,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/front_skill_experience/miniProgram/first-step.html" target="_self">
-          微信小程序的目录结构以及各个文件的用处
+        <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-service-config.html" target="_self">
+          商城开发笔记-service的配置
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/front_skill_experience/miniProgram/first-step.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-service-config.html" target="_self">
         <div>
-          总结本篇博客介绍了微信小程序的目录结构以及各个文件的作用。
+          数据库配置如果把配置写到xml配置文件中会显得很乱, 而且不好改, 如果有多个数据库的话, 会非常不方便, 那么可以单独写到一个配置文件中, 这样如果有多个数据库配置的话, 就可以直接切换配置文件了。
         </div>
       </a>
 
@@ -310,8 +317,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-03-24 09:02" pubdate>
-              2019-03-24
+            <time datetime="2018-11-26 19:46" pubdate>
+              2018-11-26
             </time>
           </div>
         
@@ -326,13 +333,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/front-skill-experience/" class="category-chain-item">前端技巧/经验</a>
+  <a href="/categories/develop-note/" class="category-chain-item">开发笔记</a>
   
   
     <span>></span>
     
-  <a href="/categories/front-skill-experience/mini-program/" class="category-chain-item">微信小程序</a>
+  <a href="/categories/develop-note/shopping-mall/" class="category-chain-item">商城</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/develop-note/shopping-mall/config/" class="category-chain-item">配置篇</a>
+  
+  
+
   
 
   
@@ -348,7 +362,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/mini-program/">#微信小程序</a>
+              <a href="/tags/shopping-mall/">#商城开发</a>
             
           </div>
         
@@ -362,15 +376,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/front_skill_experience/miniProgram/draw.html" target="_self">
-          关于微信小程序的canvas
+        <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-setUp-project.html" target="_self">
+          商城开发笔记 -- 搭建工程
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/front_skill_experience/miniProgram/draw.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-setUp-project.html" target="_self">
         <div>
-          目录在canvas上显示图片在canvas上画图 在canvas上显示图片首先, 我们需要一个canvas的页面元素:
+          项目说明简介本项目用 intellij idea 进行开发, Maven管理项目依赖, 技术栈是传统的SSM (Spring, SpringMVC, Mybatis)框架, 前台使用vue
         </div>
       </a>
 
@@ -378,8 +392,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-06-09 10:45" pubdate>
-              2019-06-09
+            <time datetime="2018-11-17 15:10" pubdate>
+              2018-11-17
             </time>
           </div>
         
@@ -394,13 +408,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/front-skill-experience/" class="category-chain-item">前端技巧/经验</a>
+  <a href="/categories/develop-note/" class="category-chain-item">开发笔记</a>
   
   
     <span>></span>
     
-  <a href="/categories/front-skill-experience/mini-program/" class="category-chain-item">微信小程序</a>
+  <a href="/categories/develop-note/shopping-mall/" class="category-chain-item">商城</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/develop-note/shopping-mall/config/" class="category-chain-item">配置篇</a>
+  
+  
+
   
 
   
@@ -416,9 +437,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/mini-program/">#微信小程序</a>
-            
-              <a href="/tags/canvas/">#canvas</a>
+              <a href="/tags/shopping-mall/">#商城开发</a>
             
           </div>
         
@@ -432,15 +451,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/front_skill_experience/miniProgram/config-descrition.html" target="_self">
-          微信小程序的配置介绍
+        <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-vue-envionmentAndConfig.html" target="_self">
+          商城开发笔记-vue环境搭建与配置
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/front_skill_experience/miniProgram/config-descrition.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-vue-envionmentAndConfig.html" target="_self">
         <div>
-          总结本篇博客介绍了各个配置文件可以设置的一些选项以及含义
+          Vue简介其实不用我多说, 人家官网写的比我写的明白, 渐进式JavaScript框架。 那么什么叫渐进式呢? 说白了, 就是用什么功能, 安什么插件, 用哪个就安哪个, 渐进式么, 哈哈。 那么为什么用Vue作为我们这个项目的前端框架呢? 因为开发方便呗, 哪个方便我们就用哪个, 也不扯别的了, 开整!
         </div>
       </a>
 
@@ -448,8 +467,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-03-24 09:26" pubdate>
-              2019-03-24
+            <time datetime="2018-12-06 23:34" pubdate>
+              2018-12-06
             </time>
           </div>
         
@@ -464,13 +483,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/front-skill-experience/" class="category-chain-item">前端技巧/经验</a>
+  <a href="/categories/develop-note/" class="category-chain-item">开发笔记</a>
   
   
     <span>></span>
     
-  <a href="/categories/front-skill-experience/mini-program/" class="category-chain-item">微信小程序</a>
+  <a href="/categories/develop-note/shopping-mall/" class="category-chain-item">商城</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/develop-note/shopping-mall/config/" class="category-chain-item">配置篇</a>
+  
+  
+
   
 
   
@@ -486,7 +512,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/mini-program/">#微信小程序</a>
+              <a href="/tags/shopping-mall/">#商城开发</a>
             
           </div>
         
@@ -500,15 +526,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/back_skill_experience/java/tomcat/java-tomcat-http-400.html" target="_self">
-          Invalid character found in the request target.The valid characters are defined in RFC 7230 and RFC3986
+        <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-config.html" target="_self">
+          商城开发/商城开发笔记-web的配置
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/back_skill_experience/java/tomcat/java-tomcat-http-400.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-config.html" target="_self">
         <div>
-          问题当在通过tomcat传递url时, 后台会报Invalid character found in the request target.The valid characters are defined in RFC 7230 and RFC3986。
+          Spring MVC的配置主要包括了注解配置, 拦截器配置, 自动扫描配置和最重要的dubbo配置 其实还包括一个静态资源配置, 但是因为咱们的前端使用的是vue, Spring MVC就不用管这里了
         </div>
       </a>
 
@@ -516,8 +542,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-05-16 23:45" pubdate>
-              2019-05-16
+            <time datetime="2018-11-27 23:30" pubdate>
+              2018-11-27
             </time>
           </div>
         
@@ -532,13 +558,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/back-skill-experience/" class="category-chain-item">后端技巧/经验</a>
+  <a href="/categories/develop-note/" class="category-chain-item">开发笔记</a>
   
   
     <span>></span>
     
-  <a href="/categories/back-skill-experience/java/" class="category-chain-item">java</a>
+  <a href="/categories/develop-note/shopping-mall/" class="category-chain-item">商城</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/develop-note/shopping-mall/config/" class="category-chain-item">配置篇</a>
+  
+  
+
   
 
   
@@ -554,7 +587,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/tomcat/">#tomcat</a>
+              <a href="/tags/shopping-mall/">#商城开发</a>
             
           </div>
         
@@ -568,15 +601,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/back_skill_experience/java/spring/springboot/jpa/springboot-jpa-update-Not-supported-for-DML-operations.html" target="_self">
-          springboot jpa update操作时报 Not supported for DML operations
+        <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html" target="_self">
+          商城开发笔记-web依赖
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/back_skill_experience/java/spring/springboot/jpa/springboot-jpa-update-Not-supported-for-DML-operations.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-web-depend.html" target="_self">
         <div>
-          问题在使用jpa进行update操作时, 报Not supported for DML operations 错误
+          web的依赖不同于其他的工程, 它的打包方式是web工程的打包方式, 所以应该是: 1&lt;packaging&gt;war&lt;/packaging&gt;    由于是表现层, 所以依赖中应该包括SpringMVC, 下面是它的所有依赖:
         </div>
       </a>
 
@@ -584,8 +617,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-05-16 23:27" pubdate>
-              2019-05-16
+            <time datetime="2018-11-26 19:39" pubdate>
+              2018-11-26
             </time>
           </div>
         
@@ -600,13 +633,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/back-skill-experience/" class="category-chain-item">后端技巧/经验</a>
+  <a href="/categories/develop-note/" class="category-chain-item">开发笔记</a>
   
   
     <span>></span>
     
-  <a href="/categories/back-skill-experience/java/" class="category-chain-item">java</a>
+  <a href="/categories/develop-note/shopping-mall/" class="category-chain-item">商城</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/develop-note/shopping-mall/config/" class="category-chain-item">配置篇</a>
+  
+  
+
   
 
   
@@ -622,11 +662,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/pit/">#踩坑</a>
-            
-              <a href="/tags/java/">#java</a>
-            
-              <a href="/tags/jpa/">#jpa</a>
+              <a href="/tags/shopping-mall/">#商城开发</a>
             
           </div>
         
@@ -717,21 +753,6 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
 
 
 

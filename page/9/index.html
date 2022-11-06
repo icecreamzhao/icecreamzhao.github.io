@@ -61,7 +61,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","version":"1.9.3","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -87,7 +87,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>littleboydk</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="欢迎! 这里是一个努力变得靠谱的小伙子"></span>
+            <span id="subtitle">欢迎! 这里是一个努力变得靠谱的小伙子</span>
           
         </div>
 
@@ -226,15 +226,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/back_skill_experience/java/sha256-java-js.html" target="_self">
-          js和java自带sha密码加密
+        <a href="/back_skill_experience/java/tomcat/java-tomcat-http-400.html" target="_self">
+          Invalid character found in the request target.The valid characters are defined in RFC 7230 and RFC3986
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/back_skill_experience/java/sha256-java-js.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/back_skill_experience/java/tomcat/java-tomcat-http-400.html" target="_self">
         <div>
-          前言用到了对数据库密码进行一个简单的加密的功能, 顺便总结一下。
+          问题当在通过tomcat传递url时, 后台会报Invalid character found in the request target.The valid characters are defined in RFC 7230 and RFC3986。
         </div>
       </a>
 
@@ -242,8 +242,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-24 16:54" pubdate>
-              2019-07-24
+            <time datetime="2019-05-16 23:45" pubdate>
+              2019-05-16
             </time>
           </div>
         
@@ -280,7 +280,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/encode/">#加密</a>
+              <a href="/tags/tomcat/">#tomcat</a>
             
           </div>
         
@@ -294,15 +294,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/config_skill_experience/system_config/windows/own-path-variable.html" target="_self">
-          在windows系统中自定义cmd命令
+        <a href="/config_skill_experience/develop__tool_config/git/git-server.html" target="_self">
+          使用git搭建服务器
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/config_skill_experience/system_config/windows/own-path-variable.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/config_skill_experience/develop__tool_config/git/git-server.html" target="_self">
         <div>
-          前言我在运行一些服务或者程序时, 经常免不了要打开cmd, cd到程序所在目录, 然后执行运行的命令, 次数多了之后就觉得很烦, 想着可不可以自定义命令, 比如我直接输入zkstart, 就可以运行zookeeper, 当然是可以的!
+          前言当我们想使用git来管理源码, 但是又不想将代码上传至github或者其他的托管平台时, 可以尝试着自己搭建一个git服务器作为私有仓库。
         </div>
       </a>
 
@@ -310,8 +310,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-01-19 12:00" pubdate>
-              2019-01-19
+            <time datetime="2019-09-01 16:39" pubdate>
+              2019-09-01
             </time>
           </div>
         
@@ -331,12 +331,12 @@
   
     <span>></span>
     
-  <a href="/categories/config-skill-experience/system-config/" class="category-chain-item">系统配置</a>
+  <a href="/categories/config-skill-experience/develop-tool-config/" class="category-chain-item">开发工具配置</a>
   
   
     <span>></span>
     
-  <a href="/categories/config-skill-experience/system-config/windows/" class="category-chain-item">windows</a>
+  <a href="/categories/config-skill-experience/develop-tool-config/git/" class="category-chain-item">git</a>
   
   
 
@@ -355,7 +355,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/windows/">#windows</a>
+              <a href="/tags/git/">#git</a>
             
           </div>
         
@@ -369,15 +369,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/config_skill_experience/system_config/windows/deploy-system.html" target="_self">
-          装机
+        <a href="/config_skill_experience/develop__tool_config/mariadb/mariadb-linux-qa.html" target="_self">
+          linux mariadb 的一些问题
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/config_skill_experience/system_config/windows/deploy-system.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/config_skill_experience/develop__tool_config/mariadb/mariadb-linux-qa.html" target="_self">
         <div>
-          前言今天我的室友将他的电脑留在这里, 那么不对它做些什么是不可能的! 哈哈, 那么, 我就开始啦。
+          安装12sudo apt install mariadb-serversudo mysql_secure_installation  远程登录123GRANT ALL ON *.* TO &#x27;admin&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;password&#x27; WITH GRANT OPTION;FLUSH PRIVILE
         </div>
       </a>
 
@@ -385,8 +385,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2018-11-30 19:51" pubdate>
-              2018-11-30
+            <time datetime="2020-08-26 12:32" pubdate>
+              2020-08-26
             </time>
           </div>
         
@@ -406,12 +406,12 @@
   
     <span>></span>
     
-  <a href="/categories/config-skill-experience/system-config/" class="category-chain-item">系统配置</a>
+  <a href="/categories/config-skill-experience/develop-tool-config/" class="category-chain-item">开发工具配置</a>
   
   
     <span>></span>
     
-  <a href="/categories/config-skill-experience/system-config/windows/" class="category-chain-item">windows</a>
+  <a href="/categories/config-skill-experience/develop-tool-config/mariadb/" class="category-chain-item">mariadb</a>
   
   
 
@@ -430,7 +430,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/windows/">#windows</a>
+              <a href="/tags/mysql/">#mysql</a>
+            
+              <a href="/tags/mariadb/">#mariadb</a>
             
           </div>
         
@@ -444,15 +446,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/config_skill_experience/system_config/linux/vim/llvm.html" target="_self">
-          在centos下安装llvm和vim的ycm插件
+        <a href="/config_skill_experience/develop__tool_config/mysql/mysql-charset.html" target="_self">
+          mysql创建数据库时遇到的字符集的问题
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/config_skill_experience/system_config/linux/vim/llvm.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/config_skill_experience/develop__tool_config/mysql/mysql-charset.html" target="_self">
         <div>
-          前言原本只是想在vim上装几个插件玩玩, 然后发现了YCM这款插件, 之后, 就有了今天的这篇博客。经历了连续一个星期的战斗, 终于还是被我安装上了llvm, 更新了gcc的版本和vim的版本, 特此记录一下战斗的过程。
+          mysql 查看字符集1show variables like &#x27;%char%&#x27;  这里要全都是utf-8。 如果不是的话, 则修改my.ini。 修改方式: 12345678[mysqld]character-set-server=utf8[client]default-character-set=utf8[mysql]no-auto-rehash
         </div>
       </a>
 
@@ -460,8 +462,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-04-28 22:31" pubdate>
-              2019-04-28
+            <time datetime="2019-07-14 19:14" pubdate>
+              2019-07-14
             </time>
           </div>
         
@@ -481,12 +483,12 @@
   
     <span>></span>
     
-  <a href="/categories/config-skill-experience/system-config/" class="category-chain-item">系统配置</a>
+  <a href="/categories/config-skill-experience/develop-tool-config/" class="category-chain-item">开发工具配置</a>
   
   
     <span>></span>
     
-  <a href="/categories/config-skill-experience/system-config/linux/" class="category-chain-item">linux</a>
+  <a href="/categories/config-skill-experience/develop-tool-config/mysql/" class="category-chain-item">mysql</a>
   
   
 
@@ -505,13 +507,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/linux/">#linux</a>
+              <a href="/tags/pit/">#踩坑</a>
             
-              <a href="/tags/llvm/">#llvm</a>
-            
-              <a href="/tags/gcc/">#gcc</a>
-            
-              <a href="/tags/ycm/">#ycm</a>
+              <a href="/tags/mysql/">#mysql</a>
             
           </div>
         
@@ -525,15 +523,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/config_skill_experience/system_config/linux/linux_ssh.html" target="_self">
-          CentOS的ssh远程连接遇到的问题
+        <a href="/config_skill_experience/develop__tool_config/mysql/mysql-high-version-group-by-error.html" target="_self">
+          MySql8.0以上only_full_group_by的问题
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/config_skill_experience/system_config/linux/linux_ssh.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/config_skill_experience/develop__tool_config/mysql/mysql-high-version-group-by-error.html" target="_self">
         <div>
-          前言之前由于在我的surface book 2 上开虚拟机, 然后一直都是本地连接, 所以一直都没啥问题。后来因为我要在另一台电脑上搞点东西, 然后还用到了linux, 所以想着直接局域网下远程访问这台虚拟机应该也是没啥问题的吧, 但是也还是遇到了一些坑, 故此记录一下。
+          问题当在使用mysql8.0以上的版本时, 在使用group by时, 会出现类似下面的报错: 12ERROR 1055(42000): Expression #7 of SELECT list is not in GROUP BY clause and contains nonaggregated column ....this is incompatible with sql_mode=onl
         </div>
       </a>
 
@@ -541,8 +539,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-06-21 19:17" pubdate>
-              2019-06-21
+            <time datetime="2019-12-01 09:51" pubdate>
+              2019-12-01
             </time>
           </div>
         
@@ -562,12 +560,12 @@
   
     <span>></span>
     
-  <a href="/categories/config-skill-experience/system-config/" class="category-chain-item">系统配置</a>
+  <a href="/categories/config-skill-experience/develop-tool-config/" class="category-chain-item">开发工具配置</a>
   
   
     <span>></span>
     
-  <a href="/categories/config-skill-experience/system-config/linux/" class="category-chain-item">linux</a>
+  <a href="/categories/config-skill-experience/develop-tool-config/mysql/" class="category-chain-item">mysql</a>
   
   
 
@@ -586,11 +584,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/linux/">#linux</a>
+              <a href="/tags/pit/">#踩坑</a>
             
-              <a href="/tags/centos/">#centos</a>
-            
-              <a href="/tags/ssh/">#ssh</a>
+              <a href="/tags/mysql/">#mysql</a>
             
           </div>
         
@@ -604,15 +600,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/config_skill_experience/system_config/linux/linux-path-variable.html" target="_self">
-          linux(ubuntu)设置环境变量
+        <a href="/config_skill_experience/develop__tool_config/mysql/mysql-master-slave-error.html" target="_self">
+          mysql 主从数据库遇到的问题和解决方案
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/config_skill_experience/system_config/linux/linux-path-variable.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/config_skill_experience/develop__tool_config/mysql/mysql-master-slave-error.html" target="_self">
         <div>
-          ubuntu添加环境变量分三种添加方式, 作用域不同  只作用于当前终端 只作用于当前用户 作用于所有用户
+          前言配置主从数据库请查看mysql 配置主从数据库。 配置了之后遇到了一些问题, 具体表现为 Slave_IO_Running 和 Slave_SQL_Running 不是 yes。 排查思路首先使用 show slave status\G 命令查看 Last_Error, Last_IO_Error 和 Last_SQL_Error 三个项对应的值, 根据错误信息来具体解决。 如果不能通过以上三
         </div>
       </a>
 
@@ -620,8 +616,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2018-12-05 19:21" pubdate>
-              2018-12-05
+            <time datetime="2019-10-17 02:44" pubdate>
+              2019-10-17
             </time>
           </div>
         
@@ -641,12 +637,12 @@
   
     <span>></span>
     
-  <a href="/categories/config-skill-experience/system-config/" class="category-chain-item">系统配置</a>
+  <a href="/categories/config-skill-experience/develop-tool-config/" class="category-chain-item">开发工具配置</a>
   
   
     <span>></span>
     
-  <a href="/categories/config-skill-experience/system-config/linux/" class="category-chain-item">linux</a>
+  <a href="/categories/config-skill-experience/develop-tool-config/mysql/" class="category-chain-item">mysql</a>
   
   
 
@@ -665,7 +661,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/linux/">#linux</a>
+              <a href="/tags/mysql/">#mysql</a>
             
           </div>
         
@@ -756,21 +752,6 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
 
 
 

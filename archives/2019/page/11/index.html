@@ -61,7 +61,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"icecreamzhao.github.io","root":"/","version":"1.9.3","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -87,7 +87,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>littleboydk</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle">归档</span>
           
         </div>
 
@@ -216,19 +216,13 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 147 篇文章</p>
+  <p class="h4">共计 148 篇文章</p>
   <hr>
   
   
     
       
       <p class="h5">2019</p>
-    
-    <a href="/sentiment/about-appearance-and-nature.html" class="list-group-item list-group-item-action">
-      <time>02-16</time>
-      <div class="list-group-item-title">听《左耳听风》专栏第十九章产生的一些启发和思考</div>
-    </a>
-  
     
     <a href="/note/read_note/The_Linux_Command_Line/The-Linux-Command-Line-read-note-11Day.html" class="list-group-item list-group-item-action">
       <time>02-14</time>
@@ -271,12 +265,18 @@
       <div class="list-group-item-title">快乐的Linux命令行笔记-快捷键</div>
     </a>
   
+    
+    <a href="/my_project/shopping_mall/Dependence_and_configuration/Shopping-mall-developNote-actable-new-config.html" class="list-group-item list-group-item-action">
+      <time>01-24</time>
+      <div class="list-group-item-title">商城开发笔记-根据实体类自动建表</div>
+    </a>
+  
 </div>
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/2019/page/10/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/9/#board">9</a><a class="page-number" href="/archives/2019/page/10/#board">10</a><span class="page-number current">11</span><a class="page-number" href="/archives/2019/page/12/#board">12</a><a class="page-number" href="/archives/2019/page/13/#board">13</a><a class="extend next" rel="next" href="/archives/2019/page/12/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/archives/2019/page/10/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/9/#board">9</a><a class="page-number" href="/archives/2019/page/10/#board">10</a><span class="page-number current">11</span><a class="page-number" href="/archives/2019/page/12/#board">12</a><a class="extend next" rel="next" href="/archives/2019/page/12/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -356,21 +356,6 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
 
 
 
