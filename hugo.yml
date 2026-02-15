@@ -1,0 +1,65 @@
+baseURL: "https://icecramzhao.github.io/"
+title: "Littleboy's Blog"
+theme: "PaperMod"
+pagination:
+  pagerSize: 5
+
+enableRobotsTXT: true
+
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  minifyOutput: true
+
+taxonomies:
+  category: categories
+  tag: tags
+
+params:
+  env: production
+  description: "个人学习和记录"
+  keywords: ["Blog", "Tech"]
+  author: "Littleboy"
+  DateFormat: "2006-01-02"
+
+  defaultTheme: auto
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowWordCount: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  UseHugoToc: true
+
+  comments: false
+
+  homeInfoParams:
+    Title: "Hi there 👋"
+    Content: "Welcome to my blog"
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/icecramzhao"
+
+menu:
+  main:
+    - identifier: posts
+      name: Posts
+      url: /posts/
+      weight: 10
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 20
+
+pygmentsUseClasses: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
