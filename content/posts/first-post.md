@@ -31,6 +31,6 @@ In this edition, we have completely revised the C++ Primer to use the latest sta
 
 > 在这一版中，我们使用了最新的标准库完全重新编纂了 C++ Primer。通过浏览新特性目录（见第xxi页），您可以大致了解C++受到了多么广泛的影响，该目录列出了涵盖新内容的各个章节。
 
-Some <mark>addititons</mark><sub>`/əˈdɪʃən/ 附加、新增`</sub> in the new standard, such as `auto` for type inference, are pervasive. These <mark>facilites<sub>`/ˈfæsaɪl $ ˈfæsəl/`</mark></sub> make the code in this edition easier to read and to understand.
+Some <mark>addititons</mark><sub>`/əˈdɪʃən/ 附加、新增`</sub> in the new standard, such as `auto` for type inference, are pervasive. These <mark>facilites</mark><sub>`/ˈfæsaɪl $ ˈfæsəl/`</sub> make the code in this edition easier to read and to understand.
 
 > 新标准版的一些新增了很多东西，比如`auto` 类型描述，随处可见。这些新特性使得当前版本的代码更易于阅读并理解。
