@@ -1,4 +1,5 @@
 name: Deploy Hugo site to Pages
+baseURL: "https://icecreamzhao.github.io/"
 
 on:
   push:

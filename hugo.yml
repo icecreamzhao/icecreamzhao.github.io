@@ -1,4 +1,4 @@
-baseURL: "https://icecramzhao.github.io/"
+baseURL: "https://icecreamzhao.github.io/"
 title: "Littleboy's Blog"
 theme: "PaperMod"
 pagination:
@@ -42,7 +42,7 @@ params:
 
   socialIcons:
     - name: github
-      url: "https://github.com/icecramzhao"
+      url: "https://github.com/icecreamzhao"
 
 menu:
   main:
